@@ -1,0 +1,143 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+td,
+tr,
+a {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.bg-red {
+  background-color: #953632;
+}
+
+.bg-misty {
+  background-color: #fce9da;
+}
+
+.bg-purple {
+  background-color: #efdce0;
+}
+
+.border-black {
+  border: 2px solid black;
+}
+
+.div-header {
+  padding: 10px;
+}
+
+.div-header h1 {
+  color: white !important;
+}
+
+.div-date {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #ccc; */
+}
+
+.div-date p {
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.head-tbale-tr {
+  text-align: center !important;
+  color: white !important;
+  font-size: 18px;
+}
+
+table.sms-table {
+  direction: rtl;
+}
+
+table.sms-table td {
+  padding: 5px 5px !important;
+  color: black;
+  font-weight: 600;
+  background-color: #efdce0;
+}
+
+.insatgram-table thead th {
+  padding: 8px 3px;
+}
+
+.insatgram-table {
+  font-size: 12px;
+  direction: rtl;
+  text-align: center;
+  color: black;
+}
+.insatgram-table  a{
+  color: black;
+}
+
+.table-head-insatgram {
+  font-size: 16px;
+  background-color: #f1556c;
+  color: white;
+}
+
+.table-head-twitter {
+  font-size: 16px;
+  background-color: #4a81d4;
+  color: white;
+}
+
+.insatgram-table tbody tr th {
+  background-color: #efdce0;
+  color: black;
+}
+
+.insatgram-table tbody tr td {
+  background-color: #fce9da;
+  color: black;
+  /* font-weight: 600; */
+}
+
+.insatgram-table tfoot tr {
+  background-color: #953632 !important;
+  color: white;
+}
+.anoher tr th.telegram {
+  background-color: #508fd6 !important;
+  color: white;
+}
+.anoher tr th.nbd {
+  background-color: #31869b !important;
+  color: white;
+}
+.anoher tr th.tiktok {
+  background-color: #3f4044 !important;
+  color: white;
+}
+.anoher tr th.youtube {
+  background-color: #c20001 !important;
+  color: white;
+}
+.anoher tr th.snapchat {
+  background-color: #fdfd99 !important;
+}
+.anoher tr th.barq_cast {
+  background-color: #a1c267 !important;
+}
+.anoher tr th.bg-red {
+  background-color: #953632 !important;
+  color: white;
+}
+.difference {
+  direction: ltr !important;
+}
