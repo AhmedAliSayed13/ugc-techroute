@@ -11,7 +11,7 @@
                                 <i class="fe-search"></i>
                             </button>
                         </div>
-                        
+
                     </div>
                 </form>
             </li>
@@ -37,11 +37,11 @@
                 </a>
             </li>
 
-           
 
-            
 
-           
+
+
+
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
@@ -49,7 +49,7 @@
                     aria-expanded="false">
                     <img src="{{asset('assets/images/users/user.png')}}" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ms-1">
-                        {{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i>
+                        {{Auth::guard('admin')->user()->name}} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -59,30 +59,30 @@
                     </div>
 
                     <!-- item-->
-                    <a href="{{route('setting')}}" class="dropdown-item notify-item">
+                    <a href="#" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
 
                     <!-- item-->
-                    <a href="{{route('change.password')}}" class="dropdown-item notify-item">
+                    <a href="#" class="dropdown-item notify-item">
                         <i class="fas fa-eye-slash"></i>
                         <span>Change Password</span>
                     </a>
 
                     <!-- item-->
-                    
+
 
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
 
@@ -140,7 +140,7 @@
                 <!-- End mobile menu toggle-->
             </li>
 
-            
+
         </ul>
         <div class="clearfix"></div>
     </div>

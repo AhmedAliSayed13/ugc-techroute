@@ -17,11 +17,6 @@ class PagesController extends Controller
     public function __construct(PagesInterface  $pagesInterface)
     {
         $this->pagesInterface = $pagesInterface;
-
-        // $this->middleware('permission:visitor-list|visitor-create|visitor-edit|visitor-delete', ['only' => ['index']]);
-        // $this->middleware('permission:visitor-create', ['only' => ['create','store']]);
-        // $this->middleware('permission:visitor-edit', ['only' => ['edit','update']]);
-        // $this->middleware('permission:visitor-delete', ['only' => ['destroy']]);
     }
     public function policy()
     {

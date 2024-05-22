@@ -1,12 +1,16 @@
 <?php namespace App\Providers;
 
-
-
-use App\Repositories\Service\ServiceInterface;
-use App\Repositories\Service\ServiceRepository;
+use App\Repositories\admin\auth\AuthAdminInterface;
+use App\Repositories\admin\auth\AuthAdminRepository;
+use App\Repositories\admin\dashboard\DashboardAdminInterface;
+use App\Repositories\admin\dashboard\DashboardAdminRepository;
+use App\Repositories\admin\role\RoleAdminInterface;
+use App\Repositories\admin\role\RoleAdminRepository;
 
 use App\Repositories\Marketing\Ad\AdInterface;
 use App\Repositories\Marketing\Ad\AdRepository;
+use App\Repositories\Marketing\Ajax\AjaxInterface;
+use App\Repositories\Marketing\Ajax\AjaxRepository;
 use App\Repositories\Marketing\Category\CategoryInterface;
 use App\Repositories\Marketing\Category\CategoryRepository;
 use App\Repositories\Marketing\ContractType\ContractTypeInterface;
@@ -15,23 +19,15 @@ use App\Repositories\Marketing\Contract\ContractInterface;
 use App\Repositories\Marketing\Contract\ContractRepository;
 use App\Repositories\Marketing\Setting\SettingInterface;
 use App\Repositories\Marketing\Setting\SettingRepository;
-use App\Repositories\Marketing\Ajax\AjaxInterface;
-use App\Repositories\Marketing\Ajax\AjaxRepository;
-
-use App\Repositories\Options\Visitor\VisitorInterface;
-use App\Repositories\Options\Visitor\VisitorRepository;
-
 use App\Repositories\Options\Pages\PagesInterface;
 use App\Repositories\Options\Pages\PagesRepository;
-
 use App\Repositories\Options\Survey\SurveyInterface;
 use App\Repositories\Options\Survey\SurveyRepository;
-
+use App\Repositories\Options\Visitor\VisitorInterface;
+use App\Repositories\Options\Visitor\VisitorRepository;
 use App\Repositories\Platform\PlatformInterface;
 use App\Repositories\Platform\PlatformRepository;
-
 use Illuminate\Support\ServiceProvider;
-
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -52,67 +48,21 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Marketing Service Type
+        // AuthAdmin
         $this->app->bind(
-            ServiceInterface::class,
-            ServiceRepository::class
+            AuthAdminInterface::class,
+            AuthAdminRepository::class
         );
-
-        // Ads
+        // Dashboard
         $this->app->bind(
-            AdInterface::class,
-            AdRepository::class
+            DashboardAdminInterface::class,
+            DashboardAdminRepository::class
         );
-        // Categories
         $this->app->bind(
-            CategoryInterface::class,
-            CategoryRepository::class
-        );
-        // ContractTypes
-        $this->app->bind(
-            ContractTypeInterface::class,
-            ContractTypeRepository::class
-        );
-
-        // Contracts
-        $this->app->bind(
-            ContractInterface::class,
-            ContractRepository::class
-        );
-        // Setting
-        $this->app->bind(
-            SettingInterface::class,
-            SettingRepository::class
-        );
-        // Setting
-        $this->app->bind(
-            VisitorInterface::class,
-            VisitorRepository::class
-        );
-        // Ajax
-        $this->app->bind(
-            AjaxInterface::class,
-            AjaxRepository::class
-        );
-
-        // Platform
-        $this->app->bind(
-            PlatformInterface::class,
-            PlatformRepository::class
+            RoleAdminInterface::class,
+            RoleAdminRepository::class
         );
 
 
-        // Survey
-        $this->app->bind(
-            SurveyInterface::class,
-            SurveyRepository::class
-        );
-        // Pages
-        $this->app->bind(
-            PagesInterface::class,
-            PagesRepository::class
-        );
-
-
-  }
+    }
 }

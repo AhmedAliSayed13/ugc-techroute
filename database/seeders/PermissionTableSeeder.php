@@ -1,10 +1,10 @@
 <?php
-  
+
 namespace Database\Seeders;
-  
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-  
+
 class PermissionTableSeeder extends Seeder
 {
     /**
@@ -31,14 +31,14 @@ class PermissionTableSeeder extends Seeder
          //   'ad-type-create',
          //   'ad-type-edit',
          //   'ad-type-delete',
-           'ad-list',
-           'ad-create',
-           'ad-edit',
-           'ad-delete',
-           'category-list',
-           'category-create',
-           'category-edit',
-           'category-delete',
+        //    'ad-list',
+        //    'ad-create',
+        //    'ad-edit',
+        //    'ad-delete',
+        //    'category-list',
+        //    'category-create',
+        //    'category-edit',
+        //    'category-delete',
         //    'contract-type-list',
         //    'contract-type-create',
         //    'contract-type-edit',
@@ -47,13 +47,13 @@ class PermissionTableSeeder extends Seeder
         //    'contract-create',
         //    'contract-edit',
         //    'contract-delete',
-           'visitor-list',
-           'visitor-create',
-           'visitor-edit',
-           'visitor-delete',
-           
+        //    'visitor-list',
+        //    'visitor-create',
+        //    'visitor-edit',
+        //    'visitor-delete',
+
         ];
-     
+
         foreach ($permissions as $permission) {
              Permission::create(['name' => $permission]);
         }

@@ -43,19 +43,28 @@
         <div id="sidebar-menu">
             <ul id="side-menu">
                 <li class="menu-title">Setting management</li>
+
                 <li>
-                    <a href="#Services" data-bs-toggle="collapse">
+                    <a href="{{route('admin.dashboard')}}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
-                        <span> Services </span>
+                        <span> Dashboard </span>
                     </a>
-                    <div class="collapse" id="Services">
+
+                </li>
+                <li>
+                    <a href="#Roles" data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
+                        <span> Roles </span>
+                    </a>
+                    <div class="collapse" id="Roles">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('services.create')}}">Create Service</a>
+                                <a href="{{route('admin.roles.create')}}">Create Role</a>
                             </li>
                             <li>
-                                <a href="{{route('services.index')}}">List Service</a>
+                                <a href="{{route('admin.roles.index')}}">List Roles</a>
                             </li>
 
                         </ul>

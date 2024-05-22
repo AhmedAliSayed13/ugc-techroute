@@ -46,6 +46,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+                $this->mapAdminRoutes();
+                $this->mapUserRoutes();
         });
     }
 
@@ -59,5 +62,20 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+    protected function mapAdminRoutes()
+    {
+        Route::middleware('web')
+        ->prefix('admin')
+        ->name('admin.')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapUserRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/user.php'));
     }
 }

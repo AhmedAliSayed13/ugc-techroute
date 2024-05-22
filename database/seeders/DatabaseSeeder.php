@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionTableSeeder::class,
             AdminUserSeeder::class,
-            EmirateTableSeeder::class,
-            MarketingServiceTypeTableSeeder::class,
-            CustomerTableSeeder::class,
-            PlatformTableSeeder::class,
-            PlatformAccountTableSeeder::class,
+            // EmirateTableSeeder::class,
+            // MarketingServiceTypeTableSeeder::class,
+            // CustomerTableSeeder::class,
+            // PlatformTableSeeder::class,
+            // PlatformAccountTableSeeder::class,
         ]);
 
 
