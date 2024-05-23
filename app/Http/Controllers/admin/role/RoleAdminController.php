@@ -50,5 +50,14 @@ class RoleAdminController extends Controller
         }
         return back();
     }
+    public function destroy($id)
+    {
+
+        $data = $this->roleAdminInterface->destroy($id);
+        if ($data) {
+            return redirect()->route('admin.roles.index');
+        }
+        return back();
+    }
 
 }

@@ -1,9 +1,9 @@
 <?php namespace App\Repositories\admin\role;
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use DB;
-use Auth;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
 class RoleAdminRepository implements RoleAdminInterface
 {
 
@@ -11,7 +11,7 @@ class RoleAdminRepository implements RoleAdminInterface
     {
         $roles = \App\Models\Role::AcceptRequest(getFillableSort('Role'))
             ->filter()
-            ->orderBy(request()->get('sort')??'id')
+            ->orderBy(request()->get('sort') ?? 'id')
             ->paginate(request()->get('perpage'), ['*'], 'page');
         $data = array(
             "roles" => $roles,
@@ -20,7 +20,7 @@ class RoleAdminRepository implements RoleAdminInterface
     }
     public function show($key)
     {
-        $role = Role::where('key',$key)->first();
+        $role = Role::where('key', $key)->first();
         $role->count += 1; // increment the quantity by 1
         $role->save();
         return $role->redirect;
@@ -30,7 +30,7 @@ class RoleAdminRepository implements RoleAdminInterface
 
         $permission = Permission::get();
         $data = array(
-            'permission'=>$permission
+            'permission' => $permission,
         );
         // $data = (object) collect($data)->toArray();
         return $data;
@@ -55,8 +55,8 @@ class RoleAdminRepository implements RoleAdminInterface
     {
         $role = Role::find($id);
         $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
         $data = array(
@@ -64,11 +64,10 @@ class RoleAdminRepository implements RoleAdminInterface
             "permission" => $permission,
             "rolePermissions" => $rolePermissions,
 
-
         );
         return $data;
     }
-    public function update($request,$role): bool
+    public function update($request, $role): bool
     {
         try {
             $role = Role::find($role->id);
@@ -76,9 +75,6 @@ class RoleAdminRepository implements RoleAdminInterface
             $role->save();
 
             $role->syncPermissions($request->input('permission'));
-
-
-
 
             toastr()->success('Item Has Been Updated Successfully');
             return true;
@@ -90,15 +86,11 @@ class RoleAdminRepository implements RoleAdminInterface
     public function destroy($id): bool
     {
         try {
-            $Role = Role::find($id);
-            if ($Role) {
-                $Role->delete();
-                toastr()->success(__('messages.ItemHasBeenDeletedSuccessfully'));
+
+            DB::table("roles")->where('id', $id)->delete();
+            DB::table("role_has_permissions")->where('role_id', $id)->delete();
+            toastr()->success('Item Has Been Deleted Successfully');
             return true;
-            } else {
-                    toastr()->error(__('messages.ItemNotExists'));
-                    return false;
-                }
 
         } catch (\Exception $th) {
             toastr()->error($th->getMessage());

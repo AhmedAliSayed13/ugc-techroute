@@ -114,9 +114,7 @@
             <div class="auth-user-testimonial">
                 <h2 class="mb-3 text-white">{{config('app.name')}}</h2>
                 <p class="lead"><i class="mdi mdi-format-quote-open"></i>
-                    techroute66 is a digital marketing agency that provides its clients with the best tools and plans
-                    for their businesses to sky-rocket.
-                    Together, success is only a few steps away!
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                     <i class="mdi mdi-format-quote-close"></i>
                 </p>
 
