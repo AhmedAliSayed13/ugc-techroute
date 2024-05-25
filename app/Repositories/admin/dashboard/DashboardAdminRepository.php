@@ -1,8 +1,8 @@
-<?php namespace App\Repositories\admin\dashboard;
+<?php namespace App\Repositories\user\creator\dashboard;
 
-class DashboardAdminRepository implements DashboardAdminInterface
+class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 {
-    public function ShowDashboard()
+    public function index()
     {
 
         return [];

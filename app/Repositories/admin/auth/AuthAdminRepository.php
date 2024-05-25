@@ -14,6 +14,7 @@ class AuthAdminRepository implements AuthAdminInterface
         if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
             return true;
         }
+        toastr()->error(__('messages.login_failed'));
         return false;
 
     }

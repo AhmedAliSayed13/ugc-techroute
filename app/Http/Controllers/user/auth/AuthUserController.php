@@ -5,7 +5,9 @@ namespace App\Http\Controllers\user\auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\auth\LoginRequest;
 use App\Repositories\user\auth\AuthUserInterface;
+use Auth;
 use Illuminate\Http\Request;
+
 class AuthUserController extends Controller
 {
     protected $authUserInterface;
@@ -24,9 +26,16 @@ class AuthUserController extends Controller
     {
         $data = $this->authUserInterface->login($request);
         if ($data) {
-            return true;
-            // return redirect()->route('user.dashboard');
+            if (Auth::user('user')->is_creator == 1) {
+
+                return redirect()->route('creator.dashboard');
+            } else {
+
+                return redirect()->route('client.dashboard');
+            }
+
         }
+        toastr()->error(__('messages.login_failed'));
         return redirect()->route('login');
 
     }

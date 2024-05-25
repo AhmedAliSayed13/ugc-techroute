@@ -14,6 +14,7 @@ class AuthUserRepository implements AuthUserInterface
         if (Auth::guard('web')->attempt($request->only('email', 'password'))) {
             return true;
         }
+        
         return false;
 
     }

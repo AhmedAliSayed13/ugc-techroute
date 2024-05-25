@@ -12,6 +12,15 @@ use App\Repositories\admin\role\RoleAdminRepository;
 use App\Repositories\user\auth\AuthUserInterface;
 use App\Repositories\user\auth\AuthUserRepository;
 
+
+// creator
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
+
+// client
+use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
+use App\Repositories\user\client\dashboard\DashboardClientUserRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -52,6 +61,17 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             AuthUserInterface::class,
             AuthUserRepository::class
+        );
+        //Creator
+        $this->app->bind(
+            DashboardCreatorUserInterface::class,
+            DashboardCreatorUserRepository::class
+        );
+
+        //Client
+        $this->app->bind(
+            DashboardClientUserInterface::class,
+            DashboardClientUserRepository::class
         );
 
 
