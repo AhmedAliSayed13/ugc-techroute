@@ -5,7 +5,7 @@
         <ul class="nav navbar-nav">
             <li class="nav-item"><a class="navbar-brand"
                     href="{{asset('html/rtl/horizontal-menu-template/index.html')}}"><span class="brand-logo">
-                        <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        {{-- <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                             <defs>
                                 <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%"
@@ -40,7 +40,9 @@
                                 </g>
                             </g>
                         </svg></span>
-                    <h2 class="brand-text mb-0">Vuexy</h2>
+                    <h2 class="brand-text mb-0">Vuexy</h2> --}}
+                    <img src="{{asset('users-asset/images/logo/logo-2.png')}}" alt="logo"
+                        style="max-width: 100px!important">
                 </a></li>
         </ul>
     </div>
@@ -316,7 +318,8 @@
                         Settings</a><a class="dropdown-item" href="page-pricing.html"><i class="me-50"
                             data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="page-faq.html"><i
                             class="me-50" data-feather="help-circle"></i> FAQ</a>
-                            <a class="dropdown-item" href="{{route('user.logout')}}"><i class="me-50" data-feather="power"></i> Logout</a>
+                    <a class="dropdown-item" href="{{route('user.logout')}}"><i class="me-50" data-feather="power"></i>
+                        Logout</a>
                 </div>
             </li>
         </ul>

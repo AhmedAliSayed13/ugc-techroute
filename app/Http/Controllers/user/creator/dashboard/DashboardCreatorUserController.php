@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user\creator\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\auth\LoginRequest;
+use App\Http\Requests\user\auth\RegisterCreatorRequest;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,19 @@ class DashboardCreatorUserController extends Controller
     {
         $data = $this->dashboardCreatorUserInterface->dashboard();
         return view($this->path . 'index', compact($data));
-        // return 'asd';
+    }
+    public function ShowRegister()
+    {
+        $data = $this->dashboardCreatorUserInterface->ShowRegister();
+        return view($this->path . 'register', compact($data));
+    }
+    public function register(RegisterCreatorRequest $request)
+    {
+        $data = $this->dashboardCreatorUserInterface->register($request);
+        if ($data) {
+            return redirect()->route('creator.dashboard');
+        }
+        return redirect()->route('creator.register');
     }
 
 }
