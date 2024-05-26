@@ -36,13 +36,17 @@ class AuthUserController extends Controller
 
         }
         toastr()->error(__('messages.login_failed'));
-        return redirect()->route('login');
+        return redirect()->route('user.login');
 
     }
+
     public function logout(Request $request)
     {
         $data = $this->authUserInterface->logout($request);
 
         return redirect()->route('user.login');
     }
+
+
+
 }

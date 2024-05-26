@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-textdirection="rtl">
+<html class="loading" lang="en" data-textdirection="rtl">
 <!-- BEGIN: Head-->
 
 <head>
@@ -39,7 +39,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-rtl.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
     <!-- END: Custom CSS-->
 
 </head>
@@ -59,63 +59,68 @@
             <div class="content-body">
                 <div class="auth-wrapper auth-basic px-2">
                     <div class="auth-inner my-2">
-                        <!-- Login basic -->
+                        <!-- Register basic -->
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="{{route('user.login')}}" class="brand-logo">
                                     <img src="{{asset('users-asset/images/logo/logo-2.png')}}" width="200px" alt="logo">
                                 </a>
-                                <h4 class="card-title mb-1">{{__('messages.welcomeMessage')}}</h4>
-                                <p class="card-text mb-2">{{__('messages.welcomeDescribe')}}</p>
 
-                                <form class="auth-login-form mt-2" action="{{route('user.login')}}" method="POST">
+                                <h4 class="card-title mb-1">{{__('messages.adventure_starts_here')}}</h4>
+                                <p class="card-text mb-2">{{__('messages.registerDescribtions')}}</p>
+
+                                <form class="auth-register-form mt-2" action="{{route('client.register')}}"
+                                    method="POST">
                                     @csrf
                                     <div class="mb-1">
-                                        <label for="login-email" class="form-label">{{__('messages.email')}}</label>
-                                        <input type="text" class="form-control" id="login-email" name="email"
-                                            placeholder="john@example.com" aria-describedby="login-email" tabindex="1"
-                                            autofocus />
+                                        <label for="name" class="form-label">{{__('messages.name')}}</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="johndoe" aria-describedby="name" tabindex="1" autofocus required />
+                                        @error('name')
+                                        <span  class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="email" class="form-label">{{__('messages.email')}}</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="john@example.com" aria-describedby="email" tabindex="2" required />
                                         @error('email')
-
-                                        <span id="register-username-error" class="error">{{ $message }}</span>
+                                        <span  class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
 
                                     <div class="mb-1">
-                                        <div class="d-flex justify-content-between">
-                                            <label class="form-label"
-                                                for="login-password">{{__('messages.password')}}</label>
-                                            <a href="auth-forgot-password-basic.html">
-                                                <small>{{__('messages.forgetPassword')}}</small>
-                                            </a>
-                                        </div>
+                                        <label for="password" class="form-label">{{__('messages.password')}}</label>
+
                                         <div class="input-group input-group-merge form-password-toggle">
-                                            <input type="password" class="form-control form-control-merge"
-                                                id="login-password" name="password" tabindex="2"
-                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                                aria-describedby="login-password" />
+                                            <input type="password" class="form-control form-control-merge" id="password"
+                                                name="password"
+                                                aria-describedby="password" tabindex="3"  required />
                                             <span class="input-group-text cursor-pointer"><i
                                                     data-feather="eye"></i></span>
-                                            @error('password')
-                                            <span id="register-username-error" class="error">{{ $message }}</span>
-                                            @enderror
                                         </div>
+                                        @error('password')
+                                        <span  class="error">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-1">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="remember-me"
-                                                tabindex="3" />
-                                            <label class="form-check-label" for="remember-me">
-                                                {{__('messages.forgetPassword')}} </label>
+                                            <input class="form-check-input" type="checkbox" id="register-privacy-policy"
+                                                tabindex="4" required />
+                                            <label class="form-check-label" for="register-privacy-policy">
+                                                {{__('messages.IAgreeTo')}} <a
+                                                    href="#">{{__('messages.PrivacyPolicy&Terms')}}</a>
+                                            </label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100" tabindex="4">{{__('messages.login')}}</button>
+                                    <button class="btn btn-primary w-100"
+                                        tabindex="5">{{__('messages.SignUp')}}</button>
                                 </form>
 
                                 <p class="text-center mt-2">
-                                    <span>{{__('messages.NewPlatform')}}</span>
-                                    <a href="#">
-                                        <span> {{__('messages.CreateAccount')}}</span>
+                                    <span>{{__('messages.AlreadyHaveAnAccount?')}}</span>
+                                    <a href="{{route('user.login')}}">
+                                        <span>{{__('messages.SignInInstead')}}</span>
                                     </a>
                                 </p>
 
@@ -139,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /Login basic -->
+                        <!-- /Register basic -->
                     </div>
                 </div>
 
@@ -163,7 +168,7 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{asset('users-asset/js/scripts/pages/auth-login.js')}}"></script>
+    <script src="{{asset('users-asset/js/scripts/pages/auth-register.js')}}"></script>
     <!-- END: Page JS-->
 
     <script>

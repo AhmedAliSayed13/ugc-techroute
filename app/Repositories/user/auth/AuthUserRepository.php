@@ -14,13 +14,13 @@ class AuthUserRepository implements AuthUserInterface
         if (Auth::guard('web')->attempt($request->only('email', 'password'))) {
             return true;
         }
-        
+
         return false;
 
     }
     public function logout($request): bool
     {
-        Auth::guard('user')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return true;
