@@ -28,9 +28,9 @@ class UserAdminRepository implements UserAdminInterface
     public function creatorCreate(): array
     {
 
-        $permission = Permission::get();
+
         $data = array(
-            'permission' => $permission,
+
         );
         // $data = (object) collect($data)->toArray();
         return $data;
@@ -45,6 +45,35 @@ class UserAdminRepository implements UserAdminInterface
                 'active' => $request->input('active'),
                 'password' => Hash::make($request->input('password')),
                 'is_creator' => 1,
+            ]);
+            toastr()->success('Item Has Been Saved Successfully');
+            return true;
+
+        } catch (\Exception $th) {
+            toastr()->error($th->getMessage());
+            return false;
+        }
+    }
+    public function clientCreate(): array
+    {
+
+
+        $data = array(
+
+        );
+        // $data = (object) collect($data)->toArray();
+        return $data;
+    }
+    public function clientStore($request): bool
+    {
+        try {
+            $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'active' => $request->input('active'),
+                'password' => Hash::make($request->input('password')),
+                'is_creator' => 0,
             ]);
             toastr()->success('Item Has Been Saved Successfully');
             return true;

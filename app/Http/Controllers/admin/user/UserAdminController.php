@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\user\StoreCreatorRequest;
+use App\Http\Requests\admin\user\StoreClientRequest;
 use App\Http\Requests\admin\user\UpdateRequest;
 use App\Models\User;
 use App\Repositories\admin\user\UserAdminInterface;
@@ -30,6 +31,19 @@ class UserAdminController extends Controller
     public function creatorStore(StoreCreatorRequest $request)
     {
         $data = $this->userAdminInterface->creatorStore($request);
+        if ($data) {
+            return redirect()->route('admin.users.index');
+        }
+        return back();
+    }
+    public function clientCreate()
+    {
+        $data = $this->userAdminInterface->clientCreate();
+        return view($this->path . 'client_create', compact('data'));
+    }
+    public function clientStore(StoreClientRequest $request)
+    {
+        $data = $this->userAdminInterface->clientStore($request);
         if ($data) {
             return redirect()->route('admin.users.index');
         }

@@ -82,6 +82,9 @@
                                 <a href="{{route('admin.users.creator.create')}}">Create Creator </a>
                             </li>
                             <li>
+                                <a href="{{route('admin.users.client.create')}}">Create Client </a>
+                            </li>
+                            <li>
                                 <a href="{{route('admin.users.index')}}">List Users</a>
                             </li>
 

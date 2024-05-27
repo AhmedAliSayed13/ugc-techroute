@@ -15,7 +15,7 @@ Route::resource('users', UserAdminController::class);
 Route::get('users/creator/create',[UserAdminController::class,'creatorCreate'])->name('users.creator.create');
 Route::post('users/creator/create',[UserAdminController::class,'creatorStore'])->name('users.creator.create');
 
-Route::get('users/client/create',[UserAdminController::class,'clientCreate']);
-Route::post('users/client/create',[UserAdminController::class,'clientStore']);
+Route::get('users/client/create',[UserAdminController::class,'clientCreate'])->name('users.client.create');
+Route::post('users/client/create',[UserAdminController::class,'clientStore'])->name('users.client.create');
 
 

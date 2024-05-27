@@ -53,7 +53,7 @@ class User extends Authenticatable
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'Type' => $this->is_admin ? 'creator' : 'client',
+            'Type' => $this->is_creator ? 'creator' : 'client',
             "Active" => $this->is_active ? 'Active' : 'Inactive',
         );
     }

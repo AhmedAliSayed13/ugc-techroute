@@ -7,7 +7,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <x-breadcrumb :section="'Users'" :sectionUrl="route('admin.users.index')" :title="'Create Creator'" />
+    <x-breadcrumb :section="'Users'" :sectionUrl="route('admin.users.index')" :title="'Create Client'" />
 
 
     <div class="row">
@@ -18,7 +18,7 @@
 
 
 
-                        <form action="{{route('admin.users.creator.create')}}" method="post">
+                        <form action="{{route('admin.users.client.create')}}" method="post">
                             @csrf
 
                             <x-FormInput :type="'text'" :title="'name'" :name="'name'" :width="'6'" />
