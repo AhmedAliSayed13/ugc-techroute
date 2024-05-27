@@ -7,6 +7,8 @@ use App\Repositories\admin\dashboard\DashboardAdminInterface;
 use App\Repositories\admin\dashboard\DashboardAdminRepository;
 use App\Repositories\admin\role\RoleAdminInterface;
 use App\Repositories\admin\role\RoleAdminRepository;
+use App\Repositories\admin\user\UserAdminInterface;
+use App\Repositories\admin\user\UserAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -52,9 +54,15 @@ class RepositoryServiceProvider extends ServiceProvider
             DashboardAdminInterface::class,
             DashboardAdminRepository::class
         );
+        // role
         $this->app->bind(
             RoleAdminInterface::class,
             RoleAdminRepository::class
+        );
+        // user
+        $this->app->bind(
+            UserAdminInterface::class,
+            UserAdminRepository::class
         );
 
         //User

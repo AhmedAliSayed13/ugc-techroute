@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('layouts.style')
+        @include('admin.layouts.style')
         @yield('style')
     </head>
-    
+
     <!-- body start -->
     <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-        @include('layouts.notification')
+        @include('admin.layouts.notification')
         <!-- Begin page -->
         <div id="wrapper">
 
             <!-- Topbar Start -->
-            @include('layouts.top_bar')
+            @include('admin.layouts.top_bar')
             <!-- end Topbar -->
 
             <!-- ========== Left Sidebar Start ========== -->
-            @include('layouts.sidebar')
+            @include('admin.layouts.sidebar')
             <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
@@ -27,13 +27,13 @@
                 <div class="content">
 
                     <!-- Start Content-->
-                    @yield('content') 
+                    @yield('content')
                     <!-- container -->
 
                 </div> <!-- content -->
 
                 <!-- Footer Start -->
-                @include('layouts.footer')
+                @include('admin.layouts.footer')
                 <!-- end Footer -->
 
             </div>
@@ -47,11 +47,12 @@
         <!-- END wrapper -->
 
         <!-- Right Sidebar -->
-        @include('layouts.right_bar')
+        @include('admin.layouts.right_bar')
         <!-- /Right-bar -->
 
         <!-- Right bar overlay-->
-        @include('layouts.script')
-        @yield('script') 
+        @include('admin.layouts.script')
+        
+        @yield('script')
     </body>
 </html>

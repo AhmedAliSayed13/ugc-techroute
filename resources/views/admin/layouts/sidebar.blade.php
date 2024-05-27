@@ -70,6 +70,24 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="#users" data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
+                        <span> Users </span>
+                    </a>
+                    <div class="collapse" id="users">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{route('admin.users.creator.create')}}">Create Creator </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.users.index')}}">List Users</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
             </ul>
