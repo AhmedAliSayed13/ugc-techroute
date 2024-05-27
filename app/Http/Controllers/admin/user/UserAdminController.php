@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\admin\user;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\user\StoreCreatorRequest;
 use App\Http\Requests\admin\user\StoreClientRequest;
-use App\Http\Requests\admin\user\UpdateRequest;
+use App\Http\Requests\admin\user\StoreCreatorRequest;
+use App\Http\Requests\admin\user\UpdateClientRequest;
+use App\Http\Requests\admin\user\UpdateCreatorRequest;
 use App\Models\User;
 use App\Repositories\admin\user\UserAdminInterface;
 
@@ -49,18 +50,28 @@ class UserAdminController extends Controller
         }
         return back();
     }
-    public function edit($id)
+    public function creatorEdit($id)
     {
-        $data = $this->userAdminInterface->edit($id);
-        return view($this->path . 'edit', compact('data'));
+        $data = $this->userAdminInterface->creatorEdit($id);
+        return view($this->path . 'creator_edit', compact('data'));
     }
-    public function update(UpdateRequest $request, User $user)
+    public function creatorUpdate(UpdateCreatorRequest $request, $id)
     {
 
-        $data = $this->userAdminInterface->update($request, $user);
-        if ($data) {
-            return redirect()->route('admin.users.index');
-        }
+        $data = $this->userAdminInterface->creatorUpdate($request, $id);
+
+        return back();
+    }
+    public function clientEdit($id)
+    {
+        $data = $this->userAdminInterface->clientEdit($id);
+        return view($this->path . 'client_edit', compact('data'));
+    }
+    public function clientUpdate(UpdateClientRequest $request, $id)
+    {
+
+        $data = $this->userAdminInterface->clientUpdate($request, $id);
+
         return back();
     }
     public function destroy($id)

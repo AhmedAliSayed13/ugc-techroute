@@ -42,7 +42,7 @@
                                             <td>
                                                 <x-button_acttion :item="$user" :id="$user->id"
                                                     :show="route('admin.users.show',$user->id)"
-                                                    :edit="route('admin.users.edit',$user->id)"
+                                                    :edit="$user->is_creator?route('admin.users.creator.edit',$user->id):route('admin.users.client.edit',$user->id)"
                                                     :delete="route('admin.users.destroy',$user->id)" />
                                             </td>
                                         </tr>

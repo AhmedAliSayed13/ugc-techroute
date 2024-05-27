@@ -2,8 +2,8 @@
 
 use App\Models\User;
 use DB;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
+
 class UserAdminRepository implements UserAdminInterface
 {
 
@@ -27,7 +27,6 @@ class UserAdminRepository implements UserAdminInterface
     }
     public function creatorCreate(): array
     {
-
 
         $data = array(
 
@@ -57,7 +56,6 @@ class UserAdminRepository implements UserAdminInterface
     public function clientCreate(): array
     {
 
-
         $data = array(
 
         );
@@ -84,31 +82,53 @@ class UserAdminRepository implements UserAdminInterface
         }
     }
 
-    public function edit($id): array
+    public function creatorEdit($id): array
     {
         $user = User::find($id);
-        $permission = Permission::get();
-        $userPermissions = DB::table("user_has_permissions")->where("user_has_permissions.user_id", $id)
-            ->pluck('user_has_permissions.permission_id', 'user_has_permissions.permission_id')
-            ->all();
 
         $data = array(
             "user" => $user,
-            "permission" => $permission,
-            "userPermissions" => $userPermissions,
 
         );
         return $data;
     }
-    public function update($request, $user): bool
+    public function creatorUpdate($request, $id): bool
     {
         try {
-            $user = User::find($user->id);
+
+            $user = User::find($id);
             $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->phone = $request->input('phone');
+            $user->is_active = $request->has('is_active') ? 1 : 0;
             $user->save();
+            toastr()->success('Item Has Been Updated Successfully');
+            return true;
+        } catch (\Exception $th) {
+            toastr()->error($th->getMessage());
+            return false;
+        }
+    }
+    public function clientEdit($id): array
+    {
+        $user = User::find($id);
 
-            $user->syncPermissions($request->input('permission'));
+        $data = array(
+            "user" => $user,
 
+        );
+        return $data;
+    }
+    public function clientUpdate($request, $id): bool
+    {
+        try {
+
+            $user = User::find($id);
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->phone = $request->input('phone');
+            $user->is_active = $request->has('is_active') ? 1 : 0;
+            $user->save();
             toastr()->success('Item Has Been Updated Successfully');
             return true;
         } catch (\Exception $th) {
