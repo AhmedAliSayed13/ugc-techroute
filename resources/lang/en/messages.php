@@ -197,7 +197,7 @@ return [
     'You_must_be_a_client_to_access_this_section' => 'يجب أن تكون عميلًا للوصول إلى هذا القسم.',
     'Your_account_is_not_active' => 'حسابك غير نشط.',
     'You_must_be_a_creator_to_access_this_section' => 'يجب أن تكون منشئ محتوى للوصول إلى هذا القسم.',
-    'ass' => 'asd',
+    'user' => 'مستخدم',
     'ass' => 'asd',
 
 ];

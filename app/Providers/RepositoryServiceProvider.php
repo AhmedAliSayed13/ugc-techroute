@@ -14,15 +14,15 @@ use App\Repositories\admin\user\UserAdminRepository;
 use App\Repositories\user\auth\AuthUserInterface;
 use App\Repositories\user\auth\AuthUserRepository;
 
-
 // creator
-use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
-use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
-
-// client
 use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
 use App\Repositories\user\client\dashboard\DashboardClientUserRepository;
 
+// client
+use App\Repositories\user\client\profile\ProfileClientUserInterface;
+use App\Repositories\user\client\profile\ProfileClientUserRepository;
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -81,7 +81,11 @@ class RepositoryServiceProvider extends ServiceProvider
             DashboardClientUserInterface::class,
             DashboardClientUserRepository::class
         );
-
+        // Profile
+        $this->app->bind(
+            ProfileClientUserInterface::class,
+            ProfileClientUserRepository::class
+        );
 
     }
 }

@@ -1,4 +1,4 @@
-@extends('user.layouts.master')
+@extends('user.creator.layouts.master')
 @section('content')
 <div class="container-fluid mt-4">
     <div class="row">

@@ -18,6 +18,9 @@ use App\View\Components\admin\FormTextarea as FormTextarea;
 use App\View\Components\admin\Badge as Badge;
 use App\View\Components\admin\FormCheckbox as FormCheckbox;
 
+// user
+use App\View\Components\user\breadcrumb_user as breadcrumb_user;
+
 
 
 
@@ -43,8 +46,8 @@ class ComponentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
-        
+
+
         Blade::component('breadcrumb', breadcrumb::class);
         Blade::component('search', search::class);
         Blade::component('button_acttion', button_acttion::class);
@@ -58,7 +61,10 @@ class ComponentServiceProvider extends ServiceProvider
         Blade::component('FormTextarea', FormTextarea::class);
         Blade::component('badge', Badge::class);
         Blade::component('FormCheckbox', FormCheckbox::class);
-        
-        
+
+
+        Blade::component('breadcrumb_user', breadcrumb_user::class);
+
+
     }
 }

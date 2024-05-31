@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="rtl">
 <!-- BEGIN: Head-->
-
 <head>
-
-    @include('user.layouts.style')
+    @include('user.creator.layouts.style')
     @yield('style')
-
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-
 <body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover"
     data-menu="horizontal-menu" data-col="">
 
     <!-- BEGIN: Header-->
-    @include('user.layouts.header')
+    @include('user.creator.layouts.header')
     <!-- END: Header-->
 
-
     <!-- BEGIN: Main Menu-->
-    @include('user.layouts.menu')
+    @include('user.creator.layouts.menu')
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
@@ -75,13 +70,11 @@
     <!-- END: Content-->
 
     <!-- BEGIN: Footer-->
-    @include('user.layouts.footer')
+    @include('user.creator.layouts.footer')
 
-
-    @include('user.layouts.script')
+    @include('user.creator.layouts.script')
     @yield('script')
 
 </body>
 <!-- END: Body-->
-
 </html>
