@@ -21,7 +21,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        
+        // \App\Http\Middleware\AdminAuth::class,
+        // \App\Http\Middleware\ClientAuth::class,
+        // \App\Http\Middleware\CreatorAuth::class,
 
     ];
 
@@ -39,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
         ],
 
         'api' => [
@@ -70,5 +73,9 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'checkTokenPermission' => \App\Http\Middleware\checkTokenPermission::class,
+        'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+        'ClientAuth' => \App\Http\Middleware\ClientAuth::class,
+        'CreatorAuth' => \App\Http\Middleware\CreatorAuth::class,
+        'UserAuth' => \App\Http\Middleware\UserAuth::class,
     ];
 }

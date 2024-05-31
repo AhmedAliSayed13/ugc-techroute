@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <x-breadcrumb :section="'Roles'" :sectionUrl="route('admin.users.index')" :title="'Edit Roles'" />
+    <x-breadcrumb :section="'Users'" :sectionUrl="route('admin.users.index')" :title="'Edit Users'" />
 
 
     <div class="row">

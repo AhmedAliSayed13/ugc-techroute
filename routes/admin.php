@@ -4,8 +4,8 @@ use App\Http\Controllers\admin\dashboard\DashboardAdminController;
 use App\Http\Controllers\admin\role\RoleAdminController;
 use App\Http\Controllers\admin\user\UserAdminController;
 
-Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login');
-Route::post('login', [AuthAdminController::class, 'login']);
+Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login')->withoutMiddleware('AdminAuth');
+Route::post('login', [AuthAdminController::class, 'login'])->name('login')->withoutMiddleware('AdminAuth');
 Route::post('logout', [AuthAdminController::class, 'logout'])->name('logout');
 
 Route::get('dashboard', [DashboardAdminController::class, 'ShowDashboard'])->name('dashboard');
