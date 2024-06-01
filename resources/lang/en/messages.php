@@ -214,7 +214,7 @@ return [
     'oldPassword' => 'كلمة المرور القديمة',
     'newPassword' => 'كلمة المرور الجديدة',
     'confirmPassword' => 'تأكيد كلمة المرور',
-    'myaccount1' => 'myaccount1',
+    'creator' => 'منشئ محتوى',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',

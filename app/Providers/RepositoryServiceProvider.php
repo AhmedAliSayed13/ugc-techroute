@@ -15,14 +15,16 @@ use App\Repositories\user\auth\AuthUserInterface;
 use App\Repositories\user\auth\AuthUserRepository;
 
 // creator
-use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
-use App\Repositories\user\client\dashboard\DashboardClientUserRepository;
-
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
+use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
+use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
+use App\Repositories\user\creator\profile\ProfileCreatorUserRepository;
 // client
 use App\Repositories\user\client\profile\ProfileClientUserInterface;
 use App\Repositories\user\client\profile\ProfileClientUserRepository;
-use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
-use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
+use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
+use App\Repositories\user\client\dashboard\DashboardClientUserRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -70,13 +72,17 @@ class RepositoryServiceProvider extends ServiceProvider
             AuthUserInterface::class,
             AuthUserRepository::class
         );
-        //Creator
+        //Creator-----------------------------------------------
         $this->app->bind(
             DashboardCreatorUserInterface::class,
             DashboardCreatorUserRepository::class
         );
-
-        //Client
+            // Profile
+            $this->app->bind(
+                ProfileCreatorUserInterface::class,
+                ProfileCreatorUserRepository::class
+            );
+        //Client------------------------------------------------
         $this->app->bind(
             DashboardClientUserInterface::class,
             DashboardClientUserRepository::class

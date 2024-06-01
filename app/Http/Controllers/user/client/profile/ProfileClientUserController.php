@@ -4,7 +4,9 @@ namespace App\Http\Controllers\user\client\profile;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\user\client\profile\ProfileClientUserInterface;
+use App\Http\Requests\user\client\profile\ProfileClientRequest;
 use App\Http\Requests\user\client\profile\ChangePasswordClientRequest;
+
 class ProfileClientUserController extends Controller
 {
     protected $profileClientUserInterface;
