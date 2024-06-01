@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+header,
+a,li,label,input,textarea,select,button{
+    font-family: 'El Messiri', sans-serif !important;
+}
+body{
+  font-family: 'El Messiri', sans-serif !important;
+}
+.invalid-feedback{
+    display: block!important;
+}

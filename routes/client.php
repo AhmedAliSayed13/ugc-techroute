@@ -6,6 +6,7 @@ Route::get('dashboard', [DashboardClientUserController::class, 'dashboard'])->na
 Route::get('register', [DashboardClientUserController::class, 'ShowRegister'])->name('register');
 Route::post('register', [DashboardClientUserController::class, 'register'])->name('register');
 
-
 Route::get('profile', [ProfileClientUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileClientUserController::class, 'profile'])->name('profile');
+Route::get('change-password', [ProfileClientUserController::class, 'showChangePassword'])->name('change.password');
+Route::post('change-password', [ProfileClientUserController::class, 'changePassword'])->name('change.password');

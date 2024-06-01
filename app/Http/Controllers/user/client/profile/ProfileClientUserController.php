@@ -4,7 +4,7 @@ namespace App\Http\Controllers\user\client\profile;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\user\client\profile\ProfileClientUserInterface;
-
+use App\Http\Requests\user\client\profile\ChangePasswordClientRequest;
 class ProfileClientUserController extends Controller
 {
     protected $profileClientUserInterface;
@@ -25,14 +25,20 @@ class ProfileClientUserController extends Controller
         $data = $this->profileClientUserInterface->showProfile();
         return view($this->path . 'index', compact($data));
     }
-    public function register(RegisterClientRequest $request)
+    public function profile(ProfileClientRequest $request)
     {
-        $data = $this->profileClientUserInterface->register($request);
-        if ($data) {
-            return redirect()->route('client.profile');
-        }
-        return redirect()->route('client.register');
-
+        $data = $this->profileClientUserInterface->profile($request);
+        return back();
+    }
+    public function showChangePassword()
+    {
+        $data = $this->profileClientUserInterface->showChangePassword();
+        return view($this->path . 'changePassword', compact($data));
+    }
+    public function changePassword(ChangePasswordClientRequest $request)
+    {
+        $data = $this->profileClientUserInterface->changePassword($request);
+        return back();
     }
 
 }
