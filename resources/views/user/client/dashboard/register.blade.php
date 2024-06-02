@@ -41,7 +41,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-rtl.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
     <!-- END: Custom CSS-->
-
+    @if (App::getLocale() === 'en')
+    <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
+    @endif
 </head>
 <!-- END: Head-->
 
@@ -75,17 +77,26 @@
                                     <div class="mb-1">
                                         <label for="name" class="form-label">{{__('messages.name')}}</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="johndoe" aria-describedby="name" tabindex="1" autofocus required />
+                                            value="{{old('name')}}" aria-describedby="name" tabindex="1" autofocus
+                                            required />
                                         @error('name')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label for="email" class="form-label">{{__('messages.email')}}</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="john@example.com" aria-describedby="email" tabindex="2" required />
+                                            value="{{old('email')}}" aria-describedby="email" tabindex="2" required />
                                         @error('email')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="phone" class="form-label">{{__('messages.phone')}}</label>
+                                        <input type="text" class="form-control" id="phone" name="phone"
+                                            value="{{old('phone')}}" aria-describedby="phone" tabindex="2" required />
+                                        @error('phone')
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -94,13 +105,12 @@
 
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge" id="password"
-                                                name="password"
-                                                aria-describedby="password" tabindex="3"  required />
+                                                name="password" aria-describedby="password" tabindex="3" required />
                                             <span class="input-group-text cursor-pointer"><i
                                                     data-feather="eye"></i></span>
                                         </div>
                                         @error('password')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-1">

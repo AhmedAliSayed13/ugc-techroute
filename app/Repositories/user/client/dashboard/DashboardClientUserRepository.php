@@ -22,6 +22,9 @@ class DashboardClientUserRepository implements DashboardClientUserInterface
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'is_creator' => 0,
+            'is_active' => 1,
             'password' => Hash::make($request->password),
         ]);
         Auth::login($user);

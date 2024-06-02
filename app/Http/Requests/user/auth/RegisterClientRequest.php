@@ -25,6 +25,7 @@ class RegisterClientRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'phone' => 'required|unique:users,phone',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
         ];
