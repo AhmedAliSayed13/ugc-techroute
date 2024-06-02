@@ -1,7 +1,10 @@
 <?php namespace App\Repositories\user\creator\dashboard;
+
+use App\Models\Country;
+use App\Models\CreatorInfo;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 {
     public function dashboard(): array
@@ -12,7 +15,9 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
     }
     public function ShowRegister(): array
     {
+        $countries = Country::all();
         $data = array(
+            'countries' => $countries,
         );
         return $data;
     }
@@ -21,11 +26,24 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'is_creator' => 1,
+            'is_active' => 0,
             'password' => Hash::make($request->password),
-
         ]);
-        Auth::login($user);
+
+        if ($user) {
+            CreatorInfo::create([
+                'user_id' => $user->id,
+                'country_id' => $request->country_id,
+                'birthdate' => $request->birthdate,
+                'gender' => $request->gender
+            ]);
+            toastr()->success(__('messages.register_successfully'), __('messages.successOperation'));
+        }else{
+            toastr()->error(__('messages.register_failed'), __('messages.failedOperation'));
+        }
+
         return $user;
     }
 }

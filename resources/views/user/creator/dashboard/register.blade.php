@@ -42,6 +42,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
     <!-- END: Custom CSS-->
 
+    @if (App::getLocale() === 'en')
+    <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
+    @endif
 </head>
 <!-- END: Head-->
 
@@ -75,17 +78,58 @@
                                     <div class="mb-1">
                                         <label for="name" class="form-label">{{__('messages.name')}}</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="johndoe" aria-describedby="name" tabindex="1" autofocus required />
+                                            aria-describedby="name" tabindex="1" autofocus value="{{old('name')}}"
+                                            required />
                                         @error('name')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <label for="phone" class="form-label">{{__('messages.phone')}}</label>
+                                        <input type="text" class="form-control" id="phone" name="phone"
+                                            aria-describedby="phone" tabindex="2" value="{{old('phone')}}" required />
+                                        @error('phone')
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-1">
                                         <label for="email" class="form-label">{{__('messages.email')}}</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="john@example.com" aria-describedby="email" tabindex="2" required />
+                                            value="{{old('email')}}" aria-describedby="email" tabindex="2" required />
                                         @error('email')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="country_id" class="form-label">{{__('messages.country')}}</label>
+                                        <select class="form-select" id="country_id" name="country_id">
+                                            <option>{{__('messages.selectOption')}}</option>
+                                            @foreach($data['countries'] as $country)
+                                            <option value="{{$country->id}}">{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('country_id')
+                                        <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="gender" class="form-label">{{__('messages.gender')}}</label>
+                                        <select class="form-select" id="gender" name="gender">
+                                            <option>{{__('messages.selectOption')}}</option>
+                                            <option value="ذكر">ذكر</option>
+                                            <option value="انثي">انثي</option>
+                                        </select>
+                                        @error('gender')
+                                        <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="birthdate" class="form-label">{{__('messages.birthdate')}}</label>
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate"
+                                            value="{{old('birthdate')}}" tabindex="3">
+                                        @error('birthdate')
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -94,13 +138,12 @@
 
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge" id="password"
-                                                name="password"
-                                                aria-describedby="password" tabindex="3"  required />
+                                                name="password" aria-describedby="password" tabindex="3" required />
                                             <span class="input-group-text cursor-pointer"><i
                                                     data-feather="eye"></i></span>
                                         </div>
                                         @error('password')
-                                        <span  class="error">{{ $message }}</span>
+                                        <span class="error">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-1">

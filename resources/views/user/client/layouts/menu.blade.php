@@ -38,8 +38,12 @@
             <!-- include ../../../includes/mixins-->
             <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="dropdown nav-item {{checkActiveRoute('client.dashboard')}}" >
-                    <a class=" nav-link d-flex align-items-center" href="{{route('client.dashboard')}}" ><i data-feather="home">
+                   <a class=" nav-link d-flex align-items-center" href="{{route('client.dashboard')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.Dashboards')}}</span></a>
+                </li>
+                <li class="dropdown nav-item {{checkActiveRoute('client.search.creators')}}" >
+                   <a class=" nav-link d-flex align-items-center" href="{{route('client.search.creators')}}" ><i data-feather="users">
+                        </i><span data-i18n="Dashboards">{{__('messages.searchForCreators')}}</span></a>
                 </li>
 
                 {{-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Apps">Apps</span></a>

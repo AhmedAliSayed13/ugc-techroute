@@ -25,14 +25,11 @@ class DashboardCreatorUserController extends Controller
     public function ShowRegister()
     {
         $data = $this->dashboardCreatorUserInterface->ShowRegister();
-        return view($this->path . 'register', compact($data));
+        return view($this->path . 'register', compact('data'));
     }
     public function register(RegisterCreatorRequest $request)
     {
         $data = $this->dashboardCreatorUserInterface->register($request);
-        if ($data) {
-            return redirect()->route('creator.dashboard');
-        }
         return redirect()->route('creator.register');
     }
 

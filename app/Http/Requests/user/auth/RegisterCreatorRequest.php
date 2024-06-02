@@ -25,6 +25,10 @@ class RegisterCreatorRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'country_id' => 'required|integer',
+            'birthdate' => 'required|date',
+            'gender' => 'required',
+            'phone' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
         ];
