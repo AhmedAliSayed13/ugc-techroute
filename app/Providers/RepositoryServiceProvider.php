@@ -9,6 +9,8 @@ use App\Repositories\admin\role\RoleAdminInterface;
 use App\Repositories\admin\role\RoleAdminRepository;
 use App\Repositories\admin\user\UserAdminInterface;
 use App\Repositories\admin\user\UserAdminRepository;
+use App\Repositories\admin\showOption\ShowOptionAdminInterface;
+use App\Repositories\admin\showOption\ShowOptionAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -67,8 +69,13 @@ class RepositoryServiceProvider extends ServiceProvider
             UserAdminInterface::class,
             UserAdminRepository::class
         );
+        // ShowOption
+        $this->app->bind(
+            ShowOptionAdminInterface::class,
+            ShowOptionAdminRepository::class
+        );
 
-        //User
+        //AUTH
         $this->app->bind(
             AuthUserInterface::class,
             AuthUserRepository::class

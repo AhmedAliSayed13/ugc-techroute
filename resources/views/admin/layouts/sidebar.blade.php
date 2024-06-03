@@ -91,6 +91,25 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="#showOptions" data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
+                        <span> Show Options </span>
+                    </a>
+                    <div class="collapse" id="showOptions">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{route('admin.show-options.create')}}">Create Show Option </a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('admin.show-options.index')}}">List Show Options</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
             </ul>
