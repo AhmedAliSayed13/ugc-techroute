@@ -39,11 +39,19 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
                 'birthdate' => $request->birthdate,
                 'gender' => $request->gender
             ]);
-            toastr()->success(__('messages.register_successfully'), __('messages.successOperation'));
+            // toastr()->success(__('messages.register_successfully'), __('messages.successOperation'));
         }else{
             toastr()->error(__('messages.register_failed'), __('messages.failedOperation'));
         }
 
         return $user;
+    }
+    public function registerWelcome():array
+    {
+
+
+        $data=[];
+
+        return $data;
     }
 }

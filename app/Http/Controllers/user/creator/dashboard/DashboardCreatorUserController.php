@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\user\creator\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\user\auth\LoginRequest;
 use App\Http\Requests\user\auth\RegisterCreatorRequest;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
-use Illuminate\Http\Request;
 
 class DashboardCreatorUserController extends Controller
 {
@@ -30,7 +28,12 @@ class DashboardCreatorUserController extends Controller
     public function register(RegisterCreatorRequest $request)
     {
         $data = $this->dashboardCreatorUserInterface->register($request);
-        return redirect()->route('creator.register');
+        return redirect()->route('creator.register.welcome');
+    }
+    public function registerWelcome()
+    {
+        $data = $this->dashboardCreatorUserInterface->registerWelcome();
+        return view($this->path . 'register_welcome', compact('data'));
     }
 
 }

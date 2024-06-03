@@ -99,7 +99,7 @@
                 <!-- background Overlay when sidebar is shown  ends-->
 
                 <!-- E-commerce Search Bar Starts -->
-                <section id="ecommerce-searchbar" class="ecommerce-searchbar">
+                {{-- <section id="ecommerce-searchbar" class="ecommerce-searchbar">
                     <div class="row mt-1">
                         <div class="col-sm-12">
                             <div class="input-group input-group-merge">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> --}}
                 <!-- E-commerce Search Bar Ends -->
 
                 <!-- E-commerce Products Starts -->
@@ -140,7 +140,9 @@
                                 </div>
                                 <div>
                                     {{-- <h6 class="item-price"> {{$creator->price}}</h6> --}}
-                                    <h6 class="item-price"> {{__('messages.country')}}</h6>
+                                    <h6 class="item-price">
+                                        {{$creator->creatorInfo->country->name}}
+                                    </h6>
                                 </div>
                             </div>
                             <h6 class="item-name">
