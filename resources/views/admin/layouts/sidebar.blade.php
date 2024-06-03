@@ -110,6 +110,25 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="#LocationOptions" data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
+                        <span> Location Options </span>
+                    </a>
+                    <div class="collapse" id="LocationOptions">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{route('admin.location-options.create')}}">Create Location Option </a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('admin.location-options.index')}}">List Location Options</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
             </ul>

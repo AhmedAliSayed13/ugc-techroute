@@ -11,6 +11,8 @@ use App\Repositories\admin\user\UserAdminInterface;
 use App\Repositories\admin\user\UserAdminRepository;
 use App\Repositories\admin\showOption\ShowOptionAdminInterface;
 use App\Repositories\admin\showOption\ShowOptionAdminRepository;
+use App\Repositories\admin\locationOption\LocationOptionAdminInterface;
+use App\Repositories\admin\locationOption\LocationOptionAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -73,6 +75,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ShowOptionAdminInterface::class,
             ShowOptionAdminRepository::class
+        );
+
+        // LocationOption
+        $this->app->bind(
+            LocationOptionAdminInterface::class,
+            LocationOptionAdminRepository::class
         );
 
         //AUTH

@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\dashboard\DashboardAdminController;
 use App\Http\Controllers\admin\role\RoleAdminController;
 use App\Http\Controllers\admin\user\UserAdminController;
 use App\Http\Controllers\admin\showOption\ShowOptionAdminController;
+use App\Http\Controllers\admin\locationOption\LocationOptionAdminController;
 
 Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login')->withoutMiddleware('AdminAuth');
 Route::post('login', [AuthAdminController::class, 'login'])->name('login')->withoutMiddleware('AdminAuth');
@@ -13,6 +14,7 @@ Route::get('dashboard', [DashboardAdminController::class, 'ShowDashboard'])->nam
 Route::resource('roles', RoleAdminController::class);
 Route::resource('users', UserAdminController::class);
 Route::resource('show-options', ShowOptionAdminController::class);
+Route::resource('location-options', LocationOptionAdminController::class);
 
 Route::get('users/creator/create', [UserAdminController::class, 'creatorCreate'])->name('users.creator.create');
 Route::post('users/creator/create', [UserAdminController::class, 'creatorStore'])->name('users.creator.create');
