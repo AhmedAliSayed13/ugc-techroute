@@ -30,6 +30,11 @@ use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
 use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
 use App\Repositories\user\creator\profile\ProfileCreatorUserRepository;
+
+// website
+use App\Repositories\website\pages\PagesInterface;
+use App\Repositories\website\pages\PagesRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -112,6 +117,13 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SearchClientUserInterface::class,
             SearchClientUserRepository::class
+        );
+
+        // --------------------------------------------------website
+        // pages
+        $this->app->bind(
+            PagesInterface::class,
+            PagesRepository::class
         );
 
     }

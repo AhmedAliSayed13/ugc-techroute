@@ -1,0 +1,68 @@
+.custom-menu {
+  margin-top: 10px;
+}
+.logo {
+  max-width: 70px !important;
+  margin-left: 20px;
+}
+.navbar-light .navbar-nav .active.nav-link {
+  background-color: transparent;
+  font-weight: bold;
+  color: #7367f0;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  font-size: 20px;
+}
+.home-div1 {
+  margin-top: 55px;
+  text-align: center;
+}
+.home-div1 header.header-ugc span {
+  background-size: 150% 150% !important;
+  background-repeat: no-repeat !important;
+  background: url(https://billo.app/wp-content/uploads/2023/09/bg-text.webp),
+    lightgray 0px -16.724px / 127.989% 173.104% no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home-div1 header.header-ugc {
+  font-size: 30px;
+  line-height: 50px;
+}
+.home-div1 p {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 24px;
+}
+.home-div1 a {
+  margin: auto;
+  border-radius: 25px;
+  padding: 15px 50px;
+}
+.home-div2 {
+  margin-top: 75px;
+}
+.slick-track {
+  display: flex !important;
+  height: 500px;
+}
+
+.slick-slide {
+  height: auto;
+  border-radius: 15px;
+}
+.home-div3 {
+  margin-top: 45px !important;
+}
+.home-div3 header {
+  font-size: 30px;
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+.home-div3 header span {
+  font-weight: 600;
+  display: block;
+}
