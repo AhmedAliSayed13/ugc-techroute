@@ -1,5 +1,8 @@
+body {
+  background-color: white !important;
+}
 .custom-menu {
-  margin-top: 10px;
+  padding-top: 10px;
 }
 .logo {
   max-width: 70px !important;
@@ -57,7 +60,7 @@
   margin-top: 45px !important;
 }
 .home-div3 header {
-  font-size: 30px;
+  font-size: x-large;
   margin-top: 20px;
   text-align: center;
   color: black;
@@ -65,4 +68,141 @@
 .home-div3 header span {
   font-weight: 600;
   display: block;
+  font-size: large;
+}
+
+.home-div3 .staticsic {
+  position: relative;
+  z-index: 10; /* Ensure this div is on top */
+  pointer-events: none; /* Disable interaction with images inside */
+  background-color: white; /* Optional: for visibility */
+}
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-container .swiper-slide img {
+  /* width: 300px; */
+  height: 120px;
+}
+.swiper-videos .swiper-slide video {
+  height: 408px;
+  border-radius: 19px;
+}
+.home-div4 {
+  background: linear-gradient(
+    177deg,
+    #f2f5f7 3.3%,
+    rgba(242, 245, 247, 0) 95.02%
+  );
+}
+.bg-grey {
+  background: linear-gradient(
+    177deg,
+    #f2f5f7 3.3%,
+    rgba(242, 245, 247, 0) 95.02%
+  );
+}
+.home-div4 header {
+  font-size: xx-large;
+  margin-top: 20px;
+  color: black;
+  padding-right: 20px;
+}
+.home-div4 .div-img {
+  text-align: center;
+}
+.home-div4 .div-img img {
+  width: 400px;
+  margin: auto;
+}
+.home-div4 .div-img header {
+  text-align: right !important;
+  margin-top: 20px;
+  font-size: x-large;
+}
+.home-div4 .div-img p {
+  text-align: right !important;
+  margin-top: 14px;
+  font-size: medium;
+}
+.home-div5 header {
+  font-size: xxx-large;
+  text-align: center;
+  margin-top: 20px;
+}
+.home-div5 {
+  text-align: center;
+}
+
+.home-div5 .home-div5-div-inner1 {
+  padding: 20px 40px;
+  border-radius: 20px;
+  text-align: right !important;
+}
+.home-div5 .home-div5-div-inner1 header {
+  font-size: x-large !important;
+  text-align: right !important;
+  color: black;
+  font-weight: 600;
+}
+.home-div5 .home-div5-div2 img {
+  width: 300px;
+}
+.card.accordion-item .accordion-button {
+  font-weight: 600;
+  font-size: large;
+  color: black;
+}
+.home-div6 header {
+  font-size: xx-large;
+  text-align: right;
+  margin-top: 20px;
+  color: black;
+  font-weight: bold;
+}
+.div-icon {
+  margin-top: 35px;
+}
+.div-icon .img-icon {
+  width: 80%;
+  margin: auto;
+}
+.div-icon-div-img {
+  text-align: center;
+}
+.div-icon-div-desc header {
+  font-size: x-large;
+  font-weight: 600;
+  color: black;
+}
+.div-icon-div-desc p {
+  font-size: medium;
+  margin-top: 10px;
+}
+.home-div7 .div-video {
+  width: 80%;
+  margin: auto;
+}
+.home-div7 .div-video video {
+  width: 300px;
+  border-radius: 20px;
+}
+.home-div7 header {
+  font-size: xx-large;
+  color: black;
+  font-weight: bold;
+}
+.home-div7 ol {
+  font-size: large;
+  color: black;
+  font-weight: bold;
+}
+.home-div7 ol li {
+  margin-top: 10px;
+}
+.home-div7 a {
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 15px 50px;
 }
