@@ -420,10 +420,10 @@
         disableOnInteraction: false,
       },
       speed: 2000,
-    pagination: {
-      el: '.swiper-pagination-vedios',
-      clickable: true,
-    },
+    // pagination: {
+    //   el: '.swiper-pagination-vedios',
+    //   clickable: true,
+    // },
   });
 </script>
 <script>
@@ -436,10 +436,10 @@
         disableOnInteraction: false,
       },
       speed: 2000,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    // pagination: {
+    //   el: '.swiper-pagination',
+    //   clickable: true,
+    // },
   });
 </script>
 

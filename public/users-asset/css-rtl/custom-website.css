@@ -206,3 +206,26 @@ body {
   border-radius: 20px;
   padding: 15px 50px;
 }
+.footer-main {
+  background-color: #e2e2e2;
+}
+.footer-div header {
+  font-size: large;
+  color: #717171;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 10px;
+}
+.footer-div ul {
+  padding-right: 0px;
+  list-style-type: none;
+}
+.footer-div ul li {
+  margin-bottom: 10px;
+}
+.footer-div ul li a {
+  font-size: medium;
+  color: black;
+
+  text-align: right;
+}
