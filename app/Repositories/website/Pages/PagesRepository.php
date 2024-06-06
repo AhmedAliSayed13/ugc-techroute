@@ -8,5 +8,10 @@ class PagesRepository implements PagesInterface
         $data = array();
         return $data;
     }
+    public function price(): array
+    {
+        $data = array();
+        return $data;
+    }
 
 }

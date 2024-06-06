@@ -26,4 +26,11 @@ class PagesController extends Controller
 
         return view($this->path . 'home', compact('data'));
     }
+    public function price()
+    {
+
+        $data = $this->pagesInterface->price();
+
+        return view($this->path . 'price', compact('data'));
+    }
 }

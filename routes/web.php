@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [PagesController::class, 'homePage'])->name('home');
+Route::get('/price', [PagesController::class, 'price'])->name('price');
 
 //Clear Cache facade value:
 Route::get('/clear-cache', function () {

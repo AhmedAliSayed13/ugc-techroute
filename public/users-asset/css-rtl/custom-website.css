@@ -229,3 +229,63 @@ body {
 
   text-align: right;
 }
+.price-div1 {
+  margin-top: 55px;
+  text-align: center;
+}
+.price-div1 p {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 24px;
+}
+.price-div1 header {
+  font-size: 30px;
+  line-height: 50px;
+  color: black;
+  font-weight: bold;
+}
+.price-div2 {
+  margin-top: 25px;
+}
+.price-div2 .result-div {
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+}
+.price-div2 .result-div .blue-div {
+  background-image: url('https://billo.app/wp-content/uploads/2023/12/EXPORT-THIS-IN-2X-1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 10px;
+  padding: 20px;
+}
+.price-div2 .result-div .blue-div header {
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  text-align: right;
+  /* margin-top: 24px; */
+}
+.price-div2 .result-div .blue-div p {
+  font-size: medium;
+  color: white;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 24px;
+}
+.price-div2 .result-div .details-div {
+  font-size: medium;
+  color: black;
+  font-weight: bold;
+  text-align: right;
+  padding: 25px 60px;
+}
+.price-div2 .result-div .details-div span {
+  color: #4a0efb;
+  font-size: 5rem;
+}
+.price-div2 .select-div {
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+}
