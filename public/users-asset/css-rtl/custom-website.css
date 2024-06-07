@@ -289,3 +289,69 @@ body {
   box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
 }
+.price-div2 .select-div {
+  padding-top: 12px;
+}
+.price-div2 .price-slider {
+  /* width: 80%; */
+  /* margin: auto; */
+  padding: 50px 12px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+.noUi-horizontal {
+  height: 15px !important;
+}
+
+.noUi-marker-horizontal.noUi-marker,
+.noUi-marker-horizontal.noUi-marker-large {
+  /* height: 10px !important;
+  width: 5px !important; */
+  background-color: #7367f0 !important;
+}
+.noUi-value {
+  font-size: medium !important;
+  color: black !important;
+  font-weight: 600;
+}
+.color-text {
+  background-size: 150% 150% !important;
+  background-repeat: no-repeat !important;
+  background: url(https://billo.app/wp-content/uploads/2023/09/bg-text.webp),
+    lightgray 0px -16.724px / 127.989% 173.104% no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bg-div-gray {
+  background: linear-gradient(
+    113deg,
+    #f2f5f7 15.19%,
+    rgba(242, 245, 247, 0) 134.99%
+  );
+}
+[data-textdirection='rtl'] .noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
+  right: -8px !important;
+}
+.price-div2 .price-title {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+.price-div2 .price-slider-result {
+  padding: 20px 20px 50px 20px;
+  margin-top: 60px;
+  border-radius: 10px;
+}
+.price-div2 .price-slider-result header {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+.price-div2 .price-slider-result p {
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 20px;
+}
