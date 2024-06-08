@@ -355,3 +355,120 @@ body {
   font-weight: bold;
   margin-top: 20px;
 }
+.price-div3 .img-div img {
+  width: 100px;
+  margin-top: 25px;
+}
+.price-div3 .text-div {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.price-div3 .div-main-continer {
+  border-radius: 10px;
+}
+.price-div3 .text-div header {
+  font-size: larger;
+  color: black;
+  font-weight: bold;
+}
+.price-div3 .text-div p {
+  font-size: medium;
+  margin-top: 20px;
+  color: black;
+}
+.price-div4 .text-div header {
+  font-size: x-large;
+  color: black;
+  font-weight: bold;
+  margin-top: 50px;
+}
+.price-div4 .text-div ul {
+  list-style-type: none;
+  padding-right: 0px;
+}
+.price-div4 .text-div ul li {
+  margin-top: 10px;
+}
+.price-div4 .text-div ul .feather {
+  color: #4a0efb;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.price-div4 .text-div ul span {
+  font-size: larger;
+  font-weight: bold;
+  color: black;
+}
+.price-div4 .text-div ul {
+  font-size: medium;
+  color: black;
+}
+
+.price-div4 .title-div header {
+  text-align: center;
+  font-size: large;
+  color: black;
+  margin-top: 30px;
+}
+.price-div4 .title-div header span {
+  font-weight: bold;
+}
+.price-div5 .img-div {
+  text-align: center;
+}
+.price-div5 .text-div header {
+  font-size: xxx-large;
+  color: black;
+  font-weight: bold;
+  margin-top: 40px;
+}
+.price-div5 .text-div header span {
+  color: #4a0efb;
+}
+.price-div5 .text-div p {
+  font-size: large;
+  margin-top: 10px;
+}
+.price-div5 .text-div p span {
+  color: black;
+  margin-top: 10px;
+}
+.price-div6 .item1-div,
+.price-div6 .item2-div {
+  padding: 30px 30px;
+}
+.price-div6 .item1-div img,
+.price-div6 .item2-div img {
+  width: 100px;
+  height: 100px;
+}
+.price-div6 .item1-div header,
+.price-div6 .item2-div header {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  margin-top: 20px;
+}
+.price-div6 .item1-div p,
+.price-div6 .item2-div p {
+  font-size: medium;
+  margin-top: 20px;
+}
+.price-div6 .main-container-div {
+  border-radius: 10px;
+}
+.price-div6 .item1-div {
+  border-left: 1px solid #e2e2e2;
+}
+.price-div6 .item2-div {
+  border-right: 1px solid #e2e2e2;
+}
+.price-div7 header {
+  font-size: xx-large;
+  margin-top: 40px;
+  color: black;
+  font-weight: bold;
+}
+.accordion-item,.accordion-button{
+  background-color: transparent !important;
+}
