@@ -57,7 +57,7 @@
             </div>
             <div class="content-body">
                 <!-- Coming soon page-->
-                <div class="misc-wrapper"><a class="brand-logo" href="index.html">
+                <div class="misc-wrapper"><a class="brand-logo" href="#">
                         <img src="{{asset('users-asset')}}/images/logo/logo.png" alt="" width="80px">
                         {{-- <h2 class="brand-text text-primary ms-1">Vuexy</h2> --}}
                     </a>
