@@ -13,5 +13,10 @@ class PagesRepository implements PagesInterface
         $data = array();
         return $data;
     }
+    public function comingSoon(): array
+    {
+        $data = array();
+        return $data;
+    }
 
 }

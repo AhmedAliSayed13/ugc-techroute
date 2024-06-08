@@ -5,4 +5,5 @@ use App\Helpers\DataResponse;
 interface PagesInterface {
     public function homePage():array;
     public function price():array;
+    public function comingSoon():array;
 }

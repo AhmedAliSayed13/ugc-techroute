@@ -33,4 +33,11 @@ class PagesController extends Controller
 
         return view($this->path . 'price', compact('data'));
     }
+    public function comingSoon()
+    {
+
+        $data = $this->pagesInterface->comingSoon();
+
+        return view($this->path . 'coming-soon', compact('data'));
+    }
 }
