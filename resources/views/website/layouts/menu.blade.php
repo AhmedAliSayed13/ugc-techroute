@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page" href="{{route('home')}}">{{__('website.home')}}</a>
+                    <a class="nav-link " aria-current="page" href="{{route('home')}}">{{__('website.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page" href="{{route('price')}}">{{__('website.pricing')}}</a>
+                    <a class="nav-link  " aria-current="page" href="{{route('price')}}">{{__('website.pricing')}}</a>
                 </li>
 
                 {{-- <li class="nav-item dropdown">
