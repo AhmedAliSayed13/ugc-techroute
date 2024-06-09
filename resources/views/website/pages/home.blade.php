@@ -19,7 +19,7 @@
             <p>
                 {{__('website.EffortlesslyExpandYourMarketingWithMadeToOrderContent')}}
             </p>
-            <a class="btn btn-primary" href="">{{__('website.orderNow')}}</a>
+            <a class="btn btn-relief-primary" href="">{{__('website.orderNow')}}</a>
         </div>
     </div>
 
@@ -211,7 +211,7 @@
                     Maximize your ad impact and reduce costs and workloads with versatile designed for diverse formats,
                     channels, and audiences.
                 </p>
-                <a class="btn btn-primary" href="">order now</a>
+                <a class="btn btn-relief-primary " href="">{{__('website.orderNow')}}</a>
             </div>
             <div class="col-10 m-auto">
                 <!-- frequent answer and question  collapse  -->
@@ -366,7 +366,7 @@
 
                 </div>
                 <div class="col-12 text-center mt-3">
-                    <a class="btn btn-primary waves-effect waves-float waves-light" href="">order now</a>
+                    <a class="btn btn-relief-primary" href="">{{__('website.orderNow')}}</a>
                 </div>
 
             </div>
@@ -396,7 +396,7 @@
                         <li>Get a detailed report of your ad performance</li>
                         <li>Get a detailed report of your ad performance</li>
                     </ol>
-                    <a class="btn btn-primary waves-effect waves-float waves-light" href="">    order now</a>
+                    <a class="btn btn-relief-primary" href=""> {{__('website.orderNow')}}</a>
                 </div>
             </div>
         </div>

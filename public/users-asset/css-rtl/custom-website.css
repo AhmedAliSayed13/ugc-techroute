@@ -41,8 +41,8 @@ body {
 }
 .home-div1 a {
   margin: auto;
-  border-radius: 25px;
-  padding: 15px 50px;
+  /* border-radius: 25px;
+  padding: 15px 50px; */
 }
 .home-div2 {
   margin-top: 75px;
@@ -203,8 +203,8 @@ body {
 }
 .home-div7 a {
   margin-top: 20px;
-  border-radius: 20px;
-  padding: 15px 50px;
+  /* border-radius: 20px;
+  padding: 15px 50px; */
 }
 .footer-main {
   background-color: #e2e2e2;
@@ -463,14 +463,21 @@ body {
 .price-div6 .item2-div {
   border-right: 1px solid #e2e2e2;
 }
+.price-div7 {
+  padding-bottom: 50px;
+}
 .price-div7 header {
   font-size: xx-large;
   margin-top: 40px;
   color: black;
   font-weight: bold;
+  text-align: center;
 }
-.accordion-item,.accordion-button{
+.accordion-item,
+.accordion-button {
   background-color: transparent !important;
 }
 
-.swiper-videos::-webkit-scrollbar { display: none; }
+.swiper-videos::-webkit-scrollbar {
+  display: none;
+}
