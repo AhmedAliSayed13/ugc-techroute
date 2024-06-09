@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Coming Soon - Vuexy - Bootstrap HTML admin template</title>
+    <title>Coming Soon - VIDOO</title>
     <link rel="apple-touch-icon" href="{{asset('users-asset')}}/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('users-asset')}}/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
@@ -67,27 +67,28 @@
                     </a>
                     <div class="misc-inner p-2 p-sm-3">
                         <div class="w-100 text-center">
-                            <h2 class="mb-1">نحن على وشك الوصول! 🚀</h2>
-                            <p class="mb-3">نصنع شيئًا رائعًا. تابعنا لتجربة مدهشة قريبًا!!</p>
-                            {{-- <form
-                                class="row row-cols-md-auto row justify-content-center align-items-center m-0 mb-2 gx-3"
-                                action="javascript:void(0)">
-                                <div class="col-12 m-0 mb-1">
-                                    <input class="form-control" id="notify-email" type="text"
-                                        placeholder="john@example.com" />
-                                </div>
-                                <div class="col-12 d-md-block d-grid ps-md-0 ps-auto">
-                                    <button class="btn btn-primary mb-1 btn-sm-block" type="submit">Notify</button>
-                                </div>
-                            </form> --}}
-                            <img class="img-fluid" src="{{asset('users-asset')}}/images/pages/coming-soon.svg"
-                                alt="Coming soon page" />
+                            <h1 class="mb-1">نحن على وشك الوصول! 🚀</h2>
+                                <h4 class="mb-3">نصنع شيئًا رائعًا. تابعنا لتجربة مدهشة قريبًا!!</h4>
+                                <form
+                                    class="row row-cols-md-auto row justify-content-center align-items-center m-0 mb-2 gx-3"
+                                    action="{{route('comingSoon.save')}}" method="POST">
+                                    @csrf
+                                    <div class="col-12 m-0 mb-1">
+                                        <input class="form-control" id="notify-email" type="email" name="email"
+                                            placeholder="البريد الالكتروني" required />
+                                    </div>
+                                    <div class="col-12 d-md-block d-grid ps-md-0 ps-auto">
+                                        <button class="btn btn-primary mb-1 btn-sm-block" type="submit">اشترك</button>
+                                    </div>
+                                </form>
+                                <img class="img-fluid" src="{{asset('users-asset')}}/images/pages/coming-soon.svg"
+                                    alt="Coming soon page" />
 
                                 <div class="auth-footer-btn d-flex justify-content-center">
                                     <a href="#" class="btn btn-facebook m-1">
                                         <i data-feather="facebook"></i>
                                     </a>
-                                    <a href="#" class="btn btn-twitter white m-1" >
+                                    <a href="#" class="btn btn-twitter white m-1">
                                         <i data-feather="twitter"></i>
                                     </a>
                                     <a href="#" class="btn btn-google m-1">

@@ -1,5 +1,5 @@
 <?php namespace App\Repositories\website\pages;
-
+use App\Models\Coming;
 class PagesRepository implements PagesInterface
 {
 
@@ -17,6 +17,14 @@ class PagesRepository implements PagesInterface
     {
         $data = array();
         return $data;
+    }
+    public function comingSoonSave($request): bool
+    {
+        Coming::create([
+            'email' => $request->email
+        ]);
+        toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        return true;
     }
 
 }

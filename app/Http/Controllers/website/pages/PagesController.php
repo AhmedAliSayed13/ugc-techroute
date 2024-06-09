@@ -4,6 +4,7 @@ namespace App\Http\Controllers\website\pages;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\website\pages\PagesInterface;
+use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
@@ -39,5 +40,12 @@ class PagesController extends Controller
         $data = $this->pagesInterface->comingSoon();
 
         return view($this->path . 'coming-soon', compact('data'));
+    }
+    public function comingSoonSave(Request $request)
+    {
+
+        $data = $this->pagesInterface->comingSoonSave($request);
+
+        return back();
     }
 }

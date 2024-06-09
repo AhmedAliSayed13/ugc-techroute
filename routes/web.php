@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [PagesController::class, 'comingSoon'])->name('comingSoon');
+Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.save');
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
 
