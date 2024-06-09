@@ -40,7 +40,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
     <!-- END: Custom CSS-->
-
+    <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-website.css')}}">
+    <!-- END: Custom CSS-->
+    @if (App::getLocale() === 'en')
+    <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
+    @endif
 </head>
 <!-- END: Head-->
 
