@@ -161,7 +161,7 @@
                     <header>أكثر من <span>17,000</span> علامة تجارية ووكالة تختار VIDOO</header>
                 </div>
                 <div class="col-12 mt-4 mb-4">
-                    <div class="swiper swiper-container">
+                    <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img
                                     src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"
@@ -187,7 +187,7 @@
 
                         </div>
 
-                        {{-- <div class="swiper-pagination"></div> --}}
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
 
@@ -375,18 +375,20 @@ var sliderValues = document.getElementsByClassName('slider-value');
 </script>
 <script>
     var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 6,
-    spaceBetween: 1,
-    loop: true,
-    autoplay: {
-        delay: 5000,  // Delay between transitions in milliseconds
-        disableOnInteraction: false,
-      },
-      speed: 2000,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    // slidesPerView: 6,
+    // spaceBetween: 1,
+    // loop: true,
+    // autoplay: {
+    //     delay: 5000,  // Delay between transitions in milliseconds
+    //     disableOnInteraction: false,
+    //   },
+    //   speed: 2000,
+    // pagination: {
+    //   el: '.swiper-pagination',
+    //   clickable: true,
+    // },
+    direction: 'horizontal', // Ensure horizontal scrolling
+    loop: true, // Optional: loop through slides
   });
 </script>
 @endsection

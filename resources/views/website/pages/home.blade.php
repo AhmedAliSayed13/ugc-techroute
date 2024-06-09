@@ -25,7 +25,7 @@
 
     <div class="row">
         <div class="col-12 home-div2">
-            <div class="swiper-videos">
+            <div class="swiper swiper-videos">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <video muted="" playsinline="" autoplay="" loop="" preload="none"
@@ -138,7 +138,7 @@
         </div>
         <div class="col-lg-10 ">
 
-            <div class="swiper-container">
+            <div class="swiper swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img
                             src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"

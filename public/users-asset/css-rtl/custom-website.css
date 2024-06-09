@@ -10,15 +10,15 @@ body {
 }
 .navbar-light .navbar-nav .active.nav-link {
   background-color: transparent;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #7367f0;
 }
 .navbar-light .navbar-nav .nav-link {
   color: black;
-  font-size: 20px;
+  font-size: large;
 }
 .home-div1 {
-  margin-top: 55px;
+  margin-top: 150px;
   text-align: center;
 }
 .home-div1 header.header-ugc span {
@@ -472,3 +472,5 @@ body {
 .accordion-item,.accordion-button{
   background-color: transparent !important;
 }
+
+.swiper-videos::-webkit-scrollbar { display: none; }

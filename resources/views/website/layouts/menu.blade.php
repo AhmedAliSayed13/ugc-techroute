@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light custom-menu">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light custom-menu">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="{{asset('users-asset/images/logo/logo.png')}}" alt="logo" class="logo">

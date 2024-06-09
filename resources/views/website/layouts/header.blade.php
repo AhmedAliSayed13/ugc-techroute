@@ -1,5 +1,5 @@
 <!-- BEGIN: Header-->
-<nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center"
+<nav class="header-navbar  navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center"
     data-nav="brand-center">
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav">
