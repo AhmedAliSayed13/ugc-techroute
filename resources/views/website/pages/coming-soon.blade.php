@@ -63,8 +63,8 @@
                     </a>
                     <div class="misc-inner p-2 p-sm-3">
                         <div class="w-100 text-center">
-                            <h2 class="mb-1">We are Almost There!🚀</h2>
-                            <p class="mb-3">We're creating something awesome. Stay tuned for something amazing!!!</p>
+                            <h2 class="mb-1">نحن على وشك الوصول! 🚀</h2>
+                            <p class="mb-3">نصنع شيئًا رائعًا. تابعنا لتجربة مدهشة قريبًا!!</p>
                             {{-- <form
                                 class="row row-cols-md-auto row justify-content-center align-items-center m-0 mb-2 gx-3"
                                 action="javascript:void(0)">
@@ -89,7 +89,7 @@
                                     <a href="#" class="btn btn-google m-1">
                                         <i data-feather="mail"></i>
                                     </a>
-                                    <a href="#" class="btn btn-linkedin m-1">
+                                    <a href="https://www.linkedin.com/company/vidoo-app/" class="btn btn-linkedin m-1">
                                         <i data-feather="linkedin"></i>
                                     </a>
                                 </div>
