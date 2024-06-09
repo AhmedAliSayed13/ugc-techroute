@@ -9,10 +9,10 @@ use App\Repositories\admin\role\RoleAdminInterface;
 use App\Repositories\admin\role\RoleAdminRepository;
 use App\Repositories\admin\user\UserAdminInterface;
 use App\Repositories\admin\user\UserAdminRepository;
-use App\Repositories\admin\showOption\ShowOptionAdminInterface;
-use App\Repositories\admin\showOption\ShowOptionAdminRepository;
-use App\Repositories\admin\locationOption\LocationOptionAdminInterface;
-use App\Repositories\admin\locationOption\LocationOptionAdminRepository;
+use App\Repositories\admin\mainOption\MainOptionAdminInterface;
+use App\Repositories\admin\mainOption\MainOptionAdminRepository;
+use App\Repositories\admin\valueOption\ValueOptionAdminInterface;
+use App\Repositories\admin\valueOption\ValueOptionAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -76,16 +76,16 @@ class RepositoryServiceProvider extends ServiceProvider
             UserAdminInterface::class,
             UserAdminRepository::class
         );
-        // ShowOption
+        // MainOption
         $this->app->bind(
-            ShowOptionAdminInterface::class,
-            ShowOptionAdminRepository::class
+            MainOptionAdminInterface::class,
+            MainOptionAdminRepository::class
         );
 
-        // LocationOption
+        // ValueOption
         $this->app->bind(
-            LocationOptionAdminInterface::class,
-            LocationOptionAdminRepository::class
+            ValueOptionAdminInterface::class,
+            ValueOptionAdminRepository::class
         );
 
         //AUTH

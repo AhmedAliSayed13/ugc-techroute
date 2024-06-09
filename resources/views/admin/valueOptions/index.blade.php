@@ -3,8 +3,9 @@
 <div class="container-fluid">
     <!-- start page title -->
 
-    <x-breadcrumb :section="'Location Options'" :sectionUrl="route('admin.location-options.index')" :title="'List Location Options'" />
-    <x-search :addUrl="route('admin.location-options.create')" :modelName="'LocationOption'" />
+    <x-breadcrumb :section="'Options'" :sectionUrl="route('admin.main-options.index')"
+        :title="'List Options'" />
+    <x-search :addUrl="route('admin.value-options.create',$data['main_option_id'])" :modelName="'ValueOption'" />
 
 
 
@@ -29,26 +30,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data['locationOptions'] as $locationOption)
+                                        @foreach ($data['valueOptions'] as $valueOption)
                                         <tr>
-                                            <th scope="row">{{$locationOption->id}}</th>
-                                            <td>{{$locationOption->name}}</td>
-                                            <td>{!!$locationOption->is_active?'<span class="badge bg-success">ON</span>':'<span
-                                                class="badge bg-danger">OFF</span>'!!}</td>
+                                            <th scope="row">{{$valueOption->id}}</th>
+                                            <td>{{$valueOption->name}}</td>
+                                            <td>{!!$valueOption->is_active?'<span
+                                                    class="badge bg-success">ON</span>':'<span
+                                                    class="badge bg-danger">OFF</span>'!!}</td>
 
-                                            <td>{{$locationOption->created_at}}</td>
+                                            <td>{{$valueOption->created_at}}</td>
                                             <td>
-                                                <x-button_acttion :item="$locationOption" :id="$locationOption->id"
-                                                    :location="route('admin.location-options.show',$locationOption->id)"
-                                                    :edit="route('admin.location-options.edit',$locationOption->id)"
-                                                    :delete="route('admin.location-options.destroy',$locationOption->id)" />
+                                                <x-button_acttion :item="$valueOption" :id="$valueOption->id"
+                                                    :show="route('admin.value-options.show',$valueOption->id)"
+                                                    :edit="route('admin.value-options.edit',$valueOption->id)"
+                                                    :delete="route('admin.value-options.destroy',$valueOption->id)" />
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <x-pagination :items="$data['locationOptions']" />
+                            <x-pagination :items="$data['valueOptions']" />
                         </div>
 
 

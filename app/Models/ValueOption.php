@@ -6,16 +6,17 @@ use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LocationOption extends Model
+class ValueOption extends Model
 {
     use HasFactory, Filterable;
     protected $primaryKey = 'id';
-    protected $table = 'location_options';
+    protected $table = 'value_options';
     public $incrementing = true;
     protected $fillable = [
         'id',
         'name',
         'is_active',
+        'main_option_id',
         'created_at',
     ];
     private static $whiteListFilter = ['*'];

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationOptionsTable extends Migration
+class CreateValueOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateLocationOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('location_options', function (Blueprint $table) {
+        Schema::create('value_options', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
+            $table->foreignId('main_option_id')->constrained()->onDelete('cascade');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ class CreateLocationOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_options');
+        Schema::dropIfExists('value_options');
     }
 }

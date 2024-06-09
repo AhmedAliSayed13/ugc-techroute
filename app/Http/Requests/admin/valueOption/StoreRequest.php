@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\admin\locationOption;
+namespace App\Http\Requests\admin\valueOption;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:location_options,name',
+            'name' => 'required|unique:value_options,name',
 
         ];
     }

@@ -6,11 +6,11 @@ use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShowOption extends Model
+class MainOption extends Model
 {
     use HasFactory, Filterable;
     protected $primaryKey = 'id';
-    protected $table = 'show_options';
+    protected $table = 'main_options';
     public $incrementing = true;
     protected $fillable = [
         'id',

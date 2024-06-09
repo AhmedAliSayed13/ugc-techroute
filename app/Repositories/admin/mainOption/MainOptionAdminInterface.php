@@ -1,6 +1,6 @@
-<?php namespace App\Repositories\admin\locationOption;
+<?php namespace App\Repositories\admin\mainOption;
 
-interface LocationOptionAdminInterface
+interface MainOptionAdminInterface
 {
     public function index(): array;
     public function create(): array;

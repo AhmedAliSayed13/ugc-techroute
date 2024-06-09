@@ -1,28 +1,29 @@
-<?php namespace App\Repositories\admin\locationOption;
+<?php namespace App\Repositories\admin\mainOption;
 
-use App\Models\LocationOption;
+use App\Models\MainOption;
+use App\Models\ValueOption;
 use DB;
 
-class LocationOptionAdminRepository implements LocationOptionAdminInterface
+class MainOptionAdminRepository implements MainOptionAdminInterface
 {
 
     public function index(): array
     {
-        $locationOptions = LocationOption::AcceptRequest(getFillableSort('LocationOption'))
+        $mainOptions = MainOption::AcceptRequest(getFillableSort('MainOption'))
             ->filter()
             ->orderBy(request()->get('sort') ?? 'id')
             ->paginate(request()->get('perpage'), ['*'], 'page');
         $data = array(
-            "locationOptions" => $locationOptions,
+            "mainOptions" => $mainOptions,
         );
         return $data;
     }
     public function show($key)
     {
-        $locationOption = LocationOption::where('key', $key)->first();
-        $locationOption->count += 1; // increment the quantity by 1
-        $locationOption->save();
-        return $locationOption->redirect;
+        $mainOption = MainOption::where('key', $key)->first();
+        $mainOption->count += 1; // increment the quantity by 1
+        $mainOption->save();
+        return $mainOption->redirect;
     }
     public function create(): array
     {
@@ -34,7 +35,7 @@ class LocationOptionAdminRepository implements LocationOptionAdminInterface
     public function store($request): bool
     {
         try {
-            $locationOption = LocationOption::create([
+            $mainOption = MainOption::create([
                 'name' => $request->input('name'),
                 'is_active' => $request->input('is_active')=='on' ? 1 : 0,
             ]);
@@ -49,10 +50,10 @@ class LocationOptionAdminRepository implements LocationOptionAdminInterface
 
     public function edit($id): array
     {
-        $locationOption = LocationOption::find($id);
+        $mainOption = MainOption::find($id);
 
         $data = array(
-            "locationOption" => $locationOption,
+            "mainOption" => $mainOption,
 
         );
         return $data;
@@ -61,10 +62,10 @@ class LocationOptionAdminRepository implements LocationOptionAdminInterface
     {
         try {
 
-            $locationOption = LocationOption::find($id);
-            $locationOption->name = $request->input('name');
-            $locationOption->is_active = $request->has('is_active') ? 1 : 0;
-            $locationOption->save();
+            $mainOption = MainOption::find($id);
+            $mainOption->name = $request->input('name');
+            $mainOption->is_active = $request->has('is_active') ? 1 : 0;
+            $mainOption->save();
             toastr()->success('Item Has Been Updated Successfully');
             return true;
         } catch (\Exception $th) {
@@ -76,8 +77,9 @@ class LocationOptionAdminRepository implements LocationOptionAdminInterface
     public function destroy($id): bool
     {
         try {
-
-            DB::table("location_options")->where('id', $id)->delete();
+            $mainOption=MainOption::find($id);
+            DB::table("value_options")->where('main_option_id', $mainOption->id)->delete();
+            DB::table("main_options")->where('id', $mainOption->id)->delete();
 
             toastr()->success('Item Has Been Deleted Successfully');
             return true;

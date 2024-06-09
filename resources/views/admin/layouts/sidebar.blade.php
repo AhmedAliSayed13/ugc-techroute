@@ -92,43 +92,25 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#showOptions" data-bs-toggle="collapse">
+                    <a href="#mainOptions" data-bs-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
-                        <span> Show Options </span>
+                        <span> Options </span>
                     </a>
-                    <div class="collapse" id="showOptions">
+                    <div class="collapse" id="mainOptions">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('admin.show-options.create')}}">Create Show Option </a>
+                                <a href="{{route('admin.main-options.create')}}">Create  Option </a>
                             </li>
 
                             <li>
-                                <a href="{{route('admin.show-options.index')}}">List Show Options</a>
+                                <a href="{{route('admin.main-options.index')}}">List  Options</a>
                             </li>
 
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#LocationOptions" data-bs-toggle="collapse">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
-                        <span> Location Options </span>
-                    </a>
-                    <div class="collapse" id="LocationOptions">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{route('admin.location-options.create')}}">Create Location Option </a>
-                            </li>
 
-                            <li>
-                                <a href="{{route('admin.location-options.index')}}">List Location Options</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </li>
 
 
             </ul>

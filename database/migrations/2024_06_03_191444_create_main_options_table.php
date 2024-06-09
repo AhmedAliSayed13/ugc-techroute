@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShowOptionsTable extends Migration
+class CreateMainOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShowOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('show_options', function (Blueprint $table) {
+        Schema::create('main_options', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->boolean('is_active')->default(1);
@@ -28,6 +28,6 @@ class CreateShowOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('show_options');
+        Schema::dropIfExists('main_options');
     }
 }

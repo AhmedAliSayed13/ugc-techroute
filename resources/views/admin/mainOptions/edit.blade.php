@@ -5,8 +5,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <x-breadcrumb :section="'Show Options'" :sectionUrl="route('admin.show-options.index')"
-        :title="'Edit Show Options'" />
+    <x-breadcrumb :section="'Options'" :sectionUrl="route('admin.main-options.index')" :title="'Edit Option'" />
 
 
     <div class="row">
@@ -14,15 +13,15 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <form action="{{route('admin.show-options.update',$data['showOption']->id)}}" method="post">
+                        <form action="{{route('admin.main-options.update',$data['mainOption']->id)}}" method="post">
                             @csrf
                             @method('PATCH')
 
-                            <x-FormInput :type="'hidden'" :title="''" :name="'id'" :value="$data['showOption']->id"
+                            <x-FormInput :type="'hidden'" :title="''" :name="'id'" :value="$data['mainOption']->id"
                                 :width="'12'" />
                             <x-FormInput :type="'text'" :title="'Name'" :name="'name'"
-                                :value="$data['showOption']->name" :width="'12'" />
-                            <x-FormSwitch :title="'active'" :name="'is_active'" :value="$data['showOption']->is_active"
+                                :value="$data['mainOption']->name" :width="'12'" />
+                            <x-FormSwitch :title="'active'" :name="'is_active'" :value="$data['mainOption']->is_active"
                                 :width="'12'" />
 
 

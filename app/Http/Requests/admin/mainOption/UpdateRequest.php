@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\admin\showOption;
+namespace App\Http\Requests\admin\mainOption;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
 
         return [
-            'name' => 'required|unique:show_options,name,' . request()->id . ',id',
+            'name' => 'required|unique:main_options,name,' . request()->id . ',id',
 
         ];
     }

@@ -1,10 +1,10 @@
 <?php
 use App\Http\Controllers\admin\auth\AuthAdminController;
 use App\Http\Controllers\admin\dashboard\DashboardAdminController;
+use App\Http\Controllers\admin\mainOption\MainOptionAdminController;
 use App\Http\Controllers\admin\role\RoleAdminController;
 use App\Http\Controllers\admin\user\UserAdminController;
-use App\Http\Controllers\admin\showOption\ShowOptionAdminController;
-use App\Http\Controllers\admin\locationOption\LocationOptionAdminController;
+use App\Http\Controllers\admin\valueOption\ValueOptionAdminController;
 
 Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login')->withoutMiddleware('AdminAuth');
 Route::post('login', [AuthAdminController::class, 'login'])->name('login')->withoutMiddleware('AdminAuth');
@@ -13,8 +13,19 @@ Route::post('logout', [AuthAdminController::class, 'logout'])->name('logout');
 Route::get('dashboard', [DashboardAdminController::class, 'ShowDashboard'])->name('dashboard');
 Route::resource('roles', RoleAdminController::class);
 Route::resource('users', UserAdminController::class);
-Route::resource('show-options', ShowOptionAdminController::class);
-Route::resource('location-options', LocationOptionAdminController::class);
+Route::resource('main-options', MainOptionAdminController::class);
+// Route::resource('value-options',ValueOptionAdminController::class);
+Route::group(['prefix' => 'value-options', 'as' => 'value-options.'], function () {
+    Route::get('show/{id}', [ValueOptionAdminController::class, 'show'])->name('show');
+    Route::get('index/{id}', [ValueOptionAdminController::class, 'index'])->name('index');
+    Route::get('create/{id}', [ValueOptionAdminController::class, 'create'])->name('create');
+    Route::post('store/{id}', [ValueOptionAdminController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [ValueOptionAdminController::class, 'edit'])->name('edit');
+    Route::PATCH('update/{id}', [ValueOptionAdminController::class, 'update'])->name('update');
+    Route::delete('destroy/{id}', [ValueOptionAdminController::class, 'destroy'])->name('destroy');
+
+    // Route::get('connect', 'AccountController@connect')->name('connect');
+});
 
 Route::get('users/creator/create', [UserAdminController::class, 'creatorCreate'])->name('users.creator.create');
 Route::post('users/creator/create', [UserAdminController::class, 'creatorStore'])->name('users.creator.create');

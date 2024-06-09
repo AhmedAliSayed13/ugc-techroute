@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\admin\showOption;
+namespace App\Http\Requests\admin\valueOption;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,9 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'name' => 'required|unique:show_options,name',
+            'name' => 'required|unique:value_options,name,' . request()->id . ',id',
 
         ];
     }

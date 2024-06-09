@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\admin\locationOption;
+namespace App\Http\Requests\admin\mainOption;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,8 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'name' => 'required|unique:location_options,name,' . request()->id . ',id',
+            'name' => 'required|unique:main_options,name',
 
         ];
     }

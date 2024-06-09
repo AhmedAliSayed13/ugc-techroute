@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <x-breadcrumb :section="'Roles'" :sectionUrl="route('admin.location-options.index')" :title="'Create Roles'" />
+    <x-breadcrumb :section="'Options'" :sectionUrl="route('admin.main-options.index')" :title="'Create Option'" />
 
 
     <div class="row">
@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <form action="{{route('admin.location-options.store')}}" method="post">
+                        <form action="{{route('admin.main-options.store')}}" method="post">
                             @csrf
 
                             <x-FormInput :type="'text'" :title="'name'" :name="'name'" :width="'12'" />
