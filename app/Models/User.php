@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\CreatorInfo;
+use App\Models\FeatureVideo;
 use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -99,5 +100,9 @@ class User extends Authenticatable
     public function creatorInfo()
     {
         return $this->hasOne(CreatorInfo::class);
+    }
+    public function featureVideos()
+    {
+        return $this->hasMany(FeatureVideo::class);
     }
 }

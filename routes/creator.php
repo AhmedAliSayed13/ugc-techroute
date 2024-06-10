@@ -9,5 +9,9 @@ Route::get('register/welcome', [DashboardCreatorUserController::class, 'register
 
 Route::get('profile', [ProfileCreatorUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileCreatorUserController::class, 'profile'])->name('profile');
+
+Route::get('feature-videos', [ProfileCreatorUserController::class, 'showFeatureVideos'])->name('feature.videos');
+Route::post('feature-videos', [ProfileCreatorUserController::class, 'featureVideos'])->name('feature.videos');
+
 Route::get('change-password', [ProfileCreatorUserController::class, 'showChangePassword'])->name('change.password');
 Route::post('change-password', [ProfileCreatorUserController::class, 'changePassword'])->name('change.password');

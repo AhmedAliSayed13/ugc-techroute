@@ -41,6 +41,10 @@
                     <a class=" nav-link d-flex align-items-center" href="{{route('creator.dashboard')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.Dashboards')}}</span></a>
                 </li>
+                <li class="dropdown nav-item {{checkActiveRoute('creator.dashboard')}}" >
+                    <a class=" nav-link d-flex align-items-center" href="{{route('creator.feature.videos')}}" ><i data-feather="home">
+                        </i><span data-i18n="Dashboards">{{__('messages.myAccount')}}</span></a>
+                </li>
 
                 {{-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Apps">Apps</span></a>
                     <ul class="dropdown-menu" data-bs-popper="none">

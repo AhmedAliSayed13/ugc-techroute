@@ -40,4 +40,8 @@ class FileManager
         }
         return $path;
     }
+    public function getFileUrl($path)
+    {
+        return Storage::disk($this->disk)->url($path);
+    }
 }
