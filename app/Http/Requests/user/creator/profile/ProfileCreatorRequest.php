@@ -29,6 +29,9 @@ class ProfileCreatorRequest extends FormRequest
             'email' => 'required|unique:users,email,' . Auth::user()->id,
             'address' => 'required',
             'phone' => 'required|unique:users,phone,' . Auth::user()->id,
+            'country_id' => 'required|integer',
+            'birthdate' => 'required|date',
+            'gender' => 'required'
         ];
     }
 }

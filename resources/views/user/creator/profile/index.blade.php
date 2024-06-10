@@ -2,6 +2,13 @@
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/select/select2.min.css')}}">
+
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/components.css')}}">
+
+
+
+
 @endsection
 @section('breadcrumb')
 <x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('creator.profile')" :title="'تعديل البيانات'" />
@@ -88,6 +95,59 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="col-12 col-sm-6 mb-1">
+                                    <label class="form-label" for="birthdate">{{__('messages.birthdate')}}</label>
+                                    <input type="date" class="form-control" id="birthdate" name="birthdate"
+                                        value="{{old('birthdate',auth()->user()->CreatorInfo->birthdate)}}" />
+                                    @error('birthdate')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-sm-6 mb-1">
+                                    <label class="form-label" for="country_id">{{__('messages.country')}}</label>
+                                    <select class="select2 form-select" id="country_id" name="country_id">
+                                        <option>{{__('messages.selectOption')}}</option>
+                                        @foreach($data['countries'] as $country)
+                                        <option value="{{$country->id}}" {{old('country_id',auth()->user()->CreatorInfo->country_id)
+                                            == $country->id ? 'selected' : ''}}>{{$country->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('country_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-sm-6 mb-1">
+                                    <label class="form-label" for="gender">{{__('messages.gender')}}</label>
+                                    <select class="select2 form-select" id="gender" name="gender">
+                                        <option>{{__('messages.selectOption')}}</option>
+                                        <option {{OptionSelect(Auth::user()->CreatorInfo->gender,'ذكر')}} value="ذكر">ذكر</option>
+                                        <option {{OptionSelect(Auth::user()->CreatorInfo->gender,'انثي')}} value="انثي">انثي</option>
+                                    </select>
+                                    @error('gender')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-sm-6 mb-1">
+                                    <label class="form-label" for="languages">{{__('messages.languages')}}</label>
+                                    <select class="select2 form-select" multiple id="languages" name="languages[]">
+                                        <option>{{__('messages.selectOption')}}</option>
+                                        <option {{OptionSelectMulitpleCommaString(Auth::user()->CreatorInfo->languages,'عربي')}} value="عربي">عربي</option>
+                                        <option {{OptionSelectMulitpleCommaString(Auth::user()->CreatorInfo->languages,'انجليزي')}} value="انجليزي">انجليزي</option>
+                                    </select>
+                                    @error('languages')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="describe">نبذه</label>
+                                        <textarea class="form-control" id="describe" name="describe" rows="3"
+                                            placeholder="Textarea">{{old('describe',auth()->user()->CreatorInfo->describe)}}</textarea>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-12">
                                     <button type="submit"
                                         class="btn btn-primary mt-1 me-1">{{__('messages.saveChanges')}}</button>
@@ -134,4 +194,8 @@
 
     </div>
 </div>
+@endsection
+@section('script')
+<script src="{{asset('users-asset/vendors/js/forms/select/select2.full.min.js')}}"></script>
+<script src="{{asset('users-asset/js/scripts/forms/form-select2.js')}}"></script>
 @endsection

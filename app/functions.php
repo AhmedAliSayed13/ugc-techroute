@@ -14,6 +14,20 @@ if (!function_exists('OptionSelect')) {
         }
     }
 }
+function OptionSelectMulitpleCommaString($string, $value)
+    {
+        // Split the string into an array using the comma as a delimiter
+        $array = explode(',', $string);
+
+        // Trim whitespace from each element in the array
+        $array = array_map('trim', $array);
+
+        // Check if the value exists in the array
+        if (in_array($value, $array)) {
+            return 'selected';
+        }
+
+    }
 if (!function_exists('getFillableSort')) {
 
     function getFillableSort($modelName)

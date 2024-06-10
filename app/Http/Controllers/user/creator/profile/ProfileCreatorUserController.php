@@ -24,7 +24,7 @@ class ProfileCreatorUserController extends Controller
     public function showProfile()
     {
         $data = $this->profileCreatorUserInterface->showProfile();
-        return view($this->path . 'index', compact($data));
+        return view($this->path . 'index', compact('data'));
     }
     public function profile(ProfileCreatorRequest $request)
     {
