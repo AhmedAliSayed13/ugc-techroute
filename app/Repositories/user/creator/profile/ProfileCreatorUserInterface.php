@@ -10,5 +10,7 @@ interface ProfileCreatorUserInterface {
     public function featureVideos($request);
     public function showChangePassword():array;
     public function changePassword($request);
+    public function showOptions():array;
+    public function options($request);
 
 }

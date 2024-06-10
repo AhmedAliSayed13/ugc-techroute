@@ -7,6 +7,7 @@ use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
 use App\Http\Requests\user\creator\profile\ProfileCreatorRequest;
 use App\Http\Requests\user\creator\profile\ChangePasswordCreatorRequest;
 use App\Http\Requests\user\creator\profile\FeatureVideosCreatorRequest;
+use App\Http\Requests\user\creator\profile\OptionsCreatorRequest;
 class ProfileCreatorUserController extends Controller
 {
     protected $profileCreatorUserInterface;
@@ -44,6 +45,17 @@ class ProfileCreatorUserController extends Controller
     public function changePassword(ChangePasswordCreatorRequest $request)
     {
         $data = $this->profileCreatorUserInterface->changePassword($request);
+        return back();
+    }
+
+    public function showOptions()
+    {
+        $data = $this->profileCreatorUserInterface->showOptions();
+        return view($this->path . 'options', compact('data'));
+    }
+    public function options(OptionsCreatorRequest $request)
+    {
+        $data = $this->profileCreatorUserInterface->options($request);
         return back();
     }
 

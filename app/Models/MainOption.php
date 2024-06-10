@@ -5,7 +5,7 @@ namespace App\Models;
 use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\ValueOption;
 class MainOption extends Model
 {
     use HasFactory, Filterable;
@@ -45,5 +45,10 @@ class MainOption extends Model
             'name' => $this->name,
             'active' => $this->is_active ? 'ON' : 'OFF',
         );
+    }
+
+    public function valueOptions()
+    {
+        return $this->hasMany(ValueOption::class);
     }
 }

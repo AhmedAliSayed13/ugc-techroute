@@ -28,16 +28,7 @@
 
     <div class="row">
         <div class="col-12">
-            <ul class="nav nav-pills mb-2">
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{route('creator.feature.videos')}}">
-                        <i data-feather="user" class="font-medium-3 me-50"></i>
-                        <span class="fw-bold">الفديوهات المميزه</span>
-                    </a>
-                </li>
-
-            </ul>
+            @include('user.creator.profile.tab-header')
         </div>
 
 
@@ -48,7 +39,10 @@
 
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header border-bottom">
+                    <h4 class="card-title">الفديوهات المميزه</h4>
+                </div>
+                <div class="card-body  py-2 my-25">
                     @foreach ($data['featureVideos'] as $video)
                     <video id="plyr-audio-player" class="video-player" controls width="250">
                         <source src="{{  $video->video_url }}" type="video/mp4">
@@ -72,7 +66,7 @@
                         <div>
                             <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">اختر
                                 الفديو</label>
-                            <input type="file" name="video" id="account-upload" hidden accept="image/*" />
+                            <input type="file" name="video" id="account-upload" hidden accept="video/*" />
                             <p class="mb-0">أنواع الملفات المسموح بها: mp4، mov، avi، wmv</p>
                             @error('video')
                             <div class="invalid-feedback">{{ $message }}</div>

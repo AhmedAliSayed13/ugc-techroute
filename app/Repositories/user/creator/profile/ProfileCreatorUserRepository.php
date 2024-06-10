@@ -4,6 +4,8 @@ use App\Helpers\FileManager;
 use App\Helpers\FilePublicManager;
 use App\Models\Country;
 use App\Models\FeatureVideo;
+use App\Models\MainOption;
+use App\Models\CreatorOption;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -80,6 +82,31 @@ class ProfileCreatorUserRepository implements ProfileCreatorUserInterface
 
         $user->password = Hash::make($request->password);
         $user->save();
+        toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        return true;
+    }
+    public function showOptions(): array
+    {
+        $mainOptions = MainOption::where('is_active', 1)->get();
+        $data = array(
+            'mainOptions' => $mainOptions,
+        );
+        return $data;
+    }
+    public function options($request)
+    {
+        foreach($request->mainOptions as $key => $mainOptionId){
+                $valueOptions = implode(',', $request->valueOptions[$mainOptionId]);
+                CreatorOption::updateOrCreate(
+                    [
+                        'user_id' => Auth::user()->id,
+                        'main_option_id' => $mainOptionId,
+                    ],
+                    [
+                        'value_options' => $valueOptions,
+                    ]
+                );
+        }
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return true;
     }

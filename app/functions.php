@@ -1,8 +1,10 @@
 <?php
-use App\Models\Ad;
+use App\Models\CreatorOption;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
 if (!function_exists('OptionSelect')) {
 
     function OptionSelect($item, $value)
@@ -68,6 +70,15 @@ if (!function_exists('getUserProfileImage')) {
             return asset('system/users/profiles/default.png');
 
         }
+    }
+}
+if (!function_exists('getUserOtionsByMainId')) {
+
+    function getUserOtionsByMainId($mainOptionID=null,$user_id)
+    {
+        $userOptionComma=CreatorOption::where(['main_option_id'=>$mainOptionID,'user_id'=>$user_id])->first();
+        $userOptionComma=$userOptionComma?$userOptionComma->value_options:'';
+        return $userOptionComma;
     }
 }
 
