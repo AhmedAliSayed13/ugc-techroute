@@ -235,7 +235,7 @@ return [
     'welcomeReqisterDescribe' => 'نحن سعداء بانضمامك إلى مجتمعنا. سيتواصل معك أحد ممثلينا خلال الـ 24 ساعة القادمة لمساعدتك والإجابة على أي استفسارات قد تكون لديك.',
     'myAccount' => 'حسابي',
     'Upload' => 'تحميل',
-    'myaccount1' => 'myaccount1',
+    'languages' => 'اللغات',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
