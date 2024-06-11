@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             CreatorTableSeeder::class,
             MainOptionsSeeder::class,
             ValueOptionsSeeder::class,
-            // EmirateTableSeeder::class,
-            // MarketingServiceTypeTableSeeder::class,
-            // CustomerTableSeeder::class,
+            VideoOptionAspectsSeeder::class,
+            VideoOptionDurationsSeeder::class,
+            VideoOptionTypesSeeder::class,
             // PlatformTableSeeder::class,
             // PlatformAccountTableSeeder::class,
         ]);

@@ -18,18 +18,21 @@ use App\Repositories\admin\valueOption\ValueOptionAdminRepository;
 use App\Repositories\user\auth\AuthUserInterface;
 use App\Repositories\user\auth\AuthUserRepository;
 
-// creator
+// client
 use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
 use App\Repositories\user\client\dashboard\DashboardClientUserRepository;
 use App\Repositories\user\client\profile\ProfileClientUserInterface;
 use App\Repositories\user\client\profile\ProfileClientUserRepository;
-// client
+use App\Repositories\user\client\order\OrderClientUserInterface;
+use App\Repositories\user\client\order\OrderClientUserRepository;
+//creator
 use App\Repositories\user\client\search\SearchClientUserInterface;
 use App\Repositories\user\client\search\SearchClientUserRepository;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
 use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
 use App\Repositories\user\creator\profile\ProfileCreatorUserRepository;
+
 
 // website
 use App\Repositories\website\pages\PagesInterface;
@@ -117,6 +120,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SearchClientUserInterface::class,
             SearchClientUserRepository::class
+        );
+        //order
+        $this->app->bind(
+            OrderClientUserInterface::class,
+            OrderClientUserRepository::class
         );
 
         // --------------------------------------------------website
