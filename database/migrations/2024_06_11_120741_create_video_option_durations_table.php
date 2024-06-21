@@ -15,7 +15,7 @@ class CreateVideoOptionDurationsTable extends Migration
     {
         Schema::create('video_option_durations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('price');
             $table->string('time');
             $table->boolean('is_active')->default(1);
             $table->timestamps();

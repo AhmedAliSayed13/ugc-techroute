@@ -1,12 +1,17 @@
 @extends('user.client.layouts.master')
 
 @section('style')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
-{{-- <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/vendors-rtl.min.css')}}"> --}}
+{{--
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/vendors-rtl.min.css')}}"> --}}
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/wizard/bs-stepper.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/select/select2.min.css')}}">
-{{-- <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/core/menu/menu-types/horizontal-menu.css')}}"> --}}
-{{-- <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}"> --}}
+{{--
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/core/menu/menu-types/horizontal-menu.css')}}">
+--}}
+{{--
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}"> --}}
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-wizard.css')}}">
 <style>
     .bootstrap-touchspin.input-group {
@@ -43,10 +48,14 @@
                         <div class="bs-stepper wizard-modern modern-wizard-example">
                             @include('user.client.order.tap_header')
                             <div class="bs-stepper-content">
-                                <div id="account-details-modern" class="content" role="tabpanel"
-                                    aria-labelledby="account-details-modern-trigger">
-                                    <div class="content-header">
 
+                                <form action="{{route('client.order.details')}}" method="POST" id="formDetails">
+                                    @csrf
+
+                                    <input type="hidden" id="videoPriceInput" name="video_price" required>
+                                    <input type="hidden" id="totalInput" name="total" required>
+
+                                    <div class="content-header">
                                         <h5 class="mb-0">تفاصيل الطلب</h5>
                                         <small class="text-muted">إختار تفاصيل الطلب</small>
                                     </div>
@@ -60,26 +69,31 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="row custom-options-checkable g-1">
-                                                    @foreach ($data['videoTypes'] as $videoType)
+                                                    @foreach ($data['videoTypes'] as $key=>$videoType)
 
 
                                                     <div class="col-md-3">
                                                         <input class="custom-option-item-check" type="radio"
-                                                            name="video_option_type_id"
-                                                            id="videoType{{ $videoType->id }}"
-                                                            value="{{ $videoType->id }}" />
+                                                            name="video_option_type" id="videoType{{ $videoType->id }}"
+                                                            value="{{ $videoType->id }}" @if($key==0) checked @endif />
                                                         <label class="custom-option-item p-1"
                                                             for="videoType{{ $videoType->id }}">
                                                             <span
                                                                 class="d-flex justify-content-between flex-wrap mb-50">
-                                                                <span class="fw-bolder">{{ $videoType->name }}</span>
-                                                                <span class="fw-bolder">${{ $videoType->price }}</span>
+                                                                <span class="fw-bolder">{{ $videoType->name
+                                                                    }}</span>
+                                                                <span class="fw-bolder">${{ $videoType->price
+                                                                    }}</span>
                                                             </span>
                                                             {{-- <small class="d-block">Get 1 project with 1 team
                                                                 member.</small> --}}
                                                         </label>
+
                                                     </div>
                                                     @endforeach
+                                                    @error('video_option_type')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
 
                                                 </div>
                                             </div>
@@ -98,10 +112,14 @@
 
 
                                                 <div class="input-group m-auto">
-                                                    <input type="number" min="1" class="touchspin-color" value="1"
+                                                    <input type="number" min="1" name="video_count"
+                                                        class="touchspin-color" value="1"
                                                         data-bts-button-down-class="btn btn-primary"
                                                         data-bts-button-up-class="btn btn-primary" />
                                                 </div>
+                                                @error('video_count')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -116,11 +134,13 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="row custom-options-checkable g-1">
-                                                    @foreach ($data['videoDurations'] as $videoDuration)
+                                                    @foreach ($data['videoDurations'] as $key => $videoDuration)
                                                     <div class="col-md-4">
                                                         <input class="custom-option-item-check" type="radio"
                                                             name="video_option_duration"
-                                                            id="videoDuration{{$videoDuration->id }}" />
+                                                            value="{{ $videoDuration->id }}"
+                                                            id="videoDuration{{$videoDuration->id }}" @if($key==0)
+                                                            checked @endif />
                                                         <label class="custom-option-item text-center p-1"
                                                             for="videoDuration{{$videoDuration->id }}">
                                                             {{-- <i data-feather='clock'></i> --}}
@@ -128,11 +148,16 @@
                                                             <span
                                                                 class="custom-option-item-title h4 d-block">{{$videoDuration->time
                                                                 }} ثانية</span>
-                                                            <small>{{ $videoDuration->name }}</small>
+                                                            <small>{{
+                                                                generateTextTimePlus($videoDuration->price)
+                                                                }}</small>
                                                         </label>
+
                                                     </div>
                                                     @endforeach
-
+                                                    @error('video_option_duration')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -150,11 +175,12 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="row custom-options-checkable g-1">
-                                                    @foreach ($data['videoAspects'] as $videoAspect)
+                                                    @foreach ($data['videoAspects'] as $key => $videoAspect)
                                                     <div class="col-md-6">
                                                         <input class="custom-option-item-check" type="radio"
-                                                            name="video_option_duration"
-                                                            id="videoAspect{{$videoAspect->id }}" />
+                                                            name="video_option_aspect" value="{{ $videoAspect->id }}"
+                                                            id="videoAspect{{$videoAspect->id }}" @if($key==0) checked
+                                                            @endif />
                                                         <label class="custom-option-item text-center p-1"
                                                             for="videoAspect{{$videoAspect->id }}">
 
@@ -163,44 +189,54 @@
                                                                 class="custom-option-item-title h4 d-block">{{$videoAspect->name
                                                                 }} </span>
                                                             <small>{{ $videoAspect->describe }}</small>
+                                                            <p><small>{{ generateTextTimePlus($videoAspect->price)
+                                                                    }}</small></p>
                                                         </label>
+
                                                     </div>
                                                     @endforeach
-
+                                                    @error('video_option_aspect')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
                                         </div>
 
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center mt-2">
+
+                                            <h4 class="mb-0 text-muted" dir="ltr">
+                                                <span id="calculation-video-count"></span>
+                                                فيديو
+                                                x
+                                                <span id="calculation-price-txt"></span>
+
+                                            </h4>
+                                            <h3 class="">
+                                                اجمالي: <span id="calculation-total-txt"></span>
+                                            </h3>
+                                        </div>
+                                    </div>
 
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-secondary btn-prev" disabled>
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                                            <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            <span class="align-middle d-sm-inline-block d-none">السايق</span>
                                         </button>
+
                                         <button class="btn btn-primary btn-next">
-                                            <span class="align-middle d-sm-inline-block d-none">Next</span>
+                                            <span class="align-middle d-sm-inline-block d-none">التالي</span>
                                             <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
                                         </button>
                                     </div>
-                                </div>
-                                <div id="personal-info-modern" class="content" role="tabpanel"
-                                    aria-labelledby="personal-info-modern-trigger">
+                                </form>
 
-                                </div>
-                                <div id="address-step-modern" class="content" role="tabpanel"
-                                    aria-labelledby="address-step-modern-trigger">
-
-                                </div>
-                                <div id="social-links-modern" class="content" role="tabpanel"
-                                    aria-labelledby="social-links-modern-trigger">
-
-                                </div>
                             </div>
                         </div>
                     </section>
-                    <!-- /Modern Horizontal Wizard -->
+
                 </div>
             </div>
         </div>
@@ -230,5 +266,45 @@
 <script src="{{asset('users-asset/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
 
 <script src="{{asset('users-asset/js/scripts/forms/form-number-input.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+        function sendAjaxRequest(){
+            var formData = $('#formDetails').serialize(); // Serialize the form data
+
+            $.ajax({
+                url: '{{ route("client.order.calculation.price") }}',
+                type: 'POST',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+
+                    $('#calculation-video-count').text(response['videoCount']);
+                    $('#calculation-price-txt').text(response['videoPrice']);
+                    $('#calculation-total-txt').text('$'+response['total']);
+                    $('#videoPriceInput').val(response['videoPrice']);
+                    $('#totalInput').val(response['total']);
+
+
+
+
+                },
+                error: function(xhr) {
+
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        sendAjaxRequest();
+        $('form input, form select, form textarea').on('change', function() {
+            sendAjaxRequest();
+        });
+    });
+</script>
+
 
 @endsection

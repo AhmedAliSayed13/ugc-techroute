@@ -81,4 +81,18 @@ if (!function_exists('getUserOtionsByMainId')) {
         return $userOptionComma;
     }
 }
+if (!function_exists('generateTextTimePlus')) {
+
+    function generateTextTimePlus($value)
+    {
+        if($value!=0)
+        {
+
+            $txt='+ '.$value.' '.__('messages.each_video');
+        }else{
+            $txt=__('messages.Included');
+        }
+        return $txt;
+    }
+}
 

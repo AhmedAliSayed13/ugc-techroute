@@ -13,7 +13,7 @@ class VideoOptionDuration extends Model
     public $incrementing = true;
     protected $fillable = [
         'id',
-        'name',
+        'price',
         'is_active',
         'time',
         'created_at',

@@ -14,6 +14,7 @@ class VideoOptionAspect extends Model
     protected $fillable = [
         'id',
         'name',
+        'price',
         'is_active',
         'describe',
         'created_at',

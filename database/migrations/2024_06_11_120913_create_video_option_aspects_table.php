@@ -16,6 +16,7 @@ class CreateVideoOptionAspectsTable extends Migration
         Schema::create('video_option_aspects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('price');
             $table->string('describe');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
