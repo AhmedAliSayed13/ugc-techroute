@@ -2,16 +2,10 @@
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
-{{--
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/vendors-rtl.min.css')}}"> --}}
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/wizard/bs-stepper.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/select/select2.min.css')}}">
-{{--
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/core/menu/menu-types/horizontal-menu.css')}}">
---}}
-{{--
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}"> --}}
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-wizard.css')}}">
+<script src="https://js.stripe.com/v3/"></script>
 <style>
     .bootstrap-touchspin.input-group {
         width: 24rem;
@@ -55,58 +49,23 @@
                                     <h5 class="mb-0">الدفع</h5>
                                     <small class="text-muted">دفع تمن الخدمة المقدمة</small>
                                 </div>
-                                {{-- <div class="card-information">
-                                    <img class="mb-1 img-fluid" src="{{asset('users-asset/images/stripe-logo.png')}}"
-                                        alt="Master Card">
-                                    <div class="d-flex align-items-center mb-50">
-                                        <h6 class="mb-0 badge badge-light-primary">Stripe</h6>
-                                    </div>
-
-                                </div> --}}
-                                <form class="row  mb-2">
+                                <form class="row  mb-2" action="{{route('client.order.checkout',$data['key'])}}"
+                                    method="POST" id="payment-form">
                                     @csrf
                                     <div class="row  mb-2">
-
-                                        <div class="col-6">
-                                            <label class="form-label" for="modalAddCardNumber">رقم البطاقة
+                                        <div class="col-12 ">
+                                            <label class="form-label" for="cvv">
+                                                بطاقة الائتمان أو الخصم
                                             </label>
-                                            <div class="input-group input-group-merge">
-                                                <input id="modalAddCardNumber" name="modalAddCard"
-                                                    class="form-control add-credit-card-mask" type="text"
-                                                    aria-describedby="modalAddCard2"
-                                                    data-msg="Please enter your credit card number">
-                                                <span class="input-group-text cursor-pointer p-25" id="modalAddCard2">
-                                                    <span class="add-card-type"></span>
-                                                </span>
+                                            <div id="card-element" class="form-control">
+
                                             </div>
+                                            <div id="card-errors" role="alert"></div>
+                                            @error('cvv')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
-
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="modalAddCardName">الاسم على
-                                                البطاقة</label>
-                                            <input type="text" id="modalAddCardName" class="form-control">
-                                        </div>
-
-                                        <div class="col-6 ">
-                                            <label class="form-label" for="modalAddCardExpiryDate">تاريخ انتهاء
-                                                البطاقة</label>
-                                            <input type="text" id="modalAddCardExpiryDate"
-                                                class="form-control add-expiry-date-mask" placeholder="MM/YY">
-                                        </div>
-
-                                        <div class="col-6 ">
-                                            <label class="form-label" for="modalAddCardCvv">
-                                                قيمة التحقق من البطاقة (CVV)
-                                            </label>
-                                            <input type="text" id="modalAddCardCvv"
-                                                class="form-control add-cvv-code-mask" maxlength="3">
-                                        </div>
-
-
                                     </div>
-
-
-
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-secondary btn-prev" disabled>
                                             <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
@@ -118,6 +77,23 @@
                                         </button>
                                     </div>
                                 </form>
+
+                                {{-- <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="amount">Amount</label>
+                                        <input type="number" name="amount" id="amount" class="form-control"
+                                            placeholder="Enter Amount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-element">Credit or Debit Card</label>
+                                        <div id="card-element" class="form-control">
+                                            <!-- A Stripe Element will be inserted here. -->
+                                        </div>
+                                        <div id="card-errors" role="alert"></div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Submit Payment</button>
+                                </form> --}}
 
                             </div>
                         </div>
@@ -132,6 +108,62 @@
 
 @endsection
 @section('script')
+
+<script>
+    var stripe = Stripe('{{ config('services.stripe.key') }}');
+    var elements = stripe.elements();
+    var style = {
+        base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+    var card = elements.create('card', {style: style});
+    card.mount('#card-element');
+
+    card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                stripeTokenHandler(result.token);
+            }
+        });
+    });
+
+    function stripeTokenHandler(token) {
+        var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token.id);
+        form.appendChild(hiddenInput);
+
+        form.submit();
+    }
+</script>
 <script src="{{asset('users-asset/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
 <script src="{{asset('users-asset/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('users-asset/js/scripts/forms/form-wizard.js')}}"></script>

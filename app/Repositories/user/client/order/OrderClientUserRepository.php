@@ -6,6 +6,8 @@ use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionType;
 use Auth;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class OrderClientUserRepository implements OrderClientUserInterface
 {
@@ -32,6 +34,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
             'video_option_aspect_id' => $request->video_option_aspect,
             'video_price' => $request->video_price,
             'total' => $request->total,
+            'status' => 1
         ]);
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return $order->key;
@@ -46,20 +49,32 @@ class OrderClientUserRepository implements OrderClientUserInterface
             'videoTypes' => $videoTypes,
             'videoDurations' => $videoDurations,
             'videoAspects' => $videoAspects,
+            'key' => $key,
         );
         return $data;
     }
     public function checkout($request, $key)
     {
-        $order = Order::create([
-            'user_id' => Auth::user()->id,
-            'video_count' => $request->video_count,
-            'video_option_type_id' => $request->video_option_type,
-            'video_option_duration_id' => $request->video_option_duration,
-            'video_option_aspect_id' => $request->video_option_aspect,
-        ]);
-        toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
-        return true;
+        try {
+            Stripe::setApiKey(config('services.stripe.secret'));
+            $order = Order::where('key', $key)->first();
+            
+            $charge = Charge::create([
+                'amount' => $order->total * 100,
+                'currency' => 'usd',
+                'source' => $request->stripeToken,
+                'description' => 'Order #' . $key,
+            ]);
+
+            $order->status = 2;
+            $order->paid = 1;
+            $order->save();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return $key;
+        } catch (\Exception $e) {
+            toastr()->error(__('messages.error'), $e->getMessage());
+            return false;
+        }
     }
     public function calculationPrice($request)
     {

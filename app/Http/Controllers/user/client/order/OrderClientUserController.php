@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\user\client\order\CheckoutOrderClientRequest;
 use App\Http\Requests\user\client\order\DetailsOrderClientRequest;
 use App\Repositories\user\client\order\OrderClientUserInterface;
- use Illuminate\Http\Request;
+use Illuminate\Http\Request;
+
 class OrderClientUserController extends Controller
 {
     protected $orderClientUserInterface;
@@ -37,11 +38,12 @@ class OrderClientUserController extends Controller
     }
     public function checkout(CheckoutOrderClientRequest $request, $key)
     {
-        $data = $this->orderClientUserInterface->details($request, $key);
+        $data = $this->orderClientUserInterface->checkout($request, $key);
         if ($data) {
-            return redirect()->route('client.order.checkout');
+            return redirect()->route('client.order.checkout', $data);
         }
         return back();
+
     }
     public function calculationPrice(Request $request)
     {

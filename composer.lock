@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ed5b9811717f8c6cb75d584b62f4a3c",
+    "content-hash": "6750b6283d6d78fda12b3c8db2ea7b4f",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3625,16 +3625,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v14.9.0",
+            "version": "v14.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "7165f64ec1b19cb0ce288d553909cd68d8e6a3b1"
+                "reference": "7e1c4b5d2beadeaeddc42fd1f8a50fdb18b37f30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7165f64ec1b19cb0ce288d553909cd68d8e6a3b1",
-                "reference": "7165f64ec1b19cb0ce288d553909cd68d8e6a3b1",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7e1c4b5d2beadeaeddc42fd1f8a50fdb18b37f30",
+                "reference": "7e1c4b5d2beadeaeddc42fd1f8a50fdb18b37f30",
                 "shasum": ""
             },
             "require": {
@@ -3678,9 +3678,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v14.9.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v14.10.0"
             },
-            "time": "2024-05-30T20:12:41+00:00"
+            "time": "2024-06-13T21:04:47+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

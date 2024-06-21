@@ -22,6 +22,8 @@ class Order extends Model
         'video_count',
         'video_price',
         'total',
+        'paid',
+        'status',
         'created_at',
 
     ];
