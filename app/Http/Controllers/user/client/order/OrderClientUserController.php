@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user\client\order;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\user\client\order\ProductOrderClientRequest;
 use App\Http\Requests\user\client\order\CheckoutOrderClientRequest;
 use App\Http\Requests\user\client\order\DetailsOrderClientRequest;
 use App\Repositories\user\client\order\OrderClientUserInterface;
@@ -40,7 +41,7 @@ class OrderClientUserController extends Controller
     {
         $data = $this->orderClientUserInterface->checkout($request, $key);
         if ($data) {
-            return redirect()->route('client.order.checkout', $data);
+            return redirect()->route('client.order.product', $data);
         }
         return back();
 
@@ -50,6 +51,21 @@ class OrderClientUserController extends Controller
         $data = $this->orderClientUserInterface->calculationPrice($request);
 
         return $data;
+    }
+
+    public function showProduct($key)
+    {
+        $data = $this->orderClientUserInterface->showProduct($key);
+        return view($this->path . 'product', compact('data'));
+    }
+    public function product(ProductOrderClientRequest $request, $key)
+    {
+        $data = $this->orderClientUserInterface->product($request, $key);
+        if ($data) {
+            return redirect()->route('client.order.product', $data);
+        }
+        return back();
+
     }
 
 }

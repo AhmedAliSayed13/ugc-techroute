@@ -34,7 +34,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
             'video_option_aspect_id' => $request->video_option_aspect,
             'video_price' => $request->video_price,
             'total' => $request->total,
-            'status' => 1
+            'status' => 1,
         ]);
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return $order->key;
@@ -42,13 +42,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
 
     public function showCheckout($key): array
     {
-        $videoTypes = VideoOptionType::where('is_active', 1)->get();
-        $videoDurations = VideoOptionDuration::where('is_active', 1)->get();
-        $videoAspects = VideoOptionAspect::where('is_active', 1)->get();
         $data = array(
-            'videoTypes' => $videoTypes,
-            'videoDurations' => $videoDurations,
-            'videoAspects' => $videoAspects,
             'key' => $key,
         );
         return $data;
@@ -58,7 +52,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
             $order = Order::where('key', $key)->first();
-            
+
             $charge = Charge::create([
                 'amount' => $order->total * 100,
                 'currency' => 'usd',
@@ -97,5 +91,33 @@ class OrderClientUserRepository implements OrderClientUserInterface
         }
 
     }
+    public function showProduct($key): array
+    {
+        $order = Order::where('key', $key)->first();
 
+        $data = array(
+            'key' => $key,
+            'order' => $order,
+        );
+        return $data;
+    }
+    public function product($request, $key)
+    {
+        try {
+
+            $order = Order::where('key', $key)->first();
+
+            $order->product_name = $request->product_name;
+            $order->product_link = $request->product_link;
+            $order->product_instructions = $request->product_instructions;
+            $order->product_description = $request->product_description;
+            $order->status = 3;
+            $order->save();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return $key;
+        } catch (\Exception $e) {
+            toastr()->error(__('messages.error'), $e->getMessage());
+            return false;
+        }
+    }
 }

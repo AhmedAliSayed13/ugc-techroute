@@ -3,7 +3,7 @@
         id="account-details-modern-trigger">
         <button type="button " class="step-trigger" href="{{route('client.order.details')}}">
             <span class="bs-stepper-box">
-                <i data-feather="file-text" class="font-medium-3"></i>
+                <i data-feather="info" class="font-medium-3"></i>
             </span>
             <span class="bs-stepper-label">
                 <span class="bs-stepper-title">تفاصيل الطلب</span>
@@ -17,7 +17,7 @@
     <div class="step " data-target="#personal-info-modern" role="tab" id="personal-info-modern-trigger">
         <a type="button" class="step-trigger" href="">
             <span class="bs-stepper-box">
-                <i data-feather="user" class="font-medium-3"></i>
+                <i data-feather="info" class="font-medium-3"></i>
             </span>
             <span class="bs-stepper-label">
                 <span class="bs-stepper-title">الدفع</span>
@@ -31,11 +31,11 @@
     <div class="step" data-target="#address-step-modern" role="tab" id="address-step-modern-trigger">
         <button type="button" class="step-trigger" disabled="disabled">
             <span class="bs-stepper-box">
-                <i data-feather="map-pin" class="font-medium-3"></i>
+                <i data-feather="info" class="font-medium-3"></i>
             </span>
             <span class="bs-stepper-label">
-                <span class="bs-stepper-title">Address</span>
-                <span class="bs-stepper-subtitle">Add Address</span>
+                <span class="bs-stepper-title">{{__('messages.product')}}</span>
+                <span class="bs-stepper-subtitle">{{__('messages.productDetails')}}</span>
             </span>
         </button>
     </div>
@@ -45,7 +45,7 @@
     <div class="step" data-target="#social-links-modern" role="tab" id="social-links-modern-trigger">
         <button type="button" class="step-trigger" disabled="disabled">
             <span class="bs-stepper-box">
-                <i data-feather="link" class="font-medium-3"></i>
+                <i data-feather="info" class="font-medium-3"></i>
             </span>
             <span class="bs-stepper-label">
                 <span class="bs-stepper-title">Social Links</span>

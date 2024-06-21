@@ -21,6 +21,10 @@ class CreateOrdersTable extends Migration
             $table->integer('video_price');
             $table->boolean('paid')->default(0);
             $table->integer('status')->nullable();
+            $table->string('product_name')->nullable();
+            $table->string('product_link')->nullable();
+            $table->text('product_instructions')->nullable();
+            $table->text('product_description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_type_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_duration_id')->constrained()->onDelete('cascade');

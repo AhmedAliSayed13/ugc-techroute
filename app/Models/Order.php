@@ -24,6 +24,10 @@ class Order extends Model
         'total',
         'paid',
         'status',
+        'product_name',
+        'product_link',
+        'product_instructions',
+        'product_description',
         'created_at',
 
     ];

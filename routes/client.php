@@ -20,6 +20,7 @@ Route::prefix('order')->name('order.')->group(function () {
     Route::get('checkout/{key}', [OrderClientUserController::class, 'showCheckout'])->name('checkout');
     Route::post('checkout/{key}', [OrderClientUserController::class, 'checkout'])->name('checkout');
     Route::post('calculation/price', [OrderClientUserController::class, 'calculationPrice'])->name('calculation.price');
-
+    Route::get('product/{key}', [OrderClientUserController::class, 'showProduct'])->name('product');
+    Route::post('product/{key}', [OrderClientUserController::class, 'product'])->name('product');
 
 });
