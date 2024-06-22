@@ -25,14 +25,15 @@ class CreateOrdersTable extends Migration
             $table->string('product_link')->nullable();
             $table->text('product_instructions')->nullable();
             $table->text('product_description')->nullable();
+            $table->string('gender')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_type_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_duration_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_aspect_id')->constrained()->onDelete('cascade');
+            $table->integer('country_id')->nullable();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

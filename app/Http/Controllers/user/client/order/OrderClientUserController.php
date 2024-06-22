@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\user\client\order;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\user\client\order\ProductOrderClientRequest;
 use App\Http\Requests\user\client\order\CheckoutOrderClientRequest;
 use App\Http\Requests\user\client\order\DetailsOrderClientRequest;
+use App\Http\Requests\user\client\order\ProductOrderClientRequest;
+use App\Http\Requests\user\client\order\CriteriaOrderClientRequest;
 use App\Repositories\user\client\order\OrderClientUserInterface;
 use Illuminate\Http\Request;
 
@@ -62,7 +63,22 @@ class OrderClientUserController extends Controller
     {
         $data = $this->orderClientUserInterface->product($request, $key);
         if ($data) {
-            return redirect()->route('client.order.product', $data);
+            return redirect()->route('client.order.criteria', $data);
+        }
+        return back();
+
+    }
+    public function showCriteria($key)
+    {
+        $data = $this->orderClientUserInterface->showCriteria($key);
+        return view($this->path . 'criteria', compact('data'));
+    }
+    public function criteria(CriteriaOrderClientRequest $request, $key)
+    {
+        $data = $this->orderClientUserInterface->criteria($request, $key);
+        // return $data;
+        if ($data) {
+            return redirect()->route('client.order.criteria', $data);
         }
         return back();
 

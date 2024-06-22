@@ -22,5 +22,7 @@ Route::prefix('order')->name('order.')->group(function () {
     Route::post('calculation/price', [OrderClientUserController::class, 'calculationPrice'])->name('calculation.price');
     Route::get('product/{key}', [OrderClientUserController::class, 'showProduct'])->name('product');
     Route::post('product/{key}', [OrderClientUserController::class, 'product'])->name('product');
+    Route::get('criteria/{key}', [OrderClientUserController::class, 'showCriteria'])->name('criteria');
+    Route::post('criteria/{key}', [OrderClientUserController::class, 'criteria'])->name('criteria');
 
 });

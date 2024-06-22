@@ -1,10 +1,14 @@
 <?php namespace App\Repositories\user\client\order;
 
+use App\Models\Country;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionType;
+use App\Models\MainOption;
+use App\Models\OrderVideo;
+use App\Models\OrderVideoOption;
 use Auth;
 use Stripe\Charge;
 use Stripe\Stripe;
@@ -116,6 +120,62 @@ class OrderClientUserRepository implements OrderClientUserInterface
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
             return $key;
         } catch (\Exception $e) {
+            toastr()->error(__('messages.error'), $e->getMessage());
+            return false;
+        }
+    }
+    public function showCriteria($key): array
+    {
+        $countries = Country::all();
+        $order = Order::where('key', $key)->first();
+        $main_options = MainOption::where('is_active', 1)->get();
+        $data = array(
+            'key' => $key,
+            'video_count' => $order->video_count,
+            'order' => $order,
+            'countries' => $countries,
+            'mainOptions' => $main_options
+        );
+        return $data;
+    }
+    public function criteria($request, $key)
+    {
+        try {
+
+            $order = Order::where('key', $key)->first();
+
+            $order->update([
+                'gender' => $request->gender,
+                'country_id' => $request->country_id,
+                'status' => 4,
+            ]);
+
+            foreach($request->scenes as $i => $scene){
+                OrderVideo::create(
+                    [
+                        'order_id' => $order->id,
+                        'scenes' => $request->scenes[$i],
+                        'mentions' => $request->mentions[$i],
+                    ]
+                );
+            }
+
+            foreach($request->mainOptions as $i => $mainOptionId){
+                $valueOptions = implode(',', $request->valueOptions[$mainOptionId]);
+                OrderVideoOption::create(
+                    [
+                        'main_option_id' => $mainOptionId,
+                        'value_options' => $valueOptions,
+                        'order_id' => $order->id,
+
+                    ]
+                );
+            }
+
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return $key;
+        } catch (\Exception $e) {
+
             toastr()->error(__('messages.error'), $e->getMessage());
             return false;
         }

@@ -48,8 +48,8 @@
                 <i data-feather="info" class="font-medium-3"></i>
             </span>
             <span class="bs-stepper-label">
-                <span class="bs-stepper-title">Social Links</span>
-                <span class="bs-stepper-subtitle">Add Social Links</span>
+                <span class="bs-stepper-title">{{__('messages.criteria')}}</span>
+                <span class="bs-stepper-subtitle">{{__('messages.criteriaForEachVideo')}}</span>
             </span>
         </button>
     </div>

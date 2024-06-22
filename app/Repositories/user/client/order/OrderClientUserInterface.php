@@ -11,6 +11,8 @@ interface OrderClientUserInterface {
     public function calculationPrice($request);
     public function showProduct($key):array;
     public function product($request,$key);
+    public function showCriteria($key):array;
+    public function criteria($request,$key);
 
 
 }

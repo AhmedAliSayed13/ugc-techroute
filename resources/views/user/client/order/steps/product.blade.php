@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/wizard/bs-stepper.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/select/select2.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-wizard.css')}}">
-<script src="https://js.stripe.com/v3/"></script>
+
 
 @endsection
 
@@ -108,61 +108,7 @@
 @endsection
 @section('script')
 
-<script>
-    var stripe = Stripe('{{ config('services.stripe.key') }}');
-    var elements = stripe.elements();
-    var style = {
-        base: {
-            color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    };
-    var card = elements.create('card', {style: style});
-    card.mount('#card-element');
 
-    card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        stripe.createToken(card).then(function(result) {
-            if (result.error) {
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                stripeTokenHandler(result.token);
-            }
-        });
-    });
-
-    function stripeTokenHandler(token) {
-        var form = document.getElementById('payment-form');
-        var hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', token.id);
-        form.appendChild(hiddenInput);
-
-        form.submit();
-    }
-</script>
 <script src="{{asset('users-asset/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>
 <script src="{{asset('users-asset/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('users-asset/js/scripts/forms/form-wizard.js')}}"></script>

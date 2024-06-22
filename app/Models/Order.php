@@ -21,6 +21,8 @@ class Order extends Model
         'video_option_aspect_id',
         'video_count',
         'video_price',
+        'country_id',
+        'gender',
         'total',
         'paid',
         'status',
