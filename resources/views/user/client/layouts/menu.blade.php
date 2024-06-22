@@ -41,14 +41,14 @@
                    <a class=" nav-link d-flex align-items-center" href="{{route('client.dashboard')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.Dashboards')}}</span></a>
                 </li>
-                <li class="dropdown nav-item {{checkActiveRoute('client.search.creators')}}" >
+                <li class="dropdown nav-item {{checkActiveRoute('client.my-orders.index')}}" >
+                   <a class=" nav-link d-flex align-items-center" href="{{route('client.my-orders.index')}}" ><i data-feather="shopping-bag">
+                        </i><span data-i18n="Dashboards">{{__('messages.myOrders')}}</span></a>
+                </li>
+                {{-- <li class="dropdown nav-item {{checkActiveRoute('client.search.creators')}}" >
                    <a class=" nav-link d-flex align-items-center" href="{{route('client.search.creators')}}" ><i data-feather="users">
                         </i><span data-i18n="Dashboards">{{__('messages.searchForCreators')}}</span></a>
-                </li>
-                <li class="dropdown nav-item {{checkActiveRoute('client.search.creators')}}" >
-                   <a class=" nav-link d-flex align-items-center" href="{{route('client.search.creators')}}" ><i data-feather="users">
-                        </i><span data-i18n="Dashboards">{{__('messages.searchForCreators')}}</span></a>
-                </li>
+                </li> --}}
 
 
             </ul>

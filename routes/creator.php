@@ -18,3 +18,6 @@ Route::post('feature-videos', [ProfileCreatorUserController::class, 'featureVide
 
 Route::get('options', [ProfileCreatorUserController::class, 'showOptions'])->name('options');
 Route::post('options', [ProfileCreatorUserController::class, 'options'])->name('options');
+
+
+

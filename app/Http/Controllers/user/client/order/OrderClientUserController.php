@@ -78,7 +78,7 @@ class OrderClientUserController extends Controller
         $data = $this->orderClientUserInterface->criteria($request, $key);
         // return $data;
         if ($data) {
-            return redirect()->route('client.order.criteria', $data);
+            return redirect()->route('client.my-orders.index');
         }
         return back();
 

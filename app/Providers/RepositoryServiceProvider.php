@@ -25,6 +25,8 @@ use App\Repositories\user\client\profile\ProfileClientUserInterface;
 use App\Repositories\user\client\profile\ProfileClientUserRepository;
 use App\Repositories\user\client\order\OrderClientUserInterface;
 use App\Repositories\user\client\order\OrderClientUserRepository;
+use App\Repositories\user\client\myorder\MyOrderClientUserInterface;
+use App\Repositories\user\client\myorder\MyOrderClientUserRepository;
 //creator
 use App\Repositories\user\client\search\SearchClientUserInterface;
 use App\Repositories\user\client\search\SearchClientUserRepository;
@@ -125,6 +127,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderClientUserInterface::class,
             OrderClientUserRepository::class
+        );
+
+        //myorder
+        $this->app->bind(
+            MyOrderClientUserInterface::class,
+            MyOrderClientUserRepository::class
         );
 
         // --------------------------------------------------website
