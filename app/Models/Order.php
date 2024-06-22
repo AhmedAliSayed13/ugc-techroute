@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+use App\Models\Country;
 class Order extends Model
 {
     use HasFactory;
@@ -40,5 +40,11 @@ class Order extends Model
         static::creating(function ($model) {
             $model->key = Str::random(10); // Generates a random string of 10 characters
         });
+    }
+
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

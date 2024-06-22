@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\user\creator\dashboard\DashboardCreatorUserController;
+use App\Http\Controllers\user\creator\offers\OffersCreatorUserController;
 use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
@@ -19,5 +20,8 @@ Route::post('feature-videos', [ProfileCreatorUserController::class, 'featureVide
 Route::get('options', [ProfileCreatorUserController::class, 'showOptions'])->name('options');
 Route::post('options', [ProfileCreatorUserController::class, 'options'])->name('options');
 
-
-
+// Route::get('offers', [OffersCreatorUserController::class, 'offers'])->name('offers');
+Route::resource('offers', OffersCreatorUserController::class);
+// ->only([
+//     'index', 'show'
+// ]);

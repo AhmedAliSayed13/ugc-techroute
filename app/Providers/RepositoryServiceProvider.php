@@ -34,6 +34,8 @@ use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserRepository;
 use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
 use App\Repositories\user\creator\profile\ProfileCreatorUserRepository;
+use App\Repositories\user\creator\offers\OffersCreatorUserInterface;
+use App\Repositories\user\creator\offers\OffersCreatorUserRepository;
 
 
 // website
@@ -107,6 +109,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProfileCreatorUserInterface::class,
             ProfileCreatorUserRepository::class
+        );
+        // Offers
+        $this->app->bind(
+            OffersCreatorUserInterface::class,
+            OffersCreatorUserRepository::class
         );
         //Client------------------------------------------------
         $this->app->bind(
