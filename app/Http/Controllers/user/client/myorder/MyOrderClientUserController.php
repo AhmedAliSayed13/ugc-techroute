@@ -27,5 +27,11 @@ class MyOrderClientUserController extends Controller
         // return $data;
         return redirect($data);
     }
+    public function show($id)
+    {
+        $data = $this->myOrderClientUserInterface->show($id);
+        // return $data;
+        return view($this->path . 'show', compact('data'));
+    }
 
 }

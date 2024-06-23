@@ -269,7 +269,7 @@ return [
     'order_details' => 'تفاصيل الطلب',
     'order_details_desc' => 'إختار تفاصيل الطلب',
     'next' => 'التالي',
-    'myaccount1' => 'myaccount1',
+    'show_order' => 'عرض الطلب',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',

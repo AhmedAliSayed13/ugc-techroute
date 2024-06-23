@@ -79,7 +79,7 @@
                                                             <i data-feather="edit"></i>
                                                         </a>
                                                         @endif
-                                                        <a type="button" class="btn btn-sm btn-success " href="">
+                                                        <a type="button" class="btn btn-sm btn-success " href="{{route('client.my-orders.show',$order->id)}}">
                                                             <i data-feather="eye"></i>
                                                         </a>
                                                     </td>
