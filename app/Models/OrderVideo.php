@@ -13,6 +13,7 @@ class OrderVideo extends Model
     protected $table = 'order_videos';
     protected $fillable = [
         'id',
+        'sub_key',
         'scenes',
         'mentions',
         'order_id',

@@ -37,7 +37,8 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
         <div class="content-header row">
-            <x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('client.profile')" :title="'تعديل البيانات'" />
+            <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('client.profile')"
+                :title="__('messages.order_details')" />
 
         </div>
         <div class="container-fluid mt-2">
@@ -220,17 +221,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="d-flex justify-content-between">
-                                        <button class="btn btn-outline-secondary btn-prev" disabled>
-                                            <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                                            <span class="align-middle d-sm-inline-block d-none">السايق</span>
-                                        </button>
-
-                                        <button class="btn btn-primary btn-next">
-                                            <span class="align-middle d-sm-inline-block d-none">التالي</span>
-                                            <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                                        </button>
-                                    </div>
+                                    @include('user.client.order.tap_footer')
                                 </form>
 
                             </div>

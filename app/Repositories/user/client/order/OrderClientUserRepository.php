@@ -12,7 +12,7 @@ use App\Models\OrderVideoOption;
 use Auth;
 use Stripe\Charge;
 use Stripe\Stripe;
-
+use Illuminate\Support\Facades\DB;
 class OrderClientUserRepository implements OrderClientUserInterface
 {
 
@@ -140,22 +140,24 @@ class OrderClientUserRepository implements OrderClientUserInterface
     }
     public function criteria($request, $key)
     {
+        DB::beginTransaction();
         try {
 
             $order = Order::where('key', $key)->first();
+            $order_id= $order->id;
 
-            $order->update([
-                'gender' => $request->gender,
-                'country_id' => $request->country_id,
-                'status' => 4,
-            ]);
+            $order->gender = $request->gender;
+            $order->country_id = $request->country_id;
+            $order->status = 4;
+            $order->save();
 
             foreach($request->scenes as $i => $scene){
                 OrderVideo::create(
                     [
-                        'order_id' => $order->id,
+                        'order_id' => $order_id,
                         'scenes' => $request->scenes[$i],
                         'mentions' => $request->mentions[$i],
+                        'sub_key'=>$key.'-'.$i
                     ]
                 );
             }
@@ -166,12 +168,13 @@ class OrderClientUserRepository implements OrderClientUserInterface
                     [
                         'main_option_id' => $mainOptionId,
                         'value_options' => $valueOptions,
-                        'order_id' => $order->id,
+                        'order_id' => $order_id,
 
                     ]
                 );
             }
 
+            DB::commit();
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
             return $key;
         } catch (\Exception $e) {

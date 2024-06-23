@@ -18,24 +18,12 @@
             </ul>
 
             <ul class="nav navbar-nav bookmark-icons">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="#" data-bs-toggle="tooltip"
-                        data-bs-placement="bottom" title="Email"><i class="ficon" data-feather="mail"></i></a></li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="#" data-bs-toggle="tooltip"
-                        data-bs-placement="bottom" title="Chat"><i class="ficon" data-feather="message-square"></i></a>
-                </li>
+
+                <a href="{{route('client.order.details')}}" class="btn  btn-relief-primary">{{__('messages.orderNow')}}
+                </a>
             </ul>
 
-            <ul class="nav navbar-nav">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i class="ficon text-warning"
-                            data-feather="star"></i></a>
-                    <div class="bookmark-input search-input">
-                        <div class="bookmark-input-icon"><i data-feather="search"></i></div>
-                        <input class="form-control input" type="text" placeholder="Bookmark" tabindex="0"
-                            data-search="search">
-                        <ul class="search-list search-list-bookmark"></ul>
-                    </div>
-                </li>
-            </ul>
+
         </div>
 
         <ul class="nav navbar-nav align-items-center ms-auto">
@@ -257,8 +245,8 @@
                     <div class="user-nav d-sm-flex d-none"><span
                             class="user-name fw-bolder">{{auth()->user()->name}}</span><span
                             class="user-status">{{__('messages.client')}}</span></div><span class="avatar"><img
-                            class="round" src="{{getUserProfileImage(auth()->user()->img)}}"
-                            alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                            class="round" src="{{getUserProfileImage(auth()->user()->img)}}" alt="avatar" height="40"
+                            width="40"><span class="avatar-status-online"></span></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                     {{-- <a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i>

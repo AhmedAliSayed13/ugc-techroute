@@ -52,34 +52,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <button class="btn btn-outline-secondary btn-prev" disabled>
-                                            <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                                            <span class="align-middle d-sm-inline-block d-none">السايق</span>
-                                        </button>
-                                        <button class="btn btn-primary btn-next">
-                                            <span class="align-middle d-sm-inline-block d-none">التالي</span>
-                                            <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                                        </button>
-                                    </div>
+                                    @include('user.client.order.tap_footer')
                                 </form>
 
-                                {{-- <form action="{{ route('stripe.payment') }}" method="POST" id="payment-form">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="amount">Amount</label>
-                                        <input type="number" name="amount" id="amount" class="form-control"
-                                            placeholder="Enter Amount" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="card-element">Credit or Debit Card</label>
-                                        <div id="card-element" class="form-control">
-                                            <!-- A Stripe Element will be inserted here. -->
-                                        </div>
-                                        <div id="card-errors" role="alert"></div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-3">Submit Payment</button>
-                                </form> --}}
+
 
                             </div>
                         </div>
