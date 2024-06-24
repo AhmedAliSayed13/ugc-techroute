@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Country;
 use App\Models\OrderVideoOption;
 use App\Models\OrderRequest;
+use App\Models\Whitelist;
 class Order extends Model
 {
     use HasFactory;
@@ -57,11 +58,24 @@ class Order extends Model
     {
         return $this->hasMany(OrderRequest::class);
     }
+    public function whitelists()
+    {
+        return $this->hasMany(Whitelist::class);
+    }
 
     public  function hasUserSentRequest( )
     {
         return $this->orderRequests()
                     ->where('creator_id', auth()->id())
                     ->exists()>0?0:1;
+    }
+    public  function hasWhitelist()
+    {
+        return $this->whitelists()
+                    ->where('creator_id', auth()->id())
+                    ->exists()>0?1:0;
+        // return $this->whitelists()
+        //             ->where('creator_id', auth()->id())
+        //             ->exists()>0?0:1;
     }
 }

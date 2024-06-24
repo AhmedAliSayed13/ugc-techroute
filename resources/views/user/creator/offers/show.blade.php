@@ -3,6 +3,14 @@
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/pages/app-ecommerce.css')}}">
+<style>
+   .btn-wishlist.text-danger svg{
+        fill: #EA5455;
+    }
+   .btn-wishlist.text-danger span{
+        color: black!important;
+    }
+</style>
 @endsection
 
 
@@ -105,9 +113,11 @@
                                                                     <span class="add-to-cart">{{__('messages.sent_request')}}</span>
                                                                 </button>
                                                             @endif
-                                                            <a href="#"
-                                                                class="btn btn-outline-secondary btn-wishlist me-0 me-sm-1 mb-1 mb-sm-0">
-                                                                <i data-feather="heart" class="me-50"></i>
+                                                            <a href="{{route('creator.offers.whitelist', $data['order']->id)}}"
+                                                                class="btn btn-outline-secondary btn-wishlist @if($data['order']->hasWhitelist()) text-danger @endif me-0 me-sm-1 mb-1 mb-sm-0">
+
+                                                                    <i data-feather="heart" class="me-50 "></i>
+
                                                                 <span>{{__('messages.Wishlist')}}</span>
                                                             </a>
                                                             {{-- <div class="btn-group dropdown-icon-wrapper btn-share">

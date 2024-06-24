@@ -31,5 +31,10 @@ class OffersCreatorUserController extends Controller
             $data = $this->offersCreatorUserInterface->requestSend($request,$id);
             return back();
     }
+    public function whitelist($id)
+    {
+            $data = $this->offersCreatorUserInterface->whitelist($id);
+            return back();
+    }
 
 }

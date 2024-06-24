@@ -7,6 +7,12 @@
     .ecommerce-application .list-view .ecommerce-card{
         grid-template-columns:1fr 0.5fr!important;
     }
+   .btn-wishlist.text-danger svg{
+        fill: #EA5455;
+    }
+   .btn-wishlist.text-danger span{
+        color: black!important;
+    }
 </style>
 @endsection
 @section('breadcrumb')
@@ -118,7 +124,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-light btn-wishlist">
+                    <a href="{{route('creator.offers.whitelist', $offer->id)}}" class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
                         <i data-feather="heart"></i>
                         <span>{{__('messages.wishlist')}}</span>
                     </a>

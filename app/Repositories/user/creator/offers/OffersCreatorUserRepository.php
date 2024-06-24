@@ -2,6 +2,7 @@
 
 use App\Models\Order;
 use App\Models\OrderRequest;
+use App\Models\Whitelist;
 
 class OffersCreatorUserRepository implements OffersCreatorUserInterface
 {
@@ -29,6 +30,23 @@ class OffersCreatorUserRepository implements OffersCreatorUserInterface
             'creator_id' => auth()->user()->id,
         ]);
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        return true;
+    }
+    public function whitelist( $id)
+    {
+        $order=Order::find($id);
+        if($order->hasWhitelist()){
+
+            whitelist::where(['order_id' => $id, 'creator_id' => auth()->user()->id])->delete();
+
+        }else{
+
+            $order = Whitelist::Create([
+                'order_id' => $id,
+                'creator_id' => auth()->user()->id,
+            ]);
+        }
+        // toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return true;
     }
 

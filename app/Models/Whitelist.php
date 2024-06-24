@@ -10,12 +10,11 @@ class Whitelist extends Model
     use HasFactory;
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $table = 'order_requests';
+    protected $table = 'whitelists';
     protected $fillable = [
         'id',
         'order_id',
         'creator_id',
-        'status',
         'created_at',
 
     ];
