@@ -1,13 +1,14 @@
 <?php namespace App\Repositories\user\creator\offers;
 
 use App\Models\Order;
+use App\Models\OrderRequest;
 
 class OffersCreatorUserRepository implements OffersCreatorUserInterface
 {
 
     public function index(): array
     {
-        $offers = Order::where(['paid' => 1, 'status' => 4])->orderby('created_at',Request()->sort??'desc')->paginate(Request()->limit??10);
+        $offers = Order::where(['paid' => 1, 'status' => 4])->orderby('created_at', Request()->sort ?? 'desc')->paginate(Request()->limit ?? 10);
         $data = array(
             'offers' => $offers,
         );
@@ -20,6 +21,15 @@ class OffersCreatorUserRepository implements OffersCreatorUserInterface
             'order' => $order,
         );
         return $data;
+    }
+    public function requestSend($request, $id)
+    {
+        $order = OrderRequest::Create([
+            'order_id' => $id,
+            'creator_id' => auth()->user()->id,
+        ]);
+        toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        return true;
     }
 
 }

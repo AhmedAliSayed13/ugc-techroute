@@ -85,23 +85,32 @@
                                                                         <span class="text-primary">{{$item->name}}</span> |
                                                                     </li>
                                                                     @endforeach
-                                                                    {{-- {{$orderOption->value_options}} --}}
+
                                                                 </ul>
                                                             @endforeach
                                                         </div>
-                                                        {{-- <hr />
+
+                                                        <hr />
                                                         <div class="d-flex flex-column flex-sm-row pt-1">
-                                                            <a href="#"
-                                                                class="btn btn-primary btn-cart me-0 me-sm-1 mb-1 mb-sm-0">
-                                                                <i data-feather="shopping-cart" class="me-50"></i>
-                                                                <span class="add-to-cart">Add to cart</span>
-                                                            </a>
+                                                            @if($data['order']->hasUserSentRequest( ))
+                                                                <a href="{{route('creator.offers.request.send', $data['order']->id)}}"
+                                                                    class="btn btn-primary  me-0 me-sm-1 mb-1 mb-sm-0">
+                                                                    <i data-feather="shopping-cart" class="me-50"></i>
+                                                                    <span class="add-to-cart">{{__('messages.send_request')}}</span>
+                                                                </a>
+                                                                @else
+                                                                <button  href="" disabled
+                                                                    class="btn btn-primary  me-0 me-sm-1 mb-1 mb-sm-0">
+                                                                    <i data-feather="shopping-cart" class="me-50"></i>
+                                                                    <span class="add-to-cart">{{__('messages.sent_request')}}</span>
+                                                                </button>
+                                                            @endif
                                                             <a href="#"
                                                                 class="btn btn-outline-secondary btn-wishlist me-0 me-sm-1 mb-1 mb-sm-0">
                                                                 <i data-feather="heart" class="me-50"></i>
-                                                                <span>Wishlist</span>
+                                                                <span>{{__('messages.Wishlist')}}</span>
                                                             </a>
-                                                            <div class="btn-group dropdown-icon-wrapper btn-share">
+                                                            {{-- <div class="btn-group dropdown-icon-wrapper btn-share">
                                                                 <button type="button"
                                                                     class="btn btn-icon hide-arrow btn-outline-secondary dropdown-toggle"
                                                                     data-bs-toggle="dropdown" aria-haspopup="true"
@@ -122,8 +131,8 @@
                                                                         <i data-feather="instagram"></i>
                                                                     </a>
                                                                 </div>
-                                                            </div>
-                                                        </div> --}}
+                                                            </div> --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

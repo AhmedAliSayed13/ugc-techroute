@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Country;
 use App\Models\OrderVideoOption;
+use App\Models\OrderRequest;
 class Order extends Model
 {
     use HasFactory;
@@ -51,5 +52,16 @@ class Order extends Model
     public function orderOptions()
     {
         return $this->hasMany(OrderVideoOption::class);
+    }
+    public function orderRequests()
+    {
+        return $this->hasMany(OrderRequest::class);
+    }
+
+    public  function hasUserSentRequest( )
+    {
+        return $this->orderRequests()
+                    ->where('creator_id', auth()->id())
+                    ->exists()>0?0:1;
     }
 }

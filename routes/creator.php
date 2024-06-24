@@ -20,8 +20,7 @@ Route::post('feature-videos', [ProfileCreatorUserController::class, 'featureVide
 Route::get('options', [ProfileCreatorUserController::class, 'showOptions'])->name('options');
 Route::post('options', [ProfileCreatorUserController::class, 'options'])->name('options');
 
-// Route::get('offers', [OffersCreatorUserController::class, 'offers'])->name('offers');
-Route::resource('offers', OffersCreatorUserController::class);
-// ->only([
-//     'index', 'show'
-// ]);
+Route::resource('offers', OffersCreatorUserController::class)->only([
+    'index', 'show'
+]);
+Route::get('offers/request/send/{id}', [OffersCreatorUserController::class, 'requestSend'])->name('offers.request.send');
