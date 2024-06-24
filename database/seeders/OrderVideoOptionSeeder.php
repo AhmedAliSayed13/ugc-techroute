@@ -29,7 +29,7 @@ class OrderVideoOptionSeeder extends Seeder
                         'main_option_id' => $MainOption->id,
                         'value_options' => implode(',', $valueOptions),
                         'order_id' => $i,
-                        'created_at' => $faker->dateTimeThisYear,
+                        // 'created_at' => $faker->dateTimeThisYear,
                     ]);
 
             }

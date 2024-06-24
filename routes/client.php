@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\user\client\dashboard\DashboardClientUserController;
-use App\Http\Controllers\user\client\order\OrderClientUserController;
 use App\Http\Controllers\user\client\myorder\MyOrderClientUserController;
+use App\Http\Controllers\user\client\order\OrderClientUserController;
 use App\Http\Controllers\user\client\profile\ProfileClientUserController;
 use App\Http\Controllers\user\client\search\SearchClientUserController;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +28,7 @@ Route::prefix('order')->name('order.')->group(function () {
 });
 
 Route::resource('my-orders', MyOrderClientUserController::class)->only([
-    'index', 'show','edit'
+    'index', 'show', 'edit',
 ]);
+
+Route::get('my-orders/requests/review/{id}', [MyOrderClientUserController::class, 'orderRequestsReview'])->name('my-orders.requests.review');

@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             OrderSeeder::class,
             OrderVideoOptionSeeder::class,
+            OrderRequestSeeder::class,
+            WhitelistSeeder::class,
         ]);
 
 

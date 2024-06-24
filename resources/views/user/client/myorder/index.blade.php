@@ -40,18 +40,20 @@
                                         <table class="table table-borderless">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>{{__('messages.order_key')}}</th>
                                                     <th>{{__('messages.video_count')}}</th>
                                                     <th>{{__('messages.totalPrice')}}</th>
                                                     <th>{{__('messages.paid')}}</th>
                                                     <th>{{__('messages.status')}}</th>
+                                                    <th>{{__('messages.RequestsCount')}}</th>
                                                     <th>{{__('messages.actions')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($data['orders'] as $order)
                                                 <tr>
-
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$order->key}}</td>
                                                     <td>{{$order->video_count}}</td>
                                                     <td>{{$order->total}}</td>
@@ -73,10 +75,16 @@
                                                             class="badge rounded-pill badge-light-danger me-1">{{__('messages.incompleted')}}</span>
                                                         @endif
                                                     </td>
+
+                                                    <td>{{$order->orderRequests->count()}}</td>
                                                     <td>
                                                         @if($order->status!=4)
                                                         <a type="button" class="btn btn-sm btn-primary " href="{{route('client.my-orders.edit',$order->id)}}">
                                                             <i data-feather="edit"></i>
+                                                        </a>
+                                                        @else
+                                                        <a type="button" class="btn btn-sm btn-info " href="{{route('client.my-orders.requests.review',$order->id)}}">
+                                                            <i data-feather="users"></i>
                                                         </a>
                                                         @endif
                                                         <a type="button" class="btn btn-sm btn-success " href="{{route('client.my-orders.show',$order->id)}}">
