@@ -1,13 +1,13 @@
 <?php namespace App\Repositories\user\client\myorder;
 
 use App\Models\Order;
-
+use Auth;
 class MyOrderClientUserRepository implements MyOrderClientUserInterface
 {
 
     public function index(): array
     {
-        $orders = Order::all();
+        $orders = Order::where(['user_id'=>Auth::user()->id])->orderBy('created_at', 'desc')->paginate(Request()->limit??10);
         $data = array(
             'orders' => $orders,
         );

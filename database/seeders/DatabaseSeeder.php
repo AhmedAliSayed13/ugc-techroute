@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
             VideoOptionAspectsSeeder::class,
             VideoOptionDurationsSeeder::class,
             VideoOptionTypesSeeder::class,
-            // PlatformTableSeeder::class,
-            // PlatformAccountTableSeeder::class,
+            SettingsSeeder::class,
+            OrderSeeder::class,
+            OrderVideoOptionSeeder::class,
         ]);
 
 

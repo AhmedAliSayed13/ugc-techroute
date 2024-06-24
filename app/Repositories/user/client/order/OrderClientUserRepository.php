@@ -36,7 +36,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
             'video_option_type_id' => $request->video_option_type,
             'video_option_duration_id' => $request->video_option_duration,
             'video_option_aspect_id' => $request->video_option_aspect,
-            'video_price' => $request->video_price,
+            'video_price' => $this->getVideoPrice($request->video_price),
             'total' => $request->total,
             'status' => 1,
         ]);
@@ -182,5 +182,9 @@ class OrderClientUserRepository implements OrderClientUserInterface
             toastr()->error(__('messages.error'), $e->getMessage());
             return false;
         }
+    }
+    public function getVideoPrice($price){
+        $percentageVideoPrice=getSettingValueByKey('percentage_video_price')/100;
+        return $price*$percentageVideoPrice;
     }
 }

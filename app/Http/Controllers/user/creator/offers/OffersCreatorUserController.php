@@ -20,5 +20,11 @@ class OffersCreatorUserController extends Controller
         // return $data;
         return view($this->path . 'list', compact('data'));
     }
+    public function show($id)
+    {
+        $data = $this->offersCreatorUserInterface->show($id);
+        // return $data;
+        return view($this->path . 'show', compact('data'));
+    }
 
 }

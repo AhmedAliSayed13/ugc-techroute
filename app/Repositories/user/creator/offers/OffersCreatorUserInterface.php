@@ -5,5 +5,6 @@
 interface OffersCreatorUserInterface {
 
     public function index():array;
+    public function show($id):array;
 
 }

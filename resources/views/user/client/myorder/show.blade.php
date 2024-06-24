@@ -51,57 +51,46 @@
                                                                 {{$data['order']->country->name}}</h4>
 
                                                         </div>
-                                                        {{-- <p class="card-text">Available - <span class="text-success">In
+                                                        {{-- <p class="card-text">Available - <span
+                                                                class="text-success">In
                                                                 stock</span></p> --}}
                                                         <p class="card-text">
-                                                            GPS, Always-On Retina display, 30% larger screen, Swimproof,
-                                                            ECG app, Electrical and optical heart sensors,
-                                                            Built-in compass, Elevation, Emergency SOS, Fall Detection,
-                                                            S5 SiP with up to 2x faster 64-bit dual-core
-                                                            processor, watchOS 6 with Activity trends, cycle tracking,
-                                                            hearing health innovations, and the App Store on
-                                                            your wrist
+                                                            <span
+                                                                class="card-link">{{__('messages.product_description')}}:</span><br>
+                                                            {{$data['order']->product_description}}
                                                         </p>
-                                                        <ul class="product-features list-unstyled">
-                                                            <li><i data-feather="shopping-cart"></i> <span>Free
-                                                                    Shipping</span></li>
+                                                        <p class="card-text">
+                                                            <span
+                                                                class="card-link">{{__('messages.product_instructions')}}</span><br>
+                                                            {{$data['order']->product_instructions}}
+                                                        </p>
+                                                        {{-- <ul class="product-features list-unstyled">
+                                                            @foreach ($data['order']->orderOptions as $orderOption)
                                                             <li>
-                                                                <i data-feather="dollar-sign"></i>
-                                                                <span>EMI options available</span>
+
+                                                                <i data-feather="list"></i>
+
+                                                                <span>{{$orderOption->mainOption->name}}</span>
                                                             </li>
-                                                        </ul>
+                                                            @endforeach
+
+                                                        </ul> --}}
                                                         <hr />
                                                         <div class="product-color-options">
-                                                            <h6>Colors</h6>
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-inline-block selected">
-                                                                    <div class="color-option b-primary">
-                                                                        <div class="filloption bg-primary"></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-inline-block">
-                                                                    <div class="color-option b-success">
-                                                                        <div class="filloption bg-success"></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-inline-block">
-                                                                    <div class="color-option b-danger">
-                                                                        <div class="filloption bg-danger"></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-inline-block">
-                                                                    <div class="color-option b-warning">
-                                                                        <div class="filloption bg-warning"></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-inline-block">
-                                                                    <div class="color-option b-info">
-                                                                        <div class="filloption bg-info"></div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
+                                                            @foreach ($data['order']->orderOptions as $orderOption)
+                                                                <h6>{{$orderOption->mainOption->name}}</h6>
+                                                                <ul class="list-unstyled mb-1">
+                                                                    @foreach (getValuesOptionByIds($orderOption->value_options) as $item)
+
+                                                                    <li class="d-inline-block selected">
+                                                                        <span class="text-primary">{{$item->name}}</span> |
+                                                                    </li>
+                                                                    @endforeach
+                                                                    {{-- {{$orderOption->value_options}} --}}
+                                                                </ul>
+                                                            @endforeach
                                                         </div>
-                                                        <hr />
+                                                        {{-- <hr />
                                                         <div class="d-flex flex-column flex-sm-row pt-1">
                                                             <a href="#"
                                                                 class="btn btn-primary btn-cart me-0 me-sm-1 mb-1 mb-sm-0">
@@ -135,7 +124,7 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>

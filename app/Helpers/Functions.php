@@ -4,7 +4,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Setting;
+use App\Models\ValueOption;
 if (!function_exists('OptionSelect')) {
 
     function OptionSelect($item, $value)
@@ -93,6 +94,26 @@ if (!function_exists('generateTextTimePlus')) {
             $txt=__('messages.Included');
         }
         return $txt;
+    }
+}
+
+if (!function_exists('getSettingValueByKey')) {
+
+    function getSettingValueByKey($key)
+    {
+        $setting=Setting::where('key',$key)->first();
+        return $setting?$setting->value:null;
+
+    }
+}
+if (!function_exists('getValuesOptionByIds')) {
+
+    function getValuesOptionByIds($values)
+    {
+        $valueOptionIds = explode(',', $values);
+        $videoOptions = ValueOption::whereIn('id', $valueOptionIds)->get();
+        return $videoOptions;
+
     }
 }
 

@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('key');
             $table->integer('video_count');
-            $table->integer('total');
-            $table->integer('video_price');
+            $table->float('total', 8, 2);
+            $table->float('video_price', 8, 2);
             $table->boolean('paid')->default(0);
             $table->integer('status')->nullable();
             $table->string('product_name')->nullable();

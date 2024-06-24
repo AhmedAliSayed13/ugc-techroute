@@ -30,7 +30,7 @@ class MyOrderClientUserController extends Controller
     public function show($id)
     {
         $data = $this->myOrderClientUserInterface->show($id);
-        // return $data;
+        // return $data['order']->orderOptions;
         return view($this->path . 'show', compact('data'));
     }
 

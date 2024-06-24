@@ -89,7 +89,7 @@
                                         </table>
                                     </div>
 
-
+                                    {{ $data['orders']->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
 

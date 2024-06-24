@@ -48,4 +48,10 @@ class PagesController extends Controller
 
         return back();
     }
+    public function test()
+    {
+        $percentageVideoPrice=getSettingValueByKey('percentage_video_price')/100;
+        return $this->getVideoPrice(300);
+    }
+
 }

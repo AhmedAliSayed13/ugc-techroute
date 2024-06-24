@@ -6,6 +6,7 @@ use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ValueOption;
+use App\Models\OrderVideoOption;
 class MainOption extends Model
 {
     use HasFactory, Filterable;
@@ -50,5 +51,9 @@ class MainOption extends Model
     public function valueOptions()
     {
         return $this->hasMany(ValueOption::class);
+    }
+    public function orderOptions()
+    {
+        return $this->hasMany(OrderVideoOption::class);
     }
 }
