@@ -42,7 +42,7 @@
 
                         <div class="col-md-12 mb-1">
                             <input type="hidden" name="mainOptions[]" value="{{$mainOption->id}}">
-                            <label class="form-label" for="select2-multiple">{{$mainOption->name}}</label>
+                            <label class="form-label" for="select2-multiple">{{$mainOption->name_creator}}</label>
                             <select class="select2 form-select" name="valueOptions[{{$mainOption->id}}][]"
                                 id="select{{$mainOption->id}}" multiple>
                                 @foreach ($mainOption->valueOptions as $valueOption)

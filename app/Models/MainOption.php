@@ -15,7 +15,8 @@ class MainOption extends Model
     public $incrementing = true;
     protected $fillable = [
         'id',
-        'name',
+        'name_client',
+        'name_creator',
         'is_active',
         'created_at',
     ];

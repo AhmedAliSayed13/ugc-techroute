@@ -19,8 +19,10 @@
 
                             <x-FormInput :type="'hidden'" :title="''" :name="'id'" :value="$data['mainOption']->id"
                                 :width="'12'" />
-                            <x-FormInput :type="'text'" :title="'Name'" :name="'name'"
-                                :value="$data['mainOption']->name" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'Title For Client'" :name="'name_client'"
+                                :value="$data['mainOption']->name_client" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'Title For Creator'" :name="'name_creator'"
+                                :value="$data['mainOption']->name_creator" :width="'12'" />
                             <x-FormSwitch :title="'active'" :name="'is_active'" :value="$data['mainOption']->is_active"
                                 :width="'12'" />
 

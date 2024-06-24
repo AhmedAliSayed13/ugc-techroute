@@ -21,7 +21,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
+                                            <th>Title For Client</th>
+                                            <th>Title For Creator</th>
                                             <th>Account</th>
                                             <th> created at</th>
                                             <th> Action</th>
@@ -31,7 +32,8 @@
                                         @foreach ($data['mainOptions'] as $mainOption)
                                         <tr>
                                             <th scope="row">{{$mainOption->id}}</th>
-                                            <td>{{$mainOption->name}}</td>
+                                            <td>{{$mainOption->name_client}}</td>
+                                            <td>{{$mainOption->name_creator}}</td>
                                             <td>{!!$mainOption->is_active?'<span
                                                     class="badge bg-success">ON</span>':'<span
                                                     class="badge bg-danger">OFF</span>'!!}</td>

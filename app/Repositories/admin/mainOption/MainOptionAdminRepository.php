@@ -36,7 +36,8 @@ class MainOptionAdminRepository implements MainOptionAdminInterface
     {
         try {
             $mainOption = MainOption::create([
-                'name' => $request->input('name'),
+                'name_client' => $request->input('name_client'),
+                'name_creator' => $request->input('name_creator'),
                 'is_active' => $request->input('is_active')=='on' ? 1 : 0,
             ]);
             toastr()->success('Item Has Been Saved Successfully');
@@ -63,7 +64,8 @@ class MainOptionAdminRepository implements MainOptionAdminInterface
         try {
 
             $mainOption = MainOption::find($id);
-            $mainOption->name = $request->input('name');
+            $mainOption->name_creator = $request->input('name_creator');
+            $mainOption->name_client = $request->input('name_client');
             $mainOption->is_active = $request->has('is_active') ? 1 : 0;
             $mainOption->save();
             toastr()->success('Item Has Been Updated Successfully');

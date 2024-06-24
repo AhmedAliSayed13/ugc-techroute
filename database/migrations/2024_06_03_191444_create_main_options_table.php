@@ -15,7 +15,8 @@ class CreateMainOptionsTable extends Migration
     {
         Schema::create('main_options', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name_creator')->unique();
+            $table->string('name_client')->unique();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

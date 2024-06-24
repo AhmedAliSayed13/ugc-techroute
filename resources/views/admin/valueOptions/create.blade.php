@@ -16,7 +16,8 @@
                     <div class="row">
                         <form action="{{route('admin.value-options.store',$data['mainOption']->id)}}" method="post">
                             @csrf
-                            <x-FormInput :type="'text'" :title="'name'" :name="'name'" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'Title For Client'" :name="'name_client'" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'Title For Creator'" :name="'name_creator'" :width="'12'" />
                             <x-FormSwitch :title="'active'" :name="'is_active'" :width="'12'" />
                             <x-FormSubmit :title="'Create'" />
 
