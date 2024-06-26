@@ -12,6 +12,14 @@
         height: 200px
     }
 </style>
+<style>
+    .video-player {
+        width: 200px;
+        height: 200px;
+        object-fit: cover; /* Ensures the video covers the area and maintains aspect ratio */
+        margin: 10px; /* Adds space around each video */
+    }
+    </style>
 
 
 @endsection
@@ -44,9 +52,9 @@
                 </div>
                 <div class="card-body  py-2 my-25">
                     @foreach ($data['featureVideos'] as $video)
-                    <video id="plyr-audio-player" class="video-player" controls width="250">
-                        <source src="{{  $video->video_url }}" type="video/mp4">
-                    </video>
+                        <video id="plyr-audio-player" class="video-player" controls width="200" height="200">
+                            <source src="{{  $video->video_url }}" type="video/mp4">
+                        </video>
                     @endforeach
                 </div>
             </div>

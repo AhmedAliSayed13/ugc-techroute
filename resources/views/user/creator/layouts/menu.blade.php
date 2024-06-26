@@ -41,8 +41,8 @@
                     <a class=" nav-link d-flex align-items-center" href="{{route('creator.dashboard')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.Dashboards')}}</span></a>
                 </li>
-                <li class="dropdown nav-item {{checkActiveRoute('creator.feature.videos')}}" >
-                    <a class=" nav-link d-flex align-items-center" href="{{route('creator.feature.videos')}}" ><i data-feather="home">
+                <li class="dropdown nav-item {{checkActiveRoute('creator.profile')}}" >
+                    <a class=" nav-link d-flex align-items-center" href="{{route('creator.profile')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.myAccount')}}</span></a>
                 </li>
                 <li class="dropdown nav-item {{checkActiveRoute('creator.offers.index')}}" >
