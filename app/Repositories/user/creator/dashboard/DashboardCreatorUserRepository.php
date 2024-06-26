@@ -30,6 +30,7 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
             'is_creator' => 1,
             'is_active' => 0,
             'password' => Hash::make($request->password),
+            'email_verified_at' => now(),
         ]);
 
         if ($user) {
@@ -37,20 +38,19 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
                 'user_id' => $user->id,
                 'country_id' => $request->country_id,
                 'birthdate' => $request->birthdate,
-                'gender' => $request->gender
+                'gender' => $request->gender,
             ]);
             // toastr()->success(__('messages.register_successfully'), __('messages.successOperation'));
-        }else{
+        } else {
             toastr()->error(__('messages.register_failed'), __('messages.failedOperation'));
         }
 
         return $user;
     }
-    public function registerWelcome():array
+    public function registerWelcome(): array
     {
 
-
-        $data=[];
+        $data = [];
 
         return $data;
     }

@@ -19,7 +19,7 @@ class ClientTableSeeder extends Seeder
                 'name' => $i . '-Hardik Savani',
                 'email' => $i . 'client@gmail.com',
                 'password' => bcrypt('123456789'),
-                'phone' => '0111291223'.$i,
+                'phone' => '01110000000'.$i,
                 'is_creator' => 0,
                 'is_active' => 1,
 

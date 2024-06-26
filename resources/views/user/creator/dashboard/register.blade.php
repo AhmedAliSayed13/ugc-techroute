@@ -148,9 +148,9 @@
                                     </div>
                                     <div class="mb-1">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="register-privacy-policy"
+                                            <input class="form-check-input" type="checkbox" id="agree" name="agree"
                                                 tabindex="4" required />
-                                            <label class="form-check-label" for="register-privacy-policy">
+                                            <label class="form-check-label" for="agree">
                                                 {{__('messages.IAgreeTo')}} <a
                                                     href="#">{{__('messages.PrivacyPolicy&Terms')}}</a>
                                             </label>
@@ -167,7 +167,7 @@
                                     </a>
                                 </p>
 
-                                <div class="divider my-2">
+                                {{-- <div class="divider my-2">
                                     <div class="divider-text">{{__('messages.or')}}</div>
                                 </div>
 
@@ -184,7 +184,7 @@
                                     <a href="#" class="btn btn-github">
                                         <i data-feather="github"></i>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- /Register basic -->

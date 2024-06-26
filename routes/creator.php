@@ -4,9 +4,9 @@ use App\Http\Controllers\user\creator\offers\OffersCreatorUserController;
 use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
-Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware('CreatorAuth');
-Route::post('register', [DashboardCreatorUserController::class, 'register'])->name('register')->withoutMiddleware('CreatorAuth');
-Route::get('register/welcome', [DashboardCreatorUserController::class, 'registerWelcome'])->name('register.welcome')->withoutMiddleware('CreatorAuth');
+Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
+Route::post('register', [DashboardCreatorUserController::class, 'register'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
+Route::get('register/welcome', [DashboardCreatorUserController::class, 'registerWelcome'])->name('register.welcome')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
 
 Route::get('profile', [ProfileCreatorUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileCreatorUserController::class, 'profile'])->name('profile');

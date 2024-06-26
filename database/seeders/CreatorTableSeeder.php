@@ -21,7 +21,7 @@ class CreatorTableSeeder extends Seeder
                 'name' => $i . '-Hardik Savani',
                 'email' => $i . 'creator@gmail.com',
                 'password' => bcrypt('123456789'),
-                'phone' => '0111291224' . $i,
+                'phone' => '0111000001' . $i,
                 'is_creator' => 1,
                 'is_active' => 1,
 
