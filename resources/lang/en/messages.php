@@ -290,6 +290,12 @@ return [
     'account_not_active' => 'حسابك غير مفعل',
     'email_not_verified' => 'بريدك الالكتروني غير مفعل',
     'successfully' => 'تمت العملية بنجاح',
+    'Error' => 'خطأ',
+    'backToLogin' => 'العودة لتسجيل الدخول',
+    'VerifyYourEmail' => 'تحقق من بريدك الالكتروني',
+    'verificationMailSent' => 'لقد أرسلنا رابطًا إلى عنوان بريدك الإلكتروني:',
+    'verificationMailSent2' => 'يرجى اتباع الرابط  المرسل ببريدك الالكتروني للمتابعة',
+    'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
 

@@ -6,4 +6,5 @@ interface AuthUserInterface
     public function login($request): bool;
     public function logout($request): bool;
     public function verifyEmail($token): bool;
+    public function verify(): array;
 }

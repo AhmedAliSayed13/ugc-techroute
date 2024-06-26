@@ -32,7 +32,7 @@ class DashboardClientUserController extends Controller
         // if ($data) {
         //     return redirect()->route('client.dashboard');
         // }
-        return redirect()->route('user.login');
+        return redirect()->route('user.verify');
 
     }
 

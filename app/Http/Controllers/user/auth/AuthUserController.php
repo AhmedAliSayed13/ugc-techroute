@@ -52,7 +52,11 @@ class AuthUserController extends Controller
         return redirect()->route('user.login');
 
     }
+    public function verify()
+    {
+        $data = $this->authUserInterface->verify();
+        return view($this->path . 'verify', compact($data));
 
-
+    }
 
 }

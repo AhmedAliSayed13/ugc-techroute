@@ -126,7 +126,7 @@
                                     </a>
                                 </p>
 
-                                <div class="divider my-2">
+                                {{-- <div class="divider my-2">
                                     <div class="divider-text">{{__('messages.or')}}</div>
                                 </div>
 
@@ -143,7 +143,7 @@
                                     <a href="#" class="btn btn-github">
                                         <i data-feather="github"></i>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- /Login basic -->

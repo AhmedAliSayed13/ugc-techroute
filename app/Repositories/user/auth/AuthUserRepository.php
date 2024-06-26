@@ -1,7 +1,8 @@
 <?php namespace App\Repositories\user\auth;
 
-use Auth;
 use App\Models\User;
+use Auth;
+
 class AuthUserRepository implements AuthUserInterface
 {
     public function ShowLogin()
@@ -29,18 +30,20 @@ class AuthUserRepository implements AuthUserInterface
     public function verifyEmail($token): bool
     {
         $user = User::where('email_verified_token', $token)->first();
-        if($user){
+        if ($user) {
             $user->email_verified_at = date('Y-m-d H:i:s');
             $user->email_verified_token = null;
             $user->save();
             toastr()->success(__('messages.successfully'), __('messages.yourAccountVerified'));
             return true;
-        }else{
+        } else {
             toastr()->error(__('messages.error'), __('messages.token_not_valid'));
             return false;
         }
 
-
-
+    }
+    public function verify(): array
+    {
+        return [];
     }
 }
