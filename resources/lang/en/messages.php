@@ -295,8 +295,8 @@ return [
     'VerifyYourEmail' => 'تحقق من بريدك الالكتروني',
     'verificationMailSent' => 'لقد أرسلنا رابطًا إلى عنوان بريدك الإلكتروني:',
     'verificationMailSent2' => 'يرجى اتباع الرابط  المرسل ببريدك الالكتروني للمتابعة',
-    'myaccount1' => 'myaccount1',
-    'myaccount1' => 'myaccount1',
+    'VerifyEmailDescription' => 'شكرا لك على التسجيل! الرجاء النقر فوق الزر أدناه للتحقق من عنوان بريدك الإلكتروني.',
+    'VerifyYourEmailFooter' => 'إذا لم تقم بالتسجيل للحصول على حساب، يرجى تجاهل هذا البريد الإلكتروني.',
     'myaccount1' => 'myaccount1',
 
 ];
