@@ -33,6 +33,8 @@ class FeatureVideosCreatorRequest extends FormRequest
     {
         $validator->after(function ($validator) {
             if (count(Auth::user()->featureVideos) >= 3) {
+                toastr()->error(__('messages.error'), __('messages.maxmumUpload3Videos'));
+
                 $validator->errors()->add('video', 'تستطيع رفع ما يصل إلى 3 مقاطع فيديو.');
             }
         });
