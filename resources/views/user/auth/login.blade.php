@@ -87,7 +87,7 @@
                                         <div class="d-flex justify-content-between">
                                             <label class="form-label"
                                                 for="login-password">{{__('messages.password')}}</label>
-                                            <a href="auth-forgot-password-basic.html">
+                                            <a href="#">
                                                 <small>{{__('messages.forgetPassword')}}</small>
                                             </a>
                                         </div>
@@ -116,8 +116,13 @@
 
                                 <p class="text-center mt-2">
                                     <span>{{__('messages.NewPlatform')}}</span>
-                                    <a href="#">
-                                        <span> {{__('messages.CreateAccount')}}</span>
+                                    <br>
+                                    <a href="{{route('creator.register')}}">
+                                        <span> {{__('messages.CreateAccountCreator')}}</span>
+                                    </a>
+                                    <br>
+                                    <a href="{{route('client.register')}}">
+                                        <span> {{__('messages.CreateAccountClient')}}</span>
                                     </a>
                                 </p>
 

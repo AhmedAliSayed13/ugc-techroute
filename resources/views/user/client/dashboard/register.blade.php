@@ -115,12 +115,15 @@
                                     </div>
                                     <div class="mb-1">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="register-privacy-policy"
+                                            <input class="form-check-input" name="agree" type="checkbox" id="agree"
                                                 tabindex="4" required />
-                                            <label class="form-check-label" for="register-privacy-policy">
+                                            <label class="form-check-label" for="agree">
                                                 {{__('messages.IAgreeTo')}} <a
                                                     href="#">{{__('messages.PrivacyPolicy&Terms')}}</a>
                                             </label>
+                                            @error('agree')
+                                            <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <button class="btn btn-primary w-100"
