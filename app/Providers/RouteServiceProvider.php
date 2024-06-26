@@ -83,7 +83,7 @@ class RouteServiceProvider extends ServiceProvider
     }
     protected function mapCreatorRoutes()
     {
-        Route::middleware(['web', 'CreatorAuth'])
+        Route::middleware(['web', 'CreatorAuth','CheckUserAccountActive'])
             ->prefix('creator')
             ->name('creator.')
             ->namespace($this->namespace)
@@ -91,7 +91,7 @@ class RouteServiceProvider extends ServiceProvider
     }
     protected function mapClientRoutes()
     {
-        Route::middleware(['web', 'ClientAuth'])
+        Route::middleware(['web', 'ClientAuth','CheckUserAccountActive'])
             ->prefix('client')
             ->name('client.')
             ->namespace($this->namespace)

@@ -7,8 +7,8 @@ use App\Http\Controllers\user\client\search\SearchClientUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [DashboardClientUserController::class, 'dashboard'])->name('dashboard');
-Route::get('register', [DashboardClientUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware('ClientAuth');
-Route::post('register', [DashboardClientUserController::class, 'register'])->name('register')->withoutMiddleware('ClientAuth');
+Route::get('register', [DashboardClientUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware(['ClientAuth','CheckUserAccountActive']);
+Route::post('register', [DashboardClientUserController::class, 'register'])->name('register')->withoutMiddleware(['ClientAuth','CheckUserAccountActive']);
 
 Route::get('profile', [ProfileClientUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileClientUserController::class, 'profile'])->name('profile');

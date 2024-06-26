@@ -1,8 +1,11 @@
 <?php namespace App\Repositories\user\client\dashboard;
 
+use App\Mail\VerifyUserEmail;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Str;
 class DashboardClientUserRepository implements DashboardClientUserInterface
 {
     public function dashboard(): array
@@ -19,6 +22,7 @@ class DashboardClientUserRepository implements DashboardClientUserInterface
     }
     public function register($request)
     {
+        $token= Str::random(60);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -26,8 +30,12 @@ class DashboardClientUserRepository implements DashboardClientUserInterface
             'is_creator' => 0,
             'is_active' => 1,
             'password' => Hash::make($request->password),
+            'email_verified_token' => $token,
         ]);
-        Auth::login($user);
+
+        Mail::to($user->email)->send(new VerifyUserEmail($token));
+        // Auth::login($user);
+        toastr()->success(__('messages.successfully'), __('messages.register_successfully_please_check_your_email_for_verification'));
         return $user;
     }
 }

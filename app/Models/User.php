@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password',
         'is_creator',
         'is_active',
+        'email_verified_token',
     ];
     private static $whiteListFilter = ['*'];
     /**

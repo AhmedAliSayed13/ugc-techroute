@@ -77,5 +77,8 @@ class Kernel extends HttpKernel
         'ClientAuth' => \App\Http\Middleware\ClientAuth::class,
         'CreatorAuth' => \App\Http\Middleware\CreatorAuth::class,
         'UserAuth' => \App\Http\Middleware\UserAuth::class,
+        'RedirectIfAuthenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'CheckUserAccountActive' => \App\Http\Middleware\CheckUserAccountActive::class,
+
     ];
 }

@@ -46,6 +46,12 @@ class AuthUserController extends Controller
 
         return redirect()->route('user.login');
     }
+    public function verifyEmail($token)
+    {
+        $data = $this->authUserInterface->verifyEmail($token);
+        return redirect()->route('user.login');
+
+    }
 
 
 
