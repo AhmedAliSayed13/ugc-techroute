@@ -11,12 +11,16 @@
 
 @endsection
 @section('breadcrumb')
-<x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('creator.profile')" :title="'تعديل البيانات'" />
+<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.profile')" :title="__('messages.profile')" />
 @endsection
 
 @section('content')
-<div class="container-fluid mt-4">
+<div class="container-fluid ">
     <div class="row">
+        <div class="col-12">
+            @include('user.creator.profile.tab-header')
+        </div>
+    </div>
 
         <div class="row">
             <div class="col-12">
@@ -25,7 +29,7 @@
                 <!-- profile -->
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h4 class="card-title">{{__('messages.ProfileDetails')}}</h4>
+                        <h4 class="card-title">{{__('messages.profile')}}</h4>
                     </div>
                     <div class="card-body py-2 my-25">
                         <form class="validate-form mt-2 pt-50" method="POST" action="{{route('creator.profile')}}"
@@ -143,7 +147,7 @@
                                     <div class="mb-1">
                                         <label class="form-label" for="describe">نبذه</label>
                                         <textarea class="form-control" id="describe" name="describe" rows="3"
-                                            placeholder="Textarea">{{old('describe',auth()->user()->CreatorInfo->describe)}}</textarea>
+                                            >{{old('describe',auth()->user()->CreatorInfo->describe)}}</textarea>
                                     </div>
                                 </div>
 
@@ -192,7 +196,7 @@
             </div>
         </div>
 
-    </div>
+
 </div>
 @endsection
 @section('script')

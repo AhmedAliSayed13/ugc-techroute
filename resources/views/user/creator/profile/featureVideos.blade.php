@@ -16,7 +16,7 @@
 
 @endsection
 @section('breadcrumb')
-<x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('creator.profile')" :title="'تعديل البيانات'" />
+<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.profile')" :title="__('messages.videoFeature')" />
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title">الفديوهات المميزه</h4>
+                    <h4 class="card-title">{{__('messages.videoFeature')}}</h4>
                 </div>
                 <div class="card-body  py-2 my-25">
                     @foreach ($data['featureVideos'] as $video)

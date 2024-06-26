@@ -11,7 +11,7 @@
 
 @endsection
 @section('breadcrumb')
-<x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('creator.profile')" :title="'تعديل البيانات'" />
+<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.profile')" :title="__('messages.options')" />
 @endsection
 
 @section('content')
@@ -33,7 +33,7 @@
         <div class="col-12">
             <div class="card ">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title"> الخصائص</h4>
+                    <h4 class="card-title"> {{__('messages.options')}}</h4>
                 </div>
                 <div class="card-body  py-2 my-25">
                     <form action="{{route('creator.options')}}" method="POST" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
                         <div class="col-md-12 mb-1">
                             <input type="hidden" name="mainOptions[]" value="{{$mainOption->id}}">
                             <label class="form-label" for="select2-multiple">{{$mainOption->name_creator}}</label>
-                            <select class="select2 form-select" name="valueOptions[{{$mainOption->id}}][]"
+                            <select class="select2 form-select" name="valueOptions[{{$mainOption->id}}][]" required
                                 id="select{{$mainOption->id}}" multiple>
                                 @foreach ($mainOption->valueOptions as $valueOption)
                                 <option {{OptionSelectMulitpleCommaString( getUserOtionsByMainId($mainOption->id,Auth::user()->id),$valueOption->id) }}

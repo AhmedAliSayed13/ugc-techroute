@@ -297,6 +297,16 @@ return [
     'verificationMailSent2' => 'يرجى اتباع الرابط  المرسل ببريدك الالكتروني للمتابعة',
     'VerifyEmailDescription' => 'شكرا لك على التسجيل! الرجاء النقر فوق الزر أدناه للتحقق من عنوان بريدك الإلكتروني.',
     'VerifyYourEmailFooter' => 'إذا لم تقم بالتسجيل للحصول على حساب، يرجى تجاهل هذا البريد الإلكتروني.',
+    'myAccountDetails' => 'تفاصيل حسابي',
+    'profile' => 'الملف الشخصي',
+    'videoFeature' => 'الفديوهات المميزه',
+    'options' => 'الخصائص',
+    'myaccount1' => 'myaccount1',
+    'myaccount1' => 'myaccount1',
+    'myaccount1' => 'myaccount1',
+    'myaccount1' => 'myaccount1',
+    'myaccount1' => 'myaccount1',
+    'myaccount1' => 'myaccount1',
     'myaccount1' => 'myaccount1',
 
 ];
