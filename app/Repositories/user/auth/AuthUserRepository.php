@@ -1,5 +1,6 @@
 <?php namespace App\Repositories\user\auth;
 
+use App\Models\MainOption;
 use App\Models\User;
 use Auth;
 
@@ -29,7 +30,7 @@ class AuthUserRepository implements AuthUserInterface
     }
     public function verifyEmail($token): bool
     {
-        $user = User::where('email_verified_token', $token)->first();
+        $user = User::where('is_creator', 0)->where('email_verified_token', $token)->first();
         if ($user) {
             $user->email_verified_at = date('Y-m-d H:i:s');
             $user->email_verified_token = null;
@@ -45,5 +46,28 @@ class AuthUserRepository implements AuthUserInterface
     public function verify(): array
     {
         return [];
+    }
+    public function registerFormCreator($token): array
+    {
+        $mainOptions = MainOption::where('is_active', 1)->get();
+        $user = User::where('is_creator', 1)->where('email_verified_token', $token)->first();
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->save();
+        $data = array(
+            'user' => $user,
+            'mainOptions' => $mainOptions,
+        );
+        return $data;
+    }
+    public function registerFormCreatorSave($request, $token): array
+    {
+        // $mainOptions = MainOption::where('is_active', 1)->get();
+        // $user = User::where('is_creator', 1)->where('email_verified_token', $token)->first();
+        // $user->email_verified_at = date('Y-m-d H:i:s');
+        // $user->save();
+        $data = array(
+
+        );
+        return $data;
     }
 }

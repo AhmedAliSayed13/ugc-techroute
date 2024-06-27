@@ -6,3 +6,5 @@ Route::post('login', [AuthUserController::class, 'login'])->name('login')->witho
 Route::get('logout', [AuthUserController::class, 'logout'])->name('logout');
 Route::get('verify', [AuthUserController::class, 'verify'])->name('verify')->withoutMiddleware('UserAuth');
 Route::get('verify-email/{token}', [AuthUserController::class, 'verifyEmail'])->where('token', '.+')->name('verify.email')->withoutMiddleware('UserAuth');
+Route::get('register/form/{token}', [AuthUserController::class, 'registerFormCreator'])->where('token', '.+')->name('register.form.creator')->withoutMiddleware('UserAuth');
+Route::post('register/form/{token}', [AuthUserController::class, 'registerFormCreatorSave'])->where('token', '.+')->name('register.form.creator')->withoutMiddleware('UserAuth');

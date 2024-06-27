@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user\auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\auth\LoginRequest;
+use App\Http\Requests\user\auth\RegisterFormCreatorRequest;
 use App\Repositories\user\auth\AuthUserInterface;
 use Auth;
 use Illuminate\Http\Request;
@@ -56,7 +57,18 @@ class AuthUserController extends Controller
     {
         $data = $this->authUserInterface->verify();
         return view($this->path . 'verify', compact($data));
-
     }
-
+    public function registerFormCreator($token)
+    {
+        $data = $this->authUserInterface->registerFormCreator($token);
+        return view($this->path . 'register_form_creator', compact('data'));
+    }
+    // public function registerFormCreatorSave(RegisterFormCreatorRequest $request, $token)
+    public function registerFormCreatorSave(RegisterFormCreatorRequest $request, $token)
+    {
+        // return $request->all();
+        $data = $this->authUserInterface->registerFormCreatorSave($request,$token);
+        return $data;
+        // return view($this->path . 'register_form_creator', compact('data'));
+    }
 }

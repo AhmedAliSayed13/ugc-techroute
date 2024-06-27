@@ -4,7 +4,10 @@ use App\Models\Country;
 use App\Models\CreatorInfo;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
+use Str;
+use Mail;
+use App\Mail\SendReqisterFormCreator;
 class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 {
     public function dashboard(): array
@@ -23,6 +26,9 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
     }
     public function register($request)
     {
+        DB::beginTransaction();
+        try {
+            $token= Str::random(60);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -30,22 +36,22 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
             'is_creator' => 1,
             'is_active' => 0,
             'password' => Hash::make($request->password),
-            'email_verified_at' => now(),
+            'email_verified_token' => $token,
         ]);
-
-        if ($user) {
             CreatorInfo::create([
                 'user_id' => $user->id,
                 'country_id' => $request->country_id,
                 'birthdate' => $request->birthdate,
                 'gender' => $request->gender,
             ]);
-            // toastr()->success(__('messages.register_successfully'), __('messages.successOperation'));
-        } else {
-            toastr()->error(__('messages.register_failed'), __('messages.failedOperation'));
-        }
+            Mail::to($user->email)->send(new SendReqisterFormCreator($token, $user->name));
 
-        return $user;
+            DB::commit();
+            return $user;
+        } catch (\Exception $e) {
+            toastr()->error(__('messages.error'), $e->getMessage());
+            return false;
+        }
     }
     public function registerWelcome(): array
     {

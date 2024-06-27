@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\website\pages\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/test', [PagesController::class, 'test'])->name('comingSoon');
+Route::get('/test', [TestController::class, 'test'])->name('comingSoon');
 Route::get('/', [PagesController::class, 'comingSoon'])->name('comingSoon');
 Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.save');
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
