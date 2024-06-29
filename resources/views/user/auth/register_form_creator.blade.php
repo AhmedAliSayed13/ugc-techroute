@@ -49,6 +49,53 @@
      @if (App::getLocale() === 'en')
     <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
     @endif
+
+    <style>
+        .upload-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px dashed #007bff;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .upload-container:hover {
+            background-color: #e9ecef;
+        }
+        .upload-message {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .upload-input {
+            display: none;
+        }
+        .upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .file-list {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .file-list p {
+            margin: 0;
+            font-size: 1rem;
+            color: #495057;
+        }
+    </style>
 </head>
 <!-- END: Head-->
 
@@ -89,13 +136,21 @@
 
 
 
-                                <div class="content-header mb-2">
+                                <div class="content-header mb-2 mt-5">
                                     <h2 class="fw-bolder mb-75">{{__('messages.registerFormTitle')}}</h2>
                                     <span>{{__('messages.registerFormDescription')}}</span>
                                 </div>
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    <div class="col-md-12">
+                                        <div class="upload-container" id="upload-container">
+                                            <div class="upload-message">{{__('messages.dropFeatureVideos')}}</div>
+                                            <input type="file" name="videos[]" id="upload-input" class="upload-input" multiple accept="video/*" required>
+                                            <label for="upload-input" class="upload-btn">{{__('messages.selectVideos')}}</label>
+                                            <div class="file-list" id="file-list"></div>
+                                        </div>
 
+                                    </div>
                                     <!-- Main Options Loop -->
                                     @foreach ($data['mainOptions'] as $mainOption)
                                     <div class="col-md-12 mb-1">
@@ -121,7 +176,7 @@
                                     <!-- Dropzone Container for Video Uploads -->
                                     <div class="dropzone-previews"></div>
 
-                                    <div class="col-12 mt-2">
+                                    <div class="col-12 mt-2 mb-2">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -160,10 +215,28 @@
     <script src="{{asset('users-asset')}}/js/core/app-menu.js"></script>
     <script src="{{asset('users-asset')}}/js/core/app.js"></script>
     <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
     <script src="{{asset('users-asset')}}/js/scripts/pages/auth-register.js"></script>
+    <script>
+        const uploadInput = document.getElementById('upload-input');
+        const fileList = document.getElementById('file-list');
+        uploadInput.addEventListener('change', () => {
+        handleFiles(uploadInput.files);
+    });
+        function handleFiles(files) {
+        fileList.innerHTML = '';
+        for (let file of files) {
+            const listItem = document.createElement('p');
+            listItem.textContent = file.name;
+            fileList.appendChild(listItem);
+        }
+        updateFileCount(files.length);
+    }
 
+    function updateFileCount(count) {
+        const message = document.querySelector('.upload-message');
+        message.textContent = `Selected ${count} ${count > 1 ? 'files' : 'file'}`;
+    }
+    </script>
 </body>
 <!-- END: Body-->
 

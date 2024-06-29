@@ -8,3 +8,4 @@ Route::get('verify', [AuthUserController::class, 'verify'])->name('verify')->wit
 Route::get('verify-email/{token}', [AuthUserController::class, 'verifyEmail'])->where('token', '.+')->name('verify.email')->withoutMiddleware('UserAuth');
 Route::get('register/form/{token}', [AuthUserController::class, 'registerFormCreator'])->where('token', '.+')->name('register.form.creator')->withoutMiddleware('UserAuth');
 Route::post('register/form/{token}', [AuthUserController::class, 'registerFormCreatorSave'])->where('token', '.+')->name('register.form.creator')->withoutMiddleware('UserAuth');
+Route::get('register/complete', [AuthUserController::class, 'registerComplete'])->name('register.complete')->withoutMiddleware('UserAuth');

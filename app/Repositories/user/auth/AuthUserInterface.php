@@ -8,5 +8,6 @@ interface AuthUserInterface
     public function verifyEmail($token): bool;
     public function verify(): array;
     public function registerFormCreator($token): array;
-    public function registerFormCreatorSave($request,$token): array;
+    public function registerFormCreatorSave($request,$token): bool;
+    public function registerComplete(): array;
 }

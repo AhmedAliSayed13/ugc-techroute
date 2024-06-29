@@ -61,14 +61,28 @@ class AuthUserController extends Controller
     public function registerFormCreator($token)
     {
         $data = $this->authUserInterface->registerFormCreator($token);
-        return view($this->path . 'register_form_creator', compact('data'));
+        if ($data) {
+            return view($this->path . 'register_form_creator', compact('data'));
+        } else {
+
+            return redirect()->route('user.login');
+        }
     }
-    // public function registerFormCreatorSave(RegisterFormCreatorRequest $request, $token)
     public function registerFormCreatorSave(RegisterFormCreatorRequest $request, $token)
     {
-        // return $request->all();
-        $data = $this->authUserInterface->registerFormCreatorSave($request,$token);
-        return $data;
-        // return view($this->path . 'register_form_creator', compact('data'));
+
+        $data = $this->authUserInterface->registerFormCreatorSave($request, $token);
+        if ($data) {
+
+            return redirect()->route('user.register.complete');
+            // return view($this->path . 'register_complete', compact('data'));
+        } else {
+            return back();
+        }
+    }
+    public function registerComplete()
+    {
+        $data = $this->authUserInterface->registerComplete();
+        return view($this->path . 'register_complete', compact('data'));
     }
 }

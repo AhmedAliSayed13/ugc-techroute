@@ -65,7 +65,7 @@
                 {{__("messages.emailCreatorText1")}}
             </p>
             <p>
-                <a href="{{ route('user.register.form.creator' , $token) }}" class="cta-button">
+                <a href="{{ route('user.register.form.creator' ,['token' => $token ]) }}" class="cta-button">
                     {{__("messages.emailCreatorText2")}}</a>
             </p>
             <p>
