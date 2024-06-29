@@ -49,17 +49,13 @@
                             @include('user.client.order.tap_header')
                             <div class="">
 
-
-
                                 <div class="row">
                                     <div class="col-5">
                                         <div class="card">
                                             <div class="card-header border-bottom mb-2">
                                                 <h3>{{__('messages.payment_header')}}</h3>
                                             </div>
-
                                             <div class="card-body">
-
                                                 <form class="row mb-2"
                                                     action="{{route('client.order.checkout',$data['key'])}}"
                                                     method="POST" id="payment-form">
@@ -87,6 +83,7 @@
                                                         <div id="card-cvc" class="form-control"></div>
                                                     </div>
                                                     <div id="card-errors" role="alert" class="col-12 text-danger"></div>
+                                                    @include('user.client.order.tap_footer')
                                                 </form>
                                             </div>
                                         </div>
@@ -95,20 +92,8 @@
                                         <div class="card">
                                             <div class="card-header border-bottom mb-2">
                                                 <h3>{{__('messages.summary_order')}}</h3>
-
                                             </div>
                                             <div class="card-body">
-                                                {{-- <div class="mb-2 pb-50">
-                                                    <h5>{{__('messages.price_one_video')}} <strong
-                                                            class="badge badge-light-primary ms-50">
-                                                            {{$data['order']->videoOptionType->name}}</strong></h5>
-                                                    <span>{{$data['order']->video_price}} $ </span>
-                                                </div>
-                                                <div class="mb-2 pb-50">
-                                                    <h5>{{__('messages.number_of_videos')}} </h5>
-                                                    <span>{{$data['order']->video_count}} </span>
-                                                </div> --}}
-
                                                 <div class="summary-item">
                                                     <span class="option">{{__('messages.price_one_video')}} <strong
                                                             class="badge badge-light-primary ms-50">
@@ -130,14 +115,12 @@
                                                     <span class="option">{{__('messages.total')}}</span>
                                                     <span class="price">${{$data['order']->total }}</span>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                @include('user.client.order.tap_footer')
+
 
                             </div>
                         </div>
@@ -151,9 +134,11 @@
 
 @section('script')
 <script>
+    // Initialize Stripe
     var stripe = Stripe('{{ config('services.stripe.key') }}');
     var elements = stripe.elements();
 
+    // Styling for the elements
     var style = {
         base: {
             color: '#32325d',
@@ -170,15 +155,17 @@
         }
     };
 
+    // Create Stripe elements
     var cardNumber = elements.create('cardNumber', {style: style});
-    cardNumber.mount('#card-number');
-
     var cardExpiry = elements.create('cardExpiry', {style: style});
-    cardExpiry.mount('#card-expiry');
-
     var cardCvc = elements.create('cardCvc', {style: style});
+
+    // Mount the elements
+    cardNumber.mount('#card-number');
+    cardExpiry.mount('#card-expiry');
     cardCvc.mount('#card-cvc');
 
+    // Handle validation errors
     function translateError(message) {
         var translations = {
             "Your card number is incomplete.": "رقم البطاقة غير مكتمل.",
@@ -200,6 +187,7 @@
         }
     });
 
+    // Handle form submission
     var form = document.getElementById('payment-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -214,6 +202,7 @@
         });
     });
 
+    // Submit the form with the Stripe token
     function stripeTokenHandler(token) {
         var form = document.getElementById('payment-form');
         var hiddenInput = document.createElement('input');
