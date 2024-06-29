@@ -24,6 +24,7 @@ class CreatorTableSeeder extends Seeder
                 'phone' => '0111000001' . $i,
                 'is_creator' => 1,
                 'is_active' => 1,
+                'email_verified_at' => date('Y-m-d H:i:s'),
 
             ]);
             CreatorInfo::create([

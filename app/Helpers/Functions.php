@@ -1,11 +1,9 @@
 <?php
 use App\Models\CreatorOption;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Setting;
 use App\Models\ValueOption;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 if (!function_exists('OptionSelect')) {
 
     function OptionSelect($item, $value)
@@ -18,19 +16,19 @@ if (!function_exists('OptionSelect')) {
     }
 }
 function OptionSelectMulitpleCommaString($string, $value)
-    {
-        // Split the string into an array using the comma as a delimiter
-        $array = explode(',', $string);
+{
+    // Split the string into an array using the comma as a delimiter
+    $array = explode(',', $string);
 
-        // Trim whitespace from each element in the array
-        $array = array_map('trim', $array);
+    // Trim whitespace from each element in the array
+    $array = array_map('trim', $array);
 
-        // Check if the value exists in the array
-        if (in_array($value, $array)) {
-            return 'selected';
-        }
-
+    // Check if the value exists in the array
+    if (in_array($value, $array)) {
+        return 'selected';
     }
+
+}
 if (!function_exists('getFillableSort')) {
 
     function getFillableSort($modelName)
@@ -63,11 +61,11 @@ if (!function_exists('checkActiveRoute')) {
 }
 if (!function_exists('getUserProfileImage')) {
 
-    function getUserProfileImage($image=null)
+    function getUserProfileImage($image = null)
     {
-        if($image){
+        if ($image) {
             return asset($image);
-        }else{
+        } else {
             return asset('system/users/profiles/default.png');
 
         }
@@ -75,10 +73,10 @@ if (!function_exists('getUserProfileImage')) {
 }
 if (!function_exists('getUserOtionsByMainId')) {
 
-    function getUserOtionsByMainId($mainOptionID=null,$user_id)
+    function getUserOtionsByMainId($mainOptionID = null, $user_id)
     {
-        $userOptionComma=CreatorOption::where(['main_option_id'=>$mainOptionID,'user_id'=>$user_id])->first();
-        $userOptionComma=$userOptionComma?$userOptionComma->value_options:'';
+        $userOptionComma = CreatorOption::where(['main_option_id' => $mainOptionID, 'user_id' => $user_id])->first();
+        $userOptionComma = $userOptionComma ? $userOptionComma->value_options : '';
         return $userOptionComma;
     }
 }
@@ -86,12 +84,11 @@ if (!function_exists('generateTextTimePlus')) {
 
     function generateTextTimePlus($value)
     {
-        if($value!=0)
-        {
+        if ($value != 0) {
 
-            $txt='+ '.$value.' '.__('messages.each_video');
-        }else{
-            $txt=__('messages.Included');
+            $txt = '+ ' . $value . ' ' . __('messages.each_video');
+        } else {
+            $txt = __('messages.Included');
         }
         return $txt;
     }
@@ -101,8 +98,17 @@ if (!function_exists('getSettingValueByKey')) {
 
     function getSettingValueByKey($key)
     {
-        $setting=Setting::where('key',$key)->first();
-        return $setting?$setting->value:null;
+        $setting = Setting::where('key', $key)->first();
+        return $setting ? $setting->value : null;
+
+    }
+}
+if (!function_exists('getPriceOneVideo')) {
+
+    function getPriceOneVideo($total, $count)
+    {
+
+        return $total / $count;
 
     }
 }
@@ -116,4 +122,3 @@ if (!function_exists('getValuesOptionByIds')) {
 
     }
 }
-

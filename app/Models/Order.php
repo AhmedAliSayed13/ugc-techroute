@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Country;
 use App\Models\OrderVideoOption;
 use App\Models\OrderRequest;
+use App\Models\VideoOptionType;
 use App\Models\Whitelist;
 class Order extends Model
 {
@@ -61,6 +62,10 @@ class Order extends Model
     public function whitelists()
     {
         return $this->hasMany(Whitelist::class);
+    }
+    public function videoOptionType()
+    {
+        return $this->belongsTo(VideoOptionType::class,'video_option_type_id');
     }
 
     public  function hasUserSentRequest( )

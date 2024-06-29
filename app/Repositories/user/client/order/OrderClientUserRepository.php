@@ -46,8 +46,10 @@ class OrderClientUserRepository implements OrderClientUserInterface
 
     public function showCheckout($key): array
     {
+        $order = Order::where('key', $key)->first();
         $data = array(
             'key' => $key,
+            'order' => $order,
         );
         return $data;
     }

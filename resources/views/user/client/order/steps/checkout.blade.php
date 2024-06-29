@@ -6,9 +6,31 @@
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/forms/select/select2.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-wizard.css')}}">
 <script src="https://js.stripe.com/v3/"></script>
+<style>
+    .payment-summary {
+        margin-top: 20px;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+    }
 
+    .payment-summary h6 {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .summary-item.total {
+        font-weight: bold;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+    }
+</style>
 @endsection
-
 
 @section('content')
 <div class="app-content content ">
@@ -17,7 +39,6 @@
     <div class="content-wrapper container-xxl p-0">
         <div class="content-header row">
             <x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('client.profile')" :title="'تعديل البيانات'" />
-
         </div>
         <div class="container-fluid mt-2">
             <div class="row">
@@ -26,54 +47,113 @@
                     <section class="modern-horizontal-wizard">
                         <div class="bs-stepper wizard-modern modern-wizard-example">
                             @include('user.client.order.tap_header')
-                            <div class="bs-stepper-content">
+                            <div class="">
 
 
 
-
-                                <div class="content-header">
-                                    <h5 class="mb-0">الدفع</h5>
-                                    <small class="text-muted">دفع تمن الخدمة المقدمة</small>
-                                </div>
-                                <form class="row  mb-2" action="{{route('client.order.checkout',$data['key'])}}"
-                                    method="POST" id="payment-form">
-                                    @csrf
-                                    <div class="row  mb-2">
-                                        <div class="col-12 ">
-                                            <label class="form-label" for="cvv">
-                                                بطاقة الائتمان أو الخصم
-                                            </label>
-                                            <div id="card-element" class="form-control">
-
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="card">
+                                            <div class="card-header border-bottom mb-2">
+                                                <h3>{{__('messages.payment_header')}}</h3>
                                             </div>
-                                            <div id="card-errors" role="alert"></div>
-                                            @error('cvv')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+
+                                            <div class="card-body">
+
+                                                <form class="row mb-2"
+                                                    action="{{route('client.order.checkout',$data['key'])}}"
+                                                    method="POST" id="payment-form">
+                                                    @csrf
+                                                    <div class="col-12 mb-2">
+                                                        <img src="{{asset('users-asset/images/stripe.png')}}" alt="">
+                                                    </div>
+                                                    <div class="col-12 mb-2">
+                                                        <label class="form-label" for="card-name">اسم حامل
+                                                            البطاقة</label>
+                                                        <input type="text" id="card-name" class="form-control" required>
+                                                    </div>
+                                                    <div class="col-12 mb-2">
+                                                        <label class="form-label" for="card-number">رقم البطاقة</label>
+                                                        <div id="card-number" class="form-control"></div>
+                                                    </div>
+                                                    <div class="col-6 mb-2">
+                                                        <label class="form-label" for="card-expiry">تاريخ
+                                                            الانتهاء</label>
+                                                        <div id="card-expiry" class="form-control"></div>
+                                                    </div>
+                                                    <div class="col-6 mb-2">
+                                                        <label class="form-label" for="card-cvc">رمز الأمان
+                                                            (CVC)</label>
+                                                        <div id="card-cvc" class="form-control"></div>
+                                                    </div>
+                                                    <div id="card-errors" role="alert" class="col-12 text-danger"></div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                    @include('user.client.order.tap_footer')
-                                </form>
+                                    <div class="col-7 checkout-options">
+                                        <div class="card">
+                                            <div class="card-header border-bottom mb-2">
+                                                <h3>{{__('messages.summary_order')}}</h3>
+
+                                            </div>
+                                            <div class="card-body">
+                                                {{-- <div class="mb-2 pb-50">
+                                                    <h5>{{__('messages.price_one_video')}} <strong
+                                                            class="badge badge-light-primary ms-50">
+                                                            {{$data['order']->videoOptionType->name}}</strong></h5>
+                                                    <span>{{$data['order']->video_price}} $ </span>
+                                                </div>
+                                                <div class="mb-2 pb-50">
+                                                    <h5>{{__('messages.number_of_videos')}} </h5>
+                                                    <span>{{$data['order']->video_count}} </span>
+                                                </div> --}}
+
+                                                <div class="summary-item">
+                                                    <span class="option">{{__('messages.price_one_video')}} <strong
+                                                            class="badge badge-light-primary ms-50">
+                                                            {{$data['order']->videoOptionType->name}}</strong></span>
+                                                    <span class="price" dir="rtl">{{getPriceOneVideo($data['order']->total,$data['order']->video_count)}}
+                                                        $</span>
+                                                </div>
+                                                <div class="summary-item">
+                                                    <span class="option">{{__('messages.number_of_videos')}}</span>
+                                                    <span class="price" dir="rtl">{{$data['order']->video_count}}
+                                                        $</span>
+                                                </div>
+                                                <div class="summary-item">
+                                                    <span class="option">{{__('messages.priceForAllVideos')}}</span>
+                                                    <span class="price" dir="ltr">{{getPriceOneVideo($data['order']->total,$data['order']->video_count).' X
+                                                        '.$data['order']->video_count}}</span>
+                                                </div>
+                                                <div class="summary-item total">
+                                                    <span class="option">{{__('messages.total')}}</span>
+                                                    <span class="price">${{$data['order']->total }}</span>
+                                                </div>
 
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @include('user.client.order.tap_footer')
 
                             </div>
                         </div>
                     </section>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 @endsection
-@section('script')
 
+@section('script')
 <script>
     var stripe = Stripe('{{ config('services.stripe.key') }}');
     var elements = stripe.elements();
+
     var style = {
         base: {
             color: '#32325d',
@@ -89,13 +169,32 @@
             iconColor: '#fa755a'
         }
     };
-    var card = elements.create('card', {style: style});
-    card.mount('#card-element');
 
-    card.addEventListener('change', function(event) {
+    var cardNumber = elements.create('cardNumber', {style: style});
+    cardNumber.mount('#card-number');
+
+    var cardExpiry = elements.create('cardExpiry', {style: style});
+    cardExpiry.mount('#card-expiry');
+
+    var cardCvc = elements.create('cardCvc', {style: style});
+    cardCvc.mount('#card-cvc');
+
+    function translateError(message) {
+        var translations = {
+            "Your card number is incomplete.": "رقم البطاقة غير مكتمل.",
+            "Your card's expiration date is incomplete.": "تاريخ انتهاء البطاقة غير مكتمل.",
+            "Your card's security code is incomplete.": "رمز الأمان للبطاقة غير مكتمل.",
+            "Your card number is invalid.": "رقم البطاقة غير صالح.",
+            "Your card has expired.": "البطاقة منتهية الصلاحية.",
+            // Add more translations as needed
+        };
+        return translations[message] || message;
+    }
+
+    cardNumber.addEventListener('change', function(event) {
         var displayError = document.getElementById('card-errors');
         if (event.error) {
-            displayError.textContent = event.error.message;
+            displayError.textContent = translateError(event.error.message);
         } else {
             displayError.textContent = '';
         }
@@ -105,10 +204,10 @@
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        stripe.createToken(card).then(function(result) {
+        stripe.createToken(cardNumber).then(function(result) {
             if (result.error) {
                 var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
+                errorElement.textContent = translateError(result.error.message);
             } else {
                 stripeTokenHandler(result.token);
             }

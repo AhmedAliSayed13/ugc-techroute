@@ -62,7 +62,7 @@ class AuthUserRepository implements AuthUserInterface
             );
             return $data;
         }else{
-            toastr()->error(__('messages.token_expired'), __('messages.error'));
+            // toastr()->error(__('messages.token_expired'), __('messages.error'));
             return [];
         }
     }

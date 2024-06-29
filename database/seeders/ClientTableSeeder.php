@@ -22,6 +22,7 @@ class ClientTableSeeder extends Seeder
                 'phone' => '01110000000'.$i,
                 'is_creator' => 0,
                 'is_active' => 1,
+                'email_verified_at' => date('Y-m-d H:i:s'),
 
             ]);
         }
