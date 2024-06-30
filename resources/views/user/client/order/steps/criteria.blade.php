@@ -44,7 +44,8 @@
                                                 <select class="form-select" id="country_id" name="country_id" required>
                                                     <option value="">{{__('messages.selectOption')}}</option>
                                                     @foreach($data['countries'] as $country)
-                                                    <option  {{OptionSelect($country->id,$data['order']->country_id)}} value="{{$country->id}}">{{$country->name}}</option>
+                                                    <option {{OptionSelect($country->id,$data['order']->country_id)}}
+                                                        value="{{$country->id}}">{{$country->name}}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('country_id')
@@ -57,8 +58,10 @@
                                                 <label for="gender" class="form-label">{{__('messages.gender')}}</label>
                                                 <select class="form-select" id="gender" name="gender" required>
                                                     <option value="">{{__('messages.selectOption')}}</option>
-                                                    <option {{OptionSelect('ذكر',$data['order']->gender)}} value="ذكر">ذكر</option>
-                                                    <option {{OptionSelect('انثي',$data['order']->gender)}} value="انثي">انثي</option>
+                                                    <option {{OptionSelect('ذكر',$data['order']->gender)}}
+                                                        value="ذكر">ذكر</option>
+                                                    <option {{OptionSelect('انثي',$data['order']->gender)}}
+                                                        value="انثي">انثي</option>
                                                 </select>
                                                 @error('gender')
                                                 <span class="error">{{ $message }}</span>
@@ -70,7 +73,7 @@
                                         <div class="col-md-6 mb-1">
                                             <input type="hidden" name="mainOptions[]" value="{{$mainOption->id}}">
                                             <label class="form-label"
-                                                for="select2-multiple">{{$mainOption->name}}</label>
+                                                for="select2-multiple">{{$mainOption->name_client}}</label>
                                             <select class="select2 form-select"
                                                 name="valueOptions[{{$mainOption->id}}][]"
                                                 id="select{{$mainOption->id}}" multiple>
@@ -82,43 +85,50 @@
                                         @endforeach
                                     </div>
 
-                                    @for ( $i=1 ; $i<=$data['order']->video_count ; $i++)
-                                        <div class="card">
-                                            <div class="card-header">
-                                                فيديو #{{$i}}
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row  mb-2">
-                                                    <div class="col-6 ">
-                                                        <div class="mb-1">
-                                                            <label class="form-label"
-                                                                for="scenes">{{__('messages.scenes')}}</label>
-                                                            <textarea class="form-control" name="scenes[]" id="scenes"
-                                                                rows="3" required> {{old('scenes')}}</textarea>
-                                                            @error('scenes')
-                                                            <div class="invalid-feedback">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 ">
-                                                        <div class="mb-1">
-                                                            <label class="form-label"
-                                                                for="mentions">{{__('messages.mentions')}}</label>
-                                                            <textarea class="form-control" name="mentions[]"
-                                                                id="mentions" rows="3"
-                                                                required> {{old('mentions')}}</textarea>
-                                                            @error('mentions')
-                                                            <div class="invalid-feedback">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
 
+                                    <h3 class="mb-2 mt-2">
+                                        {{__('messages.mentionsAndScenes')}}
+                                    </h3>
 
+                                        <div class="row  mb-2 text-area-row">
+                                            <div class="col-5 ">
+                                                <div class="mb-1">
+                                                    <label class="form-label"
+                                                        for="scenes">{{__('messages.scenes')}}</label>
+                                                    <textarea class="form-control" name="scenes[]" id="scenes"
+                                                        rows="3" required> {{old('scenes')}}</textarea>
+                                                    @error('scenes')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
+                                            <div class="col-5 ">
+                                                <div class="mb-1">
+                                                    <label class="form-label"
+                                                        for="mentions">{{__('messages.mentions')}}</label>
+                                                    <textarea class="form-control" name="mentions[]" id="mentions"
+                                                        rows="3" required> {{old('mentions')}}</textarea>
+                                                    @error('mentions')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-2 mt-3 text-center">
+                                                <button class="deleteRow btn btn-danger"><i
+                                                        data-feather='trash'></i></button>
+                                            </div> --}}
+
 
                                         </div>
-                                    @endfor
+
+                                    <div id="rowsContainer"></div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+
+                                            <button type="button" id="addRow" class="btn btn-primary mb-2">{{__('messages.add')}} <i data-feather='plus'></i></button>
+                                        </div>
+                                    </div>
+
 
 
 
@@ -150,4 +160,42 @@
 
 <script src="{{asset('users-asset/vendors/js/forms/select/select2.full.min.js')}}"></script>
 <script src="{{asset('users-asset/js/scripts/forms/form-select2.js')}}"></script>
+<script>
+    $(document).ready(function() {
+    $('#addRow').click(function() {
+        $('#rowsContainer').append(`
+            <div class="row mb-2 text-area-row">
+                <div class="col-5">
+                    <div class="mb-1">
+                        <label class="form-label" for="scenes">{{__('messages.scenes')}}</label>
+                        <textarea class="form-control" name="scenes[]" id="scenes" rows="3" required>{{old('scenes')}}</textarea>
+                        @error('scenes')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="mb-1">
+                        <label class="form-label" for="mentions">{{__('messages.mentions')}}</label>
+                        <textarea class="form-control" name="mentions[]" id="mentions" rows="3" required>{{old('mentions')}}</textarea>
+                        @error('mentions')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-2 mt-3 text-center">
+                    <button class="deleteRow btn btn-danger">{{__('messages.delete')}}</button>
+                </div>
+            </div>
+        `);
+    });
+
+    // Delegate event to dynamically added delete buttons
+    $('#rowsContainer').on('click', '.deleteRow', function() {
+        $(this).closest('.text-area-row').remove();
+    });
+});
+
+
+</script>
 @endsection

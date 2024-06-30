@@ -104,7 +104,7 @@
                                                 <div class="summary-item">
                                                     <span class="option">{{__('messages.number_of_videos')}}</span>
                                                     <span class="price" dir="rtl">{{$data['order']->video_count}}
-                                                        $</span>
+                                                        </span>
                                                 </div>
                                                 <div class="summary-item">
                                                     <span class="option">{{__('messages.priceForAllVideos')}}</span>
