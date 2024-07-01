@@ -9,7 +9,10 @@ use App\Models\Country;
 use App\Models\OrderVideoOption;
 use App\Models\OrderRequest;
 use App\Models\VideoOptionType;
+use App\Models\VideoOptionDuration;
+use App\Models\VideoOptionAspect;
 use App\Models\Whitelist;
+use App\Models\OrderVideo;
 class Order extends Model
 {
     use HasFactory;
@@ -67,6 +70,14 @@ class Order extends Model
     {
         return $this->belongsTo(VideoOptionType::class,'video_option_type_id');
     }
+    public function videoOptionDuration()
+    {
+        return $this->belongsTo(VideoOptionDuration::class,'video_option_type_id');
+    }
+    public function videoOptionAspect()
+    {
+        return $this->belongsTo(VideoOptionAspect::class,'video_option_aspect_id');
+    }
 
     public  function hasUserSentRequest( )
     {
@@ -82,5 +93,9 @@ class Order extends Model
         // return $this->whitelists()
         //             ->where('creator_id', auth()->id())
         //             ->exists()>0?0:1;
+    }
+    public function orderVideos()
+    {
+        return $this->hasMany(OrderVideo::class);
     }
 }

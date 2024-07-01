@@ -122,3 +122,14 @@ if (!function_exists('getValuesOptionByIds')) {
 
     }
 }
+
+if (!function_exists('getValuesOptionCommaNameByIds')) {
+
+    function getValuesOptionCommaNameByIds($values)
+    {
+        $valueOptionIds = explode(',', $values);
+        $videoOptions = ValueOption::whereIn('id', $valueOptionIds)->pluck('name');
+        return  $videoOptions->implode(', ');;
+
+    }
+}

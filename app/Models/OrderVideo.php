@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Order;
 class OrderVideo extends Model
 {
     use HasFactory;
@@ -19,4 +19,9 @@ class OrderVideo extends Model
         'order_id',
         'created_at',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
