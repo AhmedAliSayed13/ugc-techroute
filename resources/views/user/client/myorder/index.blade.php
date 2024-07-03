@@ -78,18 +78,19 @@
 
                                                     <td>{{$order->orderRequests->count()}}</td>
                                                     <td>
+                                                        <a type="button" class="btn btn-sm btn-success " href="{{route('client.my-orders.show',$order->id)}}">
+                                                            <i data-feather="eye"></i>
+                                                        </a>
                                                         @if($order->status!=4)
                                                         <a type="button" class="btn btn-sm btn-primary " href="{{route('client.my-orders.edit',$order->id)}}">
                                                             <i data-feather="edit"></i>
                                                         </a>
-                                                        @else
+                                                        {{-- @else
                                                         <a type="button" class="btn btn-sm btn-info " href="{{route('client.my-orders.requests.review',$order->id)}}">
                                                             <i data-feather="users"></i>
-                                                        </a>
+                                                        </a> --}}
                                                         @endif
-                                                        <a type="button" class="btn btn-sm btn-success " href="{{route('client.my-orders.show',$order->id)}}">
-                                                            <i data-feather="eye"></i>
-                                                        </a>
+
                                                     </td>
                                                 </tr>
                                                 @endforeach

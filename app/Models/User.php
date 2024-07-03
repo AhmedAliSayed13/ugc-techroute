@@ -106,4 +106,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(FeatureVideo::class);
     }
+
+    public function orderComplete()
+    {
+        return 30;
+    }
+    public function getRate()
+    {
+        return 95;
+    }
 }

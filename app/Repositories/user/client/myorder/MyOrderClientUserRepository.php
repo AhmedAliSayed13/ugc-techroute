@@ -37,7 +37,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
         );
         return $data;
     }
-    public function orderRequestsReview($id): array
+    public function orderCreators($id): array
     {
         $order = Order::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
         $data = array(

@@ -31,4 +31,4 @@ Route::resource('my-orders', MyOrderClientUserController::class)->only([
     'index', 'show', 'edit',
 ]);
 
-Route::get('my-orders/requests/review/{id}', [MyOrderClientUserController::class, 'orderRequestsReview'])->name('my-orders.requests.review');
+Route::get('my-orders/creators/{id}', [MyOrderClientUserController::class, 'orderCreators'])->name('my-orders.creators');

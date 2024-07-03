@@ -33,11 +33,11 @@ class MyOrderClientUserController extends Controller
         // return $data['order']->orderOptions;
         return view($this->path . 'show', compact('data'));
     }
-    public function orderRequestsReview($id)
+    public function orderCreators($id)
     {
-        $data = $this->myOrderClientUserInterface->orderRequestsReview($id);
+        $data = $this->myOrderClientUserInterface->orderCreators($id);
         // return $data;
-        return view($this->path . 'order_requests_review', compact('data'));
+        return view($this->path . 'order_creators', compact('data'));
     }
 
 }

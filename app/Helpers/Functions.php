@@ -133,3 +133,11 @@ if (!function_exists('getValuesOptionCommaNameByIds')) {
 
     }
 }
+if (!function_exists('calculateBirthdate')) {
+
+    function calculateBirthdate($birthdate)
+    {
+        return Carbon::parse($birthdate)->age;
+
+    }
+}

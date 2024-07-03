@@ -19,6 +19,7 @@ class OrderRequest extends Model
         'creator_id',
         'status',
         'created_at',
+        'updated_at',
 
     ];
 

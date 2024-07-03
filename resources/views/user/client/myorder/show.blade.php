@@ -17,136 +17,317 @@
                 :title="__('messages.show_order')" />
         </div>
 
-        <div class="content-body">
-            <div class="container-fluid mt-4">
-                <div class="row">
-
-                    <div class="row">
-                        <div class="col-12">
-
-
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">{{__('messages.show_order')}}</h4>
-                                </div>
-                                <div class="content-body">
-                                    <!-- app e-commerce details start -->
-                                    <section class="app-ecommerce-details">
-                                        <div class="card">
-                                            <!-- Product Details starts -->
-                                            <div class="card-body">
-                                                <div class="row my-2">
-
-                                                    <div class="col-12 ">
-                                                        <h4>{{$data['order']->product_name}}</h4>
-                                                        <span class="card-text item-company"> <a
-                                                                href="{{$data['order']->product_link}}"
-                                                                class="company-name"><i
-                                                                    data-feather='external-link'></i></a></span>
-
-                                                        <div class="ecommerce-details-price d-flex flex-wrap mt-1">
-                                                            <h4 class="item-price me-1">{{$data['order']->gender}}</h4>
-                                                            <h4 class="item-price ps-1 border-start">
-                                                                {{$data['order']->country->name}}</h4>
-
-                                                        </div>
-                                                        {{-- <p class="card-text">Available - <span
-                                                                class="text-success">In
-                                                                stock</span></p> --}}
-                                                        <p class="card-text">
-                                                            <span
-                                                                class="card-link">{{__('messages.product_description')}}:</span><br>
-                                                            {{$data['order']->product_description}}
-                                                        </p>
-                                                        <p class="card-text">
-                                                            <span
-                                                                class="card-link">{{__('messages.product_instructions')}}</span><br>
-                                                            {{$data['order']->product_instructions}}
-                                                        </p>
-                                                        {{-- <ul class="product-features list-unstyled">
-                                                            @foreach ($data['order']->orderOptions as $orderOption)
-                                                            <li>
-
-                                                                <i data-feather="list"></i>
-
-                                                                <span>{{$orderOption->mainOption->name}}</span>
-                                                            </li>
-                                                            @endforeach
-
-                                                        </ul> --}}
-                                                        <hr />
-                                                        <div class="product-color-options">
-                                                            @foreach ($data['order']->orderOptions as $orderOption)
-                                                                <h6>{{$orderOption->mainOption->name}}</h6>
-                                                                <ul class="list-unstyled mb-1">
-                                                                    @foreach (getValuesOptionByIds($orderOption->value_options) as $item)
-
-                                                                    <li class="d-inline-block selected">
-                                                                        <span class="text-primary">{{$item->name}}</span> |
-                                                                    </li>
-                                                                    @endforeach
-                                                                    {{-- {{$orderOption->value_options}} --}}
-                                                                </ul>
-                                                            @endforeach
-                                                        </div>
-                                                        {{-- <hr />
-                                                        <div class="d-flex flex-column flex-sm-row pt-1">
-                                                            <a href="#"
-                                                                class="btn btn-primary btn-cart me-0 me-sm-1 mb-1 mb-sm-0">
-                                                                <i data-feather="shopping-cart" class="me-50"></i>
-                                                                <span class="add-to-cart">Add to cart</span>
-                                                            </a>
-                                                            <a href="#"
-                                                                class="btn btn-outline-secondary btn-wishlist me-0 me-sm-1 mb-1 mb-sm-0">
-                                                                <i data-feather="heart" class="me-50"></i>
-                                                                <span>Wishlist</span>
-                                                            </a>
-                                                            <div class="btn-group dropdown-icon-wrapper btn-share">
-                                                                <button type="button"
-                                                                    class="btn btn-icon hide-arrow btn-outline-secondary dropdown-toggle"
-                                                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <i data-feather="share-2"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a href="#" class="dropdown-item">
-                                                                        <i data-feather="facebook"></i>
-                                                                    </a>
-                                                                    <a href="#" class="dropdown-item">
-                                                                        <i data-feather="twitter"></i>
-                                                                    </a>
-                                                                    <a href="#" class="dropdown-item">
-                                                                        <i data-feather="youtube"></i>
-                                                                    </a>
-                                                                    <a href="#" class="dropdown-item">
-                                                                        <i data-feather="instagram"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Details ends -->
+        <div class="row">
+            <div class="col-12">
+                @include('user.client.myorder.tab-header')
+            </div>
 
 
 
 
-                                        </div>
-                                    </section>
-                                    <!-- app e-commerce details end -->
 
-                                </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{__('messages.brief')}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- app e-commerce details start -->
+
+                        <div class="row my-2">
+                            <div class="col-12 ">
+
+
+                                <table class="table ">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.order_number')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->key}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.product_name')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->product_name}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.product_description')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->product_description}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.product_link')}}</span>
+                                            </td>
+                                            <td><a href="{{$data['order']->product_link}}"
+                                                    target="_blank">{{$data['order']->product_link}}</a>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.product_instructions')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->product_instructions}}</td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
 
 
-                        </div>
-                    </div>
+                            <!-- Product Details ends -->
 
+
+
+
+                        </div>
+
+                        <!-- app e-commerce details end -->
+
+                    </div>
                 </div>
             </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{__('messages.Video_specifications')}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- app e-commerce details start -->
+
+                        <div class="row my-2">
+                            <div class="col-12 ">
+
+
+                                <table class="table ">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_count')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->video_count}} {{__('messages.video')}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_type')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->videoOptionType->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_duration')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->videoOptionDuration->time??''}}
+                                                {{__('messages.second')}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_aspect')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->videoOptionAspect->name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.scenes')}}</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @foreach ($data['order']->orderVideos as $key=> $order_video)
+                                        <tr>
+                                            <td>{{__('messages.scene')}} #{{$key+1}}</td>
+                                            <td>{{$order_video->scenes}}</td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.mentions')}}</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @foreach ($data['order']->orderVideos as $key=>$order_video)
+                                        <tr>
+                                            <td>{{__('messages.mention')}} #{{$key+1}}</td>
+                                            <td>{{$order_video->mentions}}</td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <!-- Product Details ends -->
+
+
+
+
+                        </div>
+
+                        <!-- app e-commerce details end -->
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{__('messages.video_criteria')}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- app e-commerce details start -->
+
+                        <div class="row my-2">
+                            <div class="col-12 ">
+
+
+                                <table class="table ">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.gender')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->gender}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.country')}}</span>
+                                            </td>
+                                            <td>{{$data['order']->country->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_options')}}</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @foreach ($data['order']->orderOptions as $orderOption)
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{$orderOption->mainOption->name_client}}</span>
+                                            </td>
+                                            <td>
+                                                {{getValuesOptionCommaNameByIds($orderOption->value_options)}}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <!-- Product Details ends -->
+
+
+
+
+                        </div>
+
+                        <!-- app e-commerce details end -->
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{__('messages.order_price')}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- app e-commerce details start -->
+
+                        <div class="row my-2">
+                            <div class="col-12 ">
+
+
+                                <table class="table ">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.order_total')}}</span>
+                                            </td>
+                                            <td class="fw-bolder text-success">{{$data['order']->total}} $</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.video_price_on_order')}}</span>
+                                            </td>
+                                            <td class="fw-bolder text-success">{{$data['order']->video_price}} $</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.payment_status')}}</span>
+                                            </td>
+                                            <td >@if($data['order']->paid)
+                                                <span class="fw-bolder text-success">{{__('messages.paid')}}</span>
+                                                @else
+                                                <span class="fw-bolder text-danger">{{__('messages.unpaid')}}</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="fw-bold">{{__('messages.order_status')}}</span>
+                                            </td>
+                                            <td >
+                                                {{$data['order']->status}}
+
+
+                                            </td>
+                                        </tr>
+
+
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <!-- Product Details ends -->
+
+
+
+
+                        </div>
+
+                        <!-- app e-commerce details end -->
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
         </div>
+
+
+
+
     </div>
 </div>
 @endsection

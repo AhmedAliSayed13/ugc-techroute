@@ -17,7 +17,7 @@ class CreateOrderRequestsTable extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('creator_id');
-            $table->foreignId('status')->default(0);
+            $table->foreignId('status')->nullable();
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
