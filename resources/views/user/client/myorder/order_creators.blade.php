@@ -20,7 +20,6 @@
     .video-container-profile {
         position: relative;
         width: 100%;
-
         height: 600px;
         overflow: hidden;
         display: flex;
@@ -41,10 +40,8 @@
         /* Make sure the icons are visible on your video */
     }
 </style>
-@endsection
-{{-- @section('breadcrumb')
 
-@endsection --}}
+@endsection
 
 @section('content')
 <div class="app-content content ">
@@ -130,12 +127,17 @@
                         </div>
                         <div class="d-grid">
                             <div class="mb-1 mt-2">
-                                <label class="form-label" for="basicSelect">{{__('messages.status')}}</label>
-                                <select class="form-select" id="basicSelect">
-                                    <option value="">{{__('messages.selectOption')}}</option>
-                                    <option value="1">{{__('messages.accept')}}</option>
-                                    <option value="0">{{__('messages.reject')}}</option>
-                                </select>
+                                <form action="{{route('client.my-orders.choose.creator',$orderRequest->id)}}" method="POST" id="form-{{$orderRequest->id}}">
+                                    @csrf
+                                    <label class="form-label" for="selectCeartor{{$orderRequest->id}}">{{__('messages.status')}}</label>
+                                    <select class="form-select" id="selectCeartor{{$orderRequest->id}}" name="status" required  data-form-id="{{$orderRequest->id}}" {{$orderRequest->status==1 ? 'disabled' : ''}} >
+                                        <option >{{__('messages.selectOption')}}</option>
+                                        <option value="1" {{OptionSelect('1',$orderRequest->status)}}>{{__('messages.accept')}}</option>
+                                        @if($orderRequest->status != 1)
+                                            <option value="0" {{OptionSelect('0',$orderRequest->status)}}>{{__('messages.reject')}}</option>
+                                        @endif
+                                    </select>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -159,5 +161,41 @@
 
 @endsection
 @section('script')
+
+<script>
+    $(document).ready(function() {
+        $('.form-select').on('change', function() {
+            var formId = $(this).data('form-id');
+            var form = $('#form-' + formId);
+            form.submit();
+        });
+        // $('.form-select').on('change', function() {
+        //     var formId = $(this).data('form-id');
+        //     var form = $('#form-' + formId);
+        //     // var actionUrl = form.attr('action');
+        //     // var formData = form.serialize();
+
+        //     // $.ajax({
+        //     //     url: actionUrl,
+        //     //     type: 'POST',
+        //     //     data: formData,
+        //     //     success: function(response) {
+        //     //         // Display success message using toastr
+        //     //         if (response.status === 'success') {
+        //     //             toastr.success(response.message);
+        //     //         } else {
+        //     //             // toastr.error('An unexpected error occurred.');
+        //     //             windows.location.reload();
+        //     //         }
+        //     //     },
+        //     //     error: function(xhr) {
+        //     //         windows.location.reload();
+        //     //         // Display error message using toastr
+        //     //         // toastr.error(xhr.responseJSON.message || 'An error occurred during the request.');
+        //     //     }
+        //     // });
+        // });
+    });
+</script>
 
 @endsection

@@ -6,4 +6,5 @@ interface MyOrderClientUserInterface
     public function edit($id);
     public function show($id): array;
     public function orderCreators($id): array;
+    public function chooseCreator($request,$id);
 }

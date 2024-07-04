@@ -4,7 +4,8 @@ namespace App\Http\Controllers\user\client\myorder;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\user\client\myorder\MyOrderClientUserInterface;
-
+use Illuminate\Http\Request;
+use App\Http\Requests\user\client\myorders\ChooseCreatorMyorderClientRequest;
 class MyOrderClientUserController extends Controller
 {
     protected $myOrderClientUserInterface;
@@ -38,6 +39,23 @@ class MyOrderClientUserController extends Controller
         $data = $this->myOrderClientUserInterface->orderCreators($id);
         // return $data;
         return view($this->path . 'order_creators', compact('data'));
+    }
+    public function chooseCreator(ChooseCreatorMyorderClientRequest $request,$id)
+    {
+        try{
+        $data = $this->myOrderClientUserInterface->chooseCreator($request,$id);
+        return back();
+
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        foreach ($e->validator->errors()->all() as $error) {
+            toastr()->error(__('messages.error'), $error);
+        }
+         return back();
+    } catch (\Throwable $th) {
+        toastr()->error(__('messages.error'),$th->getMessage());
+        return back();
+    }
+
     }
 
 }
