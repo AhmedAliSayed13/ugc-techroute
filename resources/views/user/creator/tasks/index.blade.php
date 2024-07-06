@@ -58,6 +58,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>{{__('messages.orderNumber')}}</th>
+                                                                <th>{{__('messages.order_price')}}</th>
                                                                 <th>{{__('messages.video_type')}}</th>
                                                                 <th>{{__('messages.video_duration')}}</th>
                                                                 <th>{{__('messages.video_aspect')}}</th>
@@ -68,6 +69,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>{{$task->getTaskKey()}}</td>
+                                                                <td>{{$task->order->video_price}}</td>
                                                                 <td>{{isset($task->order->videoOptionType)?$task->order->videoOptionType->name:''}}
                                                                 </td>
                                                                 <td>{{isset($task->order->videoOptionDuration)?$task->order->videoOptionDuration->time:''}}

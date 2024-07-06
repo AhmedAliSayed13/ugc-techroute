@@ -44,7 +44,7 @@ class TasksCreatorUserRepository implements TasksCreatorUserInterface
         if($task->creatorAllowedUpdate()){
             $filePublicManager = new FileManager('public');
             $folder = 'orders/order'. $task->order_id.'/tasks' . $task->id;
-            $videoPath = $filePublicManager->uploadFile($request->file('video'), $folder);
+            $videoPath = $filePublicManager->updateFile($task->video,$request->file('video'), $folder);
             $task->video=$videoPath;
             $task->task_status_id = 2;
             $task->save();
