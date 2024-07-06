@@ -2,8 +2,9 @@
 
 use App\Models\Order;
 use App\Models\OrderRequest;
+use App\Models\Task;
 use Auth;
-
+use Illuminate\Support\Facades\DB;
 class MyOrderClientUserRepository implements MyOrderClientUserInterface
 {
 
@@ -49,8 +50,22 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
     }
     public function chooseCreator($request, $id)
     {
+        DB::beginTransaction();
         try {
-            OrderRequest::where(['id' => $id])->update(['status' => $request->status]);
+            $orderRequest=OrderRequest::where(['id' => $id])->first();
+            $orderRequest->update(['status' => $request->status]);
+            if($request->status==1){
+                $order=$orderRequest->order;
+                Task::create(
+                    [
+                        'order_id' => $orderRequest->order_id,
+                        'client_id' => $order->user_id,
+                        'creator_id' => $orderRequest->creator_id,
+                        'order_request_id' => $orderRequest->id,
+                    ]
+                );
+            }
+            DB::commit();
             toastr()->success(__('messages.success'), __('messages.successOperation'));
             return 1;
 

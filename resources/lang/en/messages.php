@@ -373,7 +373,7 @@ return [
     'describe' => 'الوصف',
     'order_request_not_exists' => 'طلب غير موجود',
     'maximum_number_of_choosed_creators_is_reached' => 'تم تخطي عدد المنشي المحتوي المطلوب اختياره ',
-    'text' => 'text',
+    'success' => 'تمت العملية بنجاح',
     'text' => 'text',
     'text' => 'text',
 

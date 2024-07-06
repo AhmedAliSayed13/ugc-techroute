@@ -43,18 +43,17 @@ class MyOrderClientUserController extends Controller
     public function chooseCreator(ChooseCreatorMyorderClientRequest $request,$id)
     {
         try{
-        $data = $this->myOrderClientUserInterface->chooseCreator($request,$id);
-        return back();
-
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        foreach ($e->validator->errors()->all() as $error) {
-            toastr()->error(__('messages.error'), $error);
-        }
+            $data = $this->myOrderClientUserInterface->chooseCreator($request,$id);
+            return back();
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            foreach ($e->validator->errors()->all() as $error) {
+                toastr()->error(__('messages.error'), $error);
+            }
          return back();
-    } catch (\Throwable $th) {
-        toastr()->error(__('messages.error'),$th->getMessage());
-        return back();
-    }
+        } catch (\Throwable $th) {
+            toastr()->error(__('messages.error'),$th->getMessage());
+            return back();
+        }
 
     }
 
