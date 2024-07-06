@@ -72,7 +72,7 @@ class Order extends Model
     }
     public function videoOptionDuration()
     {
-        return $this->belongsTo(VideoOptionDuration::class,'video_option_type_id');
+        return $this->belongsTo(VideoOptionDuration::class,'video_option_duration_id');
     }
     public function videoOptionAspect()
     {

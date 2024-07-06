@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Order;
+use App\Models\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,12 +15,25 @@ class Task extends Model
     protected $table = 'tasks';
     protected $fillable = [
         'id',
-        'status',
+        'task_status_id',
         'video',
         'order_request_id',
         'creator_id',
         'client_id',
         'order_id',
-        'created_at'
+        'created_at',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+    public function taskStatus()
+    {
+        return $this->belongsTo(TaskStatus::class, 'task_status_id');
+    }
+    public function getTaskKey()
+    {
+        return $this->order->key . '|' . $this->id;
+    }
 }

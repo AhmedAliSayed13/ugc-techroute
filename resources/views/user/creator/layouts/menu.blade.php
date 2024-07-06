@@ -49,6 +49,10 @@
                     <a class=" nav-link d-flex align-items-center" href="{{route('creator.offers.index')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.offers')}}</span></a>
                 </li>
+                <li class="dropdown nav-item {{checkActiveRoute('creator.tasks.index')}}" >
+                    <a class=" nav-link d-flex align-items-center" href="{{route('creator.tasks.index')}}" ><i data-feather="home">
+                        </i><span data-i18n="Dashboards">{{__('messages.tasks')}}</span></a>
+                </li>
                 {{-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Apps">Apps</span></a>
                     <ul class="dropdown-menu" data-bs-popper="none">
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-email.html" data-bs-toggle="" data-i18n="Email"><i data-feather="mail"></i><span data-i18n="Email">Email</span></a>

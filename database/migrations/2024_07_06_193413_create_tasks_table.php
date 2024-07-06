@@ -15,8 +15,10 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default(0);
+
             $table->string('video')->nullable();
+            $table->unsignedBigInteger('task_status_id')->default(1);
+            $table->foreign('task_status_id')->references('id')->on('task_statuses')->onDelete('cascade');
             $table->unsignedBigInteger('order_request_id');
             $table->foreign('order_request_id')->references('id')->on('order_requests')->onDelete('cascade');
             $table->unsignedBigInteger('creator_id');

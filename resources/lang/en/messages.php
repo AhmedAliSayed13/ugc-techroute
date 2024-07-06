@@ -36,7 +36,6 @@ return [
     "confirm" => "Confirm",
     "Delete" => "Delete",
     "ItemNotExists" => "Item Not Exists",
-    "ShowDetails" => "Show Details",
     "createRentalBank" => "Create Rental Bank",
     "SelectOption" => "Select Option",
 
@@ -374,6 +373,11 @@ return [
     'order_request_not_exists' => 'طلب غير موجود',
     'maximum_number_of_choosed_creators_is_reached' => 'تم تخطي عدد المنشي المحتوي المطلوب اختياره ',
     'success' => 'تمت العملية بنجاح',
+    'tasks' => 'المهام',
+    'orderNumber' => 'رقم الطلب',
+    'action' => 'الاجراءات',
+    'text' => 'text',
+    'text' => 'text',
     'text' => 'text',
     'text' => 'text',
 

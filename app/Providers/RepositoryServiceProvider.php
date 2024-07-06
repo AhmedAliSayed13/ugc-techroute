@@ -36,6 +36,8 @@ use App\Repositories\user\creator\profile\ProfileCreatorUserInterface;
 use App\Repositories\user\creator\profile\ProfileCreatorUserRepository;
 use App\Repositories\user\creator\offers\OffersCreatorUserInterface;
 use App\Repositories\user\creator\offers\OffersCreatorUserRepository;
+use App\Repositories\user\creator\tasks\TasksCreatorUserInterface;
+use App\Repositories\user\creator\tasks\TasksCreatorUserRepository;
 
 
 // website
@@ -114,6 +116,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OffersCreatorUserInterface::class,
             OffersCreatorUserRepository::class
+        );
+        // tasks
+        $this->app->bind(
+            TasksCreatorUserInterface::class,
+            TasksCreatorUserRepository::class
         );
         //Client------------------------------------------------
         $this->app->bind(

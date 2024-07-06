@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             OrderVideoOptionSeeder::class,
             OrderRequestSeeder::class,
             WhitelistSeeder::class,
+            TaskStatusSeeder::class,
         ]);
 
 
