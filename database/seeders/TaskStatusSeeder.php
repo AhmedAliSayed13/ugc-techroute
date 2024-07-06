@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\TaskStatus;
+use Illuminate\Database\Seeder;
 
 class TaskStatusSeeder extends Seeder
 {
@@ -15,11 +15,11 @@ class TaskStatusSeeder extends Seeder
     public function run()
     {
         $statuses = [
-            ['id'=>1,'name' => 'قيد الانتظار'],
-            ['id'=>2,'name' => 'قيد التنفيذ'],
-            ['id'=>3,'name' => 'بانتظار الموافقه'],
-            ['id'=>4,'name' => 'مكتمل'],
-            ['id'=>5,'name' => 'معلق'],
+            ['id' => 1, 'name' => 'قيد التنفيذ'],
+            ['id' => 2, 'name' => 'بانتظار موافقه العميل'],
+            ['id' => 3, 'name' => 'مكتمل'],
+            ['id' => 4, 'name' => 'طلب تعديل علي الفيديو'],
+            ['id' => 5, 'name' => 'معلق'],
         ];
 
         foreach ($statuses as $status) {

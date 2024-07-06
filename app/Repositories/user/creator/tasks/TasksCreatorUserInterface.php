@@ -6,7 +6,7 @@ interface TasksCreatorUserInterface {
 
     public function index():array;
     public function show($id):array;
-    public function requestSend($request,$id);
-    public function whitelist($id);
+    public function edit($id):array;
+    public function update($request,$id);
 
 }

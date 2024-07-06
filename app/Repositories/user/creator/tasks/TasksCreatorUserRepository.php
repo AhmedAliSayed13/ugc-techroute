@@ -3,7 +3,9 @@
 use App\Models\Order;
 use App\Models\Task;
 use App\Models\Whitelist;
-
+use App\Helpers\FileManager;
+use App\Helpers\FilePublicManager;
+use Illuminate\Support\Facades\Auth;
 class TasksCreatorUserRepository implements TasksCreatorUserInterface
 {
 
@@ -25,31 +27,32 @@ class TasksCreatorUserRepository implements TasksCreatorUserInterface
         );
         return $data;
     }
-    public function requestSend($request, $id)
+
+    public function edit($id):array
     {
-        $order = Task::Create([
-            'order_id' => $id,
-            'creator_id' => auth()->user()->id,
-        ]);
-        toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
-        return true;
-    }
-    public function whitelist($id)
-    {
-        $order = Order::find($id);
-        if ($order->hasWhitelist()) {
-
-            whitelist::where(['order_id' => $id, 'creator_id' => auth()->user()->id])->delete();
-
-        } else {
-
-            $order = Whitelist::Create([
-                'order_id' => $id,
-                'creator_id' => auth()->user()->id,
-            ]);
-        }
+        $task = Task::find($id);
+        $data = array(
+            'task' => $task,
+            'order' => $task->order,
+        );
         // toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        return $data;
+    }
+    public function update($request, $id)
+    {
+        $task = Task::find($id);
+        if($task->creatorAllowedUpdate()){
+            $filePublicManager = new FileManager('public');
+            $folder = 'orders/order'. $task->order_id.'/tasks' . $task->id;
+            $videoPath = $filePublicManager->uploadFile($request->file('video'), $folder);
+            $task->video=$videoPath;
+            $task->task_status_id = 2;
+            $task->save();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+        }else{
+            toastr()->error(__('messages.error'), __('messages.notAllowedOnCurrentStatus'));
+
+        }
         return true;
     }
-
 }

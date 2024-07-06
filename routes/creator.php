@@ -27,5 +27,5 @@ Route::resource('offers', OffersCreatorUserController::class)->only([
 Route::get('offers/request/send/{id}', [OffersCreatorUserController::class, 'requestSend'])->name('offers.request.send');
 Route::get('offers/whitelist/{id}', [OffersCreatorUserController::class, 'whitelist'])->name('offers.whitelist');
 Route::resource('tasks', TasksCreatorUserController::class)->only([
-    'index', 'show'
+    'index', 'show','edit','update'
 ]);

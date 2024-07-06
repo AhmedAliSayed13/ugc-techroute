@@ -376,8 +376,8 @@ return [
     'tasks' => 'المهام',
     'orderNumber' => 'رقم الطلب',
     'action' => 'الاجراءات',
-    'text' => 'text',
-    'text' => 'text',
+    'noVideoDeliveryYet' => 'لم يتم تسليم الفيديو بعد',
+    'notAllowedOnCurrentStatus' => 'غير مسموح بالتغيير بالحالة الحالية',
     'text' => 'text',
     'text' => 'text',
 

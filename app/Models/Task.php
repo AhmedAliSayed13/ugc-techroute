@@ -36,4 +36,12 @@ class Task extends Model
     {
         return $this->order->key . '|' . $this->id;
     }
+    public function creatorAllowedUpdate()
+    {
+        if(in_array($this->task_status_id, [1,4])){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
