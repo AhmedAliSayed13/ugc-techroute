@@ -5,6 +5,7 @@ use App\Models\OrderRequest;
 use App\Models\Task;
 use Auth;
 use Illuminate\Support\Facades\DB;
+
 class MyOrderClientUserRepository implements MyOrderClientUserInterface
 {
 
@@ -48,15 +49,24 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
         );
         return $data;
     }
+    public function orderDelivery($id): array
+    {
+        $order = Order::with('tasks')->where(['id' => $id, 'user_id' => auth()->user()->id])->first();
+        $data = array(
+            'order' => $order,
+            'tasks' => $order->tasks->where('video', '!=',null)->whereIn('task_status_id', [2,3,4])
+        );
+        return $data;
+    }
     public function chooseCreator($request, $id)
     {
         DB::beginTransaction();
         try {
-            $orderRequest=OrderRequest::where(['id' => $id])->first();
+            $orderRequest = OrderRequest::where(['id' => $id])->first();
             $orderRequest->update(['status' => $request->status]);
-            if($request->status==1){
-                $order=$orderRequest->order;
-                
+            if ($request->status == 1) {
+                $order = $orderRequest->order;
+
                 Task::create(
                     [
                         'order_id' => $orderRequest->order_id,
@@ -77,10 +87,9 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
             }
             return back()->withErrors($e->validator)->withInput();
         } catch (\Throwable $th) {
-            toastr()->error(__('messages.error'),$th->getMessage());
+            toastr()->error(__('messages.error'), $th->getMessage());
             return 0;
         }
-
 
     }
 

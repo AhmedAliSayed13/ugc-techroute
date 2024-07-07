@@ -13,6 +13,7 @@ use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionAspect;
 use App\Models\Whitelist;
 use App\Models\OrderVideo;
+use App\Models\Task;
 class Order extends Model
 {
     use HasFactory;
@@ -61,6 +62,10 @@ class Order extends Model
     public function orderRequests()
     {
         return $this->hasMany(OrderRequest::class);
+    }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
     public function whitelists()
     {

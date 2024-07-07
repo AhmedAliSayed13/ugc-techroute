@@ -55,7 +55,7 @@
                         @if($data['task']->video)
                         <div class="card-body  py-2 my-25">
                             <video id="plyr-audio-player" class="video-player" controls width="200" >
-                                <source src="{{  asset('/storage/'.$data['task']->video) }}" type="video/mp4">
+                                <source src="{{  Storage::url($data['task']->video) }}" type="video/mp4">
                             </video>
 
                         </div>

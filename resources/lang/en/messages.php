@@ -378,6 +378,11 @@ return [
     'action' => 'الاجراءات',
     'noVideoDeliveryYet' => 'لم يتم تسليم الفيديو بعد',
     'notAllowedOnCurrentStatus' => 'غير مسموح بالتغيير بالحالة الحالية',
+    'no_tasks_found' => 'لا توجد مهام',
+    'no_data_found_yet' => 'لا توجد بيانات بعد',
+    'download' => 'تحميل',
+    'modification_request' => 'طلب تعديل',
+    'text' => 'text',
     'text' => 'text',
     'text' => 'text',
 

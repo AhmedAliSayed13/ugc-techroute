@@ -37,57 +37,61 @@
                         </div>
 
                         <div class="accordion" id="accordionExample" data-toggle-hover="true">
-                            @foreach ($data['tasks'] as $task )
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#task{{$task->id}}"
-                                                aria-expanded="false" aria-controls="task{{$task->id}}">
-                                                {{__('messages.orderNumber')}}: {{$task->getTaskKey()}}
-                                                -
-                                                {{isset($task->order->videoOptionType)?$task->order->videoOptionType->name:''}}
-                                            </button>
-                                        </h2>
-                                        <div id="task{{$task->id}}" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                                            <div class="accordion-body">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>{{__('messages.orderNumber')}}</th>
-                                                                <th>{{__('messages.order_price')}}</th>
-                                                                <th>{{__('messages.video_type')}}</th>
-                                                                <th>{{__('messages.video_duration')}}</th>
-                                                                <th>{{__('messages.video_aspect')}}</th>
-                                                                <th>{{__('messages.order_status')}}</th>
-                                                                <th>{{__('messages.action')}}</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>{{$task->getTaskKey()}}</td>
-                                                                <td>{{$task->order->video_price}}</td>
-                                                                <td>{{isset($task->order->videoOptionType)?$task->order->videoOptionType->name:''}}
-                                                                </td>
-                                                                <td>{{isset($task->order->videoOptionDuration)?$task->order->videoOptionDuration->time:''}}
-                                                                    {{__('messages.second')}}</td>
-                                                                <td>{{isset($task->order->videoOptionAspect)?$task->order->videoOptionAspect->name:''}}
-                                                                </td>
-                                                                <td><span class="badge rounded-pill badge-light-primary">{{isset($task->taskStatus)?$task->taskStatus->name:''}}</span></td>
-                                                                <td><a href="{{route('creator.tasks.show', $task->id)}}" class="btn btn-primary">{{__('messages.showDetails')}}</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                            @if (count($data['tasks'])>0)
+                                @foreach ($data['tasks'] as $task )
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#task{{$task->id}}"
+                                                    aria-expanded="false" aria-controls="task{{$task->id}}">
+                                                    {{__('messages.orderNumber')}}: {{$task->getTaskKey()}}
+                                                    -
+                                                    {{isset($task->order->videoOptionType)?$task->order->videoOptionType->name:''}}
+                                                </button>
+                                            </h2>
+                                            <div id="task{{$task->id}}" class="accordion-collapse collapse"
+                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                                                <div class="accordion-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>{{__('messages.orderNumber')}}</th>
+                                                                    <th>{{__('messages.order_price')}}</th>
+                                                                    <th>{{__('messages.video_type')}}</th>
+                                                                    <th>{{__('messages.video_duration')}}</th>
+                                                                    <th>{{__('messages.video_aspect')}}</th>
+                                                                    <th>{{__('messages.order_status')}}</th>
+                                                                    <th>{{__('messages.action')}}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{$task->getTaskKey()}}</td>
+                                                                    <td>{{$task->order->video_price}}</td>
+                                                                    <td>{{isset($task->order->videoOptionType)?$task->order->videoOptionType->name:''}}
+                                                                    </td>
+                                                                    <td>{{isset($task->order->videoOptionDuration)?$task->order->videoOptionDuration->time:''}}
+                                                                        {{__('messages.second')}}</td>
+                                                                    <td>{{isset($task->order->videoOptionAspect)?$task->order->videoOptionAspect->name:''}}
+                                                                    </td>
+                                                                    <td><span class="badge rounded-pill badge-light-primary">{{isset($task->taskStatus)?$task->taskStatus->name:''}}</span></td>
+                                                                    <td><a href="{{route('creator.tasks.show', $task->id)}}" class="btn btn-primary">{{__('messages.showDetails')}}</a></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <h3 class="text-center ">{{__('messages.no_tasks_found')}}</h3>
+                            @endif
                         </div>
 
 

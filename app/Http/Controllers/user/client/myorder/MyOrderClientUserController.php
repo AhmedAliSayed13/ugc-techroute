@@ -40,6 +40,12 @@ class MyOrderClientUserController extends Controller
         // return $data;
         return view($this->path . 'order_creators', compact('data'));
     }
+    public function orderDelivery($id)
+    {
+        $data = $this->myOrderClientUserInterface->orderDelivery($id);
+        // return $data;
+        return view($this->path . 'order_delivery', compact('data'));
+    }
     public function chooseCreator(ChooseCreatorMyorderClientRequest $request,$id)
     {
         try{

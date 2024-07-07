@@ -32,6 +32,14 @@ class Task extends Model
     {
         return $this->belongsTo(TaskStatus::class, 'task_status_id');
     }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
+    }
     public function getTaskKey()
     {
         return $this->order->key . '|' . $this->id;

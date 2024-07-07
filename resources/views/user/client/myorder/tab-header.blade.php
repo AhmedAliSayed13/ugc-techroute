@@ -17,7 +17,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{checkActiveRoute('creator.options')}}" href="{{route('creator.options')}}">
+        <a class="nav-link {{checkActiveRoute('client.my-orders.delivery')}}" href="{{route('client.my-orders.delivery',$data['order']->id)}}">
             <i data-feather="video" class="font-medium-3 me-50"></i>
 
             <span class="fw-bold">{{__('messages.order_delivery')}}</span>
