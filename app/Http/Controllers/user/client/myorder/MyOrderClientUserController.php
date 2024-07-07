@@ -63,4 +63,11 @@ class MyOrderClientUserController extends Controller
 
     }
 
+    public function orderDeliveryConfirm($id)
+    {
+        $data = $this->myOrderClientUserInterface->orderDeliveryConfirm($id);
+        return back();
+
+    }
+
 }

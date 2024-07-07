@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="user-info">
                                     <h5 class="mb-0">{{$task->creator->name}}</h5>
-                                    <small class="text-muted">{{ $task->creator->creatorInfo->gender}}</small>
+                                    <small class="text-muted">{{ $task->getTaskKey()}}</small>
                                 </div>
                             </div>
                             <span class="badge rounded-pill badge-light-primary">
@@ -88,20 +88,26 @@
 
                         <div class="apply-job-package bg-light-primary rounded">
                             <div class="video-container">
+                                @if($task->video)
                                 <video id="plyr-audio-playe" class="video-player" controls>
                                     <source src="{{Storage::url($task->video) }}" type="video/mp4">
                                 </video>
+
+                                @else
+                                <img src="{{asset('users-asset/images/wait.png')}}"  width="100%" alt="">
+                                @endif
                             </div>
                         </div>
                         <div class="d-grid">
                             <div class="row ">
                                 <div class="col-12 mt-2 mb-2">
-                                    <a href="{{Storage::url($task->video) }}" type="button" download
+                                    <a  type="button" @if(!$task->video) disabled @else href="{{Storage::url($task->video) }}" download @endif
                                         class="btn btn-relief-primary w-100 btn-dwonload">{{__('messages.download')}} <i
                                             data-feather='download'></i></a>
                                 </div>
+                                @if($task->clientAllowedUpdate())
                                 <div class="col-6">
-                                    <a href="{{ route('client.my-orders.show', $task->id) }}"
+                                    <a href="{{ route('client.my-orders.delivery.confirm', $task->id) }}"
                                         class="btn btn-relief-success w-100">{{__('messages.accept')}} <i
                                             data-feather='check'></i></a>
                                 </div>
@@ -110,6 +116,13 @@
                                         class="btn btn-relief-info w-100">{{__('messages.modification_request')}} <i
                                             data-feather='edit'></i></a>
                                 </div>
+                                @elseif($task->creatorAllowedUpdate())
+                                    <span class="badge bg-warning p-1">{{__('messages.task_wait_for_creator')}} <i data-feather='alert-octagon'></i></span>
+                                @elseif($task->taskComplate())
+                                <span class="badge badge-light-success p-1">{{__('messages.task_completed')}} <i data-feather='check-circle'></i></span>
+                                @else
+                                <span class="badge bg-danger p-1">{{__('messages.task_hold_message')}} <i data-feather='alert-octagon'></i></span>
+                                @endif
                             </div>
                         </div>
                     </div>

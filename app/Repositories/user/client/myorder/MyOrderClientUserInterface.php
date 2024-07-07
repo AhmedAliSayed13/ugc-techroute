@@ -8,4 +8,5 @@ interface MyOrderClientUserInterface
     public function orderCreators($id): array;
     public function chooseCreator($request,$id);
     public function orderDelivery($id): array;
+    public function orderDeliveryConfirm($id): bool;
 }

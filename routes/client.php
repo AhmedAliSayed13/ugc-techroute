@@ -34,3 +34,4 @@ Route::resource('my-orders', MyOrderClientUserController::class)->only([
 Route::get('my-orders/creators/{id}', [MyOrderClientUserController::class, 'orderCreators'])->name('my-orders.creators');
 Route::post('my-orders/choose/creator/{id}', [MyOrderClientUserController::class, 'chooseCreator'])->name('my-orders.choose.creator');
 Route::get('my-orders/delivery/{id}', [MyOrderClientUserController::class, 'orderDelivery'])->name('my-orders.delivery');
+Route::get('my-orders/delivery/confirm/{id}', [MyOrderClientUserController::class, 'orderDeliveryConfirm'])->name('my-orders.delivery.confirm');

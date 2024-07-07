@@ -54,7 +54,9 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
         $order = Order::with('tasks')->where(['id' => $id, 'user_id' => auth()->user()->id])->first();
         $data = array(
             'order' => $order,
-            'tasks' => $order->tasks->where('video', '!=',null)->whereIn('task_status_id', [2,3,4])
+            'tasks' => $order->tasks
+            // ->where('video', '!=',null)
+            // ->whereIn('task_status_id', [2,3,4])
         );
         return $data;
     }
@@ -91,6 +93,19 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
             return 0;
         }
 
+    }
+    public function orderDeliveryConfirm($id): bool
+    {
+        try {
+            $task = Task::where(['id' => $id, 'client_id' => auth()->user()->id])->first();
+            $task->task_status_id=3;
+            $task->save();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return true;
+        } catch (\Throwable $th) {
+            toastr()->error(__('messages.error'), $th->getMessage());
+            return false;
+        }
     }
 
 }

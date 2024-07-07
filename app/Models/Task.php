@@ -52,4 +52,20 @@ class Task extends Model
             return false;
         }
     }
+    public function clientAllowedUpdate()
+    {
+        if(in_array($this->task_status_id, [2])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function taskComplate()
+    {
+        if($this->task_status_id==3 && $this->video!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
