@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\website\pages\PagesController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,12 @@ Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.s
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
 
-//Clear Cache facade value:
+Route::get('/chat', function () {
+    return view('chat');
+});
+
+Route::post('/send-message',  [ChatController::class, 'sendMessage']);
+
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');
     return '<h1>Cache facade value cleared</h1>';
@@ -37,3 +43,5 @@ Route::get('/route-clear', function () {
     $exitCode = Artisan::call('route:clear');
     return '<h1>Route cache cleared</h1>';
 });
+
+
