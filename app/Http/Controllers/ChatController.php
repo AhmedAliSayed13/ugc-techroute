@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NewMessageEvent;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function sendMessage(Request $request)
+    public function show($chatKey)
     {
-        // Create the message
-        $message = Message::create([
-            'user_id' => auth()->id(),
-            'content' => $request->input('content'),
-        ]);
+        $messages = Message::where('chat_key', $chatKey)->get();
 
-        // Trigger the Pusher event
-        event(new NewMessageEvent($message));
+        return view('chats.show', compact('chatKey', 'messages'));
+    }
 
-        // Return the response
+    public function storeMessage(Request$request, $chatKey)
+    {
+        $message = new Message();
+        $message->user_id = $request->user_id;
+        $message->content = $request->content;
+        $message->chat_key = $chatKey;
+        $message->save();
+
+        event(new \App\Events\NewMessageEvent($message));
+
         return response()->json(['message' => 'Message sent successfully']);
     }
 }

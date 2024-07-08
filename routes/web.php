@@ -22,11 +22,12 @@ Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.s
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
 
-Route::get('/chat', function () {
-    return view('chat');
-});
 
-Route::post('/send-message',  [ChatController::class, 'sendMessage']);
+
+Route::get('/chats/{chatKey}', [ChatController::class, 'show'] )->name('chats.show');
+Route::post('/chats/{chatKey}/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
+
+
 
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');

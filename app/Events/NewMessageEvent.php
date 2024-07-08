@@ -20,8 +20,7 @@ class NewMessageEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      *
-     * @param  Message  $message
-     * @return void
+     * @param Message $message
      */
     public function __construct(Message $message)
     {
@@ -31,10 +30,10 @@ class NewMessageEvent implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|Channel[]
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new Channel('chat.' . $this->message->chat_key);
     }
 }
