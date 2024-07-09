@@ -68,4 +68,11 @@ class Task extends Model
             return false;
         }
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'task_id');
+    }
+
+
 }

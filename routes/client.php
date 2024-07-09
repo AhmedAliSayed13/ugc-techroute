@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\user\client\dashboard\DashboardClientUserController;
 use App\Http\Controllers\user\client\myorder\MyOrderClientUserController;
+use App\Http\Controllers\user\client\chat\ChatClientUserController;
 use App\Http\Controllers\user\client\order\OrderClientUserController;
 use App\Http\Controllers\user\client\profile\ProfileClientUserController;
 use App\Http\Controllers\user\client\search\SearchClientUserController;
@@ -31,7 +32,12 @@ Route::resource('my-orders', MyOrderClientUserController::class)->only([
     'index', 'show', 'edit',
 ]);
 
+
 Route::get('my-orders/creators/{id}', [MyOrderClientUserController::class, 'orderCreators'])->name('my-orders.creators');
 Route::post('my-orders/choose/creator/{id}', [MyOrderClientUserController::class, 'chooseCreator'])->name('my-orders.choose.creator');
 Route::get('my-orders/delivery/{id}', [MyOrderClientUserController::class, 'orderDelivery'])->name('my-orders.delivery');
 Route::get('my-orders/delivery/confirm/{id}', [MyOrderClientUserController::class, 'orderDeliveryConfirm'])->name('my-orders.delivery.confirm');
+
+Route::resource('chats', ChatClientUserController::class)->only([
+    'index', 'show', 'store',
+]);

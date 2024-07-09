@@ -27,6 +27,8 @@ use App\Repositories\user\client\order\OrderClientUserInterface;
 use App\Repositories\user\client\order\OrderClientUserRepository;
 use App\Repositories\user\client\myorder\MyOrderClientUserInterface;
 use App\Repositories\user\client\myorder\MyOrderClientUserRepository;
+use App\Repositories\user\client\chat\ChatClientUserInterface;
+use App\Repositories\user\client\chat\ChatClientUserRepository;
 //creator
 use App\Repositories\user\client\search\SearchClientUserInterface;
 use App\Repositories\user\client\search\SearchClientUserRepository;
@@ -122,6 +124,7 @@ class RepositoryServiceProvider extends ServiceProvider
             TasksCreatorUserInterface::class,
             TasksCreatorUserRepository::class
         );
+
         //Client------------------------------------------------
         $this->app->bind(
             DashboardClientUserInterface::class,
@@ -147,6 +150,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             MyOrderClientUserInterface::class,
             MyOrderClientUserRepository::class
+        );
+        //chat
+        $this->app->bind(
+            ChatClientUserInterface::class,
+            ChatClientUserRepository::class
         );
 
         // --------------------------------------------------website

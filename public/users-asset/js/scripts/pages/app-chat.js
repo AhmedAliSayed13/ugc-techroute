@@ -135,28 +135,28 @@ $(function () {
   }
 
   // Add class active on click of Chat users list
-  if (chatUsersListWrapper.find('ul li').length) {
-    chatUsersListWrapper.find('ul li').on('click', function () {
-      var $this = $(this),
-        startArea = $('.start-chat-area'),
-        activeChat = $('.active-chat');
+//   if (chatUsersListWrapper.find('ul li').length) {
+//     chatUsersListWrapper.find('ul li').on('click', function () {
+//       var $this = $(this),
+//         startArea = $('.start-chat-area'),
+//         activeChat = $('.active-chat');
 
-      if (chatUsersListWrapper.find('ul li').hasClass('active')) {
-        chatUsersListWrapper.find('ul li').removeClass('active');
-      }
+//       if (chatUsersListWrapper.find('ul li').hasClass('active')) {
+//         chatUsersListWrapper.find('ul li').removeClass('active');
+//       }
 
-      $this.addClass('active');
-      $this.find('.badge').remove();
+//       $this.addClass('active');
+//       $this.find('.badge').remove();
 
-      if (chatUsersListWrapper.find('ul li').hasClass('active')) {
-        startArea.addClass('d-none');
-        activeChat.removeClass('d-none');
-      } else {
-        startArea.removeClass('d-none');
-        activeChat.addClass('d-none');
-      }
-    });
-  }
+//       if (chatUsersListWrapper.find('ul li').hasClass('active')) {
+//         startArea.addClass('d-none');
+//         activeChat.removeClass('d-none');
+//       } else {
+//         startArea.removeClass('d-none');
+//         activeChat.addClass('d-none');
+//       }
+//     });
+//   }
 
   // auto scroll to bottom of Chat area
   chatsUserList.find('li').on('click', function () {

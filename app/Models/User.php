@@ -115,4 +115,13 @@ class User extends Authenticatable
     {
         return 95;
     }
+
+    public function creatorTasks()
+    {
+        return $this->hasMany(Task::class, 'creator_id');
+    }
+    public function clientTasks()
+    {
+        return $this->hasMany(Task::class, 'client_id');
+    }
 }
