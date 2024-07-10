@@ -37,6 +37,7 @@ Route::get('my-orders/creators/{id}', [MyOrderClientUserController::class, 'orde
 Route::post('my-orders/choose/creator/{id}', [MyOrderClientUserController::class, 'chooseCreator'])->name('my-orders.choose.creator');
 Route::get('my-orders/delivery/{id}', [MyOrderClientUserController::class, 'orderDelivery'])->name('my-orders.delivery');
 Route::get('my-orders/delivery/confirm/{id}', [MyOrderClientUserController::class, 'orderDeliveryConfirm'])->name('my-orders.delivery.confirm');
+Route::get('my-orders/delivery/modification/{id}', [MyOrderClientUserController::class, 'orderDeliveryModification'])->name('my-orders.delivery.modification');
 
 Route::resource('chats', ChatClientUserController::class)->only([
     'index', 'show', 'store',

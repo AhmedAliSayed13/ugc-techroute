@@ -73,6 +73,20 @@ class Task extends Model
     {
         return $this->hasMany(Message::class,'task_id');
     }
+    public function createAcceptMessage(){
+        Message::create([
+            'task_id' => $this->id,
+            'user_id' => null,
+            'content' => __('messages.task_accepted_message'),
+        ]);
+    }
+    public function createModificationMessage(){
+        Message::create([
+            'task_id' => $this->id,
+            'user_id' => null,
+            'content' => __('messages.task_modification_message'),
+        ]);
+    }
 
 
 }

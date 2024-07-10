@@ -24,8 +24,11 @@ Route::get('/price', [PagesController::class, 'price'])->name('price');
 
 
 
-Route::get('/chats/{chatKey}', [ChatController::class, 'show'] )->name('chats.show');
-Route::post('/chats/{chatKey}/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
+Route::get('/chat/{task_id}', function ($task_id) {
+    return view('chats.index', ['task_id' => $task_id]);
+});
+
+Route::post('/send-message', [ChatController::class, 'sendMessage']);
 
 
 

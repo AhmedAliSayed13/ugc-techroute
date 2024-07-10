@@ -25,7 +25,8 @@ class ChatClientUserController extends Controller
     public function show($id)
     {
         $data = $this->chatClientUserInterface->show($id);
-        return view($this->path . 'show', compact('data'));
+        $task_id=8;
+        return view($this->path . 'show', compact('data','task_id'));
     }
 
 }

@@ -20,7 +20,8 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
 <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
-
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 @endsection
 @section('content')
 
@@ -304,20 +305,19 @@
                             <!-- User Chat messages -->
 
                             <!-- Submit Chat form -->
-                            <form class="chat-app-form" action="javascript:void(0);" onsubmit="enterChat();">
+                            <form class="chat-app-form" id="message-form">
                                 <div class="input-group input-group-merge me-1 form-send-message">
                                     {{-- <span class="speech-to-text input-group-text"><i data-feather="mic"
                                             class="cursor-pointer"></i></span> --}}
                                     <input type="text" class="form-control message"
-                                        placeholder="{{__('messages.type_your_message')}}" />
+                                        placeholder="{{__('messages.type_your_message')}}"  id="content" name="content" />
                                     <span class="input-group-text">
                                         <label for="attach-doc" class="attachment-icon form-label mb-0">
-                                            {{-- <i data-feather="image" class="cursor-pointer text-secondary"></i> --}}
                                             <input type="file" id="attach-doc" hidden /> </label></span>
                                 </div>
-                                <button type="button" class="btn btn-primary send" onclick="enterChat();">
+                                <button type="submit" class="btn btn-primary send" >
                                     <i data-feather="send" class="d-lg-none"></i>
-                                    <span class="d-none d-lg-block">Send</span>
+                                    <span class="d-none d-lg-block">{{__('messages.send')}}</span>
                                 </button>
                             </form>
                             <!--/ Submit Chat form -->
@@ -428,8 +428,41 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('users-asset')}}/js/scripts/pages/app-chat.js"></script>
 <!-- END: Page JS-->
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+{{-- <script>
+    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        encrypted: true
+    });
 
-<script>
+    var channel = pusher.subscribe('chat.{{ $task_id }}');
+    channel.bind('App\\Events\\NewMessageEvent', function (data) {
+        var message = document.createElement('p');
+        message.textContent = data.message.content;
+        document.getElementById('messages').appendChild(message);
+    });
+
+    document.getElementById('message-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var content = document.getElementById('content').value;
+
+        axios.post('{{ route('messages.store', ['task_id' => $task_id]) }}', {
+            user_id: 1, // Replace with the authenticated user's ID
+            content: content
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        document.getElementById('content').value = '';
+    });
+</script> --}}
+
+{{-- <script>
     $(window).on('load', function() {
         if (feather) {
             feather.replace({
@@ -438,5 +471,5 @@
             });
         }
     })
-</script>
+</script> --}}
 @endsection

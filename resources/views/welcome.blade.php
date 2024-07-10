@@ -30,14 +30,14 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
-        var chatKey = '{{ $chatKey }}';
+        var task_id = '{{ $task_id }}';
 
         var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
             cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
             encrypted: true
         });
 
-        var channel = pusher.subscribe('chat.' + chatKey);
+        var channel = pusher.subscribe('chat.' + task_id);
         channel.bind('App\\Events\\NewMessageEvent', function (data) {
             var message = document.createElement('p');
             message.textContent = data.message.content;
@@ -49,7 +49,7 @@
 
             var content = document.getElementById('content').value;
 
-            axios.post('/chats/' + chatKey + '/messages', {
+            axios.post('/chats/' + task_id + '/messages', {
                 user_id: 1, // Replace with the authenticated user's ID
                 content: content
             })

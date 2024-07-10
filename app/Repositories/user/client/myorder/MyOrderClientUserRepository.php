@@ -100,6 +100,21 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
             $task = Task::where(['id' => $id, 'client_id' => auth()->user()->id])->first();
             $task->task_status_id=3;
             $task->save();
+            $task->createAcceptMessage();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return true;
+        } catch (\Throwable $th) {
+            toastr()->error(__('messages.error'), $th->getMessage());
+            return false;
+        }
+    }
+    public function orderDeliveryModification($id): bool
+    {
+        try {
+            $task = Task::where(['id' => $id, 'client_id' => auth()->user()->id])->first();
+            $task->task_status_id=4;
+            $task->save();
+            $task->createModificationMessage();
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
             return true;
         } catch (\Throwable $th) {

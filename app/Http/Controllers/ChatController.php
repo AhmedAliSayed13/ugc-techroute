@@ -2,28 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
+use App\Events\MessageSent;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function show($chatKey)
+    public function sendMessage(Request $request)
     {
-        $messages = Message::where('chat_key', $chatKey)->get();
+        $message = $request->input('message');
+        $task_id = $request->input('task_id');
 
-        return view('chats.show', compact('chatKey', 'messages'));
-    }
+        // Save message to database if needed
 
-    public function storeMessage(Request$request, $chatKey)
-    {
-        $message = new Message();
-        $message->user_id = $request->user_id;
-        $message->content = $request->content;
-        $message->chat_key = $chatKey;
-        $message->save();
+        broadcast(new MessageSent($message, $task_id))->toOthers();
 
-        event(new \App\Events\NewMessageEvent($message));
-
-        return response()->json(['message' => 'Message sent successfully']);
+        return response()->json(['status' => 'Message Sent!']);
     }
 }

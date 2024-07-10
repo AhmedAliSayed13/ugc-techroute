@@ -69,5 +69,11 @@ class MyOrderClientUserController extends Controller
         return back();
 
     }
+    public function orderDeliveryModification($id)
+    {
+        $data = $this->myOrderClientUserInterface->orderDeliveryModification($id);
+        return redirect()->route('client.chats.show',$id);
+
+    }
 
 }

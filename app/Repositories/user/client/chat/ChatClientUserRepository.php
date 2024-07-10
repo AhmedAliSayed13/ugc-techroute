@@ -24,6 +24,7 @@ class ChatClientUserRepository implements ChatClientUserInterface
             'tasks' => $tasks,
             'taskChat' => $taskChat,
             'messages' => $taskChat->messages,
+            'task_id'=>$id
         );
         return $data;
     }

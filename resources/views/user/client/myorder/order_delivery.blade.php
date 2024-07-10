@@ -45,6 +45,8 @@
     .btn-dwonload:hover {
         color: white !important;
     }
+
+
 </style>
 @endsection
 
@@ -94,34 +96,80 @@
                                 </video>
 
                                 @else
-                                <img src="{{asset('users-asset/images/wait.png')}}"  width="100%" alt="">
+                                <img src="{{asset('users-asset/images/wait.png')}}" width="100%" alt="">
                                 @endif
                             </div>
                         </div>
                         <div class="d-grid">
                             <div class="row ">
                                 <div class="col-12 mt-2 mb-2">
-                                    <a  type="button" @if(!$task->video) disabled @else href="{{Storage::url($task->video) }}" download @endif
+                                    <a type="button" @if(!$task->video) disabled @else
+                                        href="{{Storage::url($task->video) }}" download @endif
                                         class="btn btn-relief-primary w-100 btn-dwonload">{{__('messages.download')}} <i
                                             data-feather='download'></i></a>
                                 </div>
                                 @if($task->clientAllowedUpdate())
                                 <div class="col-6">
-                                    <a href="{{ route('client.my-orders.delivery.confirm', $task->id) }}"
-                                        class="btn btn-relief-success w-100">{{__('messages.accept')}} <i
-                                            data-feather='check'></i></a>
+                                    <button type="button" class="btn btn-relief-success w-100" data-bs-toggle="modal"
+                                        data-bs-target="#accept{{$task->id}}">{{__('messages.accept')}} <i
+                                            data-feather='check'></i></button>
+
+                                    <div class="modal fade text-start modal-success" id="accept{{$task->id}}"
+                                        tabindex="-1" aria-labelledby="myModalLabel110" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLabel110">
+                                                        {{__('messages.confirm_accept')}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{__('messages.confirm_accept_message')}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a type="button" class="btn btn-success"
+                                                        href="{{ route('client.my-orders.delivery.confirm', $task->id) }}">{{__('messages.confirm')}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-6">
-                                    <a href="{{ route('client.my-orders.show', $task->id) }}"
-                                        class="btn btn-relief-info w-100">{{__('messages.modification_request')}} <i
-                                            data-feather='edit'></i></a>
+                                            <button type="button" class="btn btn-relief-info w-100" data-bs-toggle="modal"
+                                        data-bs-target="#modification{{$task->id}}">{{__('messages.modification_request')}} <i
+                                            data-feather='edit'></i></button>
+
+                                    <div class="modal fade text-start modal-info" id="modification{{$task->id}}"
+                                        tabindex="-1" aria-labelledby="myModalLabel110" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLabel110">
+                                                        {{__('messages.confirm_accept')}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{__('messages.confirm_accept_message')}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a type="button" class="btn btn-info"
+                                                        href="{{ route('client.my-orders.delivery.modification', $task->id) }}">{{__('messages.confirm')}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 @elseif($task->creatorAllowedUpdate())
-                                    <span class="badge bg-warning p-1">{{__('messages.task_wait_for_creator')}} <i data-feather='alert-octagon'></i></span>
+                                <span class="badge bg-warning p-1">{{__('messages.task_wait_for_creator')}} <i
+                                        data-feather='alert-octagon'></i></span>
                                 @elseif($task->taskComplate())
-                                <span class="badge badge-light-success p-1">{{__('messages.task_completed')}} <i data-feather='check-circle'></i></span>
+                                <span class="badge badge-light-success p-1">{{__('messages.task_completed')}} <i
+                                        data-feather='check-circle'></i></span>
                                 @else
-                                <span class="badge bg-danger p-1">{{__('messages.task_hold_message')}} <i data-feather='alert-octagon'></i></span>
+                                <span class="badge bg-danger p-1">{{__('messages.task_hold_message')}} <i
+                                        data-feather='alert-octagon'></i></span>
                                 @endif
                             </div>
                         </div>
