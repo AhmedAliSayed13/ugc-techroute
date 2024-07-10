@@ -9,7 +9,7 @@ class OffersCreatorUserRepository implements OffersCreatorUserInterface
 
     public function index(): array
     {
-        $offers = Order::where(['paid' => 1, 'status' => 4])->orderby('created_at', Request()->sort ?? 'desc')->paginate(Request()->limit ?? 10);
+        $offers = Order::where(['paid' => 1, 'status' => 5])->orderby('created_at', Request()->sort ?? 'desc')->paginate(Request()->limit ?? 10);
         $data = array(
             'offers' => $offers,
         );

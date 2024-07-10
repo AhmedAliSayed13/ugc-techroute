@@ -17,6 +17,7 @@
         align-items: center;
         justify-content: center;
     }
+
     .video-container-profile {
         position: relative;
         width: 100%;
@@ -126,23 +127,83 @@
                             </div>
                         </div>
                         <div class="d-grid">
-                            <div class="mb-1 mt-2">
-                                <form action="{{route('client.my-orders.choose.creator',$orderRequest->id)}}" method="POST" id="form-{{$orderRequest->id}}">
-                                    @csrf
-                                    <label class="form-label" for="selectCeartor{{$orderRequest->id}}">{{__('messages.status')}}</label>
-                                    <select class="form-select" id="selectCeartor{{$orderRequest->id}}" name="status" required  data-form-id="{{$orderRequest->id}}" {{$orderRequest->status==1 ? 'disabled' : ''}} >
-                                        <option >{{__('messages.selectOption')}}</option>
-                                        <option value="1" {{OptionSelect('1',$orderRequest->status)}}>{{__('messages.accept')}}</option>
-                                        @if($orderRequest->status != 1)
-                                            <option value="0" {{OptionSelect('0',$orderRequest->status)}}>{{__('messages.reject')}}</option>
-                                        @endif
-                                    </select>
-                                </form>
+                            <div class="row mt-2">
+                                @if($orderRequest->status!="1" && $orderRequest->status!="0")
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-relief-success w-100" data-bs-toggle="modal"
+                                        data-bs-target="#accept{{$orderRequest->id}}">{{__('messages.accept')}} <i
+                                            data-feather='user-check'></i></button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-relief-danger w-100" data-bs-toggle="modal"
+                                        data-bs-target="#reject{{$orderRequest->id}}">{{__('messages.reject')}} <i
+                                         data-feather='user-x'></i></button>
+                                </div>
+                                @elseif($orderRequest->status=="1")
+                                <span class="badge badge-light-success p-1">{{__('messages.creator_accepted')}}
+                                    <i data-feather='user-check'></i>
+                                </span>
+                                @else
+                                <span class="badge badge-light-danger p-1">{{__('messages.creator_rejected')}}
+                                    <i data-feather='user-x'></i>
+                                </span>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{-- modal accept --}}
+            <div class="modal fade text-start modal-success" id="accept{{$orderRequest->id}}" tabindex="-1"
+                aria-labelledby="myModalLabel110" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <div class="modal-content">
+                        <form action="{{route('client.my-orders.choose.creator',$orderRequest->id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="status" value="1">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel110">
+                                    {{__('messages.accept_creator')}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {{__('messages.confirm_accept_creator')}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">{{__('messages.confirm')}}</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            {{-- modal reject --}}
+            <div class="modal fade text-start modal-danger" id="reject{{$orderRequest->id}}" tabindex="-1"
+                aria-labelledby="myModalLabel110" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="{{route('client.my-orders.choose.creator',$orderRequest->id)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="status" value="0">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel110">
+                                    {{__('messages.confirm_creator_reject')}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {{__('messages.confirm_creator_reject_message')}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">{{__('messages.confirm')}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             @endforeach
 
         </div>
