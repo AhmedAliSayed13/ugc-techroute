@@ -4,14 +4,20 @@
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/pages/app-ecommerce.css')}}">
 <style>
-    .ecommerce-application .list-view .ecommerce-card{
-        grid-template-columns:1fr 0.5fr!important;
+    .ecommerce-application .list-view .ecommerce-card {
+        grid-template-columns: 1fr 0.5fr !important;
     }
-   .btn-wishlist.text-danger svg{
+
+    .btn-wishlist.text-danger svg {
         fill: #EA5455;
     }
-   .btn-wishlist.text-danger span{
-        color: black!important;
+
+    .btn-wishlist.text-danger span {
+        color: black !important;
+    }
+
+    .btn-send-request:hover {
+        color: white !important;
     }
 </style>
 @endsection
@@ -87,16 +93,21 @@
                         <div class="item-rating">
                             <a href="{{$offer->product_link}}" target="_blank">{{$offer->product_name}}
 
-                                <span class="card-text item-company">By <a href="#" class="company-name">Apple</a></span>
+
                             </a>
 
                         </div>
                         <div>
-                            <h6 class="item-price text-primary">
-
-
-                                {{$offer->video_price}}$
+                            @if(!$offer->hasUserSentRequest())
+                            <h6 class="badge badge-glow bg-success">
+                                {{__('messages.request_sent')}}
                             </h6>
+                            @else
+                            <a type="button" href="{{route('creator.offers.request.send', $offer->id)}}"
+                                class="badge badge-glow bg-primary btn-send-request">
+                                <i data-feather='plus-square'></i> {{__('messages.send_request')}}
+                            </a>
+                            @endif
                         </div>
                     </div>
                     <h6 class="item-name">
@@ -107,6 +118,14 @@
                         </p>
                         <p class="text-body">
                             <span>{{__('messages.gender')}}:{{$offer->gender}}</span>
+                        </p>
+                        <p class="text-body">
+                            <span>{{__('messages.order_price')}}: <b
+                                    class="badge rounded-pill badge-light-primary">{{$offer->video_price}}$</b></span>
+                        </p>
+                        <p class="text-body">
+                            @php \Carbon\Carbon::setLocale('ar') @endphp
+                            <span>{{__('messages.publish_date')}}: {{$offer->created_at->diffForHumans()}}</span>
                         </p>
 
 
@@ -122,15 +141,17 @@
                         <div class="item-cost">
                             <h4 class="item-price"> {{$offer->video_price}}$</h4>
                         </div>
+
                     </div>
 
-                    <a href="{{route('creator.offers.whitelist', $offer->id)}}" class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
+                    <a href="{{route('creator.offers.whitelist', $offer->id)}}"
+                        class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
                         <i data-feather="heart"></i>
                         <span>{{__('messages.wishlist')}}</span>
                     </a>
-                    <a href="{{route('creator.offers.show', $offer->id)}}" class="btn btn-primary ">
+                    <a href="{{route('creator.offers.show', $offer->id)}}" class="btn btn-primary btn-cart">
                         <i data-feather="eye"></i>
-                        <span class="add-to-cart">{{__('messages.showDetails')}}</span>
+                        <span class="add-to-cart">{{__('messages.showDetails')}} </span>
                     </a>
                 </div>
             </div>
@@ -142,12 +163,15 @@
         <section id="ecommerce-pagination">
             <div class="row">
                 <div class="col-sm-12">
-                    <nav aria-label="Page navigation example text-center">
-                        {{$data['offers']->links('pagination::bootstrap-4')}}
+                    <nav aria-label="Page navigation example justify-content-center mt-2">
+                        {{$data['offers']->links('pagination::bootstrap-4', ['class' => 'pagination
+                        justify-content-center mt-2'])}}
                     </nav>
                 </div>
             </div>
         </section>
+
+
         <!-- E-commerce Pagination Ends -->
 
     </div>

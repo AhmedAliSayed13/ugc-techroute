@@ -116,6 +116,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
+                                                        <span class="fw-bold">{{__('messages.publish_date')}}</span>
+                                                    </td>
+                                                    <td > @php \Carbon\Carbon::setLocale('ar') @endphp
+                                                        <span> {{$data['order']->created_at->diffForHumans()}}</span></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
                                                         <span class="fw-bold">{{__('messages.product_name')}}</span>
                                                     </td>
                                                     <td>{{$data['order']->product_name}}</td>

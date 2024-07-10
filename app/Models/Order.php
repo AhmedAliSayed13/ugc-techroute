@@ -15,7 +15,7 @@ use App\Models\Whitelist;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Auth;
 class Order extends Model
 {
     use HasFactory;
@@ -113,4 +113,6 @@ class Order extends Model
         $tasksCount = Task::where([['order_id', $this->id], ['task_status_id', 3]])->count();
         return $tasksCount;
     }
+   
+
 }
