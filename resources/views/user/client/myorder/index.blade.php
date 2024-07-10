@@ -47,6 +47,7 @@
                                                     <th>{{__('messages.paid')}}</th>
                                                     <th>{{__('messages.status')}}</th>
                                                     <th>{{__('messages.RequestsCount')}}</th>
+                                                    <th>{{__('messages.ComplateCount')}}</th>
                                                     <th>{{__('messages.actions')}}</th>
                                                 </tr>
                                             </thead>
@@ -77,6 +78,7 @@
                                                     </td>
 
                                                     <td>{{$order->orderRequests->count()}}</td>
+                                                    <td>{{$order->orderVideoComplate().'/'.$order->video_count}}</td>
                                                     <td>
                                                         <a type="button" class="btn  btn-success " href="{{route('client.my-orders.show',$order->id)}}">
                                                             <i data-feather="eye"> </i> {{__('messages.view')}}

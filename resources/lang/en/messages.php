@@ -405,7 +405,7 @@ return [
     'confirm_creator_reject_message' => 'هل تريد رفض منشي المحتوي لتنفيذ الفيديو؟',
     'creator_rejected' => 'تم رفض منشي المحتوي',
     'creator_accepted' => 'تم قبول منشي المحتوي',
-    'text' => 'text',
+    'ComplateCount' => 'الفيديوهات المنجزة',
     'text' => 'text',
     'text' => 'text',
     'text' => 'text',

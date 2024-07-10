@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\Country;
+use App\Models\OrderRequest;
+use App\Models\OrderStatus;
+use App\Models\OrderVideo;
+use App\Models\OrderVideoOption;
+use App\Models\Task;
+use App\Models\VideoOptionAspect;
+use App\Models\VideoOptionDuration;
+use App\Models\VideoOptionType;
+use App\Models\Whitelist;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use App\Models\Country;
-use App\Models\OrderVideoOption;
-use App\Models\OrderRequest;
-use App\Models\VideoOptionType;
-use App\Models\VideoOptionDuration;
-use App\Models\VideoOptionAspect;
-use App\Models\Whitelist;
-use App\Models\OrderVideo;
-use App\Models\Task;
-use App\Models\OrderStatus;
+
 class Order extends Model
 {
     use HasFactory;
@@ -51,7 +52,6 @@ class Order extends Model
         });
     }
 
-
     public function country()
     {
         return $this->belongsTo(Country::class);
@@ -74,32 +74,32 @@ class Order extends Model
     }
     public function videoOptionType()
     {
-        return $this->belongsTo(VideoOptionType::class,'video_option_type_id');
+        return $this->belongsTo(VideoOptionType::class, 'video_option_type_id');
     }
     public function orderStatus()
     {
-        return $this->belongsTo(OrderStatus::class,'status');
+        return $this->belongsTo(OrderStatus::class, 'status');
     }
     public function videoOptionDuration()
     {
-        return $this->belongsTo(VideoOptionDuration::class,'video_option_duration_id');
+        return $this->belongsTo(VideoOptionDuration::class, 'video_option_duration_id');
     }
     public function videoOptionAspect()
     {
-        return $this->belongsTo(VideoOptionAspect::class,'video_option_aspect_id');
+        return $this->belongsTo(VideoOptionAspect::class, 'video_option_aspect_id');
     }
 
-    public  function hasUserSentRequest( )
+    public function hasUserSentRequest()
     {
         return $this->orderRequests()
-                    ->where('creator_id', auth()->id())
-                    ->exists()>0?0:1;
+            ->where('creator_id', auth()->id())
+            ->exists() > 0 ? 0 : 1;
     }
-    public  function hasWhitelist()
+    public function hasWhitelist()
     {
         return $this->whitelists()
-                    ->where('creator_id', auth()->id())
-                    ->exists()>0?1:0;
+            ->where('creator_id', auth()->id())
+            ->exists() > 0 ? 1 : 0;
         // return $this->whitelists()
         //             ->where('creator_id', auth()->id())
         //             ->exists()>0?0:1;
@@ -107,5 +107,10 @@ class Order extends Model
     public function orderVideos()
     {
         return $this->hasMany(OrderVideo::class);
+    }
+    public function orderVideoComplate()
+    {
+        $tasksCount = Task::where([['order_id', $this->id], ['task_status_id', 3]])->count();
+        return $tasksCount;
     }
 }
