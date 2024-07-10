@@ -1,4 +1,4 @@
-@extends('user.client.layouts.master')
+@extends('user.creator.layouts.master')
 
 @section('style')
 
@@ -26,7 +26,7 @@
 @section('content')
 
 <!-- BEGIN: Content-->
-<div class="app-content content chat-application">
+<div class="content chat-application">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-area-wrapper container-xxl p-0">
@@ -170,7 +170,7 @@
                         <h4 class="chat-list-title">{{__('messages.chats')}}</h4>
                         <ul class="chat-users-list chat-list media-list">
                             @foreach ($data['tasks'] as $task )
-                            <a href="{{route('client.chats.show', $task->id)}}">
+                            <a href="{{route('creator.chats.show', $task->id)}}">
                                 <li>
                                     <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}"
                                             height="42" width="42" alt="Generic placeholder image" />

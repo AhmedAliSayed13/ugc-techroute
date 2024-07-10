@@ -40,7 +40,8 @@ use App\Repositories\user\creator\offers\OffersCreatorUserInterface;
 use App\Repositories\user\creator\offers\OffersCreatorUserRepository;
 use App\Repositories\user\creator\tasks\TasksCreatorUserInterface;
 use App\Repositories\user\creator\tasks\TasksCreatorUserRepository;
-
+use App\Repositories\user\creator\chat\ChatCreatorUserInterface;
+use App\Repositories\user\creator\chat\ChatCreatorUserRepository;
 
 // website
 use App\Repositories\website\pages\PagesInterface;
@@ -123,6 +124,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             TasksCreatorUserInterface::class,
             TasksCreatorUserRepository::class
+        );
+        //chat
+        $this->app->bind(
+            ChatCreatorUserInterface::class,
+            ChatCreatorUserRepository::class
         );
 
         //Client------------------------------------------------

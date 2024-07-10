@@ -38,7 +38,7 @@
                             <i data-feather="x"></i>
                         </span>
                         <!-- User Information -->
-                        <div class="header-profile-sidebar">
+                        {{-- <div class="header-profile-sidebar">
                             <div class="avatar box-shadow-1 avatar-xl avatar-border">
                                 <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-11.jpg"
                                     alt="user_avatar" />
@@ -46,11 +46,11 @@
                             </div>
                             <h4 class="chat-user-name">John Doe</h4>
                             <span class="user-post">Admin</span>
-                        </div>
+                        </div> --}}
                         <!--/ User Information -->
                     </header>
                     <!-- User Details start -->
-                    <div class="profile-sidebar-area">
+                    {{-- <div class="profile-sidebar-area">
                         <h6 class="section-label mb-1">About</h6>
                         <div class="about-user">
                             <textarea data-length="120" class="form-control char-textarea" id="textarea-counter"
@@ -133,7 +133,7 @@
                             </button>
                         </div>
                         <!--/ Logout Button -->
-                    </div>
+                    </div> --}}
                     <!-- User Details end -->
                 </div>
                 <!--/ Admin user profile area -->
@@ -182,7 +182,7 @@
                                         </p>
                                     </div>
                                     <div class="chat-meta text-nowrap">
-                                        <small class="float-end mb-25 chat-time">4:14 PM</small>
+                                        {{-- <small class="float-end mb-25 chat-time">4:14 PM</small> --}}
                                         {{-- <span class="badge bg-danger rounded-pill float-end">3</span> --}}
                                     </div>
                                 </li>
@@ -328,7 +328,7 @@
                     <!--/ Main chat area -->
 
                     <!-- User Chat profile right area -->
-                    <div class="user-profile-sidebar">
+                    {{-- <div class="user-profile-sidebar">
                         <header class="user-profile-header">
                             <span class="close-icon">
                                 <i data-feather="x"></i>
@@ -398,7 +398,7 @@
                             </div>
                             <!--/ User's Links -->
                         </div>
-                    </div>
+                    </div> --}}
                     <!--/ User Chat profile right area -->
 
                 </div>

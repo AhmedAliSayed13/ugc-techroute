@@ -3,6 +3,7 @@ use App\Http\Controllers\user\creator\dashboard\DashboardCreatorUserController;
 use App\Http\Controllers\user\creator\offers\OffersCreatorUserController;
 use App\Http\Controllers\user\creator\tasks\TasksCreatorUserController;
 use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
+use App\Http\Controllers\user\creator\chat\ChatCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
 Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
@@ -28,4 +29,8 @@ Route::get('offers/request/send/{id}', [OffersCreatorUserController::class, 'req
 Route::get('offers/whitelist/{id}', [OffersCreatorUserController::class, 'whitelist'])->name('offers.whitelist');
 Route::resource('tasks', TasksCreatorUserController::class)->only([
     'index', 'show','edit','update'
+]);
+
+Route::resource('chats', ChatCreatorUserController::class)->only([
+    'index', 'show', 'store',
 ]);

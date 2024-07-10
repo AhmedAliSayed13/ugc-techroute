@@ -1,4 +1,4 @@
-@extends('user.client.layouts.master')
+@extends('user.creator.layouts.master')
 
 @section('style')
 
@@ -20,13 +20,12 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
 <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 @endsection
 @section('content')
 
 <!-- BEGIN: Content-->
-<div class="app-content content chat-application">
+<div class=" content chat-application">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-area-wrapper container-xxl p-0">
@@ -170,10 +169,10 @@
                         <h4 class="chat-list-title">{{__('messages.chats')}}</h4>
                         <ul class="chat-users-list chat-list media-list">
                             @foreach ($data['tasks'] as $task )
-                            <a href="{{route('client.chats.show', $task->id)}}">
-                                <li>
-                                    <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}"
-                                            height="42" width="42" alt="Generic placeholder image" />
+                            <a href="{{route('creator.chats.show', $task->id)}}">
+                            <li>
+                                    <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}" height="42"
+                                            width="42" alt="Generic placeholder image" />
                                         <span class="avatar-status-offline"></span>
                                     </span>
                                     <div class="chat-info flex-grow-1">
@@ -207,7 +206,7 @@
                     <!-- Main chat area -->
                     <section class="chat-app-window">
                         <!-- To load Conversation -->
-                        <div class="start-chat-area d-none">
+                        <div class="start-chat-area">
                             <div class="mb-1 start-chat-icon">
                                 <i data-feather="message-square"></i>
                             </div>
@@ -216,7 +215,7 @@
                         <!--/ To load Conversation -->
 
                         <!-- Active Chat -->
-                        <div class="active-chat ">
+                        <div class="active-chat d-none">
                             <!-- Chat Header -->
                             <div class="chat-navbar">
                                 <header class="chat-header">
@@ -225,8 +224,8 @@
                                             <i data-feather="menu" class="font-medium-5"></i>
                                         </div>
                                         <div class="avatar avatar-border user-profile-toggle m-0 me-1">
-                                            <img src="{{getUserProfileImage($task->creator->img)}}" alt="avatar"
-                                                height="36" width="36" />
+                                            <img src="{{getUserProfileImage($task->creator->img)}}"
+                                                alt="avatar" height="36" width="36" />
                                             <span class="avatar-status-busy"></span>
                                         </div>
                                         <h6 class="mb-0">{{$task->creator->name}}</h6>
@@ -264,60 +263,62 @@
                             <div class="user-chats">
                                 <div class="chats">
                                     @if(isset($data['messages']))
-                                        @foreach ($data['messages'] as $message )
-                                            @if($message->sendByMe()==true)
-                                                <div class="chat chat-left">
-                                                    <div class="chat-avatar">
-                                                        <span class="avatar box-shadow-1 cursor-pointer">
-                                                            <img src="{{getUserProfileImage($message->user->img)}}" alt="avatar"
-                                                                height="36" width="36" />
-                                                        </span>
-                                                    </div>
-                                                    <div class="chat-body">
-                                                        <div class="chat-content">
-                                                            <p>{{$message->content}}</p>
-                                                        </div>
-                                                    </div>
+                                        {{-- <div class="chat">
+                                            <div class="chat-avatar">
+                                                <span class="avatar box-shadow-1 cursor-pointer">
+                                                    <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-11.jpg"
+                                                        alt="avatar" height="36" width="36" />
+                                                </span>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-content">
+                                                    <p>How can we help? We're here for you! 😄</p>
                                                 </div>
-                                            @elseif(isset($message->user) && $message->sendByMe()==false)
-                                                <div class="chat">
-                                                    <div class="chat-avatar">
-                                                        <span class="avatar box-shadow-1 cursor-pointer">
-                                                            <img src="{{getUserProfileImage($message->user->img)}}"
-                                                                alt="avatar" height="36" width="36" />
-                                                        </span>
-                                                    </div>
-                                                    <div class="chat-body">
-                                                        <div class="chat-content">
-                                                            <p>{{$message->content}}</p>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                        </div> --}}
+
+                                        {{-- <div class="chat chat-left">
+                                            <div class="chat-avatar">
+                                                <span class="avatar box-shadow-1 cursor-pointer">
+                                                    <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-7.jpg"
+                                                        alt="avatar" height="36" width="36" />
+                                                </span>
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-content">
+                                                    <p>Hey John, I am looking for the best admin template.</p>
+                                                    <p>Could you please help me to find it out? 🤔</p>
                                                 </div>
-                                            @elseif($message->sendByMe()==null)
-                                                <div class="divider">
-                                                    <div class="divider-text">{{$message->content}}</div>
+                                                <div class="chat-content">
+                                                    <p>It should be Bootstrap 4 compatible.</p>
                                                 </div>
-                                            @endif
-                                        @endforeach
+                                            </div>
+                                        </div> --}}
+
+                                        {{-- <div class="divider">
+                                            <div class="divider-text">Yesterday</div>
+                                        </div> --}}
+
                                     @endif
                                 </div>
                             </div>
                             <!-- User Chat messages -->
 
                             <!-- Submit Chat form -->
-                            <form class="chat-app-form" id="message-form">
+                            <form class="chat-app-form" action="javascript:void(0);" onsubmit="enterChat();">
                                 <div class="input-group input-group-merge me-1 form-send-message">
-                                    {{-- <span class="speech-to-text input-group-text"><i data-feather="mic"
-                                            class="cursor-pointer"></i></span> --}}
+                                    <span class="speech-to-text input-group-text"><i data-feather="mic"
+                                            class="cursor-pointer"></i></span>
                                     <input type="text" class="form-control message"
-                                        placeholder="{{__('messages.type_your_message')}}"  id="content" name="content" />
+                                        placeholder="Type your message or use speech to text" />
                                     <span class="input-group-text">
                                         <label for="attach-doc" class="attachment-icon form-label mb-0">
+                                            <i data-feather="image" class="cursor-pointer text-secondary"></i>
                                             <input type="file" id="attach-doc" hidden /> </label></span>
                                 </div>
-                                <button type="submit" class="btn btn-primary send" >
+                                <button type="button" class="btn btn-primary send" onclick="enterChat();">
                                     <i data-feather="send" class="d-lg-none"></i>
-                                    <span class="d-none d-lg-block">{{__('messages.send')}}</span>
+                                    <span class="d-none d-lg-block">Send</span>
                                 </button>
                             </form>
                             <!--/ Submit Chat form -->
@@ -428,41 +429,8 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('users-asset')}}/js/scripts/pages/app-chat.js"></script>
 <!-- END: Page JS-->
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-{{-- <script>
-    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-        encrypted: true
-    });
 
-    var channel = pusher.subscribe('chat.{{ $task_id }}');
-    channel.bind('App\\Events\\NewMessageEvent', function (data) {
-        var message = document.createElement('p');
-        message.textContent = data.message.content;
-        document.getElementById('messages').appendChild(message);
-    });
-
-    document.getElementById('message-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        var content = document.getElementById('content').value;
-
-        axios.post('{{ route('messages.store', ['task_id' => $task_id]) }}', {
-            user_id: 1, // Replace with the authenticated user's ID
-            content: content
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-
-        document.getElementById('content').value = '';
-    });
-</script> --}}
-
-{{-- <script>
+<script>
     $(window).on('load', function() {
         if (feather) {
             feather.replace({
@@ -471,5 +439,5 @@
             });
         }
     })
-</script> --}}
+</script>
 @endsection
