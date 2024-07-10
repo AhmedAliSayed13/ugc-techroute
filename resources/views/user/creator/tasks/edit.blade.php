@@ -28,11 +28,11 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
-            {{--
+        {{-- <div class="content-header row">
+
             <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.offers.index')"
-                :title="__('messages.offers')" /> --}}
-        </div>
+                :title="__('messages.offers')" />
+        </div> --}}
 
         <div class="content-body">
             <div class="container-fluid mt-1">

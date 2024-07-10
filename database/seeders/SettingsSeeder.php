@@ -14,7 +14,7 @@ class SettingsSeeder extends Seeder
     public function run()
     {
         $data = [
-            [ 'id' => 1, 'key' => 'video_price', 'value' =>'50', 'tag' => 'payment'],
+            [ 'id' => 1, 'key' => 'percentage_video_price', 'value' =>'50', 'tag' => 'payment'],
 
         ];
         DB::table('settings')->insert($data);

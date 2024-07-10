@@ -25,10 +25,10 @@
 
 
 @endsection
-@section('breadcrumb')
+{{-- @section('breadcrumb')
 <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.profile')"
     :title="__('messages.videoFeature')" />
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container-fluid ">

@@ -36,11 +36,11 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
+        {{-- <div class="content-header row">
             <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('client.profile')"
                 :title="__('messages.order_details')" />
 
-        </div>
+        </div> --}}
         <div class="container-fluid mt-2">
             <div class="row">
                 <div class="content-body">

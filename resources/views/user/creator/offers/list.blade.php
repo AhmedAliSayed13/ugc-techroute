@@ -15,10 +15,10 @@
     }
 </style>
 @endsection
-@section('breadcrumb')
+{{-- @section('breadcrumb')
 <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.offers.index')"
     :title="__('messages.offers')" />
-@endsection
+@endsection --}}
 
 @section('content')
 

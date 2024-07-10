@@ -20,10 +20,10 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
+        {{-- <div class="content-header row">
             <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.offers.index')"
                 :title="__('messages.offers')" />
-        </div>
+        </div> --}}
 
         <div class="content-body">
             <div class="container-fluid mt-4">
@@ -31,8 +31,8 @@
                     <div class="col-12">
                         <div class="card">
 
-                            <div class="card-body text-center">
-                                <div class="d-flex flex-column flex-sm-row ">
+                            <div class="card-body ">
+                                <div class=" text-center">
                                     @if($data['order']->hasUserSentRequest( ))
                                         <a href="{{route('creator.offers.request.send', $data['order']->id)}}"
                                             class="btn btn-primary  me-0 me-sm-1 mb-1 mb-sm-0">
@@ -105,6 +105,13 @@
                                                         <span class="fw-bold">{{__('messages.order_number')}}</span>
                                                     </td>
                                                     <td>{{$data['order']->key}}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="fw-bold">{{__('messages.order_price')}}</span>
+                                                    </td>
+                                                    <td > <span class="badge rounded-pill badge-light-primary">{{$data['order']->video_price}} $</span></td>
 
                                                 </tr>
                                                 <tr>

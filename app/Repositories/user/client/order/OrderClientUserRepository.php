@@ -1,18 +1,19 @@
 <?php namespace App\Repositories\user\client\order;
 
 use App\Models\Country;
+use App\Models\MainOption;
 use App\Models\Order;
+use App\Models\OrderVideo;
+use App\Models\OrderVideoOption;
 use App\Models\User;
 use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionType;
-use App\Models\MainOption;
-use App\Models\OrderVideo;
-use App\Models\OrderVideoOption;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Stripe\Charge;
 use Stripe\Stripe;
-use Illuminate\Support\Facades\DB;
+
 class OrderClientUserRepository implements OrderClientUserInterface
 {
 
@@ -30,14 +31,15 @@ class OrderClientUserRepository implements OrderClientUserInterface
     }
     public function details($request)
     {
+        $orderPrice = $this->calculationPrice($request);
         $order = Order::create([
             'user_id' => Auth::user()->id,
             'video_count' => $request->video_count,
             'video_option_type_id' => $request->video_option_type,
             'video_option_duration_id' => $request->video_option_duration,
             'video_option_aspect_id' => $request->video_option_aspect,
-            'video_price' => $this->getVideoPrice($request->video_price),
-            'total' => $request->total,
+            'video_price' => $this->getVideoPrice($orderPrice['videoPrice']),
+            'total' => $orderPrice['total'],
             'status' => 1,
         ]);
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
@@ -136,7 +138,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
             'video_count' => $order->video_count,
             'order' => $order,
             'countries' => $countries,
-            'mainOptions' => $main_options
+            'mainOptions' => $main_options,
         );
         return $data;
     }
@@ -146,25 +148,25 @@ class OrderClientUserRepository implements OrderClientUserInterface
         try {
 
             $order = Order::where('key', $key)->first();
-            $order_id= $order->id;
+            $order_id = $order->id;
 
             $order->gender = $request->gender;
             $order->country_id = $request->country_id;
             $order->status = 4;
             $order->save();
 
-            foreach($request->scenes as $i => $scene){
+            foreach ($request->scenes as $i => $scene) {
                 OrderVideo::create(
                     [
                         'order_id' => $order_id,
                         'scenes' => $request->scenes[$i],
                         'mentions' => $request->mentions[$i],
-                        'sub_key'=>$key.'-'.$i
+                        'sub_key' => $key . '-' . $i,
                     ]
                 );
             }
 
-            foreach($request->mainOptions as $i => $mainOptionId){
+            foreach ($request->mainOptions as $i => $mainOptionId) {
                 $valueOptions = implode(',', $request->valueOptions[$mainOptionId]);
                 OrderVideoOption::create(
                     [
@@ -185,8 +187,9 @@ class OrderClientUserRepository implements OrderClientUserInterface
             return false;
         }
     }
-    public function getVideoPrice($price){
-        $percentageVideoPrice=getSettingValueByKey('percentage_video_price')/100;
-        return $price*$percentageVideoPrice;
+    public function getVideoPrice($price)
+    {
+        $percentageVideoPrice = getSettingValueByKey('percentage_video_price') / 100;
+        return $price * $percentageVideoPrice;
     }
 }

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
+    protected $table = 'settings';
+    public $timestamps = true;
+    protected $fillable = [
+        'id',
+        'key',
+        'value',
+        'tag',
+        'created_at',
+    ];
 }

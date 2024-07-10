@@ -44,8 +44,8 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
 
-        <x-breadcrumb_user :section="__('messages.search')" :sectionUrl="route('client.change.password')"
-            :title="__('messages.searchForCreators')" />
+        {{-- <x-breadcrumb_user :section="__('messages.search')" :sectionUrl="route('client.change.password')"
+            :title="__('messages.searchForCreators')" /> --}}
 
         <div class="content-detached content-right">
             <div class="content-body">

@@ -5,10 +5,10 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
+        {{-- <div class="content-header row">
             <x-breadcrumb_user :section="__('messages.Dashboards')" :sectionUrl="route('client.dashboard')"
                 :title="__('messages.Dashboards')" />
-        </div>
+        </div> --}}
 <div class="container-fluid mt-4">
     <div class="row">
 

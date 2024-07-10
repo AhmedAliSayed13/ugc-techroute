@@ -17,10 +17,10 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
+        {{-- <div class="content-header row">
             <x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('client.profile')" :title="'تعديل البيانات'" />
 
-        </div>
+        </div> --}}
         <div class="container-fluid mt-2">
             <div class="row">
                 <div class="content-body">
@@ -182,8 +182,7 @@
     $(document).ready(function() {
     $('#addRow').click(function() {
         var numberOfRows = $('#rowsContainer .text-area-row').length+1;
-        numberOfRows=numberOfRows+1;
-            if (numberOfRows >= 3) {
+            if (numberOfRows >= {{$data['order']->videoOptionDuration->scenes}}) {
                 $('#danger').modal('show');
                 return;
             }

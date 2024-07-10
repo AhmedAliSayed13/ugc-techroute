@@ -3,10 +3,10 @@
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
 @endsection
-@section('breadcrumb')
-<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.change.password')"
+{{-- @section('breadcrumb') --}}
+{{-- <x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.change.password')"
     :title="__('messages.changePassword')" />
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container-fluid mt-4">

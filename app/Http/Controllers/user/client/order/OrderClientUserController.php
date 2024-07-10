@@ -27,9 +27,7 @@ class OrderClientUserController extends Controller
     }
     public function details(DetailsOrderClientRequest $request)
     {
-        // return $request->all();
         $key = $this->orderClientUserInterface->details($request);
-        // return $key;
         if ($key) {
             return redirect()->route('client.order.checkout', $key);
         }
