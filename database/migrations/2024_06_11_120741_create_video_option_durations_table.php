@@ -17,6 +17,7 @@ class CreateVideoOptionDurationsTable extends Migration
             $table->id();
             $table->integer('price');
             $table->string('time');
+            $table->integer('scenes')->default(1);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

@@ -147,6 +147,24 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade modal-danger text-start" id="danger" tabindex="-1" aria-labelledby="myModalLabel120" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel120">{{__('messages.error')}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{__('messages.max_number_of_add_scenes')}} : {{isset($data['order']->videoOptionDuration->scenes)?$data['order']->videoOptionDuration->scenes:0}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{__('messages.close')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection
 @section('script')
@@ -163,6 +181,13 @@
 <script>
     $(document).ready(function() {
     $('#addRow').click(function() {
+        var numberOfRows = $('#rowsContainer .text-area-row').length+1;
+        numberOfRows=numberOfRows+1;
+            if (numberOfRows >= 3) {
+                $('#danger').modal('show');
+                return;
+            }
+
         $('#rowsContainer').append(`
             <div class="row mb-2 text-area-row">
                 <div class="col-5">

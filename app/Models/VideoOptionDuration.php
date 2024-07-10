@@ -16,6 +16,7 @@ class VideoOptionDuration extends Model
         'price',
         'is_active',
         'time',
+        'scenes',
         'created_at',
     ];
     private static $whiteListFilter = ['*'];
