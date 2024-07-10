@@ -32,7 +32,7 @@ class OrderSeeder extends Seeder
                 'gender' => $faker->randomElement(['ذكر', 'انثي']),
                 'total' => $faker->randomFloat(2, 20, 500),
                 'paid' => $faker->boolean,
-                'status' => $faker->randomElement([null,1,2, 3, 4]),
+                'status' => $faker->numberBetween(1, 5),
                 'product_name' => $faker->sentence,
                 'product_link' => $faker->url,
                 'product_instructions' => $faker->sentence,

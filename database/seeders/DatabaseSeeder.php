@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             VideoOptionDurationsSeeder::class,
             VideoOptionTypesSeeder::class,
             SettingsSeeder::class,
+            OrderStatusSeeder::class,
             OrderSeeder::class,
             OrderVideoOptionSeeder::class,
             OrderRequestSeeder::class,

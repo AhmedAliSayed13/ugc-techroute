@@ -14,6 +14,7 @@ use App\Models\VideoOptionAspect;
 use App\Models\Whitelist;
 use App\Models\OrderVideo;
 use App\Models\Task;
+use App\Models\OrderStatus;
 class Order extends Model
 {
     use HasFactory;
@@ -74,6 +75,10 @@ class Order extends Model
     public function videoOptionType()
     {
         return $this->belongsTo(VideoOptionType::class,'video_option_type_id');
+    }
+    public function orderStatus()
+    {
+        return $this->belongsTo(OrderStatus::class,'status');
     }
     public function videoOptionDuration()
     {

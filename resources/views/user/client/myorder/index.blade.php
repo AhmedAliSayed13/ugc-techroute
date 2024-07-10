@@ -67,23 +67,23 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if($order->status==4)
+                                                        @if($order->status>=4)
                                                         <span
-                                                            class="badge rounded-pill badge-light-success me-1">{{__('messages.completed')}}</span>
+                                                            class="badge rounded-pill badge-light-success me-1">{{$order->orderStatus->name}}</span>
                                                         @else
                                                         <span
-                                                            class="badge rounded-pill badge-light-danger me-1">{{__('messages.incompleted')}}</span>
+                                                            class="badge rounded-pill badge-light-danger me-1">{{$order->orderStatus->name}} </span>
                                                         @endif
                                                     </td>
 
                                                     <td>{{$order->orderRequests->count()}}</td>
                                                     <td>
-                                                        <a type="button" class="btn btn-sm btn-success " href="{{route('client.my-orders.show',$order->id)}}">
-                                                            <i data-feather="eye"></i>
+                                                        <a type="button" class="btn  btn-success " href="{{route('client.my-orders.show',$order->id)}}">
+                                                            <i data-feather="eye"> </i> {{__('messages.view')}}
                                                         </a>
-                                                        @if($order->status!=4)
-                                                        <a type="button" class="btn btn-sm btn-primary " href="{{route('client.my-orders.edit',$order->id)}}">
-                                                            <i data-feather="edit"></i>
+                                                        @if($order->status<4)
+                                                        <a type="button" class="btn btn-primary " href="{{route('client.my-orders.edit',$order->id)}}">
+                                                            <i data-feather="edit"></i>  {{__('messages.continues')}}
                                                         </a>
                                                         {{-- @else
                                                         <a type="button" class="btn btn-sm btn-info " href="{{route('client.my-orders.requests.review',$order->id)}}">

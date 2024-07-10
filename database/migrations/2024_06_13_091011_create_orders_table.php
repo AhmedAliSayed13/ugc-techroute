@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->float('total', 8, 2);
             $table->float('video_price', 8, 2);
             $table->boolean('paid')->default(0);
-            $table->integer('status')->nullable();
             $table->string('product_name')->nullable();
             $table->string('product_link')->nullable();
             $table->text('product_instructions')->nullable();
@@ -31,6 +30,9 @@ class CreateOrdersTable extends Migration
             $table->foreignId('video_option_duration_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_option_aspect_id')->constrained()->onDelete('cascade');
             $table->integer('country_id')->nullable();
+            // $table->integer('status')->nullable();
+            $table->unsignedBigInteger('status')->nullable();
+            $table->foreign('status')->references('id')->on('order_statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }
