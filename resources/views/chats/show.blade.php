@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -23,7 +23,7 @@
 </form>
 
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script>
+{{-- <script>
     var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
         cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
         encrypted: true
@@ -54,37 +54,10 @@
 
         document.getElementById('content').value = '';
     });
-</script>
-</body>
-
-</html> --}}
+</script> --}}
 
 
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Pusher Live Chat Example</title>
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-
-<body>
-    <h1>Chat: {{ $task_id }}</h1>
-
-    <div id="messages">
-        @foreach ($messages as $message)
-        <p>{{ $message->content }}</p>
-        @endforeach
-    </div>
-
-    <form id="message-form">
-        <input type="text" id="content" name="content" placeholder="Type your message">
-        <button type="submit">Send</button>
-    </form>
-
-    <script>
+<script>
         var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
             cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
             encrypted: true

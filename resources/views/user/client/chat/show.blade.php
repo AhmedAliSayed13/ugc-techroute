@@ -261,7 +261,7 @@
                             <!--/ Chat Header -->
 
                             <!-- User Chat messages -->
-                            <div class="user-chats">
+                            <div class="user-chats" id="chats">
                                 <div class="chats">
                                     @if(isset($data['messages']))
                                         @foreach ($data['messages'] as $message )
@@ -305,21 +305,26 @@
                             <!-- User Chat messages -->
 
                             <!-- Submit Chat form -->
-                            <form class="chat-app-form" id="message-form">
+                            @if($data['taskChat']->task_status_id!=3)
+                            <form class="chat-app-form" action="{{route('client.chats.store')}}" method="post">
+                                @csrf
                                 <div class="input-group input-group-merge me-1 form-send-message">
                                     {{-- <span class="speech-to-text input-group-text"><i data-feather="mic"
                                             class="cursor-pointer"></i></span> --}}
-                                    <input type="text" class="form-control message"
-                                        placeholder="{{__('messages.type_your_message')}}"  id="content" name="content" />
+                                    <input type="text" class="form-control message" id="content" name="content"
+                                        placeholder="{{__('messages.type_your_message')}}" />
+                                    <input type="hidden" class="form-control message" id="task_id" name="task_id"
+                                        value="{{$data['taskChat']->id}}" />
                                     <span class="input-group-text">
                                         <label for="attach-doc" class="attachment-icon form-label mb-0">
                                             <input type="file" id="attach-doc" hidden /> </label></span>
                                 </div>
-                                <button type="submit" class="btn btn-primary send" >
+                                <button type="submit" class="btn btn-primary send">
                                     <i data-feather="send" class="d-lg-none"></i>
                                     <span class="d-none d-lg-block">{{__('messages.send')}}</span>
                                 </button>
                             </form>
+                            @endif
                             <!--/ Submit Chat form -->
                         </div>
                         <!--/ Active Chat -->
@@ -428,48 +433,10 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('users-asset')}}/js/scripts/pages/app-chat.js"></script>
 <!-- END: Page JS-->
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-{{-- <script>
-    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
-        encrypted: true
-    });
-
-    var channel = pusher.subscribe('chat.{{ $task_id }}');
-    channel.bind('App\\Events\\NewMessageEvent', function (data) {
-        var message = document.createElement('p');
-        message.textContent = data.message.content;
-        document.getElementById('messages').appendChild(message);
-    });
-
-    document.getElementById('message-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        var content = document.getElementById('content').value;
-
-        axios.post('{{ route('messages.store', ['task_id' => $task_id]) }}', {
-            user_id: 1, // Replace with the authenticated user's ID
-            content: content
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-
-        document.getElementById('content').value = '';
-    });
-</script> --}}
-
-{{-- <script>
-    $(window).on('load', function() {
-        if (feather) {
-            feather.replace({
-                width: 14,
-                height: 14
-            });
-        }
-    })
-</script> --}}
+<script>
+    window.onload = function() {
+        var chatContainer = document.getElementById('chats');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    };
+</script>
 @endsection

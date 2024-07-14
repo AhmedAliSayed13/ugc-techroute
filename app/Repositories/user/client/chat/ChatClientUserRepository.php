@@ -1,6 +1,7 @@
 <?php namespace App\Repositories\user\client\chat;
 
 use App\Models\Task;
+use App\Models\Message;
 use Auth;
 
 class ChatClientUserRepository implements ChatClientUserInterface
@@ -27,6 +28,19 @@ class ChatClientUserRepository implements ChatClientUserInterface
             'task_id'=>$id
         );
         return $data;
+    }
+    public function store($request): bool
+    {
+        $task=Task::find($request->task_id);
+        if($task && $task->client_id==Auth::user()->id && $task->task_status_id!=3){
+
+            $message=Message::create([
+                'task_id' => $request->task_id,
+                'user_id' => Auth::user()->id,
+                'content' => $request->content
+            ]);
+            return true;
+        }
     }
 
 }

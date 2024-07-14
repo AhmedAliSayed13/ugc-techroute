@@ -25,8 +25,13 @@ class ChatCreatorUserController extends Controller
     public function show($id)
     {
         $data = $this->chatCreatorUserInterface->show($id);
-        $task_id=8;
-        return view($this->path . 'show', compact('data','task_id'));
+        // return $data;
+        return view($this->path . 'show', compact('data'));
+    }
+    public function store(Request $request)
+    {
+        $data = $this->chatCreatorUserInterface->store($request);
+        return back();
     }
 
 }
