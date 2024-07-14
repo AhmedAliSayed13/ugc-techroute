@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\website\pages\PagesController;
-use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +22,14 @@ Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.s
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
 
+// Route::get('/chat/{task_id}', function ($task_id) {
+//     return view('chats.index', ['task_id' => $task_id]);
+// });
 
+// Route::post('/send-message', [ChatController::class, 'sendMessage']);
 
-Route::get('/chat/{task_id}', function ($task_id) {
-    return view('chats.index', ['task_id' => $task_id]);
-});
-
-Route::post('/send-message', [ChatController::class, 'sendMessage']);
-
-
+Route::get('/chats/{chatKey}', [ChatController::class, 'show'] )->name('chats.show');
+Route::post('/chats/{chatKey}/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
 
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');
@@ -47,5 +46,3 @@ Route::get('/route-clear', function () {
     $exitCode = Artisan::call('route:clear');
     return '<h1>Route cache cleared</h1>';
 });
-
-
