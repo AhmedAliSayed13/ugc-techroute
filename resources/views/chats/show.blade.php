@@ -9,7 +9,7 @@
 
 <body>
 
-    <h1>Chat: {{ $chatKey }}</h1>
+    <h1>Chat: {{ $task_id }}</h1>
 
 <div id="messages">
     @foreach ($messages as $message)
@@ -29,7 +29,7 @@
         encrypted: true
     });
 
-    var channel = pusher.subscribe('chat.{{ $chatKey }}');
+    var channel = pusher.subscribe('chat.{{ $task_id }}');
     channel.bind('App\\Events\\NewMessageEvent', function (data) {
         var message = document.createElement('p');
         message.textContent = data.message.content;
@@ -41,7 +41,7 @@
 
         var content = document.getElementById('content').value;
 
-        axios.post('{{ route('messages.store', ['chatKey' => $chatKey]) }}', {
+        axios.post('{{ route('messages.store', ['task_id' => $task_id]) }}', {
             user_id: 1, // Replace with the authenticated user's ID
             content: content
         })
@@ -71,7 +71,7 @@
 </head>
 
 <body>
-    <h1>Chat: {{ $chatKey }}</h1>
+    <h1>Chat: {{ $task_id }}</h1>
 
     <div id="messages">
         @foreach ($messages as $message)
@@ -90,7 +90,7 @@
             encrypted: true
         });
 
-        var channel = pusher.subscribe('chat.{{ $chatKey }}');
+        var channel = pusher.subscribe('chat.{{ $task_id }}');
         var messagesElement = document.getElementById('messages');
 
         channel.bind('App\\Events\\NewMessageEvent', function (data) {
@@ -113,7 +113,7 @@
 
             var content = document.getElementById('content').value;
 
-            axios.post('{{ route('messages.store', ['chatKey' => $chatKey]) }}', {
+            axios.post('{{ route('messages.store', ['task_id' => $task_id]) }}', {
                     user_id: 1, // Replace with the authenticated user's ID
                     content: content
                 })

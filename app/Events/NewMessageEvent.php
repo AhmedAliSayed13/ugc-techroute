@@ -34,6 +34,6 @@ class NewMessageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chat.' . $this->message->chat_key);
+        return new Channel('chat.' . $this->message->task_id);
     }
 }

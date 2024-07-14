@@ -28,8 +28,8 @@ Route::get('/price', [PagesController::class, 'price'])->name('price');
 
 // Route::post('/send-message', [ChatController::class, 'sendMessage']);
 
-Route::get('/chats/{chatKey}', [ChatController::class, 'show'] )->name('chats.show');
-Route::post('/chats/{chatKey}/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
+Route::get('/chats/{task_id}', [ChatController::class, 'show'] )->name('chats.show');
+Route::post('/chats/{task_id}/messages', [ChatController::class, 'storeMessage'])->name('messages.store');
 
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');

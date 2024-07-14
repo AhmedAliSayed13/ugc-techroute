@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function show($chatKey)
+    public function show($task_id)
     {
-        $messages = Message::where('chat_key', $chatKey)->get();
+        $messages = Message::where('task_id', $task_id)->get();
 
-        return view('chats.show', compact('chatKey', 'messages'));
+        return view('chats.show', compact('task_id', 'messages'));
     }
 
-    public function storeMessage(Request$request, $chatKey)
+    public function storeMessage(Request$request, $task_id)
     {
         $message = new Message();
         $message->user_id = $request->user_id;
         $message->content = $request->content;
-        $message->chat_key = $chatKey;
+        $message->task_id = $task_id;
         $message->save();
 
         event(new \App\Events\NewMessageEvent($message));
