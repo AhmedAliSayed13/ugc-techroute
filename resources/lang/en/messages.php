@@ -408,8 +408,8 @@ return [
     'ComplateCount' => 'الفيديوهات المنجزة',
     'request_sent' => 'تم ارسال الطلب',
     'publish_date' => 'تاريخ النشر',
-    'text' => 'text',
-    'text' => 'text',
+    'aboutCreator' => 'عن منشي المحتوي',
+    'describeCreator' => 'وصف منشي المحتوي',
     'text' => 'text',
 
 ];

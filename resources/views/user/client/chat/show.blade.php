@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
 <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 @endsection
 @section('content')
 
@@ -33,13 +33,13 @@
         <div class="sidebar-left">
             <div class="sidebar">
                 <!-- Admin user profile area -->
-                <div class="chat-profile-sidebar">
+                {{-- <div class="chat-profile-sidebar">
                     <header class="chat-profile-header">
                         <span class="close-icon">
                             <i data-feather="x"></i>
                         </span>
                         <!-- User Information -->
-                        {{-- <div class="header-profile-sidebar">
+                        <div class="header-profile-sidebar">
                             <div class="avatar box-shadow-1 avatar-xl avatar-border">
                                 <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-11.jpg"
                                     alt="user_avatar" />
@@ -47,11 +47,11 @@
                             </div>
                             <h4 class="chat-user-name">John Doe</h4>
                             <span class="user-post">Admin</span>
-                        </div> --}}
+                        </div>
                         <!--/ User Information -->
                     </header>
                     <!-- User Details start -->
-                    {{-- <div class="profile-sidebar-area">
+                    <div class="profile-sidebar-area">
                         <h6 class="section-label mb-1">About</h6>
                         <div class="about-user">
                             <textarea data-length="120" class="form-control char-textarea" id="textarea-counter"
@@ -134,9 +134,9 @@
                             </button>
                         </div>
                         <!--/ Logout Button -->
-                    </div> --}}
+                    </div>
                     <!-- User Details end -->
-                </div>
+                </div> --}}
                 <!--/ Admin user profile area -->
 
                 <!-- Chat Sidebar area -->
@@ -225,16 +225,16 @@
                                             <i data-feather="menu" class="font-medium-5"></i>
                                         </div>
                                         <div class="avatar avatar-border user-profile-toggle m-0 me-1">
-                                            <img src="{{getUserProfileImage($task->creator->img)}}" alt="avatar"
-                                                height="36" width="36" />
+                                            <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
+                                                alt="avatar" height="36" width="36" />
                                             <span class="avatar-status-busy"></span>
                                         </div>
-                                        <h6 class="mb-0">{{$task->creator->name}}</h6>
+                                        <h6 class="mb-0">{{$data['taskChat']->creator->name}}</h6>
                                     </div>
-                                    {{-- <div class="d-flex align-items-center">
-                                        <i data-feather="phone-call"
-                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1"></i>
-                                        <i data-feather="video"
+                                    <div class="d-flex align-items-center">
+                                        <i data-feather="eye"
+                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1 user-profile-toggle"></i>
+                                        {{-- <i data-feather="video"
                                             class="cursor-pointer d-sm-block d-none font-medium-2 me-1"></i>
                                         <i data-feather="search"
                                             class="cursor-pointer d-sm-block d-none font-medium-2"></i>
@@ -254,8 +254,8 @@
                                                 <a class="dropdown-item" href="#">Clear Chat</a>
                                                 <a class="dropdown-item" href="#">Report</a>
                                             </div>
-                                        </div>
-                                    </div> --}}
+                                        </div> --}}
+                                    </div>
                                 </header>
                             </div>
                             <!--/ Chat Header -->
@@ -264,41 +264,41 @@
                             <div class="user-chats" id="chats">
                                 <div class="chats">
                                     @if(isset($data['messages']))
-                                        @foreach ($data['messages'] as $message )
-                                            @if($message->sendByMe()==true)
-                                                <div class="chat chat-left">
-                                                    <div class="chat-avatar">
-                                                        <span class="avatar box-shadow-1 cursor-pointer">
-                                                            <img src="{{getUserProfileImage($message->user->img)}}" alt="avatar"
-                                                                height="36" width="36" />
-                                                        </span>
-                                                    </div>
-                                                    <div class="chat-body">
-                                                        <div class="chat-content">
-                                                            <p>{{$message->content}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @elseif(isset($message->user) && $message->sendByMe()==false)
-                                                <div class="chat">
-                                                    <div class="chat-avatar">
-                                                        <span class="avatar box-shadow-1 cursor-pointer">
-                                                            <img src="{{getUserProfileImage($message->user->img)}}"
-                                                                alt="avatar" height="36" width="36" />
-                                                        </span>
-                                                    </div>
-                                                    <div class="chat-body">
-                                                        <div class="chat-content">
-                                                            <p>{{$message->content}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @elseif($message->sendByMe()==null)
-                                                <div class="divider">
-                                                    <div class="divider-text">{{$message->content}}</div>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                    @foreach ($data['messages'] as $message )
+                                    @if($message->sendByMe()==true)
+                                    <div class="chat chat-left">
+                                        <div class="chat-avatar">
+                                            <span class="avatar box-shadow-1 cursor-pointer">
+                                                <img src="{{getUserProfileImage($message->user->img)}}" alt="avatar"
+                                                    height="36" width="36" />
+                                            </span>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-content">
+                                                <p>{{$message->content}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @elseif(isset($message->user) && $message->sendByMe()==false)
+                                    <div class="chat">
+                                        <div class="chat-avatar">
+                                            <span class="avatar box-shadow-1 cursor-pointer">
+                                                <img src="{{getUserProfileImage($message->user->img)}}" alt="avatar"
+                                                    height="36" width="36" />
+                                            </span>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-content">
+                                                <p>{{$message->content}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @elseif($message->sendByMe()==null)
+                                    <div class="divider">
+                                        <div class="divider-text">{{$message->content}}</div>
+                                    </div>
+                                    @endif
+                                    @endforeach
                                     @endif
                                 </div>
                             </div>
@@ -332,7 +332,7 @@
                     <!--/ Main chat area -->
 
                     <!-- User Chat profile right area -->
-                    {{-- <div class="user-profile-sidebar">
+                    <div class="user-profile-sidebar">
                         <header class="user-profile-header">
                             <span class="close-icon">
                                 <i data-feather="x"></i>
@@ -340,69 +340,109 @@
                             <!-- User Profile image with name -->
                             <div class="header-profile-sidebar">
                                 <div class="avatar box-shadow-1 avatar-border avatar-xl">
-                                    <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-7.jpg"
+                                    <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
                                         alt="user_avatar" height="70" width="70" />
                                     <span class="avatar-status-busy avatar-status-lg"></span>
                                 </div>
-                                <h4 class="chat-user-name">Kristopher Candy</h4>
-                                <span class="user-post">UI/UX Designer 👩🏻‍💻</span>
+                                <h4 class="chat-user-name">{{$data['taskChat']->creator->name}}</h4>
+                                <span class="user-post">{{__('messages.order_number')}} :
+                                    {{$data['taskChat']->getTaskKey()}}</span>
                             </div>
                             <!--/ User Profile image with name -->
                         </header>
                         <div class="user-profile-sidebar-area">
+                            @if(isset($data['taskChat']->creator->creatorInfo->describe))
                             <!-- About User -->
-                            <h6 class="section-label mb-1">About</h6>
-                            <p>Toffee caramels jelly-o tart gummi bears cake I love ice cream lollipop.</p>
+                            <h6 class="section-label mb-1">{{__('messages.describeCreator')}}</h6>
+                            <p>{{$data['taskChat']->creator->creatorInfo->describe}}</p>
                             <!-- About User -->
+                            @endif
                             <!-- User's personal information -->
                             <div class="personal-info">
-                                <h6 class="section-label mb-1 mt-3">Personal Information</h6>
+                                <h6 class="section-label mb-1 mt-3">{{__('messages.aboutCreator')}}</h6>
                                 <ul class="list-unstyled">
+                                    @if(isset($data['taskChat']->creator->creatorInfo->country->name))
                                     <li class="mb-1">
-                                        <i data-feather="mail" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">kristycandy@email.com</span>
+                                        <i data-feather="flag" class="font-medium-2 me-50"></i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->creator->creatorInfo->country->name}}</span>
                                     </li>
+                                    @endif
+                                    @if(isset($data['taskChat']->creator->creatorInfo->birthdate) &&
+                                    $data['taskChat']->creator->creatorInfo->birthdate)
                                     <li class="mb-1">
-                                        <i data-feather="phone-call" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">+1(123) 456 - 7890</span>
+                                        <i data-feather="calendar" class="font-medium-2 me-50"></i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->creator->creatorInfo->birthdate}}</span>
                                     </li>
-                                    <li>
-                                        <i data-feather="clock" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Mon - Fri 10AM - 8PM</span>
+                                    @endif
+                                    @if(isset($data['taskChat']->creator->creatorInfo->gender) &&
+                                    $data['taskChat']->creator->creatorInfo->gender)
+                                    <li class="mb-1">
+                                        <i data-feather="users" class="font-medium-2 me-50"></i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->creator->creatorInfo->gender}}</span>
                                     </li>
+                                    @endif
+                                    @if(isset($data['taskChat']->creator->creatorInfo->languages) &&
+                                    $data['taskChat']->creator->creatorInfo->languages)
+                                    <li class="mb-1">
+                                        <i data-feather="globe" class="font-medium-2 me-50"></i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->creator->creatorInfo->languages}}</span>
+                                    </li>
+                                    @endif
+
                                 </ul>
                             </div>
                             <!--/ User's personal information -->
 
                             <!-- User's Links -->
                             <div class="more-options">
-                                <h6 class="section-label mb-1 mt-3">Options</h6>
+                                <h6 class="section-label mb-1 mt-3">{{__('messages.order_details')}}</h6>
                                 <ul class="list-unstyled">
                                     <li class="cursor-pointer mb-1">
-                                        <i data-feather="tag" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Add Tag</span>
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.order_number')}}</i>
+                                        <span class="align-middle">{{$data['taskChat']->getTaskKey()}}</span>
                                     </li>
                                     <li class="cursor-pointer mb-1">
-                                        <i data-feather="star" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Important Contact</span>
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.order_status')}}</i>
+                                        <span class="align-middle">{{$data['taskChat']->order->orderStatus->name}}</span>
                                     </li>
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="image" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Shared Media</span>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.product_name')}}</i>
+                                        <span class="align-middle">{{$data['taskChat']->order->product_name}}</span>
                                     </li>
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="trash" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Delete Contact</span>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.product_link')}}</i>
+                                        <span class="align-middle">{{$data['taskChat']->order->product_link}}</span>
                                     </li>
-                                    <li class="cursor-pointer">
-                                        <i data-feather="slash" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Block Contact</span>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.video_type')}}</i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->order->videoOptionType->name}}</span>
                                     </li>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.video_duration')}}</i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->order->videoOptionDuration->time??''}}
+                                            {{__('messages.second')}}</span>
+                                    </li>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.video_aspect')}}</i>
+                                        <span
+                                            class="align-middle">{{$data['taskChat']->order->videoOptionAspect->name}}</span>
+                                    </li>
+                                    <li class="cursor-pointer mb-1 ">
+                                        <i class="font-small-3 me-50 text-primary">{{__('messages.video_type')}}</i>
+                                        <span class="align-middle">{{$data['taskChat']->order->product_link}}</span>
+                                    </li>
+
                                 </ul>
                             </div>
                             <!--/ User's Links -->
                         </div>
-                    </div> --}}
+                    </div>
                     <!--/ User Chat profile right area -->
 
                 </div>
