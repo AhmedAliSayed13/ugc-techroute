@@ -171,12 +171,12 @@
                             @foreach ($data['tasks'] as $task )
                             <a href="{{route('creator.chats.show', $task->id)}}">
                                 <li>
-                                    <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}"
+                                    <span class="avatar"><img src="{{getUserProfileImage($task->client->img)}}"
                                             height="42" width="42" alt="Generic placeholder image" />
                                         <span class="avatar-status-offline"></span>
                                     </span>
                                     <div class="chat-info flex-grow-1">
-                                        <h5 class="mb-0">{{$task->creator->name}}</h5>
+                                        <h5 class="mb-0">{{$task->client->name}}</h5>
                                         <p class="card-text text-truncate">
                                             {{__('messages.order_number')}} : {{$task->getTaskKey()}}
                                         </p>
@@ -224,16 +224,16 @@
                                             <i data-feather="menu" class="font-medium-5"></i>
                                         </div>
                                         <div class="avatar avatar-border user-profile-toggle m-0 me-1">
-                                            <img src="{{getUserProfileImage($task->creator->img)}}" alt="avatar"
+                                            <img src="{{getUserProfileImage($data['taskChat']->client->img)}}" alt="avatar"
                                                 height="36" width="36" />
                                             <span class="avatar-status-busy"></span>
                                         </div>
-                                        <h6 class="mb-0">{{$task->creator->name}}</h6>
+                                        <h6 class="mb-0">{{$data['taskChat']->client->name}}</h6>
                                     </div>
-                                    {{-- <div class="d-flex align-items-center">
-                                        <i data-feather="phone-call"
-                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1"></i>
-                                        <i data-feather="video"
+                                    <div class="d-flex align-items-center">
+                                        <i data-feather="eye"
+                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1 user-profile-toggle"></i>
+                                        {{-- <i data-feather="video"
                                             class="cursor-pointer d-sm-block d-none font-medium-2 me-1"></i>
                                         <i data-feather="search"
                                             class="cursor-pointer d-sm-block d-none font-medium-2"></i>
@@ -253,8 +253,8 @@
                                                 <a class="dropdown-item" href="#">Clear Chat</a>
                                                 <a class="dropdown-item" href="#">Report</a>
                                             </div>
-                                        </div>
-                                    </div> --}}
+                                        </div> --}}
+                                    </div>
                                 </header>
                             </div>
                             <!--/ Chat Header -->
@@ -331,7 +331,7 @@
                     <!--/ Main chat area -->
 
                     <!-- User Chat profile right area -->
-                    {{-- <div class="user-profile-sidebar">
+                    <div class="user-profile-sidebar">
                         <header class="user-profile-header">
                             <span class="close-icon">
                                 <i data-feather="x"></i>
@@ -401,7 +401,7 @@
                             </div>
                             <!--/ User's Links -->
                         </div>
-                    </div> --}}
+                    </div>
                     <!--/ User Chat profile right area -->
 
                 </div>
