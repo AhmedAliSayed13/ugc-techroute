@@ -86,7 +86,7 @@
                                     <label class="form-label" for="phone">{{__('messages.phone')}}</label>
                                     <input type="text" class="form-control account-number-mask" id="phone" name="phone"
                                         value="{{old('phone',auth()->user()->phone)}}" />
-                                    @error('email')
+                                    @error('phone')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

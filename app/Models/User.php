@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\CreatorInfo;
 use App\Models\FeatureVideo;
+use App\Models\CreatorOption;
 use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -119,6 +120,14 @@ class User extends Authenticatable
     public function creatorTasks()
     {
         return $this->hasMany(Task::class, 'creator_id');
+    }
+    public function creatorOptions()
+    {
+        return $this->hasMany(CreatorOption::class);
+    }
+    public function mainOptions()
+    {
+        return $this->hasManyThrough(MainOption::class, CreatorOption::class, 'user_id', 'id', 'id', 'main_option_id');
     }
     public function clientTasks()
     {

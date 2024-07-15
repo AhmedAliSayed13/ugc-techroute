@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="d-flex justify-content-around my-2 pt-75">
                                     <div class="d-flex align-items-start me-2">
-                                        <span class="badge bg-light-primary p-75 rounded">
+                                        {{-- <span class="badge bg-light-primary p-75 rounded">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round"
@@ -39,7 +39,7 @@
                                         <div class="ms-75">
                                             <h4 class="mb-0">{{$orderRequest->creator->orderComplete()}}</h4>
                                             <small>{{__('messages.projects_completed')}}</small>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     {{-- <div class="d-flex align-items-start">
                                         <span class="badge bg-light-primary p-75 rounded">
@@ -66,7 +66,8 @@
                                             <span>{{$orderRequest->creator->address}}</span>
                                         </li>
                                         @endif
-                                        @if (isset($orderRequest->creator->creatorInfo->country) && !empty($orderRequest->creator->creatorInfo->country))
+                                        @if (isset($orderRequest->creator->creatorInfo->country) &&
+                                        !empty($orderRequest->creator->creatorInfo->country))
                                         <li class="mb-75">
                                             <span class="fw-bolder me-25">{{__('messages.country')}}:</span>
                                             <span>{{$orderRequest->creator->creatorInfo->country?$orderRequest->creator->creatorInfo->country->name:'-'}}</span>
@@ -78,20 +79,38 @@
                                         </li>
                                         <li class="mb-75">
                                             <span class="fw-bolder me-25">{{__('messages.birthdate')}}:</span>
-                                            <span>{{calculateBirthdate($orderRequest->creator->creatorInfo->birthdate)}}</span>
+                                            <span>{{$orderRequest->creator->creatorInfo->birthdate}}</span>
                                         </li>
-                                        @if (isset($orderRequest->creator->creatorInfo->languages) && !empty($orderRequest->creator->creatorInfo->languages))
-                                            <li class="mb-75">
-                                                <span class="fw-bolder me-25">{{__('messages.languages')}}:</span>
-                                                <span>{{calculateBirthdate($orderRequest->creator->creatorInfo->languages)}}</span>
-                                            </li>
+                                        @if (isset($orderRequest->creator->creatorInfo->languages) &&
+                                        !empty($orderRequest->creator->creatorInfo->languages))
+                                        <li class="mb-75">
+                                            <span class="fw-bolder me-25">{{__('messages.languages')}}:</span>
+                                            <span>{{$orderRequest->creator->creatorInfo->languages}}</span>
+                                        </li>
                                         @endif
-                                        @if (isset($orderRequest->creator->creatorInfo->describe) && !empty($orderRequest->creator->creatorInfo->describe))
+                                        @if (isset($orderRequest->creator->creatorInfo->describe) &&
+                                        !empty($orderRequest->creator->creatorInfo->describe))
                                         <li class="mb-75">
                                             <span class="fw-bolder me-25">{{__('messages.describe')}}:</span>
                                             <span>{{$orderRequest->creator->creatorInfo->describe}}</span>
                                         </li>
                                         @endif
+                                    </ul>
+
+                                </div>
+                                <h4 class="fw-bolder border-bottom pb-50 mb-1">{{__('messages.video_options')}}</h4>
+                                <div class="info-container">
+                                    <ul class="list-unstyled">
+                                        @foreach ($orderRequest->creator->creatorOptions as $option)
+
+                                        <li class="mb-75">
+                                            <span class="fw-bolder me-25">{{$option->mainOption->name_creator}}</span>
+                                            <span>{{getValuesOptionCommaNameByIds($option->value_options)}}</span>
+                                        </li>
+                                        @endforeach
+
+
+
                                     </ul>
 
                                 </div>
@@ -103,13 +122,13 @@
                             data-bs-keyboard="true">
                             <div class="carousel-inner" role="listbox">
                                 @foreach ($orderRequest->creator->featureVideos as $key => $featureVideo)
-                                    <div class="carousel-item @if($key == 0) active @endif">
-                                        <div class="video-container-profile">
-                                            <video id="plyr-audio-player-{{ $key }}" class="video-player" controls>
-                                                <source src="{{ asset($featureVideo->video_url) }}" type="video/mp4">
-                                            </video>
-                                        </div>
+                                <div class="carousel-item @if($key == 0) active @endif">
+                                    <div class="video-container-profile">
+                                        <video id="plyr-audio-player-{{ $key }}" class="video-player" controls>
+                                            <source src="{{ asset($featureVideo->video_url) }}" type="video/mp4">
+                                        </video>
                                     </div>
+                                </div>
                                 @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#carousel-video-profile{{$orderRequest->id}}"

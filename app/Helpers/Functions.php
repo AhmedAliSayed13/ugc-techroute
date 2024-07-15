@@ -137,7 +137,9 @@ if (!function_exists('calculateBirthdate')) {
 
     function calculateBirthdate($birthdate)
     {
-        return Carbon::parse($birthdate)->age;
-
+        $dob = Carbon::parse($birthdate);
+        $age = $dob->diffInYears(Carbon::now());
+        return $age;
     }
+
 }

@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\MainOption;
+use App\Models\User;
 class CreatorOption extends Model
 {
     use HasFactory;
@@ -18,4 +19,15 @@ class CreatorOption extends Model
         'value_options',
         'created_at',
     ];
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // علاقة مع جدول MainOption
+    public function mainOption()
+    {
+        return $this->belongsTo(MainOption::class);
+    }
+
 }

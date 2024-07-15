@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ValueOption;
 use App\Models\OrderVideoOption;
+use App\Models\CreatorOption;
 class MainOption extends Model
 {
     use HasFactory, Filterable;
@@ -56,5 +57,9 @@ class MainOption extends Model
     public function orderOptions()
     {
         return $this->hasMany(OrderVideoOption::class);
+    }
+    public function creatorOptions()
+    {
+        return $this->hasMany(CreatorOption::class);
     }
 }

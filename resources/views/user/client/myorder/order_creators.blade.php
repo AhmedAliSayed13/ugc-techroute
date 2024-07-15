@@ -97,9 +97,9 @@
 
                         </div>
                         {{-- <h5 class="apply-job-title"></h5> --}}
-                        <p class="card-text mb-2">
+                        {{-- <p class="card-text mb-2">
                             {{$orderRequest->creator->creatorInfo->describe}}
-                        </p>
+                        </p> --}}
                         <div class="apply-job-package bg-light-primary rounded">
                             <div id="carousel-video{{$orderRequest->id}}" class="carousel slide"
                                 data-bs-keyboard="true">
