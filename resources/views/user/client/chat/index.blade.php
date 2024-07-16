@@ -223,12 +223,12 @@
                                         <div class="sidebar-toggle d-block d-lg-none me-1">
                                             <i data-feather="menu" class="font-medium-5"></i>
                                         </div>
-                                        <div class="avatar avatar-border user-profile-toggle m-0 me-1">
+                                        {{-- <div class="avatar avatar-border user-profile-toggle m-0 me-1">
                                             <img src="{{getUserProfileImage($task->creator->img)}}"
                                                 alt="avatar" height="36" width="36" />
                                             <span class="avatar-status-busy"></span>
                                         </div>
-                                        <h6 class="mb-0">{{$task->creator->name}}</h6>
+                                        <h6 class="mb-0">{{$task->creator->name}}</h6> --}}
                                     </div>
                                     {{-- <div class="d-flex align-items-center">
                                         <i data-feather="phone-call"

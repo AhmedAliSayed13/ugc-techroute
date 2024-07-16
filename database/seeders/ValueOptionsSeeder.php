@@ -22,12 +22,15 @@ class ValueOptionsSeeder extends Seeder
             [ 'id' => 9, 'name' => 'يوميًا', 'main_option_id' => 3, 'is_active' => 1, 'created_at' => '2024-06-10 16:31:53', 'updated_at' => '2024-06-10 16:31:53' ],
             [ 'id' => 10, 'name' => 'أسبوعيًا', 'main_option_id' => 3, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:02', 'updated_at' => '2024-06-10 16:32:02' ],
             [ 'id' => 11, 'name' => 'شهريًا', 'main_option_id' => 3, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:11', 'updated_at' => '2024-06-10 16:32:11' ],
-            [ 'id' => 12, 'name' => 'هاتف ذكي', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:37', 'updated_at' => '2024-06-10 16:32:37' ],
-            [ 'id' => 13, 'name' => 'كاميرا احترافية', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:46', 'updated_at' => '2024-06-10 16:32:46' ],
-            [ 'id' => 14, 'name' => 'كاميرا ويب', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:55', 'updated_at' => '2024-06-10 16:32:55' ],
-            [ 'id' => 15, 'name' => '1-5 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:34:33', 'updated_at' => '2024-06-10 16:34:33' ],
-            [ 'id' => 16, 'name' => '5-10 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:35:01', 'updated_at' => '2024-06-10 16:35:01' ],
-            [ 'id' => 17, 'name' => 'أكثر من 10 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:35:11', 'updated_at' => '2024-06-10 16:35:11' ],
+            [ 'id' => 12, 'name' => 'سنوي', 'main_option_id' => 3, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:11', 'updated_at' => '2024-06-10 16:32:11' ],
+            [ 'id' => 13, 'name' => 'هاتف ذكي', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:37', 'updated_at' => '2024-06-10 16:32:37' ],
+            [ 'id' => 14, 'name' => 'كاميرا احترافية', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:46', 'updated_at' => '2024-06-10 16:32:46' ],
+            [ 'id' => 15, 'name' => 'كاميرا ويب', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:55', 'updated_at' => '2024-06-10 16:32:55' ],
+            [ 'id' => 16, 'name' => 'كاميرا موبيل', 'main_option_id' => 4, 'is_active' => 1, 'created_at' => '2024-06-10 16:32:55', 'updated_at' => '2024-06-10 16:32:55' ],
+            [ 'id' => 17, 'name' => '1-5 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:34:33', 'updated_at' => '2024-06-10 16:34:33' ],
+            [ 'id' => 18, 'name' => '5-10 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:35:01', 'updated_at' => '2024-06-10 16:35:01' ],
+            [ 'id' => 19, 'name' => 'أكثر من 10 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:35:11', 'updated_at' => '2024-06-10 16:35:11' ],
+            [ 'id' => 20, 'name' => 'أكثر من 30 دقائق', 'main_option_id' => 5, 'is_active' => 1, 'created_at' => '2024-06-10 16:35:11', 'updated_at' => '2024-06-10 16:35:11' ],
         ];
 
         DB::table('value_options')->insert($data);

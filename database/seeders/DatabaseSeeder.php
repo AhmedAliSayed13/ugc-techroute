@@ -14,13 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            PermissionTableSeeder::class,
-            AdminUserSeeder::class,
             CountryTableSeeder::class,
-            ClientTableSeeder::class,
-            CreatorTableSeeder::class,
             MainOptionsSeeder::class,
             ValueOptionsSeeder::class,
+            TestDataSeeder::class,
+            PermissionTableSeeder::class,
+            AdminUserSeeder::class,
+            ClientTableSeeder::class,
+            CreatorTableSeeder::class,
             VideoOptionAspectsSeeder::class,
             VideoOptionDurationsSeeder::class,
             VideoOptionTypesSeeder::class,

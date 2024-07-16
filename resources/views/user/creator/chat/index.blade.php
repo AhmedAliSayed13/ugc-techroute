@@ -168,26 +168,28 @@
                     <div id="users-list" class="chat-user-list-wrapper list-group">
                         <h4 class="chat-list-title">{{__('messages.chats')}}</h4>
                         <ul class="chat-users-list chat-list media-list">
-                            @foreach ($data['tasks'] as $task )
-                            <a href="{{route('creator.chats.show', $task->id)}}">
-                            <li>
-                                    <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}" height="42"
-                                            width="42" alt="Generic placeholder image" />
-                                        <span class="avatar-status-offline"></span>
-                                    </span>
-                                    <div class="chat-info flex-grow-1">
-                                        <h5 class="mb-0">{{$task->creator->name}}</h5>
-                                        <p class="card-text text-truncate">
-                                            {{__('messages.order_number')}} : {{$task->getTaskKey()}}
-                                        </p>
-                                    </div>
-                                    <div class="chat-meta text-nowrap">
-                                        {{-- <small class="float-end mb-25 chat-time">4:14 PM</small> --}}
-                                        {{-- <span class="badge bg-danger rounded-pill float-end">3</span> --}}
-                                    </div>
-                                </li>
-                            </a>
-                            @endforeach
+                            @if(count($data['tasks']))
+                                @foreach ($data['tasks'] as $task )
+                                    <a href="{{route('creator.chats.show', $task->id)}}">
+                                        <li>
+                                                <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}" height="42"
+                                                        width="42" alt="Generic placeholder image" />
+                                                    <span class="avatar-status-offline"></span>
+                                                </span>
+                                                <div class="chat-info flex-grow-1">
+                                                    <h5 class="mb-0">{{$task->creator->name}}</h5>
+                                                    <p class="card-text text-truncate">
+                                                        {{__('messages.order_number')}} : {{$task->getTaskKey()}}
+                                                    </p>
+                                                </div>
+                                                <div class="chat-meta text-nowrap">
+                                                    {{-- <small class="float-end mb-25 chat-time">4:14 PM</small> --}}
+                                                    {{-- <span class="badge bg-danger rounded-pill float-end">3</span> --}}
+                                                </div>
+                                        </li>
+                                    </a>
+                                @endforeach
+                            @endif
                         </ul>
 
                     </div>
@@ -223,12 +225,12 @@
                                         <div class="sidebar-toggle d-block d-lg-none me-1">
                                             <i data-feather="menu" class="font-medium-5"></i>
                                         </div>
-                                        <div class="avatar avatar-border user-profile-toggle m-0 me-1">
-                                            <img src="{{getUserProfileImage($task->creator->img)}}"
+                                        {{-- <div class="avatar avatar-border user-profile-toggle m-0 me-1">
+                                            <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
                                                 alt="avatar" height="36" width="36" />
                                             <span class="avatar-status-busy"></span>
                                         </div>
-                                        <h6 class="mb-0">{{$task->creator->name}}</h6>
+                                        <h6 class="mb-0">{{$data['taskChat']->creator->name}}</h6> --}}
                                     </div>
                                     {{-- <div class="d-flex align-items-center">
                                         <i data-feather="phone-call"

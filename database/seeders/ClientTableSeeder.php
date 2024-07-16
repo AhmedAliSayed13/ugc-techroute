@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
 class ClientTableSeeder extends Seeder
 {
     /**
@@ -14,17 +14,21 @@ class ClientTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         for ($i = 0; $i < 10; $i++) {
             User::create([
-                'name' => $i . '-Hardik Savani',
-                'email' => $i . 'client@gmail.com',
+                'name' => $faker->name,
+                'email' => $faker->email,
                 'password' => bcrypt('123456789'),
-                'phone' => '01110000000'.$i,
+                'phone' => $faker->phoneNumber,
                 'is_creator' => 0,
                 'is_active' => 1,
                 'email_verified_at' => date('Y-m-d H:i:s'),
 
             ]);
         }
+
+
+
     }
 }
