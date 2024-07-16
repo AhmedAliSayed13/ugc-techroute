@@ -33,12 +33,12 @@
                         <!-- Logo -->
                         <div class="auth-brand text-center text-lg-start">
                             <div class="auth-logo">
-                                <a href="index.html" class="logo logo-dark text-center">
+                                <a href="{{route('home')}}" class="logo logo-dark text-center">
                                     <span class="logo-lg">
                                         <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="50">
                                     </span>
                                 </a>
-            
+
                                 <a href="" class="logo logo-light text-center">
                                     <span class="logo-lg">
                                         <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="22">
@@ -64,7 +64,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                              
+
                                 <label for="password" class="form-label">Password</label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password">
@@ -78,7 +78,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="checkbox-signin">
@@ -88,13 +88,13 @@
                             <div class="text-center d-grid">
                                 <button class="btn btn-primary" type="submit">Log In </button>
                             </div>
-                            
-                            
+
+
                         </form>
                         <!-- end form-->
 
                         <!-- Footer-->
-                       
+
 
                     </div> <!-- end .card-body -->
                 </div> <!-- end .align-items-center.d-flex.h-100-->
@@ -105,12 +105,12 @@
             <div class="auth-fluid-right text-center">
                 <div class="auth-user-testimonial">
                     <h2 class="mb-3 text-white">{{config('app.name')}}</h2>
-                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> 
+                    <p class="lead"><i class="mdi mdi-format-quote-open"></i>
                         AE71 is a digital marketing agency that provides its clients with the best tools and plans for their businesses to sky-rocket.
 Together, success is only a few steps away!
                         <i class="mdi mdi-format-quote-close"></i>
                     </p>
-                    
+
                 </div> <!-- end auth-user-testimonial-->
             </div>
             <!-- end Auth fluid right content -->
@@ -118,13 +118,13 @@ Together, success is only a few steps away!
         <!-- end page -->
 
 
-        
+
 
         <!-- Vendor js -->
         <script src="{{asset('assets/js/vendor.min.js')}}"></script>
 
         <!-- App js -->
         <script src="{{asset('assets/js/app.min.js')}}"></script>
-        
+
     </body>
 </html>

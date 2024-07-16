@@ -4,7 +4,7 @@
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav">
             <li class="nav-item"><a class="navbar-brand"
-                    href="{{asset('html/rtl/horizontal-menu-template/index.html')}}"><span class="brand-logo">
+                    href="{{route('home')}}"><span class="brand-logo">
                         <img src="{{asset('users-asset/images/logo/logo-2.png')}}" alt="logo"
                             style="max-width: 100px!important">
                 </a></li>

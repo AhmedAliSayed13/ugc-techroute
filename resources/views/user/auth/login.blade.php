@@ -64,8 +64,8 @@
                         <!-- Login basic -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="{{route('user.login')}}" class="brand-logo">
-                                    <img src="{{asset('users-asset/images/logo/logo-2.png')}}" width="200px" alt="logo">
+                                <a href="{{route('home')}}" class="brand-logo">
+                                    <img src="{{asset('users-asset/images/logo/logo-2.png')}}" width="150px" alt="logo">
                                 </a>
                                 <h4 class="card-title mb-1">{{__('messages.welcomeMessage')}}</h4>
                                 <p class="card-text mb-2">{{__('messages.welcomeDescribe')}}</p>
@@ -116,13 +116,13 @@
 
                                 <p class="text-center mt-2">
                                     <span>{{__('messages.NewPlatform')}}</span>
-                                    <br>
-                                    <a href="{{route('creator.register')}}">
+                                    {{-- <br> --}}
+                                    {{-- <a href="{{route('creator.register')}}">
                                         <span> {{__('messages.CreateAccountCreator')}}</span>
                                     </a>
-                                    <br>
+                                    <br> --}}
                                     <a href="{{route('client.register')}}">
-                                        <span> {{__('messages.CreateAccountClient')}}</span>
+                                        <span> {{__('messages.CreateAccount')}}</span>
                                     </a>
                                 </p>
 

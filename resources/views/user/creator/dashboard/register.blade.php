@@ -65,8 +65,8 @@
                         <!-- Register basic -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="{{route('user.login')}}" class="brand-logo">
-                                    <img src="{{asset('users-asset/images/logo/logo-2.png')}}" width="200px" alt="logo">
+                                <a href="{{route('home')}}" class="brand-logo">
+                                    <img src="{{asset('users-asset/images/logo/logo-2.png')}}" width="150px" alt="logo">
                                 </a>
 
                                 <h4 class="card-title mb-1">{{__('messages.adventure_starts_here')}}</h4>

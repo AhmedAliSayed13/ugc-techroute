@@ -62,7 +62,7 @@
             </div>
             <div class="content-body">
                 <!-- Not authorized-->
-                <div class="misc-wrapper"><a class="brand-logo" href="index.html">
+                <div class="misc-wrapper"><a class="brand-logo" href="{{route('home')}}">
                         <img src="{{asset('users-asset')}}/images/logo/logo.png" alt="logo" width="60px" />
                         {{-- <h2 class="brand-text text-primary ms-1">Vuexy</h2> --}}
                     </a>

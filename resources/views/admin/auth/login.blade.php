@@ -38,7 +38,7 @@
                     <!-- Logo -->
                     <div class="auth-brand text-center text-lg-start">
                         <div class="auth-logo">
-                            <a href="index.html" class="logo logo-dark text-center">
+                            <a href="{{route('home')}}" class="logo logo-dark text-center">
                                 <span class="logo-lg">
                                     <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="50">
                                 </span>

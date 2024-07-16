@@ -63,7 +63,7 @@
                         <!-- verify email basic -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="index.html" class="brand-logo">
+                                <a href="{{route('home')}}" class="brand-logo">
                                     <img src="{{asset('users-asset/images/logo/logo.png')}}" width="60px" alt="logo">
                                     {{-- <h2 class="brand-text text-primary ms-1">Vuexy</h2> --}}
                                 </a>

@@ -114,8 +114,8 @@
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
                         <!-- Brand logo-->
-                        <a class="brand-logo" href="#">
-                            <img src="{{asset('users-asset')}}/images/logo/logo-2.png" width="180px" alt="logo">
+                        <a class="brand-logo" href="{{route('home')}}}">
+                            <img src="{{asset('users-asset')}}/images/logo/logo-2.png" width="150px" alt="logo">
                         </a>
                         <!-- /Brand logo-->
 

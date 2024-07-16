@@ -410,6 +410,14 @@ return [
     'publish_date' => 'تاريخ النشر',
     'aboutCreator' => 'عن منشي المحتوي',
     'describeCreator' => 'وصف منشي المحتوي',
+    'CreateAccount' => 'انشاء حساب',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
     'text' => 'text',
 
 ];
