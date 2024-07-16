@@ -291,7 +291,7 @@
                                                 <span class="fw-bold">{{__('messages.order_status')}}</span>
                                             </td>
                                             <td >
-                                                {{$data['order']->status}}
+                                                {{$data['order']->orderStatus->name}}
 
 
                                             </td>
