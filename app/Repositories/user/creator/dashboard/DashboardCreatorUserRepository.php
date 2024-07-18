@@ -3,16 +3,21 @@
 use App\Models\Country;
 use App\Models\CreatorInfo;
 use App\Models\User;
+use App\Models\Task;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Str;
 use Mail;
+use Auth;
 use App\Mail\SendReqisterFormCreator;
 class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 {
     public function dashboard(): array
     {
         $data = array(
+            'tasks_count' => Task::where('creator_id',Auth::user()->id)->count(),
+            'tasks_complete_count' => Task::where('creator_id',Auth::user()->id)->where('task_status_id',3)->count(),
+            'tasks_in_process_count' => Task::where('creator_id',Auth::user()->id)->whereIn('task_status_id',[1,2,4])->count(),
         );
         return $data;
     }

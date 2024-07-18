@@ -18,7 +18,7 @@ class DashboardCreatorUserController extends Controller
     public function dashboard()
     {
         $data = $this->dashboardCreatorUserInterface->dashboard();
-        return view($this->path . 'index', compact($data));
+        return view($this->path . 'index', compact('data'));
     }
     public function ShowRegister()
     {

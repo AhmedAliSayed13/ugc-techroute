@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder
 
         for ($i = 1; $i <= 50; $i++) {
             Order::create([
-                'id'=> $i,
+                // 'id'=> $i,
                 'key' => $faker->uuid,
                 'user_id' => $faker->numberBetween(1, 10),
                 'video_option_type_id' => $faker->numberBetween(1, 4),

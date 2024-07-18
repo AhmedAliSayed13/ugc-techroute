@@ -146,12 +146,12 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="myModalLabel110">
-                                                        {{__('messages.confirm_accept')}}</h5>
+                                                        {{__('messages.modification_request')}}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{__('messages.confirm_accept_message')}}
+                                                    {{__('messages.confirm_modification_message')}}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a type="button" class="btn btn-info"
@@ -197,40 +197,6 @@
 @endsection
 @section('script')
 
-{{-- <script>
-    $(document).ready(function() {
-        $('.form-select').on('change', function() {
-            var formId = $(this).data('form-id');
-            var form = $('#form-' + formId);
-            form.submit();
-        });
-        // $('.form-select').on('change', function() {
-        //     var formId = $(this).data('form-id');
-        //     var form = $('#form-' + formId);
-        //     // var actionUrl = form.attr('action');
-        //     // var formData = form.serialize();
 
-        //     // $.ajax({
-        //     //     url: actionUrl,
-        //     //     type: 'POST',
-        //     //     data: formData,
-        //     //     success: function(response) {
-        //     //         // Display success message using toastr
-        //     //         if (response.status === 'success') {
-        //     //             toastr.success(response.message);
-        //     //         } else {
-        //     //             // toastr.error('An unexpected error occurred.');
-        //     //             windows.location.reload();
-        //     //         }
-        //     //     },
-        //     //     error: function(xhr) {
-        //     //         windows.location.reload();
-        //     //         // Display error message using toastr
-        //     //         // toastr.error(xhr.responseJSON.message || 'An error occurred during the request.');
-        //     //     }
-        //     // });
-        // });
-    });
-</script> --}}
 
 @endsection

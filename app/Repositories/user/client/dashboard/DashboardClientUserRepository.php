@@ -2,6 +2,7 @@
 
 use App\Mail\VerifyUserEmail;
 use App\Models\User;
+use App\Models\Order;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -10,7 +11,9 @@ class DashboardClientUserRepository implements DashboardClientUserInterface
 {
     public function dashboard(): array
     {
+        $orders=Order::where('user_id',Auth::user()->id)->get();
         $data = array(
+            'orders' => $orders
         );
         return $data;
     }

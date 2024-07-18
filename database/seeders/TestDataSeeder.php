@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\CreatorInfo;
 use App\Models\CreatorOption;
 use App\Models\ValueOption;
+use Illuminate\Support\Facades\DB;
 class TestDataSeeder extends Seeder
 {
     /**
@@ -86,5 +87,29 @@ class TestDataSeeder extends Seeder
             'email_verified_at' => date('Y-m-d H:i:s'),
             'address' => $faker->streetAddress ,
         ]);
+
+        $data = [
+            // 'id' => 51,
+            'key' => 'ioti6etixV',
+            'video_count' => 4,
+            'total' => 596.00,
+            'video_price' => 74.50,
+            'paid' => 1,
+            'product_name' => 'رخصة برنامج Ford IDS & FDRS لمدة سنة واحدة',
+            'product_link' => 'https://techroute66.com/product/ford-ids-software/',
+            'product_instructions' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة...',
+            'product_description' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة...',
+            'gender' => 'ذكر',
+            'user_id' => 3,
+            'video_option_type_id' => 1,
+            'video_option_duration_id' => 2,
+            'video_option_aspect_id' => 1,
+            'country_id' => 1,
+            'status' => 5,
+            'created_at' => '2024-07-18 06:26:28',
+            'updated_at' => '2024-07-18 06:28:15'
+        ];
+
+        DB::table('orders')->insert($data);
     }
 }

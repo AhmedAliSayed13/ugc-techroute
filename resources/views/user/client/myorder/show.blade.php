@@ -122,20 +122,20 @@
                                             <td>
                                                 <span class="fw-bold">{{__('messages.video_type')}}</span>
                                             </td>
-                                            <td>{{$data['order']->videoOptionType->name}}</td>
+                                            <td>{{isset($data['order']->videoOptionType->name)?$data['order']->videoOptionType->name:''}}</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span class="fw-bold">{{__('messages.video_duration')}}</span>
                                             </td>
-                                            <td>{{$data['order']->videoOptionDuration->time??''}}
+                                            <td>{{isset($data['order']->videoOptionDuration->time)?$data['order']->videoOptionDuration->time:''}}
                                                 {{__('messages.second')}}</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span class="fw-bold">{{__('messages.video_aspect')}}</span>
                                             </td>
-                                            <td>{{$data['order']->videoOptionAspect->name}}
+                                            <td>{{isset($data['order']->videoOptionAspect->name)?$data['order']->videoOptionAspect->name:''}}
                                             </td>
                                         </tr>
                                         <tr>
@@ -207,7 +207,7 @@
                                             <td>
                                                 <span class="fw-bold">{{__('messages.country')}}</span>
                                             </td>
-                                            <td>{{$data['order']->country->name}}</td>
+                                            <td>{{isset($data['order']->country)?$data['order']->country->name:''}}</td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -218,7 +218,7 @@
                                         @foreach ($data['order']->orderOptions as $orderOption)
                                         <tr>
                                             <td>
-                                                <span class="fw-bold">{{$orderOption->mainOption->name_client}}</span>
+                                                <span class="fw-bold">{{isset($orderOption->mainOption->name_client)?$orderOption->mainOption->name_client:''}}</span>
                                             </td>
                                             <td>
                                                 {{getValuesOptionCommaNameByIds($orderOption->value_options)}}
@@ -291,7 +291,7 @@
                                                 <span class="fw-bold">{{__('messages.order_status')}}</span>
                                             </td>
                                             <td >
-                                                {{$data['order']->orderStatus->name}}
+                                                {{isset($data['order']->orderStatus->name)?$data['order']->orderStatus->name:''}}
 
 
                                             </td>
