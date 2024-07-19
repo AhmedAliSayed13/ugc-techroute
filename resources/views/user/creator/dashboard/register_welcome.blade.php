@@ -63,7 +63,7 @@
             <div class="content-body">
                 <!-- Not authorized-->
                 <div class="misc-wrapper"><a class="brand-logo" href="{{route('home')}}">
-                        <img src="{{asset('users-asset')}}/images/logo/logo.png" alt="logo" width="60px" />
+                        <img src="{{asset('users-asset/images/logo/logo.png')}}" alt="logo" width="60px" />
                         {{-- <h2 class="brand-text text-primary ms-1">Vuexy</h2> --}}
                     </a>
                     <div class="misc-inner p-2 p-sm-3">
@@ -77,9 +77,11 @@
                                 {{-- The Webtrends Marketing Lab website in IIS uses the default IUSR account
                                 credentials to access the web pages it
                                 serves. --}}
+                                <br>
+                                <span class="fw-bold text-primary">{{isset($email)?$email: ''}}</span>
                             </p>
                             {{-- <a class="btn btn-primary mb-1 btn-sm-block" href="auth-login-cover.html">Back to login</a> --}}
-                            <img class="img-fluid" src="{{asset('users-asset')}}/images/pages/not-authorized.svg"
+                            <img class="img-fluid" src="{{asset('users-asset/images/pages/not-authorized.svg')}}"
                                 alt="Not authorized page" />
                         </div>
                     </div>

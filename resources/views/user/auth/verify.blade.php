@@ -70,7 +70,8 @@
 
                                 <h2 class="card-title fw-bolder mb-1">{{__('messages.VerifyYourEmail')}} ✉️</h2>
                                 <p class="card-text mb-2">
-                                   {{__('messages.verificationMailSent')}} <br>
+                                   {{__('messages.verificationMailSent')}}
+                                   <span class="text-primary">{{isset($email)?$email: ''}}</span> <br>
                                    {{__('messages.verificationMailSent2')}}
                                 </p>
 

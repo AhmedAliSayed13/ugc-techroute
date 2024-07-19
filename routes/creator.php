@@ -6,7 +6,7 @@ use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
 use App\Http\Controllers\user\creator\chat\ChatCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
-Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
+Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->Middleware('RedirectIfAuthenticated')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
 Route::post('register', [DashboardCreatorUserController::class, 'register'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
 Route::get('register/welcome', [DashboardCreatorUserController::class, 'registerWelcome'])->name('register.welcome')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
 

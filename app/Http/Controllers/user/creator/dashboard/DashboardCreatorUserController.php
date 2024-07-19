@@ -5,7 +5,7 @@ namespace App\Http\Controllers\user\creator\dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\auth\RegisterCreatorRequest;
 use App\Repositories\user\creator\dashboard\DashboardCreatorUserInterface;
-
+use Illuminate\Http\Request;
 class DashboardCreatorUserController extends Controller
 {
     protected $dashboardCreatorUserInterface;
@@ -28,12 +28,14 @@ class DashboardCreatorUserController extends Controller
     public function register(RegisterCreatorRequest $request)
     {
         $data = $this->dashboardCreatorUserInterface->register($request);
-        return redirect()->route('creator.register.welcome');
+        $url=route('creator.register.welcome') . '?email=' . urlencode($request->email);
+        return redirect($url);
     }
-    public function registerWelcome()
+    public function registerWelcome(Request $request)
     {
         $data = $this->dashboardCreatorUserInterface->registerWelcome();
-        return view($this->path . 'register_welcome', compact('data'));
+        $email = $request->query('email');
+        return view($this->path . 'register_welcome', compact('data','email'));
     }
 
 }

@@ -38,7 +38,7 @@
                     role="button">{{__('website.becomeACreator')}}</a>
                 <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
                     role="button">{{__('website.login')}}</a>
-                <a class="btn btn-relief-primary mr-3 ml-3" href="#" role="button">{{__('website.orderNow')}}</a>
+                <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}" role="button">{{__('website.orderNow')}}</a>
             </div>
 
         </div>

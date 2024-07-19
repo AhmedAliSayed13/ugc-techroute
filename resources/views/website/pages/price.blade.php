@@ -41,7 +41,7 @@
                             دولار
                         </p>
                         <div class="text-center mt-2">
-                            <a class="btn btn-relief-primary mr-3 ml-3" href="#"
+                            <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}"
                                 role="button">{{__('website.orderNow')}}</a>
                         </div>
 
@@ -152,7 +152,7 @@
 
                     </ul>
 
-                    <a class="btn btn-relief-primary mr-3 ml-3" href="#" role="button">{{__('website.orderNow')}}</a>
+                    <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}" role="button">{{__('website.orderNow')}}</a>
                 </div>
                 <div class="col-12">
                     <hr>

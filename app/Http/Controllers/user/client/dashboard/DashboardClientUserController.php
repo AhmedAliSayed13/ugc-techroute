@@ -29,10 +29,8 @@ class DashboardClientUserController extends Controller
     public function register(RegisterClientRequest $request)
     {
         $data = $this->dashboardClientUserInterface->register($request);
-        // if ($data) {
-        //     return redirect()->route('client.dashboard');
-        // }
-        return redirect()->route('user.verify');
+        $url = route('user.verify') . '?email=' . urlencode($request->email);
+        return redirect($url);
 
     }
 

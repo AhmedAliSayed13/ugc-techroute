@@ -53,10 +53,11 @@ class AuthUserController extends Controller
         return redirect()->route('user.login');
 
     }
-    public function verify()
+    public function verify(Request $request)
     {
         $data = $this->authUserInterface->verify();
-        return view($this->path . 'verify', compact($data));
+        $email = $request->query('email');
+        return view($this->path . 'verify', compact('data','email'));
     }
     public function registerFormCreator($token)
     {
