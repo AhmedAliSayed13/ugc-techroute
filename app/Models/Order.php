@@ -113,6 +113,28 @@ class Order extends Model
         $tasksCount = Task::where([['order_id', $this->id], ['task_status_id', 3]])->count();
         return $tasksCount;
     }
-   
+    public function orderFeatureOptionCount()
+    {
+        $count=0;
+        if(isset($this->videoOptionDuration->price) && $this->videoOptionDuration->price > 0){
+            $count++;
+        }
+        if(isset($this->videoOptionAspect->price) && $this->videoOptionAspect->price > 0){
+            $count++;
+        }
+        return $count;
+    }
+    public function orderFeatureOptionPrice()
+    {
+        $sum=0;
+        if(isset($this->videoOptionDuration->price) && $this->videoOptionDuration->price > 0){
+            $sum+=$this->videoOptionDuration->price;
+        }
+        if(isset($this->videoOptionAspect->price) && $this->videoOptionAspect->price > 0){
+            $sum+=$this->videoOptionAspect->price;
+        }
+        return $sum;
+    }
+
 
 }

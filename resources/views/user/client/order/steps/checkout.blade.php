@@ -94,41 +94,91 @@
                                                 <h3>{{__('messages.summary_order')}}</h3>
                                             </div>
                                             <div class="card-body">
+                                                @if($data['order']->orderFeatureOptionCount() > 0)
                                                 <div class="summary-item">
-                                                    <span class="option">{{__('messages.price_one_video')}} <strong
-                                                            class="badge badge-light-primary ms-50">
-                                                            {{$data['order']->videoOptionType->name}}</strong></span>
-                                                    <span class="price" dir="rtl">{{getPriceOneVideo($data['order']->total,$data['order']->video_count)}}
-                                                        $</span>
+                                                    <span class="option">
+                                                        <h4 class="fw-bolder text-primary">
+                                                            ({{$data['order']->orderFeatureOptionCount()}})
+                                                            {{__('messages.additional_feature')}}
+                                                        </h4>
+                                                    </span>
                                                 </div>
                                                 <div class="summary-item">
-                                                    <span class="option">{{__('messages.number_of_videos')}}</span>
-                                                    <span class="price" dir="rtl">{{$data['order']->video_count}}
-                                                        </span>
+                                                    <span class="option"
+                                                        dir="ltr">{{$data['order']->orderFeatureOptionPrice()}}$ X
+                                                        {{$data['order']->video_count}}
+                                                        {{-- <strong class="badge badge-light-info ms-50"></strong> --}}
+                                                    </span>
+                                                    <span class="price" dir="ltr">
+                                                        {{$data['order']->orderFeatureOptionPrice()*$data['order']->video_count}}$
+
+                                                    </span>
+                                                </div>
+                                                @endif
+
+                                                <div class="summary-item">
+                                                    <span class="option">
+                                                        <h4 class="fw-bolder text-primary">
+                                                            ({{$data['order']->video_count}})
+                                                            {{__('messages.videos_of_type')}}
+                                                            {{$data['order']->videoOptionType->name}}
+                                                        </h4>
+                                                    </span>
                                                 </div>
                                                 <div class="summary-item">
-                                                    <span class="option">{{__('messages.priceForAllVideos')}}</span>
-                                                    <span class="price" dir="ltr">{{getPriceOneVideo($data['order']->total,$data['order']->video_count).' X
-                                                        '.$data['order']->video_count}}</span>
+                                                    <span class="option"
+                                                        dir="ltr">{{$data['order']->videoOptionType->price}}$ X
+                                                        {{$data['order']->video_count}}
+                                                        {{-- <strong
+                                                            class="badge badge-light-info ms-50">{{$data['order']->videoOptionType->name
+                                                            }}</strong> --}}
+                                                    </span>
+                                                    <span class="price" dir="ltr">
+                                                        {{$data['order']->videoOptionType->price*$data['order']->video_count}}$
+                                                    </span>
                                                 </div>
                                                 <div class="summary-item total">
                                                     <span class="option">{{__('messages.total')}}</span>
-                                                    <span class="price">${{$data['order']->total }}</span>
+                                                    <span class="price" dir="ltr">{{$data['order']->total }}$</span>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body ">
+                                                <div class="w-100 d-flex">
+
+
+                                                <div class="d-flex justify-content-between align-items-center w-25 text-center">
+                                                    <img src="{{asset('users-asset/images/money_back.png')}}"
+                                                        width="150px" class="m-auto" alt="">
+                                                </div>
+                                                <div class="w-75">
+                                                    <h3 class="mb-2 text-bold">{{__('messages.money_back_header')}}</h3>
+                                                    <p>
+                                                        {{__('messages.money_back_description')}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                                <div class="w-100 text-center">
+                                                    <a class="badge badge-light-primary mb-1" href="#">{{__('messages.refund_policy')}}</a>
+                                                    <a class="badge badge-light-primary mb-1" href="#">{{__('messages.privacy_policy')}}</a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
+
+
+
                         </div>
-                    </section>
                 </div>
+                </section>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
 

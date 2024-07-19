@@ -33,14 +33,21 @@
 
             </ul>
             <div class="d-flex">
-
-                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('creator.register')}}"
-                    role="button">{{__('website.becomeACreator')}}</a>
-                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
-                    role="button">{{__('website.login')}}</a>
-                <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}" role="button">{{__('website.orderNow')}}</a>
+                @if(!Auth::check())
+                    <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('creator.register')}}"
+                        role="button">{{__('website.becomeACreator')}}</a>
+                    <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
+                        role="button">{{__('website.login')}}</a>
+                    <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}" role="button">{{__('website.orderNow')}}</a>
+                @else
+                        <a class="nav-link dropdown-toggle" href="{{route('user.login')}}"  role="button" aria-expanded="false">
+                            <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="Profile" class="rounded-circle" width="30" height="30"> {{auth()->user()->name}}
+                        </a>
+                @endif
             </div>
 
         </div>
     </div>
 </nav>
+
+
