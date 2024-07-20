@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Task extends Model
 {
@@ -87,6 +88,12 @@ class Task extends Model
             'content' => __('messages.task_modification_message'),
         ]);
     }
-
+    public function countMessageUnRead(){
+        return $this->messages()->where('is_read',0)->where('user_id','!=',Auth::user()->id)->count();
+    }
+    public function MakeAllMessagesRead(){
+        $this->messages()->where('is_read',0)->where('user_id','!=',Auth::user()->id)->update(['is_read' => true]);
+        return true;
+    }
 
 }

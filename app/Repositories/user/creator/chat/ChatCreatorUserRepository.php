@@ -21,6 +21,7 @@ class ChatCreatorUserRepository implements ChatCreatorUserInterface
     {
         $tasks = Task::where(['creator_id' => Auth::user()->id])->orderBy('created_at', 'desc')->get();
         $taskChat = Task::where('id', $id)->where('creator_id', Auth::user()->id)->orderBy('created_at', 'desc')->first();
+        $taskChat->MakeAllMessagesRead();
         $data = array(
             'tasks' => $tasks,
             'taskChat' => $taskChat,

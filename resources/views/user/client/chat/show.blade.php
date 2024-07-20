@@ -140,60 +140,7 @@
                 <!--/ Admin user profile area -->
 
                 <!-- Chat Sidebar area -->
-                <div class="sidebar-content">
-                    <span class="sidebar-close-icon">
-                        <i data-feather="x"></i>
-                    </span>
-                    <!-- Sidebar header start -->
-                    <div class="chat-fixed-search">
-                        <div class="d-flex align-items-center w-100">
-                            <div class="sidebar-profile-toggle">
-                                <div class="avatar avatar-border">
-                                    <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="user_avatar"
-                                        height="42" width="42" />
-                                    <span class="avatar-status-online"></span>
-                                </div>
-                            </div>
-                            <div class="input-group input-group-merge ms-1 w-100">
-                                <span class="input-group-text round"><i data-feather="search"
-                                        class="text-muted"></i></span>
-                                <input type="text" class="form-control round" id="chat-search"
-                                    placeholder="{{__('messages.Search_start_new_chat')}}" aria-label="Search..."
-                                    aria-describedby="chat-search" />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sidebar header end -->
-
-                    <!-- Sidebar Users start -->
-                    <div id="users-list" class="chat-user-list-wrapper list-group">
-                        <h4 class="chat-list-title">{{__('messages.chats')}}</h4>
-                        <ul class="chat-users-list chat-list media-list">
-                            @foreach ($data['tasks'] as $task )
-                            <a href="{{route('client.chats.show', $task->id)}}">
-                                <li>
-                                    <span class="avatar"><img src="{{getUserProfileImage($task->creator->img)}}"
-                                            height="42" width="42" alt="Generic placeholder image" />
-                                        <span class="avatar-status-offline"></span>
-                                    </span>
-                                    <div class="chat-info flex-grow-1">
-                                        <h5 class="mb-0">{{$task->creator->name}}</h5>
-                                        <p class="card-text text-truncate">
-                                            {{__('messages.order_number')}} : {{$task->getTaskKey()}}
-                                        </p>
-                                    </div>
-                                    <div class="chat-meta text-nowrap">
-                                        {{-- <small class="float-end mb-25 chat-time">4:14 PM</small> --}}
-                                        {{-- <span class="badge bg-danger rounded-pill float-end">3</span> --}}
-                                    </div>
-                                </li>
-                            </a>
-                            @endforeach
-                        </ul>
-
-                    </div>
-                    <!-- Sidebar Users end -->
-                </div>
+                @include('user.client.chat.templates.sidebar')
                 <!--/ Chat Sidebar area -->
 
             </div>
@@ -227,13 +174,13 @@
                                         <div class="avatar avatar-border user-profile-toggle m-0 me-1">
                                             <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
                                                 alt="avatar" height="36" width="36" />
-                                            <span class="avatar-status-busy"></span>
+                                            {{-- <span class="avatar-status-busy"></span> --}}
                                         </div>
                                         <h6 class="mb-0">{{$data['taskChat']->creator->name}}</h6>
                                     </div>
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center user-profile-toggle">
                                         <i data-feather="eye"
-                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1 user-profile-toggle"></i>
+                                            class="cursor-pointer d-sm-block d-none font-medium-2 me-1 "></i>
                                         {{-- <i data-feather="video"
                                             class="cursor-pointer d-sm-block d-none font-medium-2 me-1"></i>
                                         <i data-feather="search"
@@ -344,7 +291,7 @@
                                 <div class="avatar box-shadow-1 avatar-border avatar-xl">
                                     <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
                                         alt="user_avatar" height="70" width="70" />
-                                    <span class="avatar-status-busy avatar-status-lg"></span>
+                                    {{-- <span class="avatar-status-busy avatar-status-lg"></span> --}}
                                 </div>
                                 <h4 class="chat-user-name">{{$data['taskChat']->creator->name}}</h4>
                                 <span class="user-post">{{__('messages.order_number')}} :
@@ -435,11 +382,6 @@
                                         <span
                                             class="align-middle">{{$data['taskChat']->order->videoOptionAspect->name}}</span>
                                     </li>
-                                    <li class="cursor-pointer mb-1 ">
-                                        <i class="font-small-3 me-50 text-primary">{{__('messages.video_type')}}</i>
-                                        <span class="align-middle">{{$data['taskChat']->order->product_link}}</span>
-                                    </li>
-
                                 </ul>
                             </div>
                             <!--/ User's Links -->

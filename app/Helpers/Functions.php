@@ -1,6 +1,8 @@
 <?php
 use App\Models\CreatorOption;
 use App\Models\Setting;
+use App\Models\Task;
+use App\Models\Message;
 use App\Models\ValueOption;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -140,6 +142,19 @@ if (!function_exists('calculateBirthdate')) {
         $dob = Carbon::parse($birthdate);
         $age = $dob->diffInYears(Carbon::now());
         return $age;
+    }
+
+}
+if (!function_exists('getCountUnReadMessages')) {
+
+    function getCountUnReadMessages()
+    {
+        $user=Auth::user();
+        $type=$user->is_creator?'creator_id':'client_id';
+        $tasks=Task::where($type,$user->id)->pluck('id')->toArray();
+
+        return Message::whereIn('task_id',$tasks)->where('user_id','!=',$user->id)->where('is_read',0)->count();
+
     }
 
 }

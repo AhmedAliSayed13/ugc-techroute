@@ -150,7 +150,7 @@
                                 <div class="avatar avatar-border">
                                     <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="user_avatar"
                                         height="42" width="42" />
-                                    <span class="avatar-status-online"></span>
+                                    {{-- <span class="avatar-status-online"></span> --}}
                                 </div>
                             </div>
                             <div class="input-group input-group-merge ms-1 w-100">
@@ -165,32 +165,7 @@
                     <!-- Sidebar header end -->
 
                     <!-- Sidebar Users start -->
-                    <div id="users-list" class="chat-user-list-wrapper list-group">
-                        <h4 class="chat-list-title">{{__('messages.chats')}}</h4>
-                        <ul class="chat-users-list chat-list media-list">
-                            @foreach ($data['tasks'] as $task )
-                            <a href="{{route('creator.chats.show', $task->id)}}">
-                                <li>
-                                    <span class="avatar"><img src="{{getUserProfileImage($task->client->img)}}"
-                                            height="42" width="42" alt="Generic placeholder image" />
-                                        <span class="avatar-status-offline"></span>
-                                    </span>
-                                    <div class="chat-info flex-grow-1">
-                                        <h5 class="mb-0">{{$task->client->name}}</h5>
-                                        <p class="card-text text-truncate">
-                                            {{__('messages.order_number')}} : {{$task->getTaskKey()}}
-                                        </p>
-                                    </div>
-                                    <div class="chat-meta text-nowrap">
-                                        {{-- <small class="float-end mb-25 chat-time">4:14 PM</small> --}}
-                                        {{-- <span class="badge bg-danger rounded-pill float-end">3</span> --}}
-                                    </div>
-                                </li>
-                            </a>
-                            @endforeach
-                        </ul>
-
-                    </div>
+                    @include('user.creator.chat.templates.sidebar')
                     <!-- Sidebar Users end -->
                 </div>
                 <!--/ Chat Sidebar area -->
@@ -226,7 +201,7 @@
                                         <div class="avatar avatar-border user-profile-toggle m-0 me-1">
                                             <img src="{{getUserProfileImage($data['taskChat']->client->img)}}" alt="avatar"
                                                 height="36" width="36" />
-                                            <span class="avatar-status-busy"></span>
+                                            {{-- <span class="avatar-status-busy"></span> --}}
                                         </div>
                                         <h6 class="mb-0">{{$data['taskChat']->client->name}}</h6>
                                     </div>
@@ -333,77 +308,7 @@
                     <!--/ Main chat area -->
 
                     <!-- User Chat profile right area -->
-                    <div class="user-profile-sidebar">
-                        <header class="user-profile-header">
-                            <span class="close-icon">
-                                <i data-feather="x"></i>
-                            </span>
-                            <!-- User Profile image with name -->
-                            <div class="header-profile-sidebar">
-                                <div class="avatar box-shadow-1 avatar-border avatar-xl">
-                                    <img src="{{asset('users-asset')}}/images/portrait/small/avatar-s-7.jpg"
-                                        alt="user_avatar" height="70" width="70" />
-                                    <span class="avatar-status-busy avatar-status-lg"></span>
-                                </div>
-                                <h4 class="chat-user-name">Kristopher Candy</h4>
-                                <span class="user-post">UI/UX Designer 👩🏻‍💻</span>
-                            </div>
-                            <!--/ User Profile image with name -->
-                        </header>
-                        <div class="user-profile-sidebar-area">
-                            <!-- About User -->
-                            <h6 class="section-label mb-1">About</h6>
-                            <p>Toffee caramels jelly-o tart gummi bears cake I love ice cream lollipop.</p>
-                            <!-- About User -->
-                            <!-- User's personal information -->
-                            <div class="personal-info">
-                                <h6 class="section-label mb-1 mt-3">Personal Information</h6>
-                                <ul class="list-unstyled">
-                                    <li class="mb-1">
-                                        <i data-feather="mail" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">kristycandy@email.com</span>
-                                    </li>
-                                    <li class="mb-1">
-                                        <i data-feather="phone-call" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">+1(123) 456 - 7890</span>
-                                    </li>
-                                    <li>
-                                        <i data-feather="clock" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Mon - Fri 10AM - 8PM</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--/ User's personal information -->
-
-                            <!-- User's Links -->
-                            <div class="more-options">
-                                <h6 class="section-label mb-1 mt-3">Options</h6>
-                                <ul class="list-unstyled">
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="tag" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Add Tag</span>
-                                    </li>
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="star" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Important Contact</span>
-                                    </li>
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="image" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Shared Media</span>
-                                    </li>
-                                    <li class="cursor-pointer mb-1">
-                                        <i data-feather="trash" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Delete Contact</span>
-                                    </li>
-                                    <li class="cursor-pointer">
-                                        <i data-feather="slash" class="font-medium-2 me-50"></i>
-                                        <span class="align-middle">Block Contact</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--/ User's Links -->
-                        </div>
-                    </div>
+                    @include('user.creator.chat.templates.chat_profile')
                     <!--/ User Chat profile right area -->
 
                 </div>

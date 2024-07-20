@@ -36,10 +36,14 @@
                         French</a></div>
             </li>
 
-            <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
-                        data-feather="moon"></i></a></li>
+            {{-- <li class="nav-item "><a class="nav-link nav-link-style"><i class="ficon"
+                        data-feather="moon"></i>
+                        <span class="badge rounded-pill bg-danger badge-up">{{getCountUnReadMessages()}}</span>
+                    </a>
 
-            <li class="nav-item dropdown dropdown-cart me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i
+                    </li> --}}
+
+            {{-- <li class="nav-item dropdown dropdown-cart me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i
                         class="ficon" data-feather="shopping-cart"></i><span
                         class="badge rounded-pill bg-primary badge-up cart-item-count">6</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
@@ -138,11 +142,13 @@
                         </div><a class="btn btn-primary w-100" href="app-ecommerce-checkout.html">Checkout</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
-            <li class="nav-item  me-25"><a class="nav-link" href="{{route('client.chats.index')}}"
-                    ><i class="ficon" data-feather="message-circle"></i>
-                    </a>
+            <li class="nav-item  me-25">
+                <a class="nav-link" href="{{route('client.chats.index')}}">
+                    <i class="ficon" data-feather="message-circle"></i>
+                    <span class="badge rounded-pill bg-danger badge-up">{{getCountUnReadMessages()}}</span>
+                </a>
 
             </li>
 

@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->text('content');
+            $table->boolean('is_read')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->timestamps();
