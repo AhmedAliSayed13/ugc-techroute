@@ -49,6 +49,10 @@
                    <a class=" nav-link d-flex align-items-center" href="{{route('client.videos')}}" ><i data-feather="video">
                         </i><span data-i18n="Dashboards">{{__('messages.videos')}}</span></a>
                 </li>
+                <li class="dropdown nav-item {{checkActiveRoute('client.creators')}}" >
+                   <a class=" nav-link d-flex align-items-center" href="{{route('client.creators')}}" ><i data-feather="users">
+                        </i><span data-i18n="Dashboards">{{__('messages.creators')}}</span></a>
+                </li>
 
 
             </ul>

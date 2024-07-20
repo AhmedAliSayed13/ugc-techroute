@@ -1,7 +1,6 @@
 @extends('user.client.layouts.master')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
 @endsection
 
 
@@ -10,15 +9,11 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
-        {{-- <div class="content-header row">
-            <x-breadcrumb_user :section="'حسابي'" :sectionUrl="route('client.profile')" :title="'تعديل البيانات'" />
-
-        </div> --}}
         <div class="container-fluid mt-4">
             <div class="row">
 
 
-                    
+
 
                         @if(count($data['tasks'])>0)
                             @foreach ($data['tasks'] as $task)

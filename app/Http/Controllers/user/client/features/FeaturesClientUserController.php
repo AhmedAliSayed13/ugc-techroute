@@ -18,8 +18,12 @@ class FeaturesClientUserController extends Controller
     public function videos()
     {
         $data = $this->featuresClientUserInterface->videos();
-        // return $data;
         return view($this->path . 'videos', compact('data'));
+    }
+    public function creators()
+    {
+        $data = $this->featuresClientUserInterface->creators();
+        return view($this->path . 'creators', compact('data'));
     }
 
 

@@ -8,7 +8,15 @@ class FeaturesClientUserRepository implements FeaturesClientUserInterface
 
     public function videos(): array
     {
-        $tasks = Task::with('order')->where('client_id', Auth::user()->id)->where('task_status_id', 3)->get();
+        $tasks = Task::where('client_id', Auth::user()->id)->where('task_status_id', 3)->get();
+        $data = array(
+            'tasks' => $tasks,
+        );
+        return $data;
+    }
+    public function creators(): array
+    {
+        $tasks = Task::where('client_id', Auth::user()->id)->where('task_status_id', 3)->get();
         $data = array(
             'tasks' => $tasks,
         );

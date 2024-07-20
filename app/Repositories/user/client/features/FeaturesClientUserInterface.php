@@ -5,5 +5,6 @@
 interface FeaturesClientUserInterface {
 
     public function videos():array;
+    public function creators():array;
 
 }
