@@ -275,6 +275,7 @@
                                         <div class="chat-body">
                                             <div class="chat-content">
                                                 <p>{{$message->content}}</p>
+                                                <small class="float-end mb-25 chat-time">{{$message->created_at->format('Y-m-d H:i')}}</small>
                                             </div>
                                         </div>
                                     </div>
@@ -289,6 +290,7 @@
                                         <div class="chat-body">
                                             <div class="chat-content">
                                                 <p>{{$message->content}}</p>
+                                                <small class="float-end mb-25 chat-time">{{$message->created_at->format('Y-m-d H:i')}}</small>
                                             </div>
                                         </div>
                                     </div>
