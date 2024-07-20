@@ -8,6 +8,7 @@ use App\Http\Requests\user\creator\profile\ProfileCreatorRequest;
 use App\Http\Requests\user\creator\profile\ChangePasswordCreatorRequest;
 use App\Http\Requests\user\creator\profile\FeatureVideosCreatorRequest;
 use App\Http\Requests\user\creator\profile\OptionsCreatorRequest;
+use Illuminate\Http\Request;
 class ProfileCreatorUserController extends Controller
 {
     protected $profileCreatorUserInterface;
@@ -56,6 +57,12 @@ class ProfileCreatorUserController extends Controller
     public function options(OptionsCreatorRequest $request)
     {
         $data = $this->profileCreatorUserInterface->options($request);
+        return back();
+    }
+    public function deleteFeatureVideos(Request $request ,$id)
+    {
+        // return $id;
+        $data = $this->profileCreatorUserInterface->deleteFeatureVideos($request,$id);
         return back();
     }
 

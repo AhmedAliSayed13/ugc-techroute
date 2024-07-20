@@ -98,7 +98,7 @@
 
                         </div>
                         <div>
-                            @if(!$offer->hasUserSentRequest())
+                            {{-- @if(!$offer->hasUserSentRequest())
                             <h6 class="badge badge-glow bg-success">
                                 {{__('messages.request_sent')}}
                             </h6>
@@ -107,7 +107,13 @@
                                 class="badge badge-glow bg-primary btn-send-request">
                                 <i data-feather='plus-square'></i> {{__('messages.send_request')}}
                             </a>
-                            @endif
+                            @endif --}}
+
+                            <a href="{{route('creator.offers.whitelist', $offer->id)}}"
+                                class="badge badge-glow bg-primary btn-wishlist">
+                                <i class="@if($offer->hasWhitelist()) text-danger @endif" data-feather="heart"></i>
+                                <span>{{__('messages.wishlist')}}</span>
+                            </a>
                         </div>
                     </div>
                     <h6 class="item-name">
@@ -144,11 +150,22 @@
 
                     </div>
 
-                    <a href="{{route('creator.offers.whitelist', $offer->id)}}"
-                        class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
-                        <i data-feather="heart"></i>
-                        <span>{{__('messages.wishlist')}}</span>
-                    </a>
+
+
+                    @if(!$offer->hasUserSentRequest())
+
+                        <a
+                            class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
+                            <i data-feather="send"></i>
+                            <span>{{__('messages.request_sent')}}</span>
+                        </a>
+                    @else
+                        <a href="{{route('creator.offers.request.send', $offer->id)}}"
+                            class="btn btn-light btn-wishlist ">
+                            <i data-feather="send"></i>
+                            <span>{{__('messages.send_request')}}</span>
+                        </a>
+                    @endif
                     <a href="{{route('creator.offers.show', $offer->id)}}" class="btn btn-primary btn-cart">
                         <i data-feather="eye"></i>
                         <span class="add-to-cart">{{__('messages.showDetails')}} </span>

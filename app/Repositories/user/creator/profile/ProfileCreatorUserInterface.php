@@ -12,5 +12,6 @@ interface ProfileCreatorUserInterface {
     public function changePassword($request);
     public function showOptions():array;
     public function options($request);
+    public function deleteFeatureVideos($request ,$id):bool;
 
 }

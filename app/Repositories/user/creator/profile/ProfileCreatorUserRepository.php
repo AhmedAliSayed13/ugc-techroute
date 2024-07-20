@@ -110,4 +110,19 @@ class ProfileCreatorUserRepository implements ProfileCreatorUserInterface
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return true;
     }
+    public function deleteFeatureVideos($request,$id):bool
+    {
+        try {
+            $featureVideo = FeatureVideo::where('user_id', Auth::user()->id)->where('id', $id)->first();
+            $filePublicManager = new FileManager('public');
+            $filePublicManager->deleteFile($featureVideo->path);
+            $featureVideo->delete();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return true;
+        } catch (\Throwable $th) {
+            //throw $th;
+            toastr()->error(__('messages.error'), $th->getMessage());
+            return false;
+        }
+    }
 }

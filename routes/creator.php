@@ -19,6 +19,8 @@ Route::post('change-password', [ProfileCreatorUserController::class, 'changePass
 Route::get('feature-videos', [ProfileCreatorUserController::class, 'showFeatureVideos'])->name('feature.videos');
 Route::post('feature-videos', [ProfileCreatorUserController::class, 'featureVideos'])->name('feature.videos');
 
+Route::delete('feature-videos/delete/{id}', [ProfileCreatorUserController::class, 'deleteFeatureVideos'])->name('feature.videos.delete');
+
 Route::get('options', [ProfileCreatorUserController::class, 'showOptions'])->name('options');
 Route::post('options', [ProfileCreatorUserController::class, 'options'])->name('options');
 

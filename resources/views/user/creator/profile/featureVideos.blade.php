@@ -8,27 +8,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css">
 <style>
     .video-div {
-        width: 200px;
-        height: 200px
+        width: 250px;
+        height: 400px
     }
 </style>
 <style>
     .video-player {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 400px;
         object-fit: cover;
         /* Ensures the video covers the area and maintains aspect ratio */
-        margin: 10px;
+        margin: 5px;
         /* Adds space around each video */
+        border-radius: 10px;
     }
 </style>
 
 
 @endsection
-{{-- @section('breadcrumb')
-<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.profile')"
-    :title="__('messages.videoFeature')" />
-@endsection --}}
+
 
 @section('content')
 <div class="container-fluid ">
@@ -47,23 +45,46 @@
 
 
     <div class="row">
+        @foreach ($data['featureVideos'] as $video)
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header ">
+                        <button data-bs-toggle="modal" data-bs-target="#delete{{$video->id}}"  class="btn btn-icon btn-icon rounded-circle btn-danger waves-effect waves-float waves-danger"><i data-feather='trash'></i></button>
+                    </div>
+                    <div class="card-body text-center  ">
 
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header border-bottom">
-                    <h4 class="card-title">{{__('messages.videoFeature')}}</h4>
-                </div>
-                <div class="card-body  py-2 my-25">
-                    @foreach ($data['featureVideos'] as $video)
-                    <video id="plyr-audio-player" class="video-player" controls width="200" height="200">
-                        <source src="{{  $video->video_url }}" type="video/mp4">
-                    </video>
-                    @endforeach
+                        <video id="plyr-audio-player" class="video-player" controls width="250" height="400">
+                            <source src="{{  $video->video_url }}" type="video/mp4">
+                        </video>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-
+            <div class="modal fade modal-danger text-start" id="delete{{$video->id}}" tabindex="-1" aria-labelledby="delete{{$video->id}}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel120">{{__('messages.delete_feature_video')}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{__('messages.are_you_sure_you_want_to_delete_this_feature_video')}}
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{route('creator.feature.videos.delete',$video->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"  >
+                                    {{__('messages.delete')}}
+                                    <i data-feather='trash-2'></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
 
