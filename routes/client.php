@@ -5,6 +5,7 @@ use App\Http\Controllers\user\client\chat\ChatClientUserController;
 use App\Http\Controllers\user\client\order\OrderClientUserController;
 use App\Http\Controllers\user\client\profile\ProfileClientUserController;
 use App\Http\Controllers\user\client\search\SearchClientUserController;
+use App\Http\Controllers\user\client\features\FeaturesClientUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [DashboardClientUserController::class, 'dashboard'])->name('dashboard');
@@ -42,3 +43,5 @@ Route::get('my-orders/delivery/modification/{id}', [MyOrderClientUserController:
 Route::resource('chats', ChatClientUserController::class)->only([
     'index', 'show', 'store',
 ]);
+
+Route::get('videos', [FeaturesClientUserController::class, 'videos'])->name('videos');

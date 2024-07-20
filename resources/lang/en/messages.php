@@ -427,7 +427,7 @@ return [
     'money_back_description' => 'استرداد كامل المبلغ في حالة عدم تقديم اي من منشئي المحتوى للعمل علي طلبك',
     'refund_policy'=>'سياسة استرداد الأموال',
     'privacy_policy'=>'سياسة الخصوصية',
-    'text'=>'text',
+    'videos'=>'الفديوهات',
     'text'=>'text',
     'text'=>'text',
     'text'=>'text',

@@ -32,6 +32,7 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-rtl.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
+
 <!-- END: Custom CSS-->
 
 @if (App::getLocale() === 'en')

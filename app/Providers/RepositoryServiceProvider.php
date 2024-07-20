@@ -29,6 +29,8 @@ use App\Repositories\user\client\myorder\MyOrderClientUserInterface;
 use App\Repositories\user\client\myorder\MyOrderClientUserRepository;
 use App\Repositories\user\client\chat\ChatClientUserInterface;
 use App\Repositories\user\client\chat\ChatClientUserRepository;
+use App\Repositories\user\client\features\FeaturesClientUserInterface;
+use App\Repositories\user\client\features\FeaturesClientUserRepository;
 //creator
 use App\Repositories\user\client\search\SearchClientUserInterface;
 use App\Repositories\user\client\search\SearchClientUserRepository;
@@ -131,6 +133,7 @@ class RepositoryServiceProvider extends ServiceProvider
             ChatCreatorUserRepository::class
         );
 
+
         //Client------------------------------------------------
         $this->app->bind(
             DashboardClientUserInterface::class,
@@ -161,6 +164,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ChatClientUserInterface::class,
             ChatClientUserRepository::class
+        );
+        //Features
+        $this->app->bind(
+            FeaturesClientUserInterface::class,
+            FeaturesClientUserRepository::class
         );
 
         // --------------------------------------------------website
