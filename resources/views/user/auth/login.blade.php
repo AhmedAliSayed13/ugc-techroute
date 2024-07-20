@@ -87,7 +87,7 @@
                                         <div class="d-flex justify-content-between">
                                             <label class="form-label"
                                                 for="login-password">{{__('messages.password')}}</label>
-                                            <a href="#">
+                                            <a href="{{route('user.forget.password')}}">
                                                 <small>{{__('messages.forgetPassword')}}</small>
                                             </a>
                                         </div>

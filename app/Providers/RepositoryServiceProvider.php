@@ -17,6 +17,8 @@ use App\Repositories\admin\valueOption\ValueOptionAdminRepository;
 //User
 use App\Repositories\user\auth\AuthUserInterface;
 use App\Repositories\user\auth\AuthUserRepository;
+use App\Repositories\user\forgot_password\ForgotPasswordUserInterface;
+use App\Repositories\user\forgot_password\ForgotPasswordUserRepository;
 
 // client
 use App\Repositories\user\client\dashboard\DashboardClientUserInterface;
@@ -106,6 +108,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             AuthUserInterface::class,
             AuthUserRepository::class
+        );
+        //ForgotPassword
+        $this->app->bind(
+            ForgotPasswordUserInterface::class,
+            ForgotPasswordUserRepository::class
         );
         //Creator-----------------------------------------------
         $this->app->bind(
