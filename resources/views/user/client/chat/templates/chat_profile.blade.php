@@ -6,25 +6,25 @@
         <!-- User Profile image with name -->
         <div class="header-profile-sidebar">
             <div class="avatar box-shadow-1 avatar-border avatar-xl">
-                <img src="{{getUserProfileImage($data['taskChat']->client->img)}}"
+                <img src="{{getUserProfileImage($data['taskChat']->creator->img)}}"
                     alt="user_avatar" height="70" width="70" />
                 {{-- <span class="avatar-status-busy avatar-status-lg"></span> --}}
             </div>
-            <h4 class="chat-user-name">{{$data['taskChat']->client->name}}</h4>
+            <h4 class="chat-user-name">{{$data['taskChat']->creator->name}}</h4>
             <span class="user-post">{{__('messages.order_number')}} :
                 {{$data['taskChat']->getTaskKey()}}</span>
         </div>
         <!--/ User Profile image with name -->
     </header>
     <div class="user-profile-sidebar-area">
-        {{-- @if(isset($data['taskChat']->creator->creatorInfo->describe))
+        @if(isset($data['taskChat']->creator->creatorInfo->describe))
         <!-- About User -->
         <h6 class="section-label mb-1">{{__('messages.describeCreator')}}</h6>
         <p>{{$data['taskChat']->creator->creatorInfo->describe}}</p>
         <!-- About User -->
-        @endif --}}
+        @endif
         <!-- User's personal information -->
-        {{-- <div class="personal-info">
+        <div class="personal-info">
             <h6 class="section-label mb-1 mt-3">{{__('messages.aboutCreator')}}</h6>
             <ul class="list-unstyled">
                 @if(isset($data['taskChat']->creator->creatorInfo->country->name))
@@ -60,7 +60,7 @@
                 @endif
 
             </ul>
-        </div> --}}
+        </div>
         <!--/ User's personal information -->
 
         <!-- User's Links -->
