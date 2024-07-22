@@ -450,6 +450,10 @@ return [
     'confirm_password' => 'تأكيد كلمة المرور',
     'set_new_password' => 'اعادة تعيين كلمة المرور',
     'wallet' => 'المحفظة',
+    'walletDescribe' => ' يمكنك مراجعة رصيدك والمعاملات المالية الخاصة بك',
+    'amount' => 'المبلغ',
+    'no_records_found' => 'لا يوجد سجلات',
+    'wallet_balance' => 'رصيد المحفظة',
     'text' => 'text',
     'text' => 'text',
 

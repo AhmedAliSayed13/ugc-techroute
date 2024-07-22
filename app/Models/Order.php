@@ -7,6 +7,7 @@ use App\Models\OrderRequest;
 use App\Models\OrderStatus;
 use App\Models\OrderVideo;
 use App\Models\OrderVideoOption;
+use App\Models\Transaction;
 use App\Models\Task;
 use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
@@ -134,6 +135,10 @@ class Order extends Model
             $sum+=$this->videoOptionAspect->price;
         }
         return $sum;
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
 

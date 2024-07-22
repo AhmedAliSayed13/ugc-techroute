@@ -6,5 +6,6 @@ interface DashboardCreatorUserInterface
     public function ShowRegister(): array;
     public function register($request);
     public function registerWelcome(): array;
+    public function showWallet(): array;
 
 }

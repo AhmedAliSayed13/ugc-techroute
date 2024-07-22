@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Order;
 use App\Models\TaskStatus;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -96,6 +97,10 @@ class Task extends Model
     public function MakeAllMessagesRead(){
         $this->messages()->where('is_read',0)->where('user_id','!=',Auth::user()->id)->update(['is_read' => true]);
         return true;
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
 }

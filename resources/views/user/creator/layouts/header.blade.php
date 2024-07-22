@@ -65,6 +65,14 @@
                             data-feather="user"></i>
                         {{__('messages.Settings')}}
                     </a>
+                    <a class="dropdown-item" href="{{route('creator.wallet')}}"><i class="me-50"
+                            data-feather="credit-card"></i>
+                        {{__('messages.wallet')}}
+                        <span>
+                                <sup class="font-medium-1 fw-bold text-primary">$</sup>
+                                <span class="pricing-enterprise-value fw-bolder text-primary">{{Auth::user()->wallet(1)->balance}}</span>
+                        </span>
+                    </a>
                     <a class="dropdown-item" href="{{route('creator.change.password')}}"><i class="me-50"
                             data-feather="settings"></i>
                         {{__('messages.changePassword')}}
@@ -77,7 +85,7 @@
         </ul>
     </div>
 </nav>
-<ul class="main-search-list-defaultlist d-none">
+{{-- <ul class="main-search-list-defaultlist d-none">
     <li class="d-flex align-items-center"><a href="#">
             <h6 class="section-label mt-75 mb-0">Files</h6>
         </a></li>
@@ -172,5 +180,5 @@
             <div class="d-flex justify-content-start"><span class="me-75" data-feather="alert-circle"></span><span>No
                     results found.</span></div>
         </a></li>
-</ul>
+</ul> --}}
 <!-- END: Header-->

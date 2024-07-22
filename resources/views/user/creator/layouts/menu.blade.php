@@ -53,6 +53,7 @@
                     <a class=" nav-link d-flex align-items-center" href="{{route('creator.tasks.index')}}" ><i data-feather="home">
                         </i><span data-i18n="Dashboards">{{__('messages.tasks')}}</span></a>
                 </li>
+                
                 {{-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Apps">Apps</span></a>
                     <ul class="dropdown-menu" data-bs-popper="none">
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-email.html" data-bs-toggle="" data-i18n="Email"><i data-feather="mail"></i><span data-i18n="Email">Email</span></a>
@@ -365,8 +366,7 @@
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-knowledge-base.html" data-bs-toggle="" data-i18n="Knowledge Base"><i data-feather="info"></i><span data-i18n="Knowledge Base">Knowledge Base</span></a>
                         </li>
-                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-pricing.html" data-bs-toggle="" data-i18n="Pricing"><i data-feather="dollar-sign"></i><span data-i18n="Pricing">Pricing</span></a>
-                        </li>
+
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-license.html" data-bs-toggle="" data-i18n="License"><i data-feather="credit-card"></i><span data-i18n="License">License</span></a>
                         </li>
                         <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-api-key.html" data-bs-toggle="" data-i18n="API Key"><i data-feather="key"></i><span data-i18n="API Key">API Key</span></a>

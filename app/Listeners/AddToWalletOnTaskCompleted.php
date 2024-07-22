@@ -27,12 +27,15 @@ class AddToWalletOnTaskCompleted
     public function handle(TaskCompleted $event)
     {
         $task = $event->task;
+
         $transcation=Transaction::where('task_id',$task->id)->where('wallet_type_id',1)->first();
         if ($task->task_status_id == 3 && !$transcation) {
             $creator = $task->creator;
+            $wallet = $creator->wallet(1);
             $order=$task->order;
             $purchaseTransaction = Transaction::create([
                 'wallet_type_id' => 1,
+                'wallet_id' => $wallet->id,
                 'order_id' => $order->id,
                 'task_id' => $task->id,
                 'amount' => $order->video_price,

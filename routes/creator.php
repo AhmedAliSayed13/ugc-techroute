@@ -36,3 +36,5 @@ Route::resource('tasks', TasksCreatorUserController::class)->only([
 Route::resource('chats', ChatCreatorUserController::class)->only([
     'index', 'show', 'store',
 ]);
+
+Route::get('wallet', [DashboardCreatorUserController::class, 'showWallet'])->name('wallet');

@@ -37,5 +37,11 @@ class DashboardCreatorUserController extends Controller
         $email = $request->query('email');
         return view($this->path . 'register_welcome', compact('data','email'));
     }
+    public function showWallet()
+    {
+        $data = $this->dashboardCreatorUserInterface->showWallet();
+        // return $data;
+        return view($this->path . 'wallet', compact('data'));
+    }
 
 }

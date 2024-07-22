@@ -16,10 +16,12 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('wallet_type_id');
+            $table->unsignedBigInteger('wallet_id');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('task_id')->nullable();
             $table->float('amount', 8, 2);
             $table->foreign('wallet_type_id')->references('id')->on('wallet_types')->onDelete('cascade');
+            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->timestamps();

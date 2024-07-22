@@ -2,6 +2,7 @@
 
 use App\Models\Country;
 use App\Models\CreatorInfo;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Task;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use Str;
 use Mail;
 use Auth;
 use App\Mail\SendReqisterFormCreator;
+use CoreProc\WalletPlus\Models\WalletLedger;
 class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 {
     public function dashboard(): array
@@ -64,6 +66,16 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
 
         $data = [];
 
+        return $data;
+    }
+    public function showWallet(): array
+    {
+        $wallet=Auth::user()->wallets(1)->first();
+        $transactions=Transaction::where('wallet_id',$wallet->id)->orderBy('id','desc')->paginate(10);
+        $data = array(
+            'wallet' => $wallet,
+            'transactions' => $transactions,
+        );
         return $data;
     }
 }
