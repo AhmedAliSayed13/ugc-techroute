@@ -449,7 +449,7 @@ return [
     'new_password' => 'كلمة المرور الجديدة',
     'confirm_password' => 'تأكيد كلمة المرور',
     'set_new_password' => 'اعادة تعيين كلمة المرور',
-    'text' => 'text',
+    'wallet' => 'المحفظة',
     'text' => 'text',
     'text' => 'text',
 

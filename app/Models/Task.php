@@ -7,7 +7,7 @@ use App\Models\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-
+use App\Events\TaskCompleted;
 class Task extends Model
 {
     use HasFactory;
@@ -24,7 +24,9 @@ class Task extends Model
         'order_id',
         'created_at',
     ];
-
+    protected $dispatchesEvents = [
+        'updated' => TaskCompleted::class,
+    ];
     public function order()
     {
         return $this->belongsTo(Order::class);

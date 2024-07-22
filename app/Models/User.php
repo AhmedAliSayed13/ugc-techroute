@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use CoreProc\WalletPlus\Models\Traits\HasWallets;
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Filterable, Notifiable;
+    use HasApiTokens, HasFactory, Filterable, Notifiable,HasWallets;
 
     /**
      * The attributes that are mass assignable.

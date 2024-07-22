@@ -30,6 +30,7 @@ class TestDataSeeder extends Seeder
             'email_verified_at' => date('Y-m-d H:i:s'),
             'address' => $faker->streetAddress ,
         ]);
+        $user->wallets()->create(['wallet_type_id' => 1]);
         CreatorInfo::create([
             'id' => 1,
             'user_id' => $user->id,
@@ -58,7 +59,7 @@ class TestDataSeeder extends Seeder
             'email_verified_at' => date('Y-m-d H:i:s'),
             'address' => $faker->streetAddress ,
         ]);
-
+        $user->wallets()->create(['wallet_type_id' => 1]);
         CreatorInfo::create([
             'id' => 2,
             'user_id' => $user->id,
@@ -87,7 +88,7 @@ class TestDataSeeder extends Seeder
             'email_verified_at' => date('Y-m-d H:i:s'),
             'address' => $faker->streetAddress ,
         ]);
-
+$user->wallets()->create(['wallet_type_id' => 2]);
         $data = [
             // 'id' => 51,
             'key' => 'ioti6etixV',

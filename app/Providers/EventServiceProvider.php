@@ -8,7 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\NewMessageEvent;
 use App\Listeners\NewMessageListener;
-
+use App\Events\TaskCompleted;
+use App\Listeners\AddToWalletOnTaskCompleted;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -20,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        TaskCompleted::class => [
+            AddToWalletOnTaskCompleted::class,
+        ],
+
         NewMessageEvent::class => [
             NewMessageListener::class,
         ],

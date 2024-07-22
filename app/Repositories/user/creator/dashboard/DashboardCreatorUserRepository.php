@@ -34,15 +34,16 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
         DB::beginTransaction();
         try {
             $token= Str::random(60);
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'is_creator' => 1,
-            'is_active' => 0,
-            'password' => Hash::make($request->password),
-            'email_verified_token' => $token,
-        ]);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'is_creator' => 1,
+                'is_active' => 0,
+                'password' => Hash::make($request->password),
+                'email_verified_token' => $token,
+            ]);
+            $user->wallets()->create();
             CreatorInfo::create([
                 'user_id' => $user->id,
                 'country_id' => $request->country_id,

@@ -27,6 +27,7 @@ class CreatorTableSeeder extends Seeder
                 'email_verified_at' => date('Y-m-d H:i:s'),
 
             ]);
+            $user->wallets()->create(['wallet_type_id' => 1]);
             CreatorInfo::create([
                 'user_id' => $user->id,
                 'country_id' => 1,
