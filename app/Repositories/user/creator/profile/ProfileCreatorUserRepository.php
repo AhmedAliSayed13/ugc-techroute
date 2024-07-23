@@ -30,12 +30,12 @@ class ProfileCreatorUserRepository implements ProfileCreatorUserInterface
         $user->email = $request->email;
         $user->address = $request->address;
         $user->phone = $request->phone;
-        if ($request->hasFile('img')) {
+        // if ($request->hasFile('img')) {
 
-            $filePublicManager = new FilePublicManager('system');
-            $imageName = $filePublicManager->updateFile(Auth::user()->img, $request->file('img'), 'users/profiles');
-            $user->img = $imageName;
-        }
+        //     $filePublicManager = new FilePublicManager('system');
+        //     $imageName = $filePublicManager->updateFile(Auth::user()->img, $request->file('img'), 'users/profiles');
+        //     $user->img = $imageName;
+        // }
         $user->save();
         $profile = $user->CreatorInfo;
         $profile->country_id = $request->country_id;
@@ -48,6 +48,23 @@ class ProfileCreatorUserRepository implements ProfileCreatorUserInterface
         DB::commit();
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return true;
+    }
+    public function profileImg($request)
+    {
+        try {
+                $user = Auth::user();
+                if ($request->hasFile('img')) {
+                    $filePublicManager = new FilePublicManager('system');
+                    $imageName = $filePublicManager->updateFile(Auth::user()->img, $request->file('img'), 'users/profiles');
+                    $user->img = $imageName;
+                }
+                $user->save();
+                toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+                return true;
+            } catch (\Throwable $th) {
+                toastr()->error(__('messages.error'), $th->getMessage());
+                return false;
+            }
     }
     public function showFeatureVideos(): array
     {

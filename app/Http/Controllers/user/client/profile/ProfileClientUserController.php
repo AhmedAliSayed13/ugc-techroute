@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\user\client\profile\ProfileClientUserInterface;
 use App\Http\Requests\user\client\profile\ProfileClientRequest;
 use App\Http\Requests\user\client\profile\ChangePasswordClientRequest;
-
+use Illuminate\Http\Request;
 class ProfileClientUserController extends Controller
 {
     protected $profileClientUserInterface;
@@ -30,6 +30,11 @@ class ProfileClientUserController extends Controller
     public function profile(ProfileClientRequest $request)
     {
         $data = $this->profileClientUserInterface->profile($request);
+        return back();
+    }
+    public function profileImg(Request $request)
+    {
+        $data = $this->profileClientUserInterface->profileImg($request);
         return back();
     }
     public function showChangePassword()

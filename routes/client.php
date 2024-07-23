@@ -14,6 +14,8 @@ Route::post('register', [DashboardClientUserController::class, 'register'])->nam
 
 Route::get('profile', [ProfileClientUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileClientUserController::class, 'profile'])->name('profile');
+Route::post('profile/img', [ProfileClientUserController::class, 'profileImg'])->name('profile.img');
+
 Route::get('change-password', [ProfileClientUserController::class, 'showChangePassword'])->name('change.password');
 Route::get('search/creators', [SearchClientUserController::class, 'searchCreators'])->name('search.creators');
 

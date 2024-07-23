@@ -6,6 +6,7 @@ interface ProfileClientUserInterface {
 
     public function showProfile():array;
     public function profile($request);
+    public function profileImg($request);
     public function showChangePassword():array;
     public function changePassword($request);
 

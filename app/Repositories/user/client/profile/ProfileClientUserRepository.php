@@ -32,6 +32,23 @@ class ProfileClientUserRepository implements ProfileClientUserInterface
         toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
         return true;
     }
+    public function profileImg($request)
+    {
+        try {
+                $user = Auth::user();
+                if ($request->hasFile('img')) {
+                    $filePublicManager = new FilePublicManager('system');
+                    $imageName = $filePublicManager->updateFile(Auth::user()->img, $request->file('img'), 'users/profiles');
+                    $user->img = $imageName;
+                }
+                $user->save();
+                toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+                return true;
+            } catch (\Throwable $th) {
+                toastr()->error(__('messages.error'), $th->getMessage());
+                return false;
+            }
+    }
     public function showChangePassword(): array
     {
         $data = array(

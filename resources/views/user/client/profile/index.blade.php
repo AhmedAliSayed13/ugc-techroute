@@ -27,9 +27,9 @@
                         <h4 class="card-title">{{__('messages.ProfileDetails')}}</h4>
                     </div>
                     <div class="card-body py-2 my-25">
-                        <form class="validate-form mt-2 pt-50" method="POST" action="{{route('client.profile')}}"
-                            enctype="multipart/form-data">
-                            @csrf
+                        <form class="validate-form mt-2 pt-50" method="POST" id="profileImgForm" action="{{route('client.profile.img')}}"
+                        enctype="multipart/form-data">
+                        @csrf
                             <!-- header section -->
                             <div class="d-flex">
                                 <a href="#" class="me-25">
@@ -54,9 +54,12 @@
                                 <!--/ upload and reset button -->
                             </div>
                             <!--/ header section -->
+                        </form>
+
 
                             <!-- form -->
-
+                        <form class="validate-form mt-2 pt-50" method="POST" action="{{route('client.profile')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-6 mb-1">
                                     <label class="form-label" for="name">{{__('messages.name')}}</label>
@@ -144,4 +147,20 @@
     </div>
 
 
+@endsection
+
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('account-upload');
+        const form = document.getElementById('profileImgForm');
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                form.submit();
+            }
+        });
+    });
+
+</script>
 @endsection

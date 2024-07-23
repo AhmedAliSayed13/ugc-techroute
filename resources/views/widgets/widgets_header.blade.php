@@ -1,5 +1,7 @@
-<script src="//code.tidio.co/ayj6imnsmwpdyc9ftjae6gkv1h7drfjw.js" async></script>
 
+@if(Auth::check())
+<script src="//code.tidio.co/ayj6imnsmwpdyc9ftjae6gkv1h7drfjw.js" async></script>
+@endif
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ENG5Y0V10Z"></script>
 <script>

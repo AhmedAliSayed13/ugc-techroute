@@ -28,6 +28,11 @@ class ProfileCreatorUserController extends Controller
         $data = $this->profileCreatorUserInterface->profile($request);
         return back();
     }
+    public function profileImg(Request $request)
+    {
+        $data = $this->profileCreatorUserInterface->profileImg($request);
+        return back();
+    }
     public function showFeatureVideos()
     {
         $data = $this->profileCreatorUserInterface->showFeatureVideos();
