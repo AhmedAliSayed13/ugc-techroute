@@ -45,7 +45,7 @@
     @endif
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -74,12 +74,13 @@
 
                                 <h2 class="card-title fw-bolder mb-1">{{__('messages.VerifyYourEmail')}} ✉️</h2>
                                 <p class="card-text mb-2">
-                                   {{__('messages.verificationMailSent')}}
-                                   <span class="text-primary">{{isset($email)?$email: ''}}</span> <br>
-                                   {{__('messages.verificationMailSent2')}}
+                                    {{__('messages.verificationMailSent')}}
+                                    <span class="text-primary">{{isset($email)?$email: ''}}</span> <br>
+                                    {{__('messages.verificationMailSent2')}}
                                 </p>
 
-                                <a href="{{route('user.login')}}" class="btn btn-primary w-100">{{__('messages.backToLogin')}}</a>
+                                <a href="{{route('user.login')}}"
+                                    class="btn btn-primary w-100">{{__('messages.backToLogin')}}</a>
 
                                 {{-- <p class="text-center mt-2">
                                     <span>Didn't receive an email? </span><a

@@ -46,7 +46,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
     <!-- END: Custom CSS-->
 
-     @if (App::getLocale() === 'en')
+    @if (App::getLocale() === 'en')
     <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
     @endif
 
@@ -61,17 +61,21 @@
             background-color: #f9f9f9;
             position: relative;
         }
+
         .upload-container:hover {
             background-color: #e9ecef;
         }
+
         .upload-message {
             font-size: 1.2rem;
             color: #6c757d;
             margin-bottom: 20px;
         }
+
         .upload-input {
             display: none;
         }
+
         .upload-btn {
             display: inline-block;
             padding: 10px 20px;
@@ -81,15 +85,18 @@
             cursor: pointer;
             margin-top: 20px;
         }
+
         .upload-btn:hover {
             background-color: #0056b3;
         }
+
         .file-list {
             margin-top: 20px;
             text-align: left;
             max-height: 150px;
             overflow-y: auto;
         }
+
         .file-list p {
             margin: 0;
             font-size: 1rem;
@@ -99,7 +106,7 @@
 
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -150,8 +157,10 @@
                                     <div class="col-md-12">
                                         <div class="upload-container" id="upload-container">
                                             <div class="upload-message">{{__('messages.dropFeatureVideos')}}</div>
-                                            <input type="file" name="videos[]" id="upload-input" class="upload-input" multiple accept="video/*" required>
-                                            <label for="upload-input" class="upload-btn">{{__('messages.selectVideos')}}</label>
+                                            <input type="file" name="videos[]" id="upload-input" class="upload-input"
+                                                multiple accept="video/*" required>
+                                            <label for="upload-input"
+                                                class="upload-btn">{{__('messages.selectVideos')}}</label>
                                             <div class="file-list" id="file-list"></div>
                                         </div>
 

@@ -46,7 +46,7 @@
     @endif
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -77,15 +77,16 @@
                                 <h4 class="card-title mb-1"> {{__('messages.reset_password')}}</h4>
                                 <p class="card-text mb-2">{{__('messages.reset_password_description')}}</p>
 
-                                <form class="auth-forgot-password-form mt-2"
-                                    action="{{ route('user.reset.password') }}" method="POST">
+                                <form class="auth-forgot-password-form mt-2" action="{{ route('user.reset.password') }}"
+                                    method="POST">
                                     @csrf
 
                                     <input type="hidden" name="key" value="{{ $data['token'] }}">
                                     <input type="hidden" name="email" value="{{ $data['email'] }}">
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="reset-password-new">{{__('messages.new_password')}}</label>
+                                            <label class="form-label"
+                                                for="reset-password-new">{{__('messages.new_password')}}</label>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge"
@@ -95,12 +96,13 @@
                                                     data-feather="eye"></i></span>
                                         </div>
                                         @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-1">
                                         <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="reset-password-confirm">{{__('messages.confirm_password')}}</label>
+                                            <label class="form-label"
+                                                for="reset-password-confirm">{{__('messages.confirm_password')}}</label>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge"
@@ -110,10 +112,11 @@
                                                     data-feather="eye"></i></span>
                                         </div>
                                         @if ($errors->has('password_confirmation'))
-                                            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                                         @endif
                                     </div>
-                                    <button class="btn btn-primary w-100" tabindex="3">{{__('messages.set_new_password')}}</button>
+                                    <button class="btn btn-primary w-100"
+                                        tabindex="3">{{__('messages.set_new_password')}}</button>
                                 </form>
 
                                 <p class="text-center mt-2">

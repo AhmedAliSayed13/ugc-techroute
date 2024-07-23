@@ -47,7 +47,7 @@
     <!-- END: Custom CSS--> --}}
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -77,10 +77,12 @@
                             </h2>
                             <p class="mb-2">
                                 {{__('messages.welcomeForgetPasswordDescription')}}<br>
-                                <span class="fw-bold text-primary">{{isset($data['email']) ? $data['email'] : ''}}</span>
+                                <span class="fw-bold text-primary">{{isset($data['email']) ? $data['email'] :
+                                    ''}}</span>
 
                             </p>
-                            <a class="btn btn-primary mb-1 btn-sm-block" href="{{route('user.login')}}">{{__('messages.back_to_login')}}</a>
+                            <a class="btn btn-primary mb-1 btn-sm-block"
+                                href="{{route('user.login')}}">{{__('messages.back_to_login')}}</a>
                             <img class="img-fluid" src="{{asset('users-asset/images/pages/not-authorized.svg')}}"
                                 alt="Not authorized page" />
                         </div>

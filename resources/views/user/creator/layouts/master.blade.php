@@ -8,7 +8,7 @@
     @yield('style')
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->

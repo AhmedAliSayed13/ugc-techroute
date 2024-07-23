@@ -45,9 +45,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
     <!-- END: Custom CSS--> --}}
-    
+
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -79,7 +79,8 @@
                                 {{__('messages.register_completed_successfully')}}
 
                             </p>
-                            {{-- <a class="btn btn-primary mb-1 btn-sm-block" href="auth-login-cover.html">Back to login</a> --}}
+                            {{-- <a class="btn btn-primary mb-1 btn-sm-block" href="auth-login-cover.html">Back to
+                                login</a> --}}
                             <img class="img-fluid" src="{{asset('users-asset')}}/images/pages/not-authorized.svg"
                                 alt="Not authorized page" />
                         </div>

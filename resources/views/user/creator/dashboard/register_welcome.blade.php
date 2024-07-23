@@ -47,7 +47,7 @@
     <!-- END: Custom CSS--> --}}
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 </head>
 <!-- END: Head-->
@@ -83,7 +83,8 @@
                                 <br>
                                 <span class="fw-bold text-primary">{{isset($email)?$email: ''}}</span>
                             </p>
-                            {{-- <a class="btn btn-primary mb-1 btn-sm-block" href="auth-login-cover.html">Back to login</a> --}}
+                            {{-- <a class="btn btn-primary mb-1 btn-sm-block" href="auth-login-cover.html">Back to
+                                login</a> --}}
                             <img class="img-fluid" src="{{asset('users-asset/images/pages/not-authorized.svg')}}"
                                 alt="Not authorized page" />
                         </div>

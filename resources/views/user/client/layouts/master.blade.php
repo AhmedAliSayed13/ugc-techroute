@@ -9,7 +9,7 @@
 
 
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 
 
 </head>
@@ -31,7 +31,7 @@
 
     <!-- BEGIN: Content-->
 
-                @yield('content')
+    @yield('content')
 
     <!-- END: Content-->
 

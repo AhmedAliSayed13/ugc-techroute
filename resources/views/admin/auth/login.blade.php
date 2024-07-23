@@ -25,7 +25,7 @@
     <!-- icons -->
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     {{-- add wedget header style --}}
-    @include('wedgets.wedget_header')
+    @include('widgets.widgets_header')
 </head>
 
 <body class="loading authentication-bg authentication-bg-pattern">
@@ -115,7 +115,8 @@
             <div class="auth-user-testimonial">
                 <h2 class="mb-3 text-white">{{config('app.name')}}</h2>
                 <p class="lead"><i class="mdi mdi-format-quote-open"></i>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s
                     <i class="mdi mdi-format-quote-close"></i>
                 </p>
 
