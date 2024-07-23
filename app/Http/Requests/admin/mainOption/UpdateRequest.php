@@ -25,7 +25,8 @@ class UpdateRequest extends FormRequest
     {
 
         return [
-            'name' => 'required|unique:main_options,name,' . request()->id . ',id',
+            'name_client' => 'required',
+            'name_creator' => 'required',
 
         ];
     }

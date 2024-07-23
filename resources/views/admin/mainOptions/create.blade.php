@@ -16,7 +16,8 @@
                         <form action="{{route('admin.main-options.store')}}" method="post">
                             @csrf
 
-                            <x-FormInput :type="'text'" :title="'name'" :name="'name'" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'title for client'" :name="'name_client'" :width="'12'" />
+                            <x-FormInput :type="'text'" :title="'title for creator'" :name="'name_creator'" :width="'12'" />
                             <x-FormSwitch :title="'active'" :name="'is_active'" :width="'12'" />
                             <x-FormSubmit :title="'Create'" />
 

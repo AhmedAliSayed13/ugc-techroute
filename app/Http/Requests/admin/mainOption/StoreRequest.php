@@ -24,7 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:main_options,name',
+            'name_client' => 'required',
+            'name_creator' => 'required',
 
         ];
     }
