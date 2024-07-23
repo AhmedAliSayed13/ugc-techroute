@@ -24,7 +24,8 @@
 
     <!-- icons -->
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
 </head>
 
 <body class="loading authentication-bg authentication-bg-pattern">

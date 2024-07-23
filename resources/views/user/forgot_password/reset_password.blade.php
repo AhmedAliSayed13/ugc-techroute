@@ -44,6 +44,10 @@
     @if (App::getLocale() === 'en')
     <link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
     @endif
+
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
+
 </head>
 <!-- END: Head-->
 

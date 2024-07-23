@@ -7,6 +7,11 @@
     @include('user.client.layouts.style')
     @yield('style')
 
+
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
+
+
 </head>
 <!-- END: Head-->
 
@@ -27,7 +32,7 @@
     <!-- BEGIN: Content-->
 
                 @yield('content')
-            
+
     <!-- END: Content-->
 
     <!-- BEGIN: Footer-->

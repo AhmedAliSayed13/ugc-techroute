@@ -45,6 +45,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('users-asset')}}/css-rtl/custom-rtl.css">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
     <!-- END: Custom CSS--> --}}
+    
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
 
 </head>
 <!-- END: Head-->

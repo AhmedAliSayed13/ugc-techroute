@@ -7,6 +7,9 @@
     @include('user.creator.layouts.style')
     @yield('style')
 
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
+
 </head>
 <!-- END: Head-->
 

@@ -96,6 +96,11 @@
             color: #495057;
         }
     </style>
+
+
+    {{-- add wedget header style --}}
+    @include('wedgets.wedget_header')
+
 </head>
 <!-- END: Head-->
 
