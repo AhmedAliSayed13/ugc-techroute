@@ -13,6 +13,8 @@ use App\Repositories\admin\mainOption\MainOptionAdminInterface;
 use App\Repositories\admin\mainOption\MainOptionAdminRepository;
 use App\Repositories\admin\valueOption\ValueOptionAdminInterface;
 use App\Repositories\admin\valueOption\ValueOptionAdminRepository;
+use App\Repositories\admin\order\OrderAdminInterface;
+use App\Repositories\admin\order\OrderAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -104,16 +106,13 @@ class RepositoryServiceProvider extends ServiceProvider
             ValueOptionAdminRepository::class
         );
 
-        //AUTH
+        // order
         $this->app->bind(
-            AuthUserInterface::class,
-            AuthUserRepository::class
+            OrderAdminInterface::class,
+            OrderAdminRepository::class
         );
-        //ForgotPassword
-        $this->app->bind(
-            ForgotPasswordUserInterface::class,
-            ForgotPasswordUserRepository::class
-        );
+
+
         //Creator-----------------------------------------------
         $this->app->bind(
             DashboardCreatorUserInterface::class,
@@ -176,6 +175,19 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             FeaturesClientUserInterface::class,
             FeaturesClientUserRepository::class
+        );
+
+        // User
+
+        //AUTH
+        $this->app->bind(
+            AuthUserInterface::class,
+            AuthUserRepository::class
+        );
+        //ForgotPassword
+        $this->app->bind(
+            ForgotPasswordUserInterface::class,
+            ForgotPasswordUserRepository::class
         );
 
         // --------------------------------------------------website

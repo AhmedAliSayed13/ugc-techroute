@@ -10,17 +10,19 @@
 
                         </form>
                     </div>
-                    @if($addUrl)
+
                     <div class="col-md-4">
                         <div class="text-md-end mt-3 mt-md-0">
                             <button type="button" class="btn btn-success waves-effect waves-light me-1"
                                 data-bs-toggle="modal" data-bs-target="#search-modal"><i
                                     class="fas fa-search"></i></button>
+                                    @if($addUrl )
                             <a type="button" href="{{$addUrl}}" class="btn btn-danger waves-effect waves-light"><i
                                     class="mdi mdi-plus-circle me-1"></i> Add New</a>
+                                    @endif
                         </div>
                     </div><!-- end col-->
-                    @endif
+
 
 
                 </div> <!-- end row -->
@@ -48,7 +50,7 @@
                 @endphp
 
                 <form class="px-3" method="" action="">
-                   
+
 
                     <div class="mb-1">
                         <label for="perpage" class="me-2">perpage</label>
@@ -82,7 +84,7 @@
                             <select class="form-select my-1 my-md-0" id="sortbox" name="{{$formItem['name']}}">
                                 <option value="">Select</option>
                                 @foreach ($formItem['options'] as $item)
-                                    <option value="{{$item->id}}" 
+                                    <option value="{{$item->id}}"
                                         {{OptionSelect($item->id,request()->input($formItem['name']))}}>
                                         {{$item->name}}
                                     </option>
@@ -90,23 +92,23 @@
 
                             </select>
                         </div>
-                        
+
                     @elseif($formItem['type']=='checkbox')
                         <div class="mb-1">
                             <label for="{{$formItem['name']}}" class="form-label">{{$formItem['title']}}</label>
                             <select class="form-select my-1 my-md-0" id="sortbox" name="{{$formItem['name']}}">
                                 <option  value="" >Select</option>
-                            
-                                    <option  
+
+                                    <option
                                         {{OptionSelect("1",request()->input($formItem['name']))}} value="1">
                                         ON
                                     </option>
 
-                                    <option  
+                                    <option
                                         {{OptionSelect("0",request()->input($formItem['name']))}} value="0">
                                         OFF
                                     </option>
-                                
+
 
                             </select>
                         </div>

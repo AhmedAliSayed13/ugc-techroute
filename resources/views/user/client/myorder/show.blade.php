@@ -2,6 +2,7 @@
 
 @section('style')
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
+
 @endsection
 {{-- @section('breadcrumb')
 

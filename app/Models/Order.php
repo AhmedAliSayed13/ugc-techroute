@@ -17,9 +17,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use eloquentFilter\QueryFilter\ModelFilters\Filterable;
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $table = 'orders';
@@ -44,6 +45,37 @@ class Order extends Model
         'created_at',
 
     ];
+
+    private static $whiteListFilter = ['*'];
+    public function searchFormItems()
+    {
+        return [
+            [
+                'type' => 'text',
+                'title' => 'Key',
+                'name' => 'key',
+
+            ],
+            [
+                'type' => 'select',
+                'title' => 'Paid',
+                'name' => 'paid',
+                'options' => [
+                    (object) ['id' => '0', 'name' => 'Not Paid'],
+                    (object) ['id' => '1', 'name' => 'Paid'],
+                ],
+            ]
+        ];
+    }
+
+    public function showDetails()
+    {
+        return array(
+            'name' => $this->paid,
+            'Paid' => $this->paid ? 'ON' : 'OFF',
+        );
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -139,6 +171,10 @@ class Order extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\mainOption\MainOptionAdminController;
 use App\Http\Controllers\admin\role\RoleAdminController;
 use App\Http\Controllers\admin\user\UserAdminController;
 use App\Http\Controllers\admin\valueOption\ValueOptionAdminController;
+use App\Http\Controllers\admin\order\OrderAdminController;
 
 Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login')->withoutMiddleware('AdminAuth');
 Route::post('login', [AuthAdminController::class, 'login'])->name('login')->withoutMiddleware('AdminAuth');
@@ -13,6 +14,10 @@ Route::post('logout', [AuthAdminController::class, 'logout'])->name('logout');
 Route::get('dashboard', [DashboardAdminController::class, 'ShowDashboard'])->name('dashboard');
 Route::resource('roles', RoleAdminController::class);
 Route::resource('users', UserAdminController::class);
+Route::resource('orders', OrderAdminController::class)->only([
+    'index', 'show','edit','update'
+]);
+Route::post('orders/confirm/{id}', [OrderAdminController::class, 'orderConfirm'])->name('orders.confirm');
 Route::resource('main-options', MainOptionAdminController::class);
 // Route::resource('value-options',ValueOptionAdminController::class);
 Route::group(['prefix' => 'value-options', 'as' => 'value-options.'], function () {
