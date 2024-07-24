@@ -454,7 +454,7 @@ return [
     'amount' => 'المبلغ',
     'no_records_found' => 'لا يوجد سجلات',
     'wallet_balance' => 'رصيد المحفظة',
-    'text' => 'text',
+    'remember_me' => 'تذكرني',
     'text' => 'text',
 
 ];

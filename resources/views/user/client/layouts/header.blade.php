@@ -147,7 +147,9 @@
             <li class="nav-item  me-25">
                 <a class="nav-link" href="{{route('client.chats.index')}}">
                     <i class="ficon" data-feather="message-circle"></i>
+                    @if(getCountUnReadMessages()>0)
                     <span class="badge rounded-pill bg-danger badge-up">{{getCountUnReadMessages()}}</span>
+                    @endif
                 </a>
 
             </li>

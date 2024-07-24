@@ -111,7 +111,7 @@
                                             <input class="form-check-input" type="checkbox" id="remember-me"
                                                 tabindex="3" />
                                             <label class="form-check-label" for="remember-me">
-                                                {{__('messages.forgetPassword')}} </label>
+                                                {{__('messages.remember_me')}} </label>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary w-100" tabindex="4">{{__('messages.login')}}</button>
