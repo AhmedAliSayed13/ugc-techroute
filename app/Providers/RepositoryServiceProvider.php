@@ -35,6 +35,8 @@ use App\Repositories\user\client\chat\ChatClientUserInterface;
 use App\Repositories\user\client\chat\ChatClientUserRepository;
 use App\Repositories\user\client\features\FeaturesClientUserInterface;
 use App\Repositories\user\client\features\FeaturesClientUserRepository;
+use App\Repositories\user\client\shipping\ShippingsClientUserInterface;
+use App\Repositories\user\client\shipping\ShippingsClientUserRepository;
 //creator
 use App\Repositories\user\client\search\SearchClientUserInterface;
 use App\Repositories\user\client\search\SearchClientUserRepository;
@@ -175,6 +177,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             FeaturesClientUserInterface::class,
             FeaturesClientUserRepository::class
+        );
+        //shipping
+        $this->app->bind(
+            ShippingsClientUserInterface::class,
+            ShippingsClientUserRepository::class
         );
 
         // User

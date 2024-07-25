@@ -81,6 +81,18 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-6 ">
+                                            <div class="mb-1">
+                                                <label class="form-label"
+                                                    for="shipping">{{__('messages.have_shipping')}}</label>
+                                                    <div class="form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input" name="shipping" value="1"  />
+                                                    </div>
+                                                @error('shipping')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
 
                                     @include('user.client.order.tap_footer')

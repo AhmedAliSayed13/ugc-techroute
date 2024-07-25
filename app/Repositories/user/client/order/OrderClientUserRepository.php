@@ -120,6 +120,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
             $order->product_instructions = $request->product_instructions;
             $order->product_description = $request->product_description;
             $order->status = 3;
+            $order->shipping = $request->shipping?1:0;
             $order->save();
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
             return $key;

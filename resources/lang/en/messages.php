@@ -455,6 +455,17 @@ return [
     'no_records_found' => 'لا يوجد سجلات',
     'wallet_balance' => 'رصيد المحفظة',
     'remember_me' => 'تذكرني',
+    'have_shipping' => 'لديك شحنة؟',
+    'shippings' => 'شحنات',
+    'shipping_key' => ' رقم الشحنة',
+    'tracking_url' => 'رابط التتبع',
+    'Due_to_ship' => 'لم يتم الشحن',
+    'shipped' => 'تم الشحن',
+    'all_shippments' => 'كل الشحنات',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
     'text' => 'text',
 
 ];

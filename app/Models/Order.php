@@ -13,6 +13,7 @@ use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionType;
 use App\Models\Whitelist;
+use App\Models\Shipping;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -37,6 +38,7 @@ class Order extends Model
         'gender',
         'total',
         'paid',
+        'shipping',
         'status',
         'product_name',
         'product_link',
@@ -175,6 +177,10 @@ class Order extends Model
     public function client()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    public function shippings()
+    {
+        return $this->hasMany(Shipping::class);
     }
 
 

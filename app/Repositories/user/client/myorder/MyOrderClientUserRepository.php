@@ -5,7 +5,7 @@ use App\Models\OrderRequest;
 use App\Models\Task;
 use Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Shipping;
 class MyOrderClientUserRepository implements MyOrderClientUserInterface
 {
 
@@ -69,12 +69,18 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
             if ($request->status == 1) {
                 $order = $orderRequest->order;
 
-                Task::create(
+                $task=Task::create(
                     [
                         'order_id' => $orderRequest->order_id,
                         'client_id' => $order->user_id,
                         'creator_id' => $orderRequest->creator_id,
                         'order_request_id' => $orderRequest->id,
+                    ]
+                );
+                Shipping::create(
+                    [
+                        'task_id' => $task->id,
+                        'order_id' => $task->order_id,
                     ]
                 );
             }

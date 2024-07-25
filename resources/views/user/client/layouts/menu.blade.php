@@ -53,6 +53,11 @@
                    <a class=" nav-link d-flex align-items-center" href="{{route('client.creators')}}" ><i data-feather="users">
                         </i><span data-i18n="Dashboards">{{__('messages.creators')}}</span></a>
                 </li>
+                <li class="dropdown nav-item {{checkActiveRoute('client.shippings.index')}}" >
+                   <a class=" nav-link d-flex align-items-center" href="{{route('client.shippings.index')}}" ><i data-feather="gift">
+                        </i><span data-i18n="Dashboards">{{__('messages.shippings')}}</span></a>
+
+                </li>
 
 
             </ul>

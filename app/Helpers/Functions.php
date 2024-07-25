@@ -158,3 +158,13 @@ if (!function_exists('getCountUnReadMessages')) {
     }
 
 }
+if (!function_exists('checkParamaterInUrl')) {
+
+    function checkParamaterInUrl($parameterName, $value)
+    {
+
+        return request()->get($parameterName) == $value ? 'active' : '';
+
+    }
+
+}

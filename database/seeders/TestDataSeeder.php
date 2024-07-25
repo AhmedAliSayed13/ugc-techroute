@@ -96,6 +96,7 @@ $user->wallets()->create(['wallet_type_id' => 2]);
             'total' => 596.00,
             'video_price' => 74.50,
             'paid' => 1,
+            'shipping' => 1,
             'product_name' => 'رخصة برنامج Ford IDS & FDRS لمدة سنة واحدة',
             'product_link' => 'https://techroute66.com/product/ford-ids-software/',
             'product_instructions' => 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة...',
