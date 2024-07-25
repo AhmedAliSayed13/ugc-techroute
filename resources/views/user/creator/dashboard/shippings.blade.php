@@ -17,7 +17,6 @@
                     {{__('messages.product')}}: {{ $shipping->order->product_name }}
                 </button>
             </h2>
-
             <div id="shipping{{$shipping->id}}" class="collapse accordion-collapse"
                 aria-labelledby="item{{$shipping->id}}" data-bs-parent="#faq-payment-qna">
                 <div class="accordion-body">
@@ -35,6 +34,19 @@
                                         <tr>
                                             <td>{{__('messages.tracking_url')}}</td>
                                             <td><a href="{{$shipping->tracking}}" target="_blank">{{$shipping->tracking}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{__('messages.shippings_instraction_title')}}</td>
+                                            <td class="d-flex">
+                                                {{__('messages.shippings_instraction_description')}}
+
+                                                <a href="{{route('creator.chats.show', $shipping->task_id)}}" >
+                                                    <div class="icon-wrapper">
+
+                                                        <i data-feather='message-circle' class="text-primary me-1"></i>
+                                                    </div>
+                                                </a>
+                                            </td>
                                         </tr>
 
                                     </tbody>

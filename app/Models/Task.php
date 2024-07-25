@@ -82,6 +82,7 @@ class Task extends Model
             'task_id' => $this->id,
             'user_id' => null,
             'content' => __('messages.task_accepted_message'),
+            'is_read'=>0
         ]);
     }
     public function createModificationMessage(){
@@ -89,13 +90,34 @@ class Task extends Model
             'task_id' => $this->id,
             'user_id' => null,
             'content' => __('messages.task_modification_message'),
+            'is_read'=>0
+        ]);
+    }
+    public function createShippedMessage(){
+        Message::create([
+            'task_id' => $this->id,
+            'user_id' => null,
+            'content' => __('messages.task_shipping_message'),
+            'is_read'=>0
         ]);
     }
     public function countMessageUnRead(){
-        return $this->messages()->where('is_read',0)->where('user_id','!=',Auth::user()->id)->count();
+        return $this->messages()->where('is_read',0)
+        // ->where('user_id','!=',Auth::user()->id)
+        ->where(function($query) {
+            $query->where('user_id', '!=', auth()->id())
+                  ->orWhereNull('user_id');
+        })
+        ->count();
     }
     public function MakeAllMessagesRead(){
-        $this->messages()->where('is_read',0)->where('user_id','!=',Auth::user()->id)->update(['is_read' => true]);
+        $this->messages()->where('is_read',0)
+        // ->where('user_id','!=',Auth::user()->id)
+        ->where(function($query) {
+            $query->where('user_id', '!=', auth()->id())
+                  ->orWhereNull('user_id');
+        })
+        ->update(['is_read' => true]);
         return true;
     }
     public function transactions()

@@ -153,7 +153,13 @@ if (!function_exists('getCountUnReadMessages')) {
         $type=$user->is_creator?'creator_id':'client_id';
         $tasks=Task::where($type,$user->id)->pluck('id')->toArray();
 
-        return Message::whereIn('task_id',$tasks)->where('user_id','!=',$user->id)->where('is_read',0)->count();
+        return Message::whereIn('task_id',$tasks)
+        // ->where('user_id','!=',$user->id)
+        ->where(function($query) {
+            $query->where('user_id', '!=', auth()->id())
+                  ->orWhereNull('user_id');
+        })
+        ->where('is_read',0)->count();
 
     }
 

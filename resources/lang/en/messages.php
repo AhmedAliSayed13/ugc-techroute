@@ -464,8 +464,8 @@ return [
     'all_shippments' => 'كل الشحنات',
     'data_not_found' => 'لا يوجد أي نتائج لعرضها',
     'data_not_found_description' => 'لا يوجد حاليا أي نتائج لعرضها. يرجى تحسين البحث أو التحقق مرة أخرى في وقت لاحق.',
-    'text' => 'text',
-    'text' => 'text',
-    'text' => 'text',
+    'task_shipping_message' => 'تم تعديل بيانات الشحن  بنجاح',
+    'shippings_instraction_title' => 'تعليمات',
+    'shippings_instraction_description' => 'اذا كان هناك اي ملاحظات بخصوص عملية الشحن يرجي التواصل مع صاحب الطلب من خلال محداثة الخدمة ',
 
 ];

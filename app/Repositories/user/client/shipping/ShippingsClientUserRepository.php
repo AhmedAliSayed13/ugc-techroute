@@ -41,6 +41,7 @@ class ShippingsClientUserRepository implements ShippingsClientUserInterface
                 $shipping->tracking = $request->tracking;
                 $shipping->active = 1;
                 $shipping->save();
+                $shipping->task->createShippedMessage();
                 toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
                 return true;
             }
