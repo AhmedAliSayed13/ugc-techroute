@@ -39,7 +39,7 @@ class ShippingsClientUserRepository implements ShippingsClientUserInterface
             if($shipping){
                 $shipping->key = $request->key;
                 $shipping->tracking = $request->tracking;
-                $shipping->active = $request->active?1:0;
+                $shipping->active = 1;
                 $shipping->save();
                 toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
                 return true;
