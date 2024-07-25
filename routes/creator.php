@@ -1,14 +1,14 @@
 <?php
+use App\Http\Controllers\user\creator\chat\ChatCreatorUserController;
 use App\Http\Controllers\user\creator\dashboard\DashboardCreatorUserController;
 use App\Http\Controllers\user\creator\offers\OffersCreatorUserController;
-use App\Http\Controllers\user\creator\tasks\TasksCreatorUserController;
 use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
-use App\Http\Controllers\user\creator\chat\ChatCreatorUserController;
+use App\Http\Controllers\user\creator\tasks\TasksCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
-Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->Middleware('RedirectIfAuthenticated')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
-Route::post('register', [DashboardCreatorUserController::class, 'register'])->name('register')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
-Route::get('register/welcome', [DashboardCreatorUserController::class, 'registerWelcome'])->name('register.welcome')->withoutMiddleware(['CreatorAuth','CheckUserAccountActive']);
+Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->Middleware('RedirectIfAuthenticated')->withoutMiddleware(['CreatorAuth', 'CheckUserAccountActive']);
+Route::post('register', [DashboardCreatorUserController::class, 'register'])->name('register')->withoutMiddleware(['CreatorAuth', 'CheckUserAccountActive']);
+Route::get('register/welcome', [DashboardCreatorUserController::class, 'registerWelcome'])->name('register.welcome')->withoutMiddleware(['CreatorAuth', 'CheckUserAccountActive']);
 
 Route::get('profile', [ProfileCreatorUserController::class, 'showProfile'])->name('profile');
 Route::post('profile', [ProfileCreatorUserController::class, 'profile'])->name('profile');
@@ -27,12 +27,12 @@ Route::get('options', [ProfileCreatorUserController::class, 'showOptions'])->nam
 Route::post('options', [ProfileCreatorUserController::class, 'options'])->name('options');
 
 Route::resource('offers', OffersCreatorUserController::class)->only([
-    'index', 'show'
+    'index', 'show',
 ]);
 Route::get('offers/request/send/{id}', [OffersCreatorUserController::class, 'requestSend'])->name('offers.request.send');
 Route::get('offers/whitelist/{id}', [OffersCreatorUserController::class, 'whitelist'])->name('offers.whitelist');
 Route::resource('tasks', TasksCreatorUserController::class)->only([
-    'index', 'show','edit','update'
+    'index', 'show', 'edit', 'update',
 ]);
 
 Route::resource('chats', ChatCreatorUserController::class)->only([
@@ -40,3 +40,4 @@ Route::resource('chats', ChatCreatorUserController::class)->only([
 ]);
 
 Route::get('wallet', [DashboardCreatorUserController::class, 'showWallet'])->name('wallet');
+Route::get('shippings', [DashboardCreatorUserController::class, 'shippings'])->name('shippings');

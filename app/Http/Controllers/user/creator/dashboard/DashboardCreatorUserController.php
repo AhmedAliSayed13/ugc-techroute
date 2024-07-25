@@ -43,5 +43,11 @@ class DashboardCreatorUserController extends Controller
         // return $data;
         return view($this->path . 'wallet', compact('data'));
     }
+    public function shippings()
+    {
+        $data = $this->dashboardCreatorUserInterface->shippings();
+        // return $data;
+        return view($this->path . 'shippings', compact('data'));
+    }
 
 }

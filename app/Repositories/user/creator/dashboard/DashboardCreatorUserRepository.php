@@ -5,6 +5,8 @@ use App\Models\CreatorInfo;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Order;
+use App\Models\Shipping;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Str;
@@ -75,6 +77,16 @@ class DashboardCreatorUserRepository implements DashboardCreatorUserInterface
         $data = array(
             'wallet' => $wallet,
             'transactions' => $transactions,
+        );
+        return $data;
+    }
+    public function shippings(): array
+    {
+        $ordersIds = Order::where(['shipping' => 1])->where('status', '>', 4)->pluck('id');
+        $tasks=Task::whereIn('order_id',$ordersIds)->where('creator_id',Auth::user()->id)->pluck('id');
+        $shippings=Shipping::whereIn('task_id',$tasks)->where('active',1)->paginate(Request('limit') ? Request('limit') : 10);
+        $data = array(
+            'shippings' => $shippings
         );
         return $data;
     }
