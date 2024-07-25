@@ -66,7 +66,7 @@
         </div>
 
         <div class="row">
-
+            @if(isset($data['shippings']) && count($data['shippings'])>0)
             <div class="accordion accordion-margin mt-2" id="faq-payment-qna">
                 @foreach ($data['shippings'] as $shipping)
 
@@ -119,6 +119,11 @@
                 {{$data['shippings']->appends(Request::except('page'))->links('pagination::bootstrap-4')}}
 
             </p>
+
+
+            @else
+                @include('widgets.wedgets_data_not_found')
+            @endif
         </div>
 
 
