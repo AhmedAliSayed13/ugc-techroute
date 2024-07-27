@@ -400,5 +400,21 @@ body .ps__rail-y {
 .btn-dwonload:hover {
   color: white !important;
 }
+ .badge.icon-l svg{
+    height: 24px;
+width: 18px;
+font-size: 41px;
+stroke-width: 3;
+vertical-align: text-top;
+}
 
+svg.icon-f-l{
+    height: 20px;
+    width: 20px;
+    font-size: 41px;
+    stroke-width: 3;
+    vertical-align: text-top;
+    margin-left: 5px;
+    margin-right: 5px;
+}
 

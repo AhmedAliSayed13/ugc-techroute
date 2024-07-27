@@ -1,33 +1,28 @@
 @extends('user.creator.layouts.master')
 
 @section('style')
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/pages/app-ecommerce.css')}}">
-<style>
-    .ecommerce-application .list-view .ecommerce-card {
-        grid-template-columns: 1fr 0.5fr !important;
-    }
+    <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/plugins/forms/form-validation.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/pages/app-ecommerce.css')}}">
+    <style>
+        .ecommerce-application .list-view .ecommerce-card {
+            grid-template-columns: 1fr 0.5fr !important;
+        }
 
-    .btn-wishlist.text-danger svg {
-        fill: #EA5455;
-    }
+        .ibtn-wshlist.text-danger svg {
+            fill: #EA5455;
+        }
 
-    .btn-wishlist.text-danger span {
-        color: black !important;
-    }
+        .btn-wishlist.text-danger span {
+            color: black !important;
+        }
 
-    .btn-send-request:hover {
-        color: white !important;
-    }
-</style>
+        .btn-send-request:hover {
+            color: white !important;
+        }
+    </style>
 @endsection
-{{-- @section('breadcrumb')
-<x-breadcrumb_user :section="__('messages.myaccount')" :sectionUrl="route('creator.offers.index')"
-    :title="__('messages.offers')" />
-@endsection --}}
 
 @section('content')
-
 
 <div class=" content ecommerce-application">
 
@@ -109,13 +104,22 @@
                             </a>
                             @endif --}}
 
+
+
                             <a href="{{route('creator.offers.whitelist', $offer->id)}}"
-                                class="badge badge-glow bg-primary btn-wishlist">
+                                title="{{__('messages.add_to_whitelist')}}"
+                                class="badge badge-light-primary icon-l btn-wishlist">
                                 <i class="@if($offer->hasWhitelist()) text-danger @endif" data-feather="heart"></i>
-                                <span>{{__('messages.wishlist')}}</span>
                             </a>
+                            @if($offer->shipping)
+                            <a title="{{__('messages.have_shipping')}}" class="badge badge-light-primary icon-l ">
+                                <i data-feather="gift"></i>
+                            </a>
+                            @endif
+
                         </div>
                     </div>
+
                     <h6 class="item-name">
 
 
@@ -133,14 +137,22 @@
                             @php \Carbon\Carbon::setLocale('ar') @endphp
                             <span>{{__('messages.publish_date')}}: {{$offer->created_at->diffForHumans()}}</span>
                         </p>
+                        <p class="card-text item-description">
+                            <span class="text-primary">{{__('messages.product_description')}}:</span><br>
+                            {{$offer->product_description}}
+                        </p>
+                        @if($offer->shipping)
+
+                        {{-- <p class="card-text item-description"></p>
+                        <span class="text-primary">{{__('messages.have_shipping')}}:</span><br>
+                        {{$offer->shipping}}
+                        </p> --}}
+                        @endif
 
 
                     </h6>
 
-                    <p class="card-text item-description">
-                        <span class="text-primary">{{__('messages.product_description')}}:</span><br>
-                        {{$offer->product_description}}
-                    </p>
+
                 </div>
                 <div class="item-options text-center">
                     <div class="item-wrapper">
@@ -154,18 +166,17 @@
 
                     @if(!$offer->hasUserSentRequest())
 
-                        <a
-                            class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
-                            <i data-feather="send"></i>
-                            <span>{{__('messages.request_sent')}}</span>
-                        </a>
+                    <a class="btn btn-light btn-wishlist @if($offer->hasWhitelist()) text-danger @endif">
+                        <i data-feather="send"></i>
+                        <span>{{__('messages.request_sent')}}</span>
+                    </a>
                     @else
-                        <a href="{{route('creator.offers.request.send', $offer->id)}}"
-                            class="btn btn-light btn-wishlist ">
-                            <i data-feather="send"></i>
-                            <span>{{__('messages.send_request')}}</span>
-                        </a>
+                    <a href="{{route('creator.offers.request.send', $offer->id)}}" class="btn btn-light btn-wishlist ">
+                        <i data-feather="send"></i>
+                        <span>{{__('messages.send_request')}}</span>
+                    </a>
                     @endif
+
                     <a href="{{route('creator.offers.show', $offer->id)}}" class="btn btn-primary btn-cart">
                         <i data-feather="eye"></i>
                         <span class="add-to-cart">{{__('messages.showDetails')}} </span>
@@ -195,25 +206,24 @@
 
 
 </div>
-</div>
-
 
 @endsection
+
 @section('script')
-<script src="{{asset('users-asset/vendors/js/extensions/wNumb.min.js')}}"></script>
-<script src="{{asset('users-asset/vendors/js/extensions/nouislider.min.js')}}"></script>
+    <script src="{{asset('users-asset/vendors/js/extensions/wNumb.min.js')}}"></script>
+    <script src="{{asset('users-asset/vendors/js/extensions/nouislider.min.js')}}"></script>
 
-<script src="{{asset('users-asset/js/scripts/pages/app-ecommerce.js')}}"></script>
-<!-- END: Page JS-->
+    <script src="{{asset('users-asset/js/scripts/pages/app-ecommerce.js')}}"></script>
+    <!-- END: Page JS-->
 
-<script>
-    $(window).on('load', function() {
-            if (feather) {
-                feather.replace({
-                    width: 14,
-                    height: 14
-                });
-            }
-        })
-</script>
+    <script>
+        $(window).on('load', function() {
+                if (feather) {
+                    feather.replace({
+                        width: 14,
+                        height: 14
+                    });
+                }
+            })
+    </script>
 @endsection

@@ -15,6 +15,7 @@
                     {{__('messages.order_key')}}: {{ $shipping->task->getTaskKey() }} <span
                         class="m-1 text-primary font-12"><i data-feather='chevron-right'></i></span>
                     {{__('messages.product')}}: {{ $shipping->order->product_name }}
+
                 </button>
             </h2>
             <div id="shipping{{$shipping->id}}" class="collapse accordion-collapse"
@@ -34,6 +35,16 @@
                                         <tr>
                                             <td>{{__('messages.tracking_url')}}</td>
                                             <td><a href="{{$shipping->tracking}}" target="_blank">{{$shipping->tracking}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{__('messages.order_details')}}</td>
+                                            <td class="d-flex">
+                                                {{__('messages.forShowOrderdetailsClickHere')}}
+
+                                                <a class="icon-l" data-bs-toggle="offcanvas" data-bs-target="#taskDetails{{$shipping->task->id}}" aria-controls="task{{$shipping->task->id}}" >
+                                                        <i  data-feather='list' class="text-primary icon-f-l  "></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>{{__('messages.shippings_instraction_title')}}</td>
@@ -61,6 +72,10 @@
             </div>
         </div>
 
+        <x-order_creator :task="$shipping->task" />
+            {{-- <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#taskDetails{{$shipping->task->id}}" aria-controls="task{{$shipping->task->id}}">
+                Toggle End
+            </button> --}}
         @endforeach
 
     </div>

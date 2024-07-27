@@ -53,10 +53,10 @@
             {{-- {{isset($id)?$id:'null'}} --}}
             <ul class="nav justify-content-center nav-pills nav-pill-primary my-2 ">
                 <li class="nav-item border border-primary  rounded m-1 ">
-                    <a class="nav-link {{checkParamaterInUrl('status','true')}}" href="?status=true" >{{__('messages.Due_to_ship')}}</a>
+                    <a class="nav-link {{checkParamaterInUrl('status','false')}}" href="?status=false" >{{__('messages.Due_to_ship')}}</a>
                 </li>
                 <li class="nav-item border border-primary  rounded m-1">
-                    <a class="nav-link {{checkParamaterInUrl('status','false')}}" href="?status=false" >{{__('messages.shipped')}}</a>
+                    <a class="nav-link {{checkParamaterInUrl('status','true')}}" href="?status=true" >{{__('messages.shipped')}}</a>
                 </li>
                 <li class="nav-item border border-primary  rounded m-1">
                     <a class="nav-link {{checkParamaterInUrl('status','all')}}" href="?status=all" >{{__('messages.all_shippments')}}</a>
@@ -75,7 +75,11 @@
                             <button class="accordion-button collapsed" data-bs-toggle="collapse" role="button"
                                 data-bs-target="#shipping{{$shipping->id}}" aria-expanded="false" aria-controls="shipping{{$shipping->id}}">
                             {{__('messages.order_key')}}:  {{ $shipping->task->getTaskKey() }} <span class="m-1 text-primary font-12"><i data-feather='chevron-right'></i></span> {{__('messages.product')}}:  {{ $shipping->order->product_name }}
-                            </button>
+                            @if($shipping->active)
+                                <span class="badge badge-light-primary">{{__('messages.shipped')}}</span>
+                            @endif
+                        </button>
+
                         </h2>
 
                         <div id="shipping{{$shipping->id}}" class="collapse accordion-collapse" aria-labelledby="item{{$shipping->id}}"

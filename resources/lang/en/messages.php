@@ -467,5 +467,13 @@ return [
     'task_shipping_message' => 'تم تعديل بيانات الشحن  بنجاح',
     'shippings_instraction_title' => 'تعليمات',
     'shippings_instraction_description' => 'اذا كان هناك اي ملاحظات بخصوص عملية الشحن يرجي التواصل مع صاحب الطلب من خلال محداثة الخدمة ',
-
+    'shipped' => 'تم الشحن',
+    'add_to_whitelist' => 'اضافة للقائمة المفضلة',
+    'have_shipping' => 'ستحصل علي هدية',
+    'forShowOrderdetailsClickHere' => 'لعرض تفاصيل الطلب بالكامل ، الضغط هنا',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
+    'text' => 'text',
 ];

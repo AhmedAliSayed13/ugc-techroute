@@ -20,6 +20,7 @@ use App\View\Components\admin\FormCheckbox as FormCheckbox;
 
 // user
 use App\View\Components\user\breadcrumb_user as breadcrumb_user;
+use App\View\Components\user\order_creator as order_creator;
 
 
 
@@ -64,6 +65,7 @@ class ComponentServiceProvider extends ServiceProvider
 
 
         Blade::component('breadcrumb_user', breadcrumb_user::class);
+        Blade::component('order_creator', order_creator::class);
 
 
     }
