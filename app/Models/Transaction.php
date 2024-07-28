@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Order;
+use App\Models\Task;
+use App\Models\TransactionStatus;
 use CoreProc\WalletPlus\Contracts\WalletTransaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Order;
-use App\Models\Task;
+
 class Transaction extends Model implements WalletTransaction
 {
     use HasFactory;
@@ -20,6 +22,8 @@ class Transaction extends Model implements WalletTransaction
         'order_id',
         'task_id',
         'amount',
+        'transaction_status_id',
+        'type',
         'created_at',
     ];
     public function getAmount()
@@ -33,5 +37,9 @@ class Transaction extends Model implements WalletTransaction
     public function task()
     {
         return $this->belongsTo(Task::class);
+    }
+    public function transactionStatus()
+    {
+        return $this->belongsTo(TransactionStatus::class, 'transaction_status_id');
     }
 }

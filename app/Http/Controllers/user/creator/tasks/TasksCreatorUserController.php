@@ -35,7 +35,7 @@ class TasksCreatorUserController extends Controller
     public function update(DeliveryVideosCreatorRequest $request, $id)
     {
         $data = $this->tasksCreatorUserInterface->update($request, $id);
-        return $data;
+        // return $data;
         return back();
     }
 

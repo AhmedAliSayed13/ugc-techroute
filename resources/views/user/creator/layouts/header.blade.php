@@ -66,7 +66,7 @@
                             data-feather="user"></i>
                         {{__('messages.Settings')}}
                     </a>
-                    <a class="dropdown-item" href="{{route('creator.wallet')}}"><i class="me-50"
+                    <a class="dropdown-item" href="{{route('creator.transactions.index')}}"><i class="me-50"
                             data-feather="credit-card"></i>
                         {{__('messages.wallet')}}
                         <span>

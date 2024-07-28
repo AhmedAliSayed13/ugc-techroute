@@ -4,6 +4,7 @@ use App\Http\Controllers\user\creator\dashboard\DashboardCreatorUserController;
 use App\Http\Controllers\user\creator\offers\OffersCreatorUserController;
 use App\Http\Controllers\user\creator\profile\ProfileCreatorUserController;
 use App\Http\Controllers\user\creator\tasks\TasksCreatorUserController;
+use App\Http\Controllers\user\creator\transactions\TransactionsCreatorUserController;
 
 Route::get('dashboard', [DashboardCreatorUserController::class, 'dashboard'])->name('dashboard');
 Route::get('register', [DashboardCreatorUserController::class, 'ShowRegister'])->name('register')->Middleware('RedirectIfAuthenticated')->withoutMiddleware(['CreatorAuth', 'CheckUserAccountActive']);
@@ -39,5 +40,10 @@ Route::resource('chats', ChatCreatorUserController::class)->only([
     'index', 'show', 'store',
 ]);
 
-Route::get('wallet', [DashboardCreatorUserController::class, 'showWallet'])->name('wallet');
+// Route::get('wallet', [DashboardCreatorUserController::class, 'showWallet'])->name('wallet');
 Route::get('shippings', [DashboardCreatorUserController::class, 'shippings'])->name('shippings');
+
+Route::resource('transactions', TransactionsCreatorUserController::class)
+->only([
+    'index', 'create', 'store',
+]);
