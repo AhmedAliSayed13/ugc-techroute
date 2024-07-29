@@ -7,6 +7,8 @@ use App\Http\Controllers\user\client\order\OrderClientUserController;
 use App\Http\Controllers\user\client\profile\ProfileClientUserController;
 use App\Http\Controllers\user\client\search\SearchClientUserController;
 use App\Http\Controllers\user\client\shipping\ShippingClientUserController;
+use App\Http\Controllers\user\client\wallet\WalletClientUserController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [DashboardClientUserController::class, 'dashboard'])->name('dashboard');
@@ -53,3 +55,8 @@ Route::get('creators', [FeaturesClientUserController::class, 'creators'])->name(
 Route::resource('shippings', ShippingClientUserController::class)->only([
     'index','update'
 ]);
+
+Route::prefix('wallet')->name('wallet.')->group(function () {
+    Route::get('top-up', [WalletClientUserController::class, 'topUp'])->name('topup');
+    Route::post('top-up', [WalletClientUserController::class, 'topUpSave'])->name('topup');
+});
