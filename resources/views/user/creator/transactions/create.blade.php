@@ -39,8 +39,6 @@
                             <div class="col-12">
                                 <button type="submit"
                                     class="btn btn-primary mt-1 me-1">{{__('messages.saveChanges')}}</button>
-                                <button type="reset"
-                                    class="btn btn-outline-secondary mt-1">{{__('messages.discard')}}</button>
                             </div>
                         </div>
                     </form>

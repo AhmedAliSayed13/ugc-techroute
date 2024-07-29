@@ -125,6 +125,21 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="#transactions" data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        {{-- <span class="badge bg-info rounded-pill float-end">4</span> --}}
+                        <span> Transactions </span>
+                    </a>
+                    <div class="collapse" id="transactions">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{route('admin.transactions.index')}}">List  Transactions</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
 

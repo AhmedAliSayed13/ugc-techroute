@@ -15,6 +15,8 @@ use App\Repositories\admin\valueOption\ValueOptionAdminInterface;
 use App\Repositories\admin\valueOption\ValueOptionAdminRepository;
 use App\Repositories\admin\order\OrderAdminInterface;
 use App\Repositories\admin\order\OrderAdminRepository;
+use App\Repositories\admin\transaction\TransactionAdminInterface;
+use App\Repositories\admin\transaction\TransactionAdminRepository;
 
 //User
 use App\Repositories\user\auth\AuthUserInterface;
@@ -114,6 +116,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderAdminInterface::class,
             OrderAdminRepository::class
+        );
+        // transaction
+        $this->app->bind(
+            TransactionAdminInterface::class,
+            TransactionAdminRepository::class
         );
 
 

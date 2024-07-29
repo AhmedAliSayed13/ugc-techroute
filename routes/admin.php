@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\role\RoleAdminController;
 use App\Http\Controllers\admin\user\UserAdminController;
 use App\Http\Controllers\admin\valueOption\ValueOptionAdminController;
 use App\Http\Controllers\admin\order\OrderAdminController;
+use App\Http\Controllers\admin\transaction\TransactionAdminController;
 
 Route::get('login', [AuthAdminController::class, 'ShowLogin'])->name('login')->withoutMiddleware('AdminAuth');
 Route::post('login', [AuthAdminController::class, 'login'])->name('login')->withoutMiddleware('AdminAuth');
@@ -15,6 +16,9 @@ Route::get('dashboard', [DashboardAdminController::class, 'ShowDashboard'])->nam
 Route::resource('roles', RoleAdminController::class);
 Route::resource('users', UserAdminController::class);
 Route::resource('orders', OrderAdminController::class)->only([
+    'index', 'show','edit','update'
+]);
+Route::resource('transactions', TransactionAdminController::class)->only([
     'index', 'show','edit','update'
 ]);
 Route::post('orders/confirm/{id}', [OrderAdminController::class, 'orderConfirm'])->name('orders.confirm');
