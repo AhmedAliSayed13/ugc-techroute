@@ -19,7 +19,6 @@ class WalletClientUserRepository implements WalletClientUserInterface
     public function topUpSave($request): bool
     {
         try {
-
             Stripe::setApiKey(config('services.stripe.secret'));
             $charge = Charge::create([
                 'amount' => $request->amount * 100,
@@ -28,13 +27,13 @@ class WalletClientUserRepository implements WalletClientUserInterface
                 'description' => 'top up wallet with amount ' . $request->amount,
             ]);
             $user=Auth::user();
-            $wallet = $user->wallet(2)->first();
+            $wallet = $user->wallet(2);
 
             $purchaseTransaction = Transaction::create([
                 'wallet_type_id' => 2,
                 'wallet_id' => $wallet->id,
                 'amount' => $request->amount,
-                'type'=>'posit',
+                'type'=>'deposit',
                 'transaction_status_id'=>2,
             ]);
             $user->wallet(2)->incrementBalance($purchaseTransaction);

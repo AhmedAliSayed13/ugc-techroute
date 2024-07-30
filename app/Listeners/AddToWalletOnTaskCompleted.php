@@ -39,6 +39,8 @@ class AddToWalletOnTaskCompleted
                 'order_id' => $order->id,
                 'task_id' => $task->id,
                 'amount' => $order->video_price,
+                'type'=>'task_completed',
+                'transaction_status_id'=>2
             ]);
             $task->creator=$creator;
             $creator->wallet(1)->incrementBalance($purchaseTransaction);

@@ -33,7 +33,7 @@ class CheckoutOrderClientRequest extends FormRequest
         $validator->after(function ($validator) {
                 if ( Auth::user()->CanPayByWallet($this->total)) {
                     // $validator->errors()->add('wallet', 'رصيد المحفظة غير كافٍ لإتمام العملية.');
-                    tostar(__('messages.error'), __('messages.not_enough_balance'));
+                    toastr()->error(__('messages.error'), __('messages.not_enough_balance'));
                 }
 
         });
