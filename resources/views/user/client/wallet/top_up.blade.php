@@ -38,11 +38,11 @@
 
     <div class="container-fluid mt-2">
         <div class="row">
-            <div class="col-lg-3 col-sm-6 col-12">
+            {{-- <div class="col-lg-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-header">
                         <div>
-                            {{-- <h2 class="fw-bolder mb-0">$ {{Auth::user()->wallet(1)->balance}} </h2> --}}
+
                             <h2 class="fw-bolder mb-0">
                                 <div class="plan-price mt-2">
                                     <sup class="font-medium-1 fw-bold text-primary">$</sup>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom mb-2">

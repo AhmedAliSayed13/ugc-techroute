@@ -5,14 +5,34 @@
 <div class="container-fluid mt-4">
 
 
-    <div class="row" id="basic-table">
-        <div class="col-12">
+    <div class="row" >
+        <div class="col-8 m-auto">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="fw-bolder mb-0 fw-bolder text-primary">$ {{Auth::user()->wallet(2)->balance}} </h2>
+                            <p class="card-text">{{__('messages.wallet_balance')}}</p>
+                        </div>
+                        <div class="  p-50 m-0">
+
+                            <a type="button" href="{{route('client.wallet.topup')}}" class="btn btn-outline-primary waves-effect">
+                                <i data-feather='plus'></i>
+                                <span>{{__('messages.topUpWallet')}}</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <div class="col-12" id="basic-table">
             <div class="card">
-                <div class="card-header">
+                {{-- <div class="card-header">
                     <h4 class="card-title">{{__('messages.wallet_balance')}}: <span
                             class="text-primary">${{Auth::user()->wallet(2)->balance}}</span>
                     </h4>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     <p>
                         {{__('messages.walletDescribe')}}

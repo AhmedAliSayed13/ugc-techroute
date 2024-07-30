@@ -179,9 +179,9 @@
                             data-feather="settings"></i>
                         {{__('messages.changePassword')}}
                     </a>
-                    <a class="dropdown-item" href="{{route('client.wallet.topup')}}"><i class="me-50"
-                            data-feather="plus-circle"></i>
-                        {{__('messages.topUpWallet')}}
+                    <a class="dropdown-item" href="{{route('client.wallet.transactions')}}"><i class="me-50"
+                            data-feather="credit-card"></i>
+                        {{__('messages.wallet')}}
                     </a>
                     <a class="dropdown-item" href="{{route('user.logout')}}"><i class="me-50" data-feather="power"></i>
                         {{__('messages.logout')}}</a>
