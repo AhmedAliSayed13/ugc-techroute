@@ -19,10 +19,12 @@
 
         <div class="content-body">
             <div class="container-fluid mt-4">
-                <div class="row">
+                <div class=" row match-height">
 
-                    <div class="row">
-                        <div class="col-12">
+                    @include('user.client.widget_client.profile_sidebar')
+
+
+                        <div class="col-9">
 
 
                             <!-- profile -->
@@ -129,7 +131,7 @@
                             </div> --}}
                             <!--/ profile -->
                         </div>
-                    </div>
+
 
                 </div>
             </div>
