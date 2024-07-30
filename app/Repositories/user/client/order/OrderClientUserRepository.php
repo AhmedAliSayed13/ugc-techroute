@@ -74,16 +74,16 @@ class OrderClientUserRepository implements OrderClientUserInterface
             $order->status = 2;
             $order->paid = 1;
             $order->save();
-            
-            $wallet = Auth::user()->wallet(2);
-            $purchaseTransaction = Transaction::create([
-                'wallet_type_id' => 2,
-                'wallet_id' => $wallet->id,
-                'order_id' => $order->id,
-                'amount' => $order->total,
-                'transaction_status_id'=>2,
-                'type'=>'payment',
-            ]);
+
+            // $wallet = Auth::user()->wallet(2);
+            // $purchaseTransaction = Transaction::create([
+            //     'wallet_type_id' => 2,
+            //     'wallet_id' => $wallet->id,
+            //     'order_id' => $order->id,
+            //     'amount' => $order->total,
+            //     'transaction_status_id'=>2,
+            //     'type'=>'payment',
+            // ]);
 
 
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));

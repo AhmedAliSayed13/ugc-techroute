@@ -35,7 +35,6 @@ class CheckoutOrderClientRequest extends FormRequest
                     // $validator->errors()->add('wallet', 'رصيد المحفظة غير كافٍ لإتمام العملية.');
                     toastr()->error(__('messages.error'), __('messages.not_enough_balance'));
                 }
-
         });
     }
 
