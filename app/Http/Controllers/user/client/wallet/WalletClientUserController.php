@@ -15,12 +15,6 @@ class WalletClientUserController extends Controller
     {
         $this->walletClientUserInterface = $walletClientUserInterface;
     }
-    // public function wallet()
-    // {
-    //     $data = $this->walletClientUserInterface->wallet();
-    //     return view($this->path . 'index', compact($data));
-
-    // }
     public function topUp()
     {
         $data = $this->walletClientUserInterface->topUp();

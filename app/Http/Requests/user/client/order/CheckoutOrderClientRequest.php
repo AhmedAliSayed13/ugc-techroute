@@ -25,9 +25,19 @@ class CheckoutOrderClientRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'card' => 'required|string',
-            // 'cvc'  => 'required|string',
-            // 'exp'  => 'required|string',
+            'total' => 'required|numeric',
         ];
     }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+                if ( Auth::user()->CanPayByWallet($this->total)) {
+                    // $validator->errors()->add('wallet', 'رصيد المحفظة غير كافٍ لإتمام العملية.');
+                    tostar(__('messages.error'), __('messages.not_enough_balance'));
+                }
+
+        });
+    }
+
+
 }

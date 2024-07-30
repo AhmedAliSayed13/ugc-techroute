@@ -53,117 +53,150 @@
                                     <div class="col-5">
                                         <div class="card">
                                             <div class="card-header border-bottom mb-2">
-                                                <h3>{{__('messages.payment_header')}}</h3>
+                                                <h3>{{ __('messages.payment_header') }}</h3>
                                             </div>
                                             <div class="card-body">
-                                                <form class="row mb-2"
-                                                    action="{{route('client.order.checkout',$data['key'])}}"
-                                                    method="POST" id="payment-form">
-                                                    @csrf
-                                                    <div class="col-12 mb-2">
-                                                        <img src="{{asset('users-asset/images/stripe.png')}}" alt="">
+
+                                                    <div class="row">
+                                                        <div class="col-6 text-center">
+                                                            <div class="form-check form-check-inline mb-1">
+                                                                <input name="payment_method" class="form-check-input"
+                                                                    type="radio" id="stripe" value="stripe" checked />
+                                                                <label class="form-check-label" for="stripe">{{
+                                                                    __('messages.payUseStripe') }}</label>
+                                                            </div>
+                                                        </div>
+                                                        @if (Auth::user()->CanPayByWallet($data['order']->total))
+                                                            <div class="col-6 text-center">
+                                                                <div class="form-check form-check-inline mb-1">
+                                                                    <input name="payment_method" class="form-check-input"
+                                                                        type="radio" value="wallet" id="wallet" />
+                                                                    <label class="form-check-label" for="wallet">{{
+                                                                        __('messages.payUseWallet') }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                     </div>
-                                                    <div class="col-12 mb-2">
-                                                        <label class="form-label" for="card-name">اسم حامل
-                                                            البطاقة</label>
-                                                        <input type="text" id="card-name" class="form-control" required>
+
+                                                    <div id="stripe-form" class="row gx-2 gy-1 ">
+                                                        <form class="row gx-2 gy-1 " action="{{ route('client.order.checkout', $data['key']) }}" method="POST" id="payment-form">
+                                                            @csrf
+                                                            <div class="col-12 mb-2">
+                                                                <img src="{{ asset('users-asset/images/stripe.png') }}"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="col-12 mt-0">
+                                                                <label class="form-label" for="card-number">{{ __('messages.cardNumber') }}</label>
+                                                                <div id="card-number" class="form-control"></div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label class="form-label" for="card-name"> {{ __('messages.nameOnCard') }}</label>
+                                                                <input type="text" id="card-name" class="form-control"
+                                                                    required>
+                                                            </div>
+
+                                                            <div class="col-6 col-md-3">
+                                                                <label class="form-label" for="card-expiry">تاريخ
+                                                                    الانتهاء</label>
+                                                                <div id="card-expiry" class="form-control"></div>
+                                                            </div>
+                                                            <div class="col-6 col-md-3">
+                                                                <label class="form-label" for="card-cvc">رمز الأمان
+                                                                    (CVC)</label>
+                                                                <div id="card-cvc" class="form-control"></div>
+                                                            </div>
+                                                            <div id="card-errors" role="alert" class="col-12 text-danger">
+                                                            </div>
+                                                            @include('user.client.order.tap_footer')
+                                                        </form>
                                                     </div>
-                                                    <div class="col-12 mb-2">
-                                                        <label class="form-label" for="card-number">رقم البطاقة</label>
-                                                        <div id="card-number" class="form-control"></div>
+
+                                                    <div id="wallet-form" class="row gx-2 gy-1 ">
+                                                        <form class="row gx-2 gy-1 " action="{{ route('client.order.checkout.wallet', $data['key']) }}" method="POST" >
+                                                            @csrf
+                                                            <input type="hidden" name="total" value="{{$data['order']->total}}">
+                                                            <div class="col-12 text-center">
+                                                                <span>{{ __('messages.payUseWalletFirst') }}</span>
+
+                                                                <span class="text-primary"> $ {{Auth::user()->wallet(2)->balance}}</span> <br>
+                                                                {{ __('messages.payUseWalletSecond') }}
+                                                                <span class="text-primary"> $ {{(Auth::user()->wallet(2)->balance-$data['order']->total) }}</span>
+                                                            </div>
+                                                            @include('user.client.order.tap_footer')
+                                                        </form>
                                                     </div>
-                                                    <div class="col-6 mb-2">
-                                                        <label class="form-label" for="card-expiry">تاريخ
-                                                            الانتهاء</label>
-                                                        <div id="card-expiry" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-6 mb-2">
-                                                        <label class="form-label" for="card-cvc">رمز الأمان
-                                                            (CVC)</label>
-                                                        <div id="card-cvc" class="form-control"></div>
-                                                    </div>
-                                                    <div id="card-errors" role="alert" class="col-12 text-danger"></div>
-                                                    @include('user.client.order.tap_footer')
-                                                </form>
+
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-7 checkout-options">
                                         <div class="card">
                                             <div class="card-header border-bottom mb-2">
-                                                <h3>{{__('messages.summary_order')}}</h3>
+                                                <h3>{{ __('messages.summary_order') }}</h3>
                                             </div>
                                             <div class="card-body">
-                                                @if($data['order']->orderFeatureOptionCount() > 0)
+                                                @if ($data['order']->orderFeatureOptionCount() > 0)
                                                 <div class="summary-item">
                                                     <span class="option">
                                                         <h4 class="fw-bolder text-primary">
-                                                            ({{$data['order']->orderFeatureOptionCount()}})
-                                                            {{__('messages.additional_feature')}}
+                                                            ({{ $data['order']->orderFeatureOptionCount() }}) {{
+                                                            __('messages.additional_feature') }}
                                                         </h4>
                                                     </span>
                                                 </div>
                                                 <div class="summary-item">
-                                                    <span class="option"
-                                                        dir="ltr">{{$data['order']->orderFeatureOptionPrice()}}$ X
-                                                        {{$data['order']->video_count}}
-                                                        {{-- <strong class="badge badge-light-info ms-50"></strong> --}}
-                                                    </span>
-                                                    <span class="price" dir="ltr">
-                                                        {{$data['order']->orderFeatureOptionPrice()*$data['order']->video_count}}$
-
-                                                    </span>
+                                                    <span class="option" dir="ltr">{{
+                                                        $data['order']->orderFeatureOptionPrice() }}$ X {{
+                                                        $data['order']->video_count }}</span>
+                                                    <span class="price" dir="ltr">{{
+                                                        $data['order']->orderFeatureOptionPrice() *
+                                                        $data['order']->video_count }}$</span>
                                                 </div>
                                                 @endif
-
                                                 <div class="summary-item">
                                                     <span class="option">
                                                         <h4 class="fw-bolder text-primary">
-                                                            ({{$data['order']->video_count}})
-                                                            {{__('messages.videos_of_type')}}
-                                                            {{$data['order']->videoOptionType->name}}
+                                                            ({{ $data['order']->video_count }}) {{
+                                                            __('messages.videos_of_type') }} {{
+                                                            $data['order']->videoOptionType->name }}
                                                         </h4>
                                                     </span>
                                                 </div>
                                                 <div class="summary-item">
-                                                    <span class="option"
-                                                        dir="ltr">{{$data['order']->videoOptionType->price}}$ X
-                                                        {{$data['order']->video_count}}
-                                                        {{-- <strong
-                                                            class="badge badge-light-info ms-50">{{$data['order']->videoOptionType->name
-                                                            }}</strong> --}}
-                                                    </span>
-                                                    <span class="price" dir="ltr">
-                                                        {{$data['order']->videoOptionType->price*$data['order']->video_count}}$
-                                                    </span>
+                                                    <span class="option" dir="ltr">{{
+                                                        $data['order']->videoOptionType->price }}$ X {{
+                                                        $data['order']->video_count }}</span>
+                                                    <span class="price" dir="ltr">{{
+                                                        $data['order']->videoOptionType->price *
+                                                        $data['order']->video_count }}$</span>
                                                 </div>
                                                 <div class="summary-item total">
-                                                    <span class="option">{{__('messages.total')}}</span>
-                                                    <span class="price" dir="ltr">{{$data['order']->total }}$</span>
+                                                    <span class="option">{{ __('messages.total') }}</span>
+                                                    <span class="price" dir="ltr">{{ $data['order']->total }}$</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card">
-                                            <div class="card-body ">
+                                            <div class="card-body">
                                                 <div class="w-100 d-flex">
-
-
-                                                <div class="d-flex justify-content-between align-items-center w-25 text-center">
-                                                    <img src="{{asset('users-asset/images/money_back.png')}}"
-                                                        width="150px" class="m-auto" alt="">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center w-25 text-center">
+                                                        <img src="{{ asset('users-asset/images/money_back.png') }}"
+                                                            width="150px" class="m-auto" alt="">
+                                                    </div>
+                                                    <div class="w-75">
+                                                        <h3 class="mb-2 text-bold">{{ __('messages.money_back_header')
+                                                            }}</h3>
+                                                        <p>{{ __('messages.money_back_description') }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="w-75">
-                                                    <h3 class="mb-2 text-bold">{{__('messages.money_back_header')}}</h3>
-                                                    <p>
-                                                        {{__('messages.money_back_description')}}
-                                                    </p>
-                                                </div>
-                                            </div>
                                                 <div class="w-100 text-center">
-                                                    <a class="badge badge-light-primary mb-1" href="#">{{__('messages.refund_policy')}}</a>
-                                                    <a class="badge badge-light-primary mb-1" href="#">{{__('messages.privacy_policy')}}</a>
+                                                    <a class="badge badge-light-primary mb-1" href="#">{{
+                                                        __('messages.refund_policy') }}</a>
+                                                    <a class="badge badge-light-primary mb-1" href="#">{{
+                                                        __('messages.privacy_policy') }}</a>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -242,14 +275,18 @@
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        stripe.createToken(cardNumber).then(function(result) {
-            if (result.error) {
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = translateError(result.error.message);
-            } else {
-                stripeTokenHandler(result.token);
-            }
-        });
+        if (document.getElementById('stripe').checked) {
+            stripe.createToken(cardNumber).then(function(result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = translateError(result.error.message);
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        } else {
+            form.submit();
+        }
     });
 
     // Submit the form with the Stripe token
@@ -262,6 +299,28 @@
         form.appendChild(hiddenInput);
 
         form.submit();
+    }
+
+    // Toggle the Stripe form visibility based on selected payment method
+    document.querySelectorAll('input[name="payment_method"]').forEach(function(el) {
+        el.addEventListener('change', function(event) {
+            if (event.target.id === 'stripe') {
+                document.getElementById('stripe-form').style.display = 'inline-flex';
+                document.getElementById('wallet-form').style.display = 'none';
+            } else {
+                document.getElementById('stripe-form').style.display = 'none';
+                document.getElementById('wallet-form').style.display = 'inline-flex';
+            }
+        });
+    });
+
+    // Initially hide or show the Stripe form based on the selected payment method
+    if (document.getElementById('stripe').checked) {
+        document.getElementById('stripe-form').style.display = 'inline-flex';
+        document.getElementById('wallet-form').style.display = 'none';
+    } else {
+        document.getElementById('stripe-form').style.display = 'none';
+        document.getElementById('wallet-form').style.display = 'inline-flex';
     }
 </script>
 <script src="{{asset('users-asset/vendors/js/forms/wizard/bs-stepper.min.js')}}"></script>

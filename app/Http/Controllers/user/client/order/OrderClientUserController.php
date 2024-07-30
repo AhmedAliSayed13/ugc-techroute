@@ -38,9 +38,19 @@ class OrderClientUserController extends Controller
         $data = $this->orderClientUserInterface->showCheckout($key);
         return view($this->path . 'checkout', compact('data'));
     }
-    public function checkout(CheckoutOrderClientRequest $request, $key)
+    // public function checkout(CheckoutOrderClientRequest $request, $key)
+    public function checkout(Request $request, $key)
     {
         $data = $this->orderClientUserInterface->checkout($request, $key);
+        if ($data) {
+            return redirect()->route('client.order.product', $data);
+        }
+        return back();
+
+    }
+    public function checkoutWallet(CheckoutOrderClientRequest $request, $key)
+    {
+        $data = $this->orderClientUserInterface->checkoutWallet($request, $key);
         if ($data) {
             return redirect()->route('client.order.product', $data);
         }

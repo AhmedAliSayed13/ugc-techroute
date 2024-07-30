@@ -27,6 +27,7 @@ Route::prefix('order')->name('order.')->group(function () {
     Route::post('details', [OrderClientUserController::class, 'details'])->name('details');
     Route::get('checkout/{key}', [OrderClientUserController::class, 'showCheckout'])->name('checkout');
     Route::post('checkout/{key}', [OrderClientUserController::class, 'checkout'])->name('checkout');
+    Route::post('checkout/wallet/{key}', [OrderClientUserController::class, 'checkoutWallet'])->name('checkout.wallet');
     Route::post('calculation/price', [OrderClientUserController::class, 'calculationPrice'])->name('calculation.price');
     Route::get('product/{key}', [OrderClientUserController::class, 'showProduct'])->name('product');
     Route::post('product/{key}', [OrderClientUserController::class, 'product'])->name('product');

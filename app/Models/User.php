@@ -133,4 +133,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'client_id');
     }
+    public function CanPayByWallet($price)
+    {
+        $wallet=$this->wallet(2);
+        if(isset($wallet->balance) && $wallet->balance>=$price){
+            return true;
+        }
+        return false;
+    }
 }

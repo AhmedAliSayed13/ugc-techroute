@@ -9,10 +9,13 @@ use App\Models\User;
 use App\Models\VideoOptionAspect;
 use App\Models\VideoOptionDuration;
 use App\Models\VideoOptionType;
+use App\Models\Transaction;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Stripe\Charge;
 use Stripe\Stripe;
+use CoreProc\WalletPlus\Models\WalletLedger;
+
 
 class OrderClientUserRepository implements OrderClientUserInterface
 {
@@ -71,6 +74,33 @@ class OrderClientUserRepository implements OrderClientUserInterface
             $order->status = 2;
             $order->paid = 1;
             $order->save();
+            toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
+            return $key;
+        } catch (\Exception $e) {
+            toastr()->error(__('messages.error'), $e->getMessage());
+            return false;
+        }
+    }
+    public function checkoutWallet($request, $key)
+    {
+        try {
+
+            $order = Order::where('key', $key)->first();
+            $wallet = Auth::user()->wallet(2);
+            $purchaseTransaction = Transaction::create([
+                'wallet_type_id' => 2,
+                'wallet_id' => $wallet->id,
+                'order_id' => $order->id,
+                'amount' => $order->total,
+                'transaction_status_id'=>3,
+                'type'=>'payment',
+            ]);
+            $wallet->decrementBalance($purchaseTransaction);
+
+            $order->status = 2;
+            $order->paid = 1;
+            $order->save();
+
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
             return $key;
         } catch (\Exception $e) {
