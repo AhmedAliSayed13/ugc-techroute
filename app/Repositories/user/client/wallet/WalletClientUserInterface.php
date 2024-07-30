@@ -6,5 +6,6 @@ interface WalletClientUserInterface {
 
     public function topUp():array;
     public function topUpSave($request):bool;
+    public function transactions():array;
 
 }

@@ -46,4 +46,5 @@ class TransactionsCreatorUserRepository implements TransactionsCreatorUserInterf
             return false;
         }
     }
+    
 }

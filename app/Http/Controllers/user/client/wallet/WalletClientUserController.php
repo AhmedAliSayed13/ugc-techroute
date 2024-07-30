@@ -25,6 +25,11 @@ class WalletClientUserController extends Controller
         $data = $this->walletClientUserInterface->topUpSave($request);
         return back();
     }
+    public function transactions()
+    {
+        $data = $this->walletClientUserInterface->transactions();
+        return view($this->path . 'transactions', compact('data'));
+    }
 
 
 }

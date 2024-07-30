@@ -35,7 +35,7 @@ class WalletClientUserRepository implements WalletClientUserInterface
                 'wallet_id' => $wallet->id,
                 'amount' => $request->amount,
                 'type'=>'posit',
-                'transaction_status_id'=>3,
+                'transaction_status_id'=>2,
             ]);
             $user->wallet(2)->incrementBalance($purchaseTransaction);
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
@@ -44,5 +44,15 @@ class WalletClientUserRepository implements WalletClientUserInterface
             toastr()->error(__('messages.error'), $e->getMessage());
             return false;
         }
+    }
+    public function transactions(): array
+    {
+        $wallet=Auth::user()->wallets(2)->first();
+        $transactions=Transaction::where('wallet_id',$wallet->id)->orderBy('id','desc')->paginate(10);
+        $data = array(
+            'wallet' => $wallet,
+            'transactions' => $transactions,
+        );
+        return $data;
     }
 }

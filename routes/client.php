@@ -60,4 +60,11 @@ Route::resource('shippings', ShippingClientUserController::class)->only([
 Route::prefix('wallet')->name('wallet.')->group(function () {
     Route::get('top-up', [WalletClientUserController::class, 'topUp'])->name('topup');
     Route::post('top-up', [WalletClientUserController::class, 'topUpSave'])->name('topup');
+    Route::get('transactions', [WalletClientUserController::class, 'transactions'])->name('transactions');
 });
+
+
+// Route::resource('transactions', TransactionsCreatorUserController::class)
+// ->only([
+//     'index', 'create', 'store',
+// ]);

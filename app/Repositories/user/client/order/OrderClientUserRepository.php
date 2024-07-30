@@ -92,7 +92,7 @@ class OrderClientUserRepository implements OrderClientUserInterface
                 'wallet_id' => $wallet->id,
                 'order_id' => $order->id,
                 'amount' => $order->total,
-                'transaction_status_id'=>3,
+                'transaction_status_id'=>2,
                 'type'=>'payment',
             ]);
             $wallet->decrementBalance($purchaseTransaction);
