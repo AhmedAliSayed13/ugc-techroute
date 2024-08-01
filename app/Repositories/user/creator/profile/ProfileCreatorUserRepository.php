@@ -41,6 +41,7 @@ class ProfileCreatorUserRepository implements ProfileCreatorUserInterface
         $profile->country_id = $request->country_id;
         $profile->birthdate = $request->birthdate;
         $profile->gender = $request->gender;
+        $profile->shipping_address = $request->shipping_address;
         $profile->languages = implode(',', $request->languages);
         $profile->describe = $request->describe;
 

@@ -20,6 +20,7 @@ class CreatorInfo extends Model
         'gender',
         'languages',
         'describe',
+        'shipping_address',
         'created_at',
         'updated_at',
     ];

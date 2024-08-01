@@ -145,6 +145,14 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="col-12 col-sm-6 mb-1">
+                                    <label class="form-label" for="shipping_address">{{__('messages.shipping_address')}}</label>
+                                    <input type="text" class="form-control" id="shipping_address" name="shipping_address"
+                                        value="{{old('shipping_address',auth()->user()->CreatorInfo->shipping_address)}}" />
+                                    @error('shipping_address')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="describe">نبذه</label>

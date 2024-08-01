@@ -19,6 +19,7 @@ class CreateCreatorInfosTable extends Migration
             $table->foreignId('country_id')->constrained()->onDelete('cascade');
             $table->string('birthdate');
             $table->string('gender');
+            $table->text('shipping_address')->nullable();
             $table->string('languages')->nullable();
             $table->text('describe')->nullable();
             $table->timestamps();
