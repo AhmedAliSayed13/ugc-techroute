@@ -487,7 +487,7 @@ return [
     'payUseWalletFirst' => 'سيتم خصم قيمة الخدمة من المحفظة الخاصة بك. رصيد المحفظة الحالي هو ',
     'payUseWalletSecond' => 'وبعد خصم المبلع سيصبح',
     'payment' => 'دفع',
-    'text' => 'text',
+    'Insufficient_balance' => 'الرصيد غير كافي',
     'text' => 'text',
     'text' => 'text',
 ];

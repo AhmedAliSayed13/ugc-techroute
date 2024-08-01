@@ -26,8 +26,8 @@
                                             <th>Wallet balance</th>
                                             <th>User</th>
                                             <th>Amount</th>
-                                            <th>Status</th>
                                             <th>Transaction Type</th>
+                                            <th>Status</th>
                                             <th> created at</th>
                                             <th> Action</th>
                                         </tr>
@@ -48,7 +48,7 @@
                                                 </span>
                                             </td>
 
-                                            <td>{{isset($transaction->transactionStatus->name)?$transaction->transactionStatus->name:'-'}}</td>
+                                            <td>{{__('messages.'.$transaction->type)}}</td>
                                             <td>
                                                 @if($transaction->transaction_status_id == 1)
                                                     <span class="badge bg-warning">{{$transaction->transactionStatus->name}}</span>
