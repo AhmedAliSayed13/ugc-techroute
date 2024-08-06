@@ -1,0 +1,16 @@
+html {
+  
+    font-family: 'GT Walsheim Pro Medium';
+    box-sizing: border-box;
+    max-width: 100vw;
+    overflow-x: hidden;
+
+}
+
+:root {
+    --main-color: #5E50EE;
+
+}
+/* *{
+    border: 1px red solid;
+} */

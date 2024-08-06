@@ -21,6 +21,7 @@ Route::get('/', [PagesController::class, 'comingSoon'])->name('comingSoon');
 Route::post('/', [PagesController::class, 'comingSoonSave'])->name('comingSoon.save');
 Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
+Route::get('/agencies', [PagesController::class, 'agencies'])->name('agencies');
 
 // Route::get('/chat/{task_id}', function ($task_id) {
 //     return view('chats.index', ['task_id' => $task_id]);

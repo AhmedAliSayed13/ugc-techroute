@@ -17,6 +17,7 @@ class CreateShippingsTable extends Migration
             $table->id();
             $table->string('key')->nullable();
             $table->text('tracking')->nullable();
+            $table->text('creator_address')->nullable();
             $table->boolean('active')->default(0);
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('order_id');

@@ -15,6 +15,7 @@ class Shipping extends Model
         'id',
         'key',
         'tracking',
+        'creator_address',
         'active',
         'task_id',
         'order_id',

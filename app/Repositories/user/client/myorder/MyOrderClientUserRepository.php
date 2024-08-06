@@ -2,10 +2,11 @@
 
 use App\Models\Order;
 use App\Models\OrderRequest;
+use App\Models\Shipping;
 use App\Models\Task;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Shipping;
+
 class MyOrderClientUserRepository implements MyOrderClientUserInterface
 {
 
@@ -54,7 +55,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
         $order = Order::with('tasks')->where(['id' => $id, 'user_id' => auth()->user()->id])->first();
         $data = array(
             'order' => $order,
-            'tasks' => $order->tasks
+            'tasks' => $order->tasks,
             // ->where('video', '!=',null)
             // ->whereIn('task_status_id', [2,3,4])
         );
@@ -69,7 +70,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
             if ($request->status == 1) {
                 $order = $orderRequest->order;
 
-                $task=Task::create(
+                $task = Task::create(
                     [
                         'order_id' => $orderRequest->order_id,
                         'client_id' => $order->user_id,
@@ -81,6 +82,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
                     [
                         'task_id' => $task->id,
                         'order_id' => $task->order_id,
+                        'creator_address' => $task->creator->creatorInfo->shipping_address,
                     ]
                 );
             }
@@ -104,7 +106,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
     {
         try {
             $task = Task::where(['id' => $id, 'client_id' => auth()->user()->id])->first();
-            $task->task_status_id=3;
+            $task->task_status_id = 3;
             $task->save();
             $task->createAcceptMessage();
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));
@@ -118,7 +120,7 @@ class MyOrderClientUserRepository implements MyOrderClientUserInterface
     {
         try {
             $task = Task::where(['id' => $id, 'client_id' => auth()->user()->id])->first();
-            $task->task_status_id=4;
+            $task->task_status_id = 4;
             $task->save();
             $task->createModificationMessage();
             toastr()->success(__('messages.Updated_successfully'), __('messages.successOperation'));

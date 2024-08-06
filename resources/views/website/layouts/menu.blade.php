@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page" href="{{route('price')}}">{{__('website.pricing')}}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page" href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
+                </li>
 
                 {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

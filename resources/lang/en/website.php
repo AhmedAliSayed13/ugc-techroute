@@ -10,7 +10,7 @@ return [
     'ForVideoAds' => 'للاعلانات الفيديو',
     'EffortlesslyExpandYourMarketingWithMadeToOrderContent' => 'وسّع تسويقك بسهولة مع المحتوى المصمم حسب الطلب',
     'pricing' => 'الاسعار',
-    'asd' => 'asd',
+    'forAgencies' => 'من نحن',
     'asd' => 'asd',
     'asd' => 'asd',
     'asd' => 'asd',

@@ -490,7 +490,7 @@ return [
     'Insufficient_balance' => 'الرصيد غير كافي',
     'shipping_address' => 'عنوان الشحن',
     'you_have_not_added_shipping_address' => 'الرجاء استكمال بيانات حسابك و اضافة عنوان الشحن حتي يمكنك العمل علي هذه الخدمة',
-    'text' => 'text',
+    'forAgencies' => 'من نحن',
     'text' => 'text',
     'text' => 'text',
     'text' => 'text',

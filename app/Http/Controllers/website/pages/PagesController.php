@@ -34,6 +34,13 @@ class PagesController extends Controller
 
         return view($this->path . 'price', compact('data'));
     }
+    public function agencies()
+    {
+
+        $data = $this->pagesInterface->agencies();
+
+        return view($this->path . 'agencies', compact('data'));
+    }
     public function comingSoon()
     {
 
