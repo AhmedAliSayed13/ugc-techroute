@@ -491,7 +491,7 @@ return [
     'shipping_address' => 'عنوان الشحن',
     'you_have_not_added_shipping_address' => 'الرجاء استكمال بيانات حسابك و اضافة عنوان الشحن حتي يمكنك العمل علي هذه الخدمة',
     'forAgencies' => 'من نحن',
-    'text' => 'text',
+    'ecommerce' => 'التجارة الالكترونية',
     'text' => 'text',
     'text' => 'text',
     'text' => 'text',

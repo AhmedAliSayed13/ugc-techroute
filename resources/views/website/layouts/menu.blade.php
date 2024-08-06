@@ -10,13 +10,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page" href="{{route('home')}}">{{__('website.home')}}</a>
+                    <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page"
+                        href="{{route('home')}}">{{__('website.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page" href="{{route('price')}}">{{__('website.pricing')}}</a>
+                    <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page"
+                        href="{{route('price')}}">{{__('website.pricing')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page" href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
+                    <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page"
+                        href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{checkActiveRoute('ecommerce')}} " aria-current="page"
+                        href="{{route('ecommerce')}}">{{__('website.ecommerce')}}</a>
                 </li>
 
                 {{-- <li class="nav-item dropdown">
@@ -37,20 +44,20 @@
             </ul>
             <div class="d-flex">
                 @if(!Auth::check())
-                    <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('creator.register')}}"
-                        role="button">{{__('website.becomeACreator')}}</a>
-                    <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
-                        role="button">{{__('website.login')}}</a>
-                    <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}" role="button">{{__('website.orderNow')}}</a>
+                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('creator.register')}}"
+                    role="button">{{__('website.becomeACreator')}}</a>
+                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
+                    role="button">{{__('website.login')}}</a>
+                <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}"
+                    role="button">{{__('website.orderNow')}}</a>
                 @else
-                        <a class="nav-link dropdown-toggle" href="{{route('user.login')}}"  role="button" aria-expanded="false">
-                            <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="Profile" class="rounded-circle" width="30" height="30"> {{auth()->user()->name}}
-                        </a>
+                <a class="nav-link dropdown-toggle" href="{{route('user.login')}}" role="button" aria-expanded="false">
+                    <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="Profile" class="rounded-circle"
+                        width="30" height="30"> {{auth()->user()->name}}
+                </a>
                 @endif
             </div>
 
         </div>
     </div>
 </nav>
-
-

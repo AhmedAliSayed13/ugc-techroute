@@ -11,7 +11,7 @@ return [
     'EffortlesslyExpandYourMarketingWithMadeToOrderContent' => 'وسّع تسويقك بسهولة مع المحتوى المصمم حسب الطلب',
     'pricing' => 'الاسعار',
     'forAgencies' => 'من نحن',
-    'asd' => 'asd',
+    'ecommerce' => 'التجارة الالكترونية',
     'asd' => 'asd',
     'asd' => 'asd',
 

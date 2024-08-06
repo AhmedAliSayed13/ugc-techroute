@@ -6,6 +6,7 @@ interface PagesInterface {
     public function homePage():array;
     public function price():array;
     public function agencies():array;
+    public function ecommerce():array;
     public function comingSoon():array;
     public function comingSoonSave($request):bool;
 }

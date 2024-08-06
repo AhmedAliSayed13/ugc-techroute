@@ -41,6 +41,13 @@ class PagesController extends Controller
 
         return view($this->path . 'agencies', compact('data'));
     }
+    public function ecommerce()
+    {
+
+        $data = $this->pagesInterface->ecommerce();
+
+        return view($this->path . 'ecommerce', compact('data'));
+    }
     public function comingSoon()
     {
 
