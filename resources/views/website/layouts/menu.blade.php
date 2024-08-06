@@ -1,63 +1,53 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light custom-menu">
+
+
+<nav class="navbar sticky-lg-top navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="{{asset('users-asset/images/logo/logo.png')}}" alt="logo" class="logo">
+            <img src="{{asset('users-asset/images/logo/logo.png')}}" alt="logo"
+             class="vidoo_logo img-fluid" height="50" width="100">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page"
-                        href="{{route('home')}}">{{__('website.home')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page"
-                        href="{{route('price')}}">{{__('website.pricing')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page"
-                        href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{checkActiveRoute('ecommerce')}} " aria-current="page"
-                        href="{{route('ecommerce')}}">{{__('website.ecommerce')}}</a>
-                </li>
+      <button class="navbar-toggler" type="button" onclick="toggleNav()" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+     
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page"
+                    href="{{route('home')}}">{{__('website.home')}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page"
+                    href="{{route('price')}}">{{__('website.pricing')}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page"
+                    href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{checkActiveRoute('ecommerce')}} " aria-current="page"
+                    href="{{route('ecommerce')}}">{{__('website.ecommerce')}}</a>
+            </li>
 
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li> --}}
-
-            </ul>
-            <div class="d-flex">
-                @if(!Auth::check())
-                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('creator.register')}}"
-                    role="button">{{__('website.becomeACreator')}}</a>
-                <a class="btn btn-flat-primary waves-effect mr-3 ml-3" href="{{route('user.login')}}"
-                    role="button">{{__('website.login')}}</a>
-                <a class="btn btn-relief-primary mr-3 ml-3" href="{{route('creator.register')}}"
-                    role="button">{{__('website.orderNow')}}</a>
-                @else
-                <a class="nav-link dropdown-toggle" href="{{route('user.login')}}" role="button" aria-expanded="false">
-                    <img src="{{getUserProfileImage(auth()->user()->img)}}" alt="Profile" class="rounded-circle"
-                        width="30" height="30"> {{auth()->user()->name}}
+            {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
                 </a>
-                @endif
-            </div>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> --}}
 
+
+        </ul>
+        <div class="d-md-flex align-items-center">
+            <span class="navbar-text mx-4 fw-bold my-md-0 my-2"> 
+                login
+              </span>
+          <button class="btn log-in-button my-md-0 my-2" type="submit"> ابدأ الان</button>
         </div>
+      </div>
     </div>
-</nav>
+  </nav>

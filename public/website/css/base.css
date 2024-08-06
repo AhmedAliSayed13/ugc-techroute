@@ -11,6 +11,9 @@ html {
     --main-color: #5E50EE;
 
 }
+a{
+    color: transparent;
+}
 /* *{
     border: 1px red solid;
 } */

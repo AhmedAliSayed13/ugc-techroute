@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="rtl">
+<html class="loading" lang="en" data-textdirection="rtl"  dir="rtl" style="direction: rtl">
 <!-- BEGIN: Head-->
 
 <head>
