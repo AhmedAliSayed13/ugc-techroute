@@ -1,0 +1,115 @@
+.vidoo_brands{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+    justify-content: start;
+}
+.hero-media {
+    display: flex;
+    gap: 30px;
+}
+.hero-media video:nth-child(1) {
+    max-width: 263px;
+    height: auto;
+    margin-bottom: 30px;
+}
+.hero-media video:nth-child(2) {
+    max-width: 263px;
+    height: auto;
+    margin-top: 30px;
+}
+
+.slick-case-study img{
+    height: 50px !important;
+    width: 120px;
+}
+.single-testimonial{
+    margin: 8px;
+}
+.testimonials-wrapper .testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.thumb-image.open-popup {
+    width: fit-content;
+    position: relative;
+}
+.thumb-image.open-popup::before {
+    content: url(https://billo.app/wp-content/uploads/2024/04/Play.svg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    z-index: 1;
+}
+.thumb-image.open-popup .image, .thumb-image.open-popup {
+    width: fit-content;
+}
+.single-testimonial .image img {
+    width: fit-content;
+    height: 357px;
+    border-radius: 16px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.image-description {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 14px;
+    color: #3D3D3D;
+    display: inline-flex;
+    padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #F9F9F9;
+}
+.testimonials-wrapper .content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.testimonial-container-div {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 16px;
+    border: 1px solid #E9E9E9;
+    background: #FFF;
+    min-height: 355px;
+}
+
+.testimonial-name-div {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* margin-bottom: 16px; */
+}
+.testimonial-name-div .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.testimonial-text-div {
+    border-top: 1px solid #E9E9E9;
+    padding-top: 16px;
+}
+.testimonial-text-div p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: #3D3D3D;
+    margin-bottom: 0;
+}

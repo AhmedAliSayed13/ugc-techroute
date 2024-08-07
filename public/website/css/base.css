@@ -40,6 +40,7 @@ a,li,label,input,textarea,select,button,span{
     font-family: "Tajawal", sans-serif;
     /* font-weight: 200; */
     font-style: normal;
+    /* margin-bottom: 0; */
 }
 a.login:hover{
     text-decoration: none;

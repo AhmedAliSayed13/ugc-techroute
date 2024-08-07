@@ -44,7 +44,7 @@
 
 <div class="container">
 
-    <section class="my-4">
+    <section class="mb-4">
         <div class="row align-items-center">
             <div class="col-md-3">
                 <p class="fw-bold">17,000+</p>
@@ -90,6 +90,7 @@
 
                 </div>
             </div>
+        </div>
     </section>
 
     <section class="my-4">
