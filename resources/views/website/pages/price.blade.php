@@ -1,9 +1,38 @@
 @extends('website.layouts.master')
 @section('style')
+
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/vendors-rtl.min.css')}}">
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/bootstrap-extended.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/colors.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/components.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/themes/dark-layout.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/themes/bordered-layout.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/themes/semi-dark-layout.css')}}">
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/core/menu/menu-types/horizontal-menu.css')}}">
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-rtl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/assets/css/style-rtl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('users-asset/css-rtl/custom-website.css')}}">
+<!-- END: Custom CSS-->
+@if (App::getLocale() === 'en')
+<link href="{{ asset('users-asset/system/css/rtl.css') }}" rel="stylesheet">
+@endif
+
 <link rel="stylesheet" type="text/css" href="{{asset('users-asset/vendors/css/extensions/nouislider.min.css')}}">
 <link rel="stylesheet" type="text/css"
     href="{{asset('users-asset/css-rtl/plugins/extensions/ext-component-sliders.css')}}">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
 @endsection
 
 

@@ -10,16 +10,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-     
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link {{checkActiveRoute('home')}}" aria-current="page"
                     href="{{route('home')}}">{{__('website.home')}}</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{checkActiveRoute('price')}} " aria-current="page"
                     href="{{route('price')}}">{{__('website.pricing')}}</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{checkActiveRoute('agencies')}} " aria-current="page"
                     href="{{route('agencies')}}">{{__('website.forAgencies')}}</a>
@@ -43,10 +43,13 @@
 
         </ul>
         <div class="d-md-flex align-items-center">
-            <span class="navbar-text mx-4 fw-bold my-md-0 my-2"> 
-                login
-              </span>
-          <button class="btn log-in-button my-md-0 my-2" type="submit"> ابدأ الان</button>
+            <a href="{{route('user.login')}}" class="login" >
+
+                <span class="navbar-text mx-4 fw-bold my-md-0 my-2">
+                    تسجيل الدخول
+                </span>
+            </a>
+          <a type="button" href="{{route('creator.register')}}" class="btn log-in-button my-md-0 my-2" type="submit"> ابدأ الان</a>
         </div>
       </div>
     </div>
