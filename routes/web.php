@@ -23,6 +23,7 @@ Route::get('/home', [PagesController::class, 'homePage'])->name('home');
 Route::get('/price', [PagesController::class, 'price'])->name('price');
 Route::get('/agencies', [PagesController::class, 'agencies'])->name('agencies');
 Route::get('/ecommerce', [PagesController::class, 'ecommerce'])->name('ecommerce');
+Route::get('/page', [PagesController::class, 'page'])->name('page');
 
 // Route::get('/chat/{task_id}', function ($task_id) {
 //     return view('chats.index', ['task_id' => $task_id]);

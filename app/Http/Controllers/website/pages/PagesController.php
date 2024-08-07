@@ -48,6 +48,13 @@ class PagesController extends Controller
 
         return view($this->path . 'ecommerce', compact('data'));
     }
+    public function page()
+    {
+
+        $data = $this->pagesInterface->page();
+
+        return view($this->path . 'page', compact('data'));
+    }
     public function comingSoon()
     {
 
@@ -64,7 +71,7 @@ class PagesController extends Controller
     }
     public function test()
     {
-        $percentageVideoPrice=getSettingValueByKey('percentage_video_price')/100;
+        $percentageVideoPrice = getSettingValueByKey('percentage_video_price') / 100;
         return $this->getVideoPrice(300);
     }
 
