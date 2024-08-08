@@ -48,6 +48,11 @@ class PagesController extends Controller
 
         return view($this->path . 'ecommerce', compact('data'));
     }
+    public function success()
+    {
+        $data = $this->pagesInterface->success();
+        return view($this->path . 'success', compact('data'));
+    }
     public function page()
     {
 

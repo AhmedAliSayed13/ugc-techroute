@@ -12,7 +12,7 @@ return [
     'pricing' => 'الاسعار',
     'forAgencies' => 'من نحن',
     'ecommerce' => 'التجارة الالكترونية',
-    'asd' => 'asd',
+    'success' => 'عن فيدو',
     'asd' => 'asd',
 
 ];

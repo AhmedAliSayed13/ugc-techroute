@@ -8,6 +8,7 @@ interface PagesInterface {
     public function agencies():array;
     public function ecommerce():array;
     public function page():array;
+    public function success():array;
     public function comingSoon():array;
     public function comingSoonSave($request):bool;
 }
